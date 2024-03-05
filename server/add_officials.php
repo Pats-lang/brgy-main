@@ -9,7 +9,7 @@ $response = array(
   'description' => ''
 );
 
-$uploadDirectory = "./assets/images/officials/";
+$uploadDirectory = "../assets/images/officials/";
 $add_ImageAnnouncements = $_FILES['add_ImageAnnouncements']['name'];
 $add_ImageAnnouncementsTmpName = $_FILES['add_ImageAnnouncements']['tmp_name'];
 $uploadedImageAnnouncementsPath = $uploadDirectory . $add_ImageAnnouncements;
