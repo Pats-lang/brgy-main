@@ -116,65 +116,85 @@ include '../../server/client_server/conn.php';
 </div>
 
 
-
-<div class="container ">
+<div class="container">
     <div class="row mt-3">
-        <div class=" col-9 col-md-9 text-center " data-aos="fade-up" data-aos-delay="300">
-            <div class="box border mb-4 mem" >
+        <div class="col-12 col-md-4 text-center" data-aos="fade-up" data-aos-delay="300">
+            <div class="box border mb-4 mem">
                 <?php
-            $positionToDisplay = "Barangay Secretary";  // Specify the position you want to display
+                $positionToDisplay = "Barangay Secretary"; // Specify the position you want to display
 
-            $sql = "SELECT img_officials, name_officials, position FROM officials WHERE position = '$positionToDisplay' LIMIT 1";
-            $result = mysqli_query($connection, $sql);
+                $sql = "SELECT img_officials, name_officials, position FROM officials WHERE position = '$positionToDisplay' LIMIT 1";
+                $result = mysqli_query($connection, $sql);
 
-            if ($result && mysqli_num_rows($result) > 0) {
-                $row = mysqli_fetch_assoc($result);
+                if ($result && mysqli_num_rows($result) > 0) {
+                    $row = mysqli_fetch_assoc($result);
                 ?>
-                <img src="../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-"
-                    alt="Director Image" style="max-width: 100%; margin: 0 auto;">
-                <div class="box-body">
-                <h3 class="box-title mt-2 " style="color:orange;"><?php echo $row['position']; ?></h3>
-                <h4 class="box-text mt-2"><?php echo $row['name_officials']; ?></p>
-                </div>
+                    <img src="../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-" alt="Director Image" style="max-width: 100%; margin: 0 auto;">
+                    <div class="box-body">
+                        <h3 class="box-title mt-2 " style="color:orange;"><?php echo $row['position']; ?></h3>
+                        <h4 class="box-text mt-2"><?php echo $row['name_officials']; ?></h4>
+                    </div>
                 <?php
-            } else {
-                // Handle case when no director with the specified position is found
-                echo "No director found for the position: $positionToDisplay";
-            }
-        ?>
+                } else {
+                    // Handle case when no director with the specified position is found
+                    echo "No director found for the position: $positionToDisplay";
+                }
+                ?>
             </div>
         </div>
-
-        <div class="col-md-12 text-center " data-aos="fade-up" data-aos-delay="300">
-            <div class="box border mb-4 mem" style="width: 100%;">
+        <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="300">
+            <div class="box border mb-4 mem">
                 <?php
-            $positionToDisplay = "Barangay Treasurer";  // Specify the position you want to display
+                $positionToDisplay = "Barangay Secretary"; // Specify the position you want to display
 
-            $sql = "SELECT img_officials, name_officials, position FROM officials WHERE position = '$positionToDisplay' LIMIT 1";
-            $result = mysqli_query($connection, $sql);
+                $sql = "SELECT img_officials, name_officials, position FROM officials WHERE position = '$positionToDisplay' LIMIT 1";
+                $result = mysqli_query($connection, $sql);
 
-            if ($result && mysqli_num_rows($result) > 0) {
-                $row = mysqli_fetch_assoc($result);
+                if ($result && mysqli_num_rows($result) > 0) {
+                    $row = mysqli_fetch_assoc($result);
                 ?>
-                  <img src="../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-"
-                    alt="Director Image" style="max-width: 100%; margin: 0 auto;">
-                <div class="box-body">
-                <h3 class="box-title mt-2 " style="color:orange;"><?php echo $row['position']; ?></h3>
-                <h4 class="box-text mt-2"><?php echo $row['name_officials']; ?></p>
-                </div>
+                    <img src="../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-" alt="Director Image" style="max-width: 100%; margin: 0 auto;">
+                    <div class="box-body">
+                        <h3 class="box-title mt-2 " style="color:orange;"><?php echo $row['position']; ?></h3>
+                        <h4 class="box-text mt-2"><?php echo $row['name_officials']; ?></h4>
+                    </div>
                 <?php
-            } else {
-                // Handle case when no director with the specified position is found
-                echo "No director found for the position: $positionToDisplay";
-            }
-        ?>
+                } else {
+                    // Handle case when no director with the specified position is found
+                    echo "No director found for the position: $positionToDisplay";
+                }
+                ?>
+            </div>
+        </div>
+        <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="300">
+            <div class="box border mb-4 mem">
+                <?php
+                $positionToDisplay = "Barangay Secretary"; // Specify the position you want to display
+
+                $sql = "SELECT img_officials, name_officials, position FROM officials WHERE position = '$positionToDisplay' LIMIT 1";
+                $result = mysqli_query($connection, $sql);
+
+                if ($result && mysqli_num_rows($result) > 0) {
+                    $row = mysqli_fetch_assoc($result);
+                ?>
+                    <img src="../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-" alt="Director Image" style="max-width: 100%; margin: 0 auto;">
+                    <div class="box-body">
+                        <h3 class="box-title mt-2 " style="color:orange;"><?php echo $row['position']; ?></h3>
+                        <h4 class="box-text mt-2"><?php echo $row['name_officials']; ?></h4>
+                    </div>
+                <?php
+                } else {
+                    // Handle case when no director with the specified position is found
+                    echo "No director found for the position: $positionToDisplay";
+                }
+                ?>
             </div>
         </div>
     </div>
 </div>
 
 <div class="container ">
-    <div class="row mt-3">
+    <div class="row mt-3 text-center">
         <div class="col-md-3 text-center " data-aos="fade-up" data-aos-delay="300">
             <div class="box border mb-4 mem" >
                 <?php
@@ -226,6 +246,34 @@ include '../../server/client_server/conn.php';
         ?>
             </div>
         </div>
+
+        
+        <div class="col-md-3 text-center " data-aos="fade-up" data-aos-delay="300">
+            <div class="box border mb-4 mem" style="width: 100%;">
+                <?php
+            $positionToDisplay = "Barangay Kagawad";  // Specify the position you want to display
+
+            $sql = "SELECT img_officials, name_officials, position FROM officials WHERE position = '$positionToDisplay' LIMIT 7";
+            $result = mysqli_query($connection, $sql);
+
+            if ($result && mysqli_num_rows($result) > 0) {
+                $row = mysqli_fetch_assoc($result);
+                ?>
+                  <img src="../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-"
+                    alt="Director Image" style="max-width: 100%; margin: 0 auto;">
+                <div class="box-body">
+                <h3 class="box-title mt-2 " style="color:orange;"><?php echo $row['position']; ?></h3>
+                <h4 class="box-text mt-2"><?php echo $row['name_officials']; ?></p>
+                </div>
+                <?php
+            } else {
+                // Handle case when no director with the specified position is found
+                echo "No director found for the position: $positionToDisplay";
+            }
+        ?>
+            </div>
+        </div>
+
 
         <div class="col-md-3 text-center " data-aos="fade-up" data-aos-delay="300">
             <div class="box border mb-4 mem" style="width: 100%;">
@@ -255,6 +303,90 @@ include '../../server/client_server/conn.php';
     </div>
 </div>
     
+<div class="container ">
+    <div class="row mt-3">
+        <div class="col-md-4 text-center " data-aos="fade-up" data-aos-delay="300">
+            <div class="box border mb-4 mem" >
+                <?php
+            $positionToDisplay = "Barangay Kagawad";  // Specify the position you want to display
+
+            $sql = "SELECT img_officials, name_officials, position FROM officials WHERE position = '$positionToDisplay' LIMIT 7";
+            $result = mysqli_query($connection, $sql);
+
+            if ($result && mysqli_num_rows($result) > 0) {
+                $row = mysqli_fetch_assoc($result);
+                ?>
+                <img src="../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-"
+                    alt="Director Image" style="max-width: 100%; margin: 0 auto;">
+                <div class="box-body">
+                <h3 class="box-title mt-2 " style="color:orange;"><?php echo $row['position']; ?></h3>
+                <h4 class="box-text mt-2"><?php echo $row['name_officials']; ?></p>
+                </div>
+                <?php
+            } else {
+                // Handle case when no director with the specified position is found
+                echo "No director found for the position: $positionToDisplay";
+            }
+        ?>
+            </div>
+        </div>
+
+        <div class="col-md-4 text-center " data-aos="fade-up" data-aos-delay="300">
+            <div class="box border mb-4 mem" style="width: 100%;">
+                <?php
+            $positionToDisplay = "Barangay Kagawad";  // Specify the position you want to display
+
+            $sql = "SELECT img_officials, name_officials, position FROM officials WHERE position = '$positionToDisplay' LIMIT 7";
+            $result = mysqli_query($connection, $sql);
+
+            if ($result && mysqli_num_rows($result) > 0) {
+                $row = mysqli_fetch_assoc($result);
+                ?>
+                  <img src="../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-"
+                    alt="Director Image" style="max-width: 100%; margin: 0 auto;">
+                <div class="box-body">
+                <h3 class="box-title mt-2 " style="color:orange;"><?php echo $row['position']; ?></h3>
+                <h4 class="box-text mt-2"><?php echo $row['name_officials']; ?></p>
+                </div>
+                <?php
+            } else {
+                // Handle case when no director with the specified position is found
+                echo "No director found for the position: $positionToDisplay";
+            }
+        ?>
+            </div>
+        </div>
+
+        <div class="col-md-4 text-center " data-aos="fade-up" data-aos-delay="300">
+            <div class="box border mb-4 mem" style="width: 100%;">
+                <?php
+            $positionToDisplay = "Barangay Kagawad";  // Specify the position you want to display
+
+            $sql = "SELECT img_officials, name_officials, position FROM officials WHERE position = '$positionToDisplay' LIMIT 7";
+            $result = mysqli_query($connection, $sql);
+
+            if ($result && mysqli_num_rows($result) > 0) {
+                $row = mysqli_fetch_assoc($result);
+                ?>
+                  <img src="../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-"
+                    alt="Director Image" style="max-width: 100%; margin: 0 auto;">
+                <div class="box-body">
+                <h3 class="box-title mt-2 " style="color:orange;"><?php echo $row['position']; ?></h3>
+                <h4 class="box-text mt-2"><?php echo $row['name_officials']; ?></p>
+                </div>
+                <?php
+            } else {
+                // Handle case when no director with the specified position is found
+                echo "No director found for the position: $positionToDisplay";
+            }
+        ?>
+            </div>
+        </div> 
+    </div>
+</div>
+    
+    
+
 
         
 

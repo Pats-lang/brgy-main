@@ -177,7 +177,7 @@ $sql = "SELECT img, title, description, last_modified FROM projects";
 $result = mysqli_query($connection, $sql);
 
 if (!$result) {
-    die("Query failed: " . mysqli_error($conn));
+    die("Query failed: " . mysqli_error($connection));
 }
 $count = 0;
 $images_per_page = 10; // Define the number of images per page

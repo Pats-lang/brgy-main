@@ -54,7 +54,7 @@ include '../server/admin_login-verification.php';
                                 <div class="card-body p-4">
                                   <form id="registersettingForm" enctype="multipart/form-data">
                                         <?php
-                                       $query = "SELECT * FROM `settings` where id=1";
+                                       $query = "SELECT * FROM `settings` where id=2";
                                        $result = mysqli_query(getDatabase(), $query);
                                        while ($row = mysqli_fetch_array($result)) {
 

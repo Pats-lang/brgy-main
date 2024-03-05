@@ -35,9 +35,9 @@ while ($row = mysqli_fetch_assoc($result)){
             crossorigin="anonymous"></script>
      
         <!-- BS Stepper -->
-        <link rel="stylesheet" href="plugins/bs-stepper/css/bs-stepper.min.css">
+        <!-- <link rel="stylesheet" href="plugins/bs-stepper/css/bs-stepper.min.css">
         <link rel="stylesheet" href="plugins/bs-stepper/css/bs-stepper.css">
-        <script src="plugins/bs-stepper/js/bs-stepper.min.js"></script>
+        <script src="plugins/bs-stepper/js/bs-stepper.min.js"></script> -->
         <!-- Animate on Scroll (AOS) -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
         <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
@@ -57,6 +57,14 @@ while ($row = mysqli_fetch_assoc($result)){
                 padding: 5px;
                 position: relative;
                 z-index: 99;
+            }
+
+            .nav-link{
+                font-weight: bold;
+            }
+
+            .nav-link:hover{
+                color: blue;
             }
 
             .logo-text {
@@ -292,9 +300,11 @@ while ($row = mysqli_fetch_assoc($result)){
                             <a class="nav-link" href="pages/client/contact.php">Contact us</a>
                         </li>
                         <li class="nav-item">
-      
-      <a class="nav-link " href="pages/admin_logIn.php">Admin</a>
-    </li>
+                            <a class="nav-link " href="pages/login_client.php">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="pages/admin_logIn.php">Admin</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -386,7 +396,7 @@ while ($row = mysqli_fetch_assoc($result)){
 
             <!-- alumni count -->
             <section id="alumni" class="stats">
-                <img src="assets/images/stats-bg.jpg" alt="" data-aos="fade-in">
+                <img src="assets/images/background.jpg" alt="" data-aos="fade-in">
                 <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
                     <div class="row gy-4">
                         <?php
@@ -593,7 +603,7 @@ while ($row = mysqli_fetch_assoc($result)){
                 }).then((result) => {
                     if (result.isConfirmed) {
                         // If the user confirms, redirect to another page (e.g., alumni.php)
-                        window.location.href = 'pages/client/send_otp.php';
+                        window.location.href = 'pages/client/register_users.php';
                     }
                 });
             });
