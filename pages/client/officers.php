@@ -99,7 +99,7 @@ include '../../server/client_server/conn.php';
         if ($result && mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
             ?>
-             <img src="../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-"
+             <img src="../../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-"
                 alt="Officials Image" style="max-width: 100%; margin: 0 auto;">
             <div class="box-body">
                 <h3 class="box-title mt-2 " style="color:orange;"><?php echo $row['position']; ?></h3>
@@ -110,7 +110,7 @@ include '../../server/client_server/conn.php';
             // Handle case when no director with the specified position is found
             echo "No director found for the position: $positionToDisplay";
         }
-    ?>
+     ?>
         </div>
     </div>
 </div>
@@ -129,7 +129,7 @@ include '../../server/client_server/conn.php';
                 if ($result && mysqli_num_rows($result) > 0) {
                     $row = mysqli_fetch_assoc($result);
                 ?>
-                    <img src="../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-" alt="Director Image" style="max-width: 100%; margin: 0 auto;">
+                    <img src="../../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-" alt="Director Image" style="max-width: 100%; margin: 0 auto;">
                     <div class="box-body">
                         <h3 class="box-title mt-2 " style="color:orange;"><?php echo $row['position']; ?></h3>
                         <h4 class="box-text mt-2"><?php echo $row['name_officials']; ?></h4>
@@ -145,7 +145,7 @@ include '../../server/client_server/conn.php';
         <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="300">
             <div class="box border mb-4 mem">
                 <?php
-                $positionToDisplay = "Barangay Secretary"; // Specify the position you want to display
+                $positionToDisplay = "SK Chairman"; // Specify the position you want to display
 
                 $sql = "SELECT img_officials, name_officials, position FROM officials WHERE position = '$positionToDisplay' LIMIT 1";
                 $result = mysqli_query($connection, $sql);
@@ -153,7 +153,7 @@ include '../../server/client_server/conn.php';
                 if ($result && mysqli_num_rows($result) > 0) {
                     $row = mysqli_fetch_assoc($result);
                 ?>
-                    <img src="../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-" alt="Director Image" style="max-width: 100%; margin: 0 auto;">
+                    <img src="../../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-" alt="Director Image" style="max-width: 100%; margin: 0 auto;">
                     <div class="box-body">
                         <h3 class="box-title mt-2 " style="color:orange;"><?php echo $row['position']; ?></h3>
                         <h4 class="box-text mt-2"><?php echo $row['name_officials']; ?></h4>
@@ -169,7 +169,7 @@ include '../../server/client_server/conn.php';
         <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="300">
             <div class="box border mb-4 mem">
                 <?php
-                $positionToDisplay = "Barangay Secretary"; // Specify the position you want to display
+                $positionToDisplay = "Barangay Treasurer"; // Specify the position you want to display
 
                 $sql = "SELECT img_officials, name_officials, position FROM officials WHERE position = '$positionToDisplay' LIMIT 1";
                 $result = mysqli_query($connection, $sql);
@@ -177,7 +177,7 @@ include '../../server/client_server/conn.php';
                 if ($result && mysqli_num_rows($result) > 0) {
                     $row = mysqli_fetch_assoc($result);
                 ?>
-                    <img src="../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-" alt="Director Image" style="max-width: 100%; margin: 0 auto;">
+                    <img src="../../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-" alt="Director Image" style="max-width: 100%; margin: 0 auto;">
                     <div class="box-body">
                         <h3 class="box-title mt-2 " style="color:orange;"><?php echo $row['position']; ?></h3>
                         <h4 class="box-text mt-2"><?php echo $row['name_officials']; ?></h4>
@@ -199,14 +199,15 @@ include '../../server/client_server/conn.php';
             <div class="box border mb-4 mem" >
                 <?php
             $positionToDisplay = "Barangay Kagawad";  // Specify the position you want to display
+            $id = '5';
 
-            $sql = "SELECT img_officials, name_officials, position FROM officials WHERE position = '$positionToDisplay' LIMIT 7";
+            $sql = "SELECT id, img_officials, name_officials, position FROM officials WHERE id = '$id' AND position = '$positionToDisplay' LIMIT 7";
             $result = mysqli_query($connection, $sql);
 
             if ($result && mysqli_num_rows($result) > 0) {
                 $row = mysqli_fetch_assoc($result);
                 ?>
-                <img src="../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-"
+                <img src="../../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-"
                     alt="Director Image" style="max-width: 100%; margin: 0 auto;">
                 <div class="box-body">
                 <h3 class="box-title mt-2 " style="color:orange;"><?php echo $row['position']; ?></h3>
@@ -225,14 +226,15 @@ include '../../server/client_server/conn.php';
             <div class="box border mb-4 mem" style="width: 100%;">
                 <?php
             $positionToDisplay = "Barangay Kagawad";  // Specify the position you want to display
+            $id = '6';
 
-            $sql = "SELECT img_officials, name_officials, position FROM officials WHERE position = '$positionToDisplay' LIMIT 7";
+            $sql = "SELECT id, img_officials, name_officials, position FROM officials WHERE id = '$id' AND position = '$positionToDisplay' LIMIT 7";
             $result = mysqli_query($connection, $sql);
 
             if ($result && mysqli_num_rows($result) > 0) {
                 $row = mysqli_fetch_assoc($result);
                 ?>
-                  <img src="../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-"
+                  <img src="../../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-"
                     alt="Director Image" style="max-width: 100%; margin: 0 auto;">
                 <div class="box-body">
                 <h3 class="box-title mt-2 " style="color:orange;"><?php echo $row['position']; ?></h3>
@@ -252,14 +254,15 @@ include '../../server/client_server/conn.php';
             <div class="box border mb-4 mem" style="width: 100%;">
                 <?php
             $positionToDisplay = "Barangay Kagawad";  // Specify the position you want to display
+            $id = '7';
 
-            $sql = "SELECT img_officials, name_officials, position FROM officials WHERE position = '$positionToDisplay' LIMIT 7";
+            $sql = "SELECT id, img_officials, name_officials, position FROM officials WHERE id = '$id' AND position = '$positionToDisplay' LIMIT 7";
             $result = mysqli_query($connection, $sql);
 
             if ($result && mysqli_num_rows($result) > 0) {
                 $row = mysqli_fetch_assoc($result);
                 ?>
-                  <img src="../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-"
+                  <img src="../../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-"
                     alt="Director Image" style="max-width: 100%; margin: 0 auto;">
                 <div class="box-body">
                 <h3 class="box-title mt-2 " style="color:orange;"><?php echo $row['position']; ?></h3>
@@ -279,14 +282,15 @@ include '../../server/client_server/conn.php';
             <div class="box border mb-4 mem" style="width: 100%;">
                 <?php
             $positionToDisplay = "Barangay Kagawad";  // Specify the position you want to display
+            $id = '8';
 
-            $sql = "SELECT img_officials, name_officials, position FROM officials WHERE position = '$positionToDisplay' LIMIT 7";
+            $sql = "SELECT id, img_officials, name_officials, position FROM officials WHERE id = '$id' AND position = '$positionToDisplay' LIMIT 7";
             $result = mysqli_query($connection, $sql);
 
             if ($result && mysqli_num_rows($result) > 0) {
                 $row = mysqli_fetch_assoc($result);
                 ?>
-                  <img src="../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-"
+                  <img src="../../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-"
                     alt="Director Image" style="max-width: 100%; margin: 0 auto;">
                 <div class="box-body">
                 <h3 class="box-title mt-2 " style="color:orange;"><?php echo $row['position']; ?></h3>
@@ -309,14 +313,15 @@ include '../../server/client_server/conn.php';
             <div class="box border mb-4 mem" >
                 <?php
             $positionToDisplay = "Barangay Kagawad";  // Specify the position you want to display
+            $id = '9';
 
-            $sql = "SELECT img_officials, name_officials, position FROM officials WHERE position = '$positionToDisplay' LIMIT 7";
+            $sql = "SELECT id, img_officials, name_officials, position FROM officials WHERE id = '$id' AND position = '$positionToDisplay' LIMIT 7";
             $result = mysqli_query($connection, $sql);
 
             if ($result && mysqli_num_rows($result) > 0) {
                 $row = mysqli_fetch_assoc($result);
                 ?>
-                <img src="../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-"
+                <img src="../../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-"
                     alt="Director Image" style="max-width: 100%; margin: 0 auto;">
                 <div class="box-body">
                 <h3 class="box-title mt-2 " style="color:orange;"><?php echo $row['position']; ?></h3>
@@ -335,14 +340,15 @@ include '../../server/client_server/conn.php';
             <div class="box border mb-4 mem" style="width: 100%;">
                 <?php
             $positionToDisplay = "Barangay Kagawad";  // Specify the position you want to display
+            $id = '10';
 
-            $sql = "SELECT img_officials, name_officials, position FROM officials WHERE position = '$positionToDisplay' LIMIT 7";
+            $sql = "SELECT id, img_officials, name_officials, position FROM officials WHERE id = '$id' AND position = '$positionToDisplay' LIMIT 7";
             $result = mysqli_query($connection, $sql);
 
             if ($result && mysqli_num_rows($result) > 0) {
                 $row = mysqli_fetch_assoc($result);
                 ?>
-                  <img src="../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-"
+                  <img src="../../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-"
                     alt="Director Image" style="max-width: 100%; margin: 0 auto;">
                 <div class="box-body">
                 <h3 class="box-title mt-2 " style="color:orange;"><?php echo $row['position']; ?></h3>
@@ -361,14 +367,15 @@ include '../../server/client_server/conn.php';
             <div class="box border mb-4 mem" style="width: 100%;">
                 <?php
             $positionToDisplay = "Barangay Kagawad";  // Specify the position you want to display
+            $id = '11';
 
-            $sql = "SELECT img_officials, name_officials, position FROM officials WHERE position = '$positionToDisplay' LIMIT 7";
+            $sql = "SELECT id, img_officials, name_officials, position FROM officials WHERE id = '$id' AND position = '$positionToDisplay' LIMIT 7";
             $result = mysqli_query($connection, $sql);
 
             if ($result && mysqli_num_rows($result) > 0) {
                 $row = mysqli_fetch_assoc($result);
                 ?>
-                  <img src="../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-"
+                  <img src="../../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top img-"
                     alt="Director Image" style="max-width: 100%; margin: 0 auto;">
                 <div class="box-body">
                 <h3 class="box-title mt-2 " style="color:orange;"><?php echo $row['position']; ?></h3>

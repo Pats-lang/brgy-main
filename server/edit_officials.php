@@ -58,7 +58,7 @@ $edit_descriptionAnnouncements = sanitizeData(getDatabase(), $_POST['edit_descri
 $edit_lastModifiedAnnouncements = sanitizeData(getDatabase(), $_POST['edit_lastModifiedAnnouncements']);
 $edit_IdAnnouncements = sanitizeData(getDatabase(), $_POST['edit_IdAnnouncements']);
 
-if ($preparedSql = $db->prepare("UPDATE `officials` SET `name_official`= ?, `img_official`= ?, `position` = ?, `direct_timestamp` = ? WHERE id_official =? ")) {
+if ($preparedSql = $db->prepare("UPDATE `officials` SET `name_officials`= ?, `img_officials`= ?, `position` = ?, `direct_timestamp` = ? WHERE id =? ")) {
     $preparedSql->bind_param("ssssi", $edit_titleAnnouncements, $edit_ImageAnnouncements, $edit_descriptionAnnouncements, $edit_lastModifiedAnnouncements, $edit_IdAnnouncements);
 
     if ($preparedSql->execute()) {

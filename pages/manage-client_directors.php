@@ -73,6 +73,7 @@ include '../server/admin_login-verification.php';
                                             ?>
                                             <tr id="<?php echo $row['id']; ?>">
                                                 <td>
+                                                    
                                                     <img src="../assets/images/officials/<?php echo $row['img_officials']; ?>"
                                                         alt="Member Picture" width="200">
                                                 </td>
@@ -312,7 +313,7 @@ include '../server/admin_login-verification.php';
                                     <option value="Barangay Captain">Barangay Captain</option>
                                     <option value="Barangay Kagawad">Barangay Kagawad</option>
                                     <option value="Barangay Secretary">Barangay Secretary</option>
-                                    <option value="Barangay treasurer">Barangay Treasurer</option>
+                                    <option value="Barangay Treasurer">Barangay Treasurer</option>
                                     <option value="SK Chairman">SK Chairman</option>
                                     <option value="SK Kagawad">SK Kagawad</option>
                                 </select>
