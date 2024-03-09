@@ -246,25 +246,6 @@ while ($row = mysqli_fetch_assoc($result)){
         color: rgba(var(--color-default-rgb), 0.6);
     }
 
-    /* news */
-    .news-container {
-        width: 100%;
-        height: 50px;
-        background-color: #333;
-        color: #fff;
-        overflow: hidden;
-    }
-
-    .news-headlines ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        animation: animate 15s linear infinite;
-    }
-
-    .news-headlines li {
-        line-height: 50px;
-    }
 
     @keyframes animate {
         0% {
@@ -398,25 +379,7 @@ while ($row = mysqli_fetch_assoc($result)){
             </div>
         </div>
 
-        <!-- news  -->
-        <?php
-            $sql = "SELECT * FROM info";
-            $result = mysqli_query($connection, $sql);
-            while ($row = mysqli_fetch_assoc($result)) {
-                ?>
-        <div class="news-container">
-            <div class="news-headlines">
-                <ul>
-
-                    <li>
-                        <?php echo $row['info_des2']; ?>
-                    </li>
-
-                    <!-- Add more headlines here -->
-                </ul>
-            </div>
-        </div>
-        <?php } ?>
+        
 
         <!-- alumni count -->
         <section id="alumni" class="stats">
