@@ -349,9 +349,9 @@ while ($row = mysqli_fetch_assoc($result)){
                         </div>
                         <div class="carousel-caption d-none d-md-block">
                             <div class="card mx-auto"
-                                style="width: 18rem; background-color: rgba(0, 0, 0, 0.5); color: white;"
+                                style="width: 60rem; background-color: rgba(0, 0, 0, 0.5); color: white; border: solid;"
                                 data-aos-duration="3000" data-aos="fade-up">
-                                <div class="card-body">
+                                <div class="card-body" >
                                     <h4 class="card-title"><?php echo $row['title']; ?></h4>
                                     <hr>
                                     <h5>
@@ -379,24 +379,35 @@ while ($row = mysqli_fetch_assoc($result)){
             </div>
         </div>
 
-        
+        <?php
+    $sql = "SELECT COUNT(*) AS account_id FROM user_account";
+    $result = mysqli_query($connection, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $account_id = $row['account_id'];
+
+    // Format the total count as "00:01"
+    $formatted_count = sprintf("%02d:%02d", floor($account_id / 60), $account_id % 60);
+?>
+
 
         <!-- alumni count -->
         <section id="alumni" class="stats">
             <img src="assets/images/background.jpg" alt="" data-aos="fade-in">
             <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
                 <div class="row gy-4">
-                    <?php
-                        $sql = "SELECT COUNT(*) AS account_id FROM user_account";
-                        $result = mysqli_query($connection, $sql);
-                        $row = mysqli_fetch_assoc($result);
-                        $account_id = $row['account_id'];
+                <?php
+                     $sql = "SELECT COUNT(*) AS account_id FROM user_account";
+                     $result = mysqli_query($connection, $sql);
+                     $row = mysqli_fetch_assoc($result);
+                    $account_id = $row['account_id'];   
+
+                     // Format the total count as "00:01"
+    $formatted_count = sprintf("%02d:%02d", floor($account_id / 60), $account_id % 60);
                         ?>
 
                     <div class="col-lg-3 col-md-12 mx-auto">
-                        <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="<?php echo $account_id; ?>"
-                                data-purecounter-duration="2000" class="counter purecounter"></span>
+                    <div class="stats-item text-center w-100 h-100">
+                          <span><?php echo $formatted_count; ?></span>
                             <span>TOTAL REGISTERED POPULATION</span>
                         </div>
                     </div>

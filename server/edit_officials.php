@@ -32,7 +32,7 @@ function getExistingImageName($announcementId) {
 }
 
 $uploadDirectory = "../assets/images/officials/";
-$edit_ImageAnnouncements = isset($_FILES['edit_ImageAnnouncements']) ? $_FILES['edit_ImageAnnouncements']['name'] : null;
+$edit_ImageAnnouncements = isset($_FILES['edit_ImageAnnouncements']) ? $_FILES['edit_ImageAnnouncements']['name_officials'] : null;
 $edit_ImageAnnouncementsTmpName = isset($_FILES['edit_ImageAnnouncements']) ? $_FILES['edit_ImageAnnouncements']['tmp_name'] : null;
 
 // Check if an image is uploaded
