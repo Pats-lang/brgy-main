@@ -302,46 +302,7 @@ include '../server/admin_login-verification.php';
         responsive: true
     });
 
-    // Add Announcement: Submit Fields
-    $('#addAnnouncementForm').on('submit', function(e) {
-        e.preventDefault();
-        $.ajax({
-            type: 'POST',
-            url: '../server/add_officials.php',
-            data: new FormData(this),
-            dataType: 'json',
-            processData: false,
-            contentType: false,
-            success: function(response_addAnnouncement) {
-                $('#addSystemAdministrators_modal').modal('hide');
-                if (response_addAnnouncement.status) {
-                    toastr.success(response_addAnnouncement.message, '', {
-                        positionClass: 'toast-top-right',
-                        timeOut: 1000,
-                        closeButton: false,
-                        onHidden: function() {
-                            location.reload();
-                        }
-                    });
-                    systemChanges(response_addAnnouncement.admin, response_addAnnouncement
-                        .operation, response_addAnnouncement.description);
-
-                } else {
-                    toastr.error(response_addAnnouncement.message, '', {
-                        positionClass: 'toast-top-right',
-                        closeButton: false
-                    });
-                }
-            },
-            error: function(error) {
-                toastr.error('An Error occurred: ' + error, '', {
-                    positionClass: 'toast-top-end',
-                    closeButton: false
-                });
-            }
-        });
-    })
-
+   
     // Edit Announcement: Submit Fields
     $('#editAnnouncementForm').on('submit', function(e) {
         e.preventDefault();

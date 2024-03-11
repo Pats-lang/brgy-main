@@ -15,7 +15,7 @@ $response = array(
 function getExistingImageName($announcementId) {
     global $db; // Assuming $db is your database connection object
 
-    $query = "SELECT img_official FROM officials WHERE id = ?";
+    $query = "SELECT img_officials FROM officials WHERE id = ?";
     
     if ($stmt = $db->prepare($query)) {
         $stmt->bind_param("i", $announcementId); // Fix: use $announcementId instead of $id
