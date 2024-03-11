@@ -250,7 +250,15 @@ include '../server/admin_login-verification.php';
                                     <option value="Barangay Secretary">Barangay Secretary</option>
                                     <option value="Barangay Treasurer">Barangay Treasurer</option>
                                     <option value="SK Chairman">SK Chairman</option>
-                                    <option value="SK Kagawad">SK Kagawad</option>
+                                    <option value="Barangay Kagawad 1">Barangay Kagawad</option>
+                                    <option value="Barangay Kagawad 2">Barangay Kagawad</option>
+                                    <option value="Barangay Kagawad 3">Barangay Kagawad</option>
+                                    <option value="Barangay Kagawad 4">Barangay Kagawad</option>
+                                    <option value="Barangay Kagawad 5">Barangay Kagawad</option>
+                                    <option value="Barangay Kagawad 6">Barangay Kagawad</option>
+                                    <option value="Barangay Kagawad 7">Barangay Kagawad</option>
+
+
                                 </select>
                             </div>
                         </div>
