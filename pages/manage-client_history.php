@@ -118,61 +118,7 @@ include '../server/admin_login-verification.php';
 
     </div>
 
-    <!-- Add Announcements Modal -->
-    <div class="modal fade" id="addAnnouncement_modal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <form id="addAnnouncementForm" enctype="multipart/form-data">
-
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5">Add History</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-
-                    <div class="modal-body">
-
-                        <div class="row py-1">
-                            <div class="col">
-                                <label for="add_ImageAnnouncements">Image </label>
-                                <img alt="Member Picture" id="addPreview_ImageAnnouncements" class="w-100">
-                                <input type="file" class="form-control form-control-border" id="add_ImageAnnouncements" name="add_ImageAnnouncements">
-                            </div>
-                        </div>
-
-                        <div class="row py-1">
-                            <div class="col">
-                                <label for="add_titleAnnouncements">Title</label>
-                                <input type="text" class="form-control form-control-border" id="add_titleAnnouncements" name="add_titleAnnouncements" placeholder="Title">
-                            </div>
-                        </div>
-
-                        <div class="row py-1">
-                            <div class="col">
-                                <label for="add_descriptionAnnouncements">Description</label>
-                                <textarea class="form-control form-control-border" id="add_descriptionAnnouncements" name="add_descriptionAnnouncements" style="height: 125px; resize: none;" placeholder="Description"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <label for="add_lastModifiedAnnouncements">Last Modified</label>
-                                <input type="text" class="form-control form-control-border" id="add_lastModifiedAnnouncements" name="add_lastModifiedAnnouncements" readonly>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="submit" data-bs-dismiss="modal" class="btn btn-block bg-gradient-primary text-white">Add</button>
-                    </div>
-
-                </form>
-            </div>
-
-
-        </div>
-    </div>
-
+   
     <!-- View Announcements Modal -->
     <div class="modal fade" id="viewAnnouncement_modal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -299,33 +245,7 @@ include '../server/admin_login-verification.php';
                         extend: 'pdf',
                         text: '<i class="fas fa-file-pdf"></i> PDF'
                     },
-                    {
-                        text: 'Add History',
-                        className: 'add-btn',
-                        action: function(e, dt, node, config) {
-                            $('#add_lastModifiedAnnouncements').val(getLatestTime());
-                            $('#addAnnouncement_modal').modal('show');
-
-                            const fileInput = $("#add_ImageAnnouncements");
-                            const imagePreview = $("#addPreview_ImageAnnouncements");
-                            imagePreview.hide();
-                            fileInput.on("change", function() {
-
-                                if (fileInput[0].files.length > 0) {
-                                    const selectedFile = fileInput[0].files[0];
-                                    const reader = new FileReader();
-                                    reader.onload = function(e) {
-                                        imagePreview.attr("src", e.target.result);
-                                        imagePreview.show();
-                                    };
-                                    reader.readAsDataURL(selectedFile);
-                                } else {
-                                    imagePreview.hide();
-                                }
-                            });
-
-                        }
-                    },
+                   
                     {
                         extend: 'colvis',
                         text: '<i class="fas fa-columns"></i> Columns'
