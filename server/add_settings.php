@@ -91,7 +91,7 @@ if (!empty($logoName)) {
         `sName` = ?, `sAlias` = ?, `sDescription` = ?, `sLinks` = ?, 
         `sAddress` = ?, `sEmail` = ?, `sContact` = ?, `sMain` = ?, 
         `sNorth` = ?, `sLogo` = ?
-        WHERE id = 1"; // Replace '1' with the actual ID of the record to be updated
+        WHERE id = 2"; // Replace '1' with the actual ID of the record to be updated
 
     if ($preparedSql = $db->prepare($updateSql)) {
         $preparedSql->bind_param(
@@ -124,7 +124,7 @@ if (!empty($logoName)) {
         `sName` = ?, `sAlias` = ?, `sDescription` = ?, `sLinks` = ?, 
         `sAddress` = ?, `sEmail` = ?, `sContact` = ?, `sMain` = ?, 
         `sNorth` = ?
-        WHERE id = 1"; // Replace '1' with the actual ID of the record to be updated
+        WHERE id = 2"; // Replace '1' with the actual ID of the record to be updated
 
     if ($preparedSql = $db->prepare($updateSql)) {
         $preparedSql->bind_param(

@@ -22,9 +22,9 @@ include '../server/admin_login-verification.php';
 
     <!-- Site wrapper -->
     <div class="wrapper">
-
-
     <?php include 'includes/admin_navigation.php'; ?>
+
+
         <div class="content-wrapper">
 
             <section class="content-header">
