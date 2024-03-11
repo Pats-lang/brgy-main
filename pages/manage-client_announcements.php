@@ -10,7 +10,7 @@ include '../server/admin_login-verification.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UCC | Alumni Management System</title>
+    <title>EGBMS | E-Governance Barangay Management System</title>
     <script src="../config/config.js?v=<?php echo time(); ?>"></script>
     <script src="../assets/js/system_changes.js?v=<?php echo time(); ?>" defer></script>
     <?php include 'import.php'; ?>

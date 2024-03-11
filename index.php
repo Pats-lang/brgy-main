@@ -230,8 +230,12 @@ while ($row = mysqli_fetch_assoc($result)){
         width: 100%;
     }
 
+    .stats-count{
+        font-size: 50px;
+    }
+
     .stats .stats-item span {
-        font-size: 48px;
+        font-size: 36px;
         display: block;
         color: var(--color-default);
         font-weight: 700;
@@ -405,11 +409,13 @@ while ($row = mysqli_fetch_assoc($result)){
     $formatted_count = sprintf("%02d:%02d", floor($account_id / 60), $account_id % 60);
                         ?>
 
-                    <div class="col-lg-3 col-md-12 mx-auto">
+                    <div class="col-lg-12 col-md-12 mx-auto">
+                        
                     <div class="stats-item text-center w-100 h-100">
-                          <span><?php echo $formatted_count; ?></span>
+                    <span class="stats-count"><?php echo $formatted_count; ?></span>
+
                             <span>TOTAL REGISTERED POPULATION</span>
-                        </div>
+                    </div>
                     </div>
 
 
@@ -417,6 +423,7 @@ while ($row = mysqli_fetch_assoc($result)){
                 </div>
             </div>
         </section>
+        
 
         <!-- about  -->
         <section id="about" class="about">

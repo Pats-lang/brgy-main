@@ -9,7 +9,7 @@ include '../../server/client_server/conn.php';
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Alumni Association</title>
+        <title>About Barangay</title>
 
         <style>
             @media (min-width: 700px) {
@@ -43,7 +43,7 @@ include '../../server/client_server/conn.php';
                                     <span class="mx-1">/</span>
                                     <a href="" class="text-reset" style="text-decoration:none;">About</a>
                                     <span class="mx-1">/</span>
-                                    <a href="" class="text-reset" style="text-decoration:none;">Alumni</a>
+                                    <a href="" class="text-reset" style="text-decoration:none;">Barangay</a>
                                 </div>
 
                             </div>
@@ -70,14 +70,14 @@ include '../../server/client_server/conn.php';
                     <div class="col-xl-7 ps-0 ps-lg-5 pe-lg-1 d-flex align-items-stretch mt-5" data-aos="fade-up"
                         data-aos-duration="800">
                         <div class="content d-flex flex-column justify-content-center p-3">
-                            <h2 class="aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">ABOUT Barangay 20</h2>
+                            <h2 class="aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">About Barangay 20</h2>
                             <p class="aos-init aos-animate" data-aos="fade-up" data-aos-delay="400"
                                 style="text-align: justify;">
-                                <strong>Mission:</strong> <?php echo $row['mission']; ?>"
+                                <strong>Mission</strong> <?php echo $row['mission']; ?>"
                             </p>
                             <p class="aos-init aos-animate" data-aos="fade-up" data-aos-delay="500"
                                 style="text-align: justify;">
-                                <strong>Vision:</strong> <?php echo $row['vission']; ?>
+                                <strong>Vision</strong> <?php echo $row['vission']; ?>
                             </p>
                         </div>
                         <?php

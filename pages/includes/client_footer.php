@@ -50,16 +50,16 @@ while ($row = mysqli_fetch_assoc($result)){
             Useful links
           </h6>
           <p>
-            <a href=" https://ucc-caloocan.edu.ph/index" class="text-reset">BARANGAY Website</a>
+            <a href=" https://ucc-caloocan.edu.ph/index" class="text-reset">Barangay Website</a>
           </p>
           <p>
-            <a href="https://chedro-ncr.com/commission.php" class="text-reset">APP PAGE</a>
+            <a href="https://chedro-ncr.com/commission.php" class="text-reset">App Page</a>
           </p>
           <p>
-            <a href="https://www.facebook.com/univofcaloocanofficial" class="text-reset">Fb Page BARANGAY</a>
+            <a href="https://www.facebook.com/univofcaloocanofficial" class="text-reset">Facebook Page Barangay</a>
           </p>
           <p>
-            <a href="https://www.facebook.com/groups/uccalumnioraganization/" class="text-reset">FB Page BARANGAY</a>
+            <a href="https://www.facebook.com/groups/uccalumnioraganization/" class="text-reset">Facebook Page Barangay</a>
           </p>
         </div>
         <!-- Grid column -->
