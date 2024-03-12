@@ -173,7 +173,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
             }
 
-            .about .icon-boxes .col-md-6:nth-child(2) .icon-box,
+            /* .about .icon-boxes .col-md-6:nth-child(2) .icon-box,
             .about .icon-boxes .col-md-6:nth-child(4) .icon-box {
                 margin-top: -40px;
             }
@@ -184,7 +184,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                 .about .icon-boxes .col-md-6:nth-child(4) .icon-box {
                     margin-top: 0;
                 }
-            }
+            } */
 
             /* stats*/
             .stats {
@@ -407,7 +407,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
                     <div class="row gy-4">
                         <?php
-                        $sql = "SELECT COUNT(*) AS account_id FROM user_account";
+                        $sql = "SELECT COUNT(*) AS account_id FROM user_account WHERE status = '2'";
                         $result = mysqli_query($connection, $sql);
                         $row = mysqli_fetch_assoc($result);
                         $account_id = $row['account_id'];
@@ -461,13 +461,13 @@ while ($row = mysqli_fetch_assoc($result)) {
                             <div class="row align-items-center gy-5 mt-5">
                                 <div class="col-md-6 mt-4 mb-4" data-aos="fade-up" data-aos-delay="200">
                                     <div class="icon-box ">
-                                        <h3>Be a REGISTERED here in Barangay 20 Website!</h3>
+                                        <h3 style="font-size: 20px;">Be a REGISTERED here in Barangay 20 Website!</h3>
                                         <p>Click here to become a Registered,
                                             and have a account!</p>
                                         <button class="mt-4" id="alumniButton">Register Now</button>
                                     </div>
                                 </div>
-                                <div class="col-md-6 mt-4" data-aos="fade-up" data-aos-delay="200">
+                                <div class="col-md-6 mt-4 mb-4" data-aos="fade-up" data-aos-delay="200">
                                     <div class="icon-box ">
                                         <h3 style="font-size: 20px;">Would you like to receive updates on the status of your document request?
                                         </h3>
@@ -691,6 +691,9 @@ while ($row = mysqli_fetch_assoc($result)) {
                                     text: response_editAnnouncement.error
                                 }));
                                 $('#progress-table tbody').append(errorRow);
+
+                                // Hide the table header
+                                $('#progress-table thead').hide();
                             } else {
                                 // Create a new row
                                 var newRow = $('<tr>');
@@ -700,34 +703,46 @@ while ($row = mysqli_fetch_assoc($result)) {
                                     type: 'text',
                                     value: response_editAnnouncement.account_id,
                                     id: 'account_id',
-                                    disabled: true // Add disabled attribute
+                                    disabled: true, // Add disabled attribute
+                                    style: 'border: none;' // Apply inline CSS to remove the border
+
                                 })));
                                 newRow.append($('<td>').append($('<input>', {
                                     type: 'text',
                                     value: response_editAnnouncement.name,
                                     id: 'name',
-                                    disabled: true // Add disabled attribute
+                                    disabled: true, // Add disabled attribute
+                                    style: 'border: none;' // Apply inline CSS to remove the border
+
                                 })));
                                 newRow.append($('<td>').append($('<input>', {
                                     type: 'text',
                                     value: response_editAnnouncement.request,
                                     id: 'request',
-                                    disabled: true // Add disabled attribute
+                                    disabled: true, // Add disabled attribute
+                                    style: 'border: none;' // Apply inline CSS to remove the border
+
                                 })));
                                 newRow.append($('<td>').append($('<input>', {
                                     type: 'text',
                                     value: response_editAnnouncement.status,
                                     id: 'status',
-                                    disabled: true // Add disabled attribute
+                                    disabled: true, // Add disabled attribute
+                                    style: 'border: none;' // Apply inline CSS to remove the border
+
                                 })));
 
                                 // Append the new row to tbody
                                 $('#progress-table tbody').append(newRow);
+
+                                // Show the table header
+                                $('#progress-table thead').show();
                             }
 
                             // Display the table if it was hidden
                             $('#progress-table').show();
                         },
+
                         error: function(xhr, status, error) {
                             console.error(xhr.responseText);
                         }
