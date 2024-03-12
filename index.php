@@ -540,17 +540,21 @@ while ($row = mysqli_fetch_assoc($result)) {
                             </div>
                         </form>
                         <!-- End Form -->
-                        <table class="table table-bordered mt-3" id="progress-table" style="display: none;">
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Status</th>
-                                    <th>Remarks</th>
-                                </tr>
-                            </thead>
-                            <tbody id="request_progress_body">
-                            </tbody>
-                        </table>
+                        <div class="table-responsive"> <!-- Add this div to make the table horizontally scrollable -->
+                            <table class="table table-bordered mt-3" id="progress-table" style="display: none;">
+                                <thead>
+                                    <tr>
+                                        <th>Account ID</th>
+                                        <th>Name</th>
+                                        <th>Request</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Data will be appended here dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -644,51 +648,91 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 
             // Edit Announcement: Populate Fields
-            $(document).on('click', 'button#transaction_btn', function() {
-            var transactionId = $('#transaction_id').val();
+            $(document).ready(function() {
+                // Function to reset form fields
+                function resetForm() {
+                    $('#transaction_id').val(''); // Reset transaction ID field
+                    $('#progress-table tbody').empty(); // Clear table body
+                    $('#progress-table').hide(); // Hide the table
+                }
 
-            // AJAX request to fetch data
-            // AJAX request to fetch data
-            $.ajax({
-                type: "POST",
-                url: "server/track.php",
-                data: {
-                    id: transactionId,
-                },
-                dataType: "json",
-                success: function(response_editAnnouncement) {
-                    console.log(response_editAnnouncement); // Check the response in the browser console
+                // Reset form when modal is hidden
+                $('#largeModal').on('hidden.bs.modal', function() {
+                    resetForm(); // Call the resetForm function
+                });
 
-                    // Populate form fields
-                    $('#account').val(response_editAnnouncement.id);
-                    $('#register_name').val(response_editAnnouncement.name);
-                    $('#register_purpose').val(response_editAnnouncement.purpose);
-                    $('#register_request').val(response_editAnnouncement.request);
-                    $('#status').val(response_editAnnouncement.status);
+                $(document).on('click', 'button#transaction_btn', function() {
+                    var transactionId = $('#transaction_id').val();
 
-                    // Populate request progress table
-                    var progressTableBody = $('#request_progress_body');
-                    progressTableBody.empty(); // Clear previous entries
+                    if (!transactionId) {
+                        // Display an error message or perform any other action to indicate that the field is empty
+                        alert("Transaction ID cannot be empty.");
+                        return; // Exit the function if the field is empty
+                    }
 
-                    // Iterate over request progress data and populate the table rows
-                    $.each(response_editAnnouncement.progress, function(index, progress) {
-                        var row = $('<tr>').append(
-                            $('<td>').text(progress.date),
-                            $('<td>').text(progress.status),
-                            $('<td>').text(progress.remarks)
-                        );
-                        row.appendTo('#request_progress_body');
+                    // AJAX request to fetch data
+                    $.ajax({
+                        type: "POST",
+                        url: "server/track.php",
+                        data: {
+                            id: transactionId,
+                        },
+                        dataType: "json",
+                        success: function(response_editAnnouncement) {
+                            console.log(response_editAnnouncement); // Check the response in the browser console
+
+                            // Clear previous data from tbody
+                            $('#progress-table tbody').empty();
+
+                            if (response_editAnnouncement.hasOwnProperty('error')) {
+                                // If an error occurred, display the error message in the table
+                                var errorRow = $('<tr>').append($('<td>', {
+                                    colspan: 4,
+                                    text: response_editAnnouncement.error
+                                }));
+                                $('#progress-table tbody').append(errorRow);
+                            } else {
+                                // Create a new row
+                                var newRow = $('<tr>');
+
+                                // Append cells with input fields
+                                newRow.append($('<td>').append($('<input>', {
+                                    type: 'text',
+                                    value: response_editAnnouncement.account_id,
+                                    id: 'account_id',
+                                    disabled: true // Add disabled attribute
+                                })));
+                                newRow.append($('<td>').append($('<input>', {
+                                    type: 'text',
+                                    value: response_editAnnouncement.name,
+                                    id: 'name',
+                                    disabled: true // Add disabled attribute
+                                })));
+                                newRow.append($('<td>').append($('<input>', {
+                                    type: 'text',
+                                    value: response_editAnnouncement.request,
+                                    id: 'request',
+                                    disabled: true // Add disabled attribute
+                                })));
+                                newRow.append($('<td>').append($('<input>', {
+                                    type: 'text',
+                                    value: response_editAnnouncement.status,
+                                    id: 'status',
+                                    disabled: true // Add disabled attribute
+                                })));
+
+                                // Append the new row to tbody
+                                $('#progress-table tbody').append(newRow);
+                            }
+
+                            // Display the table if it was hidden
+                            $('#progress-table').show();
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(xhr.responseText);
+                        }
                     });
-
-                    // Show the modal
-                    $('#progress-table').show();
-                },
-           
-            error: function(xhr, status, error) {
-            console.error(xhr.responseText);
-            }
-
-            });
+                });
             });
         </script>
     </body>
