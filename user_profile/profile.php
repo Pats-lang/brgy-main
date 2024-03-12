@@ -75,7 +75,7 @@ color:#000000;
 
 <nav class="nav nav-borders">
     <a class="nav-link active ms-0" >Profile</a>
-    <a class="nav-link" href="clearance.html" >Clearance</a>
+    <a class="nav-link" href="clearance.php" >Clearance</a>
     <a class="nav-link" href="" >Indigency</a>
     <a class="nav-link" href="" >Certificate</a>
 

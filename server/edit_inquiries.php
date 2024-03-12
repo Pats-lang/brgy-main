@@ -28,13 +28,13 @@ if ($preparedSql = $db->prepare("UPDATE `inquire` SET `i_name`= ?, `i_email`= ?,
 
     if ($preparedSql->execute()) {
         $response['status'] = true;
-        $response['message'] = 'Successfully updated Board of Director details.';
+        $response['message'] = 'Successfully send your message.';
         $response['admin'] = $_SESSION['adminLogged'];
         $response['operation'] = "edit";
         $response['description'] = "Inquiries <b> I-" . strtoupper($id) . "</b> has been replied in<b>Inquiries.</b>";
     } else {
         $response['status'] = false;
-        $response['message'] = "Failed to update announcement information: " . $preparedSql->error;
+        $response['message'] = "Failed to send your message: " . $preparedSql->error;
         http_response_code(500); // Internal Server Error
     }
 
@@ -59,7 +59,7 @@ require '../plugins/PHPMailer/src/SMTP.php';
     $mail->addAddress($i_email);
     $mail->isHTML(true);
     
-    $mail->Subject = "Alumni Inquiry - {$subject}" ;
+    $mail->Subject = "Barangay 20 Inquiry - {$subject}" ;
   
          $mail->Body = "<html>
          <head>
@@ -83,7 +83,7 @@ require '../plugins/PHPMailer/src/SMTP.php';
                 }
                 
                 td.img-container {
-                    background-image: url('https://i.ibb.co/9VtGSvj/Header-1.png');                  
+                    background-image: url('https://i.ibb.co/Y8L9Gkn/barangay20-header.png');                  
                       background-size: cover; /* Adjust as needed */
                     background-position: center; /* Adjust as needed */
                     padding: 100px;
@@ -166,7 +166,7 @@ require '../plugins/PHPMailer/src/SMTP.php';
                 </td>
             </tr>
             <div class='footer '>
-            <p>&copy; 2023 UNIVERSITY OF CALOOCAN CITY ALUMNI. ASSOCIATION ALL RIGHTS RESERVED.</p>
+            <p>&copy; 2024 BARANGAY 20, ZONE 2, DISTRICT II ALL RIGHTS RESERVED.</p>
             <p><a href=' https://www.facebook.com/groups/uccalumnioraganization/'>ALUMNI FB PAGE</a> .</p>
     </div>
             </table>

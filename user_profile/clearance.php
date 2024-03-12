@@ -74,7 +74,7 @@ color:#000000;
 <div class="container-xl px-4 mt-4">
 
 <nav class="nav nav-borders">
-    <a class="nav-link" href="profile.html" >Profile</a>
+    <a class="nav-link" href="profile.php" >Profile</a>
     <a class="nav-link active ms-0" href="" >Clearance</a>
     <a class="nav-link" href="" >Indigency</a>
     <a class="nav-link" href="" >Certificate</a>
