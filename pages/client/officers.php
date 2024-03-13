@@ -205,7 +205,7 @@ include '../../server/client_server/conn.php';
                         if ($result && mysqli_num_rows($result) > 0) {
                             $row = mysqli_fetch_assoc($result);
                         ?>
-                            <img src="../../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top object-fit-cover img-fluid" alt="Director Image" style="max-width: 100%; height: 250px; margin: 0 auto;">
+                            <img src="../../assets/images/officials/<?php echo $row['img_officials']; ?>" class="box-img-top object-fit-contain img-fluid h-100" alt="Director Image" style="max-width: 100%; margin: 0 auto;">
 
                             <div class="box-body">
                                 <h3 class="box-title mt-2 " style="color:orange;"><?php echo $row['position']; ?></h3>
