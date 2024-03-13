@@ -356,7 +356,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                         <!-- announcement  -->
                         <div class="carousel-item <?php echo $itemClass; ?>">
                             <div class="position-relative">
-                                <img src="assets/images/announcement/<?php echo $row['img']; ?>" class="img-fluid d-block" style="width:100%; height:1000px;" alt="Image">
+                                <img src="assets/images/announcement/<?php echo $row['img']; ?>" class="img-fluid d-block" style="width:100%; height:700px;" alt="Image">
                                 <div class="mask" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;
                                       background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));">
                                 </div>

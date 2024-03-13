@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 06, 2024 at 03:39 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- Generation Time: Mar 13, 2024 at 07:03 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,7 +33,7 @@ CREATE TABLE `admin_users` (
   `password` varchar(150) NOT NULL,
   `fullname` varchar(100) NOT NULL,
   `role` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admin_users`
@@ -52,15 +52,16 @@ CREATE TABLE `announcement` (
   `id` int(11) NOT NULL,
   `img` varchar(500) NOT NULL,
   `title` varchar(50) NOT NULL,
-  `description` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `description` varchar(500) NOT NULL,
+  `last_modified` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `announcement`
 --
 
-INSERT INTO `announcement` (`id`, `img`, `title`, `description`) VALUES
-(1, '1.jpg', 'adsad', 'ajsdahj');
+INSERT INTO `announcement` (`id`, `img`, `title`, `description`, `last_modified`) VALUES
+(1, '421942795_939844190823403_4852506872741483609_n.jpg', 'adsad', 'ajsdahj', '2024-03-13 04:56:00');
 
 -- --------------------------------------------------------
 
@@ -73,7 +74,7 @@ CREATE TABLE `feedback` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `message` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `feedback`
@@ -97,14 +98,14 @@ CREATE TABLE `history` (
   `img` varchar(1000) NOT NULL,
   `mission` varchar(1000) NOT NULL,
   `vission` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `history`
 --
 
 INSERT INTO `history` (`id`, `img`, `mission`, `vission`) VALUES
-(2, 'barangay.png', 'To connect, engage, and empower our diverse community of alumni, fostering a lifelong and mutually beneficial relationship between our graduates and their alma mater.sss', 'The University of Caloocan City Alumni Association envisions a vibrant and interconnected network of alumni who are proud ambassadors of our institution. We aspire to be a dynamic force in strengthening the bonds among alumni, fostering a culture of giving and volunteerism, and providing invaluable support to our university.');
+(2, 'barangay.png', 'To achieve our vision, we will pursue a government that are geared towards transparency and accountability among its officials and employees, encourage community involvement among its constituents and considers environmental preservation and management in its developmental programs.', 'A self-reliant and progressive Barangay advocating principles and practices of good governance that help build and nurture accountability and responsibility among its public officials and employees, community participation among its constituents towards a livable and loveable environment.');
 
 -- --------------------------------------------------------
 
@@ -117,7 +118,7 @@ CREATE TABLE `info` (
   `info_des 1` mediumtext NOT NULL,
   `info_des2` mediumtext NOT NULL,
   `info_des3` mediumtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `info`
@@ -139,7 +140,7 @@ CREATE TABLE `inquire` (
   `i_message` varchar(1000) NOT NULL,
   `r_message` varchar(1000) NOT NULL,
   `i_status` int(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `inquire`
@@ -167,7 +168,8 @@ INSERT INTO `inquire` (`id`, `i_name`, `i_email`, `i_message`, `r_message`, `i_s
 (28, 'test', 'asda@asdas', 'testtest', '', 0),
 (29, 'asd', 'asd@test', 'asd', '', 0),
 (30, 'johnloydconag', 'patriciapascual031@gmail.com', 'awwwww', '', 0),
-(31, 'Paolo Rafael Salazar Tampico', 'paolorafaeltampico@gmail.com', 'Hello', 'Hi', 1);
+(31, 'Paolo Rafael Salazar Tampico', 'paolorafaeltampico@gmail.com', 'Hello', 'Hi', 1),
+(32, 'barangay20', 'barangay020@gmail.com', 'sample format', 'testing', 1);
 
 -- --------------------------------------------------------
 
@@ -181,14 +183,14 @@ CREATE TABLE `officials` (
   `img_officials` varchar(10000) NOT NULL,
   `position` varchar(200) NOT NULL,
   `direct_timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `officials`
 --
 
 INSERT INTO `officials` (`id`, `name_officials`, `img_officials`, `position`, `direct_timestamp`) VALUES
-(1, 'example1', 'bada.jpg', 'Barangay Captain', '2024-03-05 19:18:04'),
+(1, 'Roel Alunan Esmana', 'captain.gif', 'Barangay Captain', '2024-03-13 04:57:35'),
 (2, 'example 2', '393091956_1782656165518275_7114133208836903559_n.jpg', 'Barangay Secretary', '2024-03-05 19:18:04'),
 (3, 'example 3', 'keyboard.png', 'SK Chairman', '2024-03-05 19:18:04'),
 (4, 'example 4', 'mouse.jpg', 'Barangay Treasurer', '2024-03-05 19:20:44'),
@@ -212,7 +214,7 @@ CREATE TABLE `projects` (
   `title` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `last_modified` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `projects`
@@ -247,7 +249,7 @@ CREATE TABLE `request_assistant` (
   `id` int(11) NOT NULL,
   `status` int(2) NOT NULL,
   `email` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -257,6 +259,8 @@ CREATE TABLE `request_assistant` (
 
 CREATE TABLE `request_brgyclrs` (
   `id` int(11) NOT NULL,
+  `account_id` int(11) NOT NULL,
+  `transaction_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
   `yrs_res` int(4) NOT NULL,
@@ -265,30 +269,30 @@ CREATE TABLE `request_brgyclrs` (
   `request` varchar(500) NOT NULL,
   `status` int(2) NOT NULL,
   `email` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `request_brgyclrs`
 --
 
-INSERT INTO `request_brgyclrs` (`id`, `name`, `address`, `yrs_res`, `contact_no`, `purpose`, `request`, `status`, `email`) VALUES
-(1, 'exampleName', 'exampleAddress', 20, 123456, 'examplePurpose', 'exampleRequest\r\n', 2, ''),
-(2, 'Layka', 'NPC AREA A, DELENA COMPD., ROAD 7 EXT., GSIS HILLS', 12121, 11111111, 'adafasf', 'afasfaf', 2, 'afafa'),
-(3, 'Layka', 'NPC AREA A, DELENA COMPD., ROAD 7 EXT., GSIS HILLS', 12121, 11111111, 'adafasf', 'afasfaf', 2, 'afafa'),
-(4, 'qweqwe', 'qweqweq', 35345345, 234234234, 'sdfwewfw', 'wefwefwe', 2, 'werwer'),
-(5, 'asdas', 'asdas', 231, 0, 'dasd', 'adasd', 2, 'asdas'),
-(6, 'johloyd', '50 malolos', 2021, 90909091, 'asdasdasd', 'asdasdasd', 2, 'johnloydconag17@gmail.com'),
-(7, 'lasasda', '50 malolos', 2121, 1111111, 'hah', 'agaga', 2, 'johnloydconag17@gmail.com`'),
-(8, 'marco guzman', '50 malolos ave', 2321, 2147483647, 'educational purpose', 'barangay clearance', 2, 'johnloydconag17@gmail.com'),
-(13, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com'),
-(14, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com'),
-(15, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com'),
-(16, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com'),
-(17, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com'),
-(18, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com'),
-(19, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com'),
-(20, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com'),
-(21, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com');
+INSERT INTO `request_brgyclrs` (`id`, `account_id`, `transaction_id`, `name`, `address`, `yrs_res`, `contact_no`, `purpose`, `request`, `status`, `email`) VALUES
+(1, 1, 6789, 'exampleName', 'exampleAddress', 20, 123456, 'examplePurpose', 'exampleRequest\r\n', 2, ''),
+(2, 0, 0, 'Layka', 'NPC AREA A, DELENA COMPD., ROAD 7 EXT., GSIS HILLS', 12121, 11111111, 'adafasf', 'afasfaf', 2, 'afafa'),
+(3, 0, 0, 'Layka', 'NPC AREA A, DELENA COMPD., ROAD 7 EXT., GSIS HILLS', 12121, 11111111, 'adafasf', 'afasfaf', 2, 'afafa'),
+(4, 0, 0, 'qweqwe', 'qweqweq', 35345345, 234234234, 'sdfwewfw', 'wefwefwe', 2, 'werwer'),
+(5, 0, 0, 'asdas', 'asdas', 231, 0, 'dasd', 'adasd', 2, 'asdas'),
+(6, 0, 0, 'johloyd', '50 malolos', 2021, 90909091, 'asdasdasd', 'asdasdasd', 2, 'johnloydconag17@gmail.com'),
+(7, 0, 0, 'lasasda', '50 malolos', 2121, 1111111, 'hah', 'agaga', 2, 'johnloydconag17@gmail.com`'),
+(8, 0, 0, 'marco guzman', '50 malolos ave', 2321, 2147483647, 'educational purpose', 'barangay clearance', 2, 'johnloydconag17@gmail.com'),
+(13, 0, 0, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com'),
+(14, 0, 0, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com'),
+(15, 0, 0, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com'),
+(16, 0, 0, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com'),
+(17, 0, 0, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com'),
+(18, 0, 0, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com'),
+(19, 0, 0, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com'),
+(20, 0, 0, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com'),
+(21, 0, 0, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -297,6 +301,9 @@ INSERT INTO `request_brgyclrs` (`id`, `name`, `address`, `yrs_res`, `contact_no`
 --
 
 CREATE TABLE `request_brgycoi` (
+  `id` int(11) NOT NULL,
+  `account_id` int(11) NOT NULL,
+  `transaction_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `request` varchar(50) NOT NULL,
   `contact_no` int(11) NOT NULL,
@@ -305,14 +312,14 @@ CREATE TABLE `request_brgycoi` (
   `year_recidency` int(4) NOT NULL,
   `status` int(2) NOT NULL,
   `email` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `request_brgycoi`
 --
 
-INSERT INTO `request_brgycoi` (`name`, `request`, `contact_no`, `address`, `purpose`, `year_recidency`, `status`, `email`) VALUES
-('Layka', 'asdasda', 23123, 'dsada', 'sdasdasd', 31231, 0, 'sdasd');
+INSERT INTO `request_brgycoi` (`id`, `account_id`, `transaction_id`, `name`, `request`, `contact_no`, `address`, `purpose`, `year_recidency`, `status`, `email`) VALUES
+(1, 1, 123456, 'Layka', 'asdasda', 23123, 'dsada', 'sdasdasd', 31231, 0, 'sdasd');
 
 -- --------------------------------------------------------
 
@@ -322,6 +329,8 @@ INSERT INTO `request_brgycoi` (`name`, `request`, `contact_no`, `address`, `purp
 
 CREATE TABLE `request_brgycor` (
   `id` int(11) NOT NULL,
+  `account_id` int(11) NOT NULL,
+  `transaction_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
   `year_recidency` int(50) NOT NULL,
@@ -330,17 +339,17 @@ CREATE TABLE `request_brgycor` (
   `request` varchar(50) NOT NULL,
   `status` int(2) NOT NULL,
   `email` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `request_brgycor`
 --
 
-INSERT INTO `request_brgycor` (`id`, `name`, `address`, `year_recidency`, `contact_no`, `purpose`, `request`, `status`, `email`) VALUES
-(1, 'asdasd', 'asdasd', 0, 1231323123, 'aasdasd', '', 0, ''),
-(2, 'asdasd', 'asdasdasd', 13123, 123, 'adasd', 'sdasdd', 0, 'asdas'),
-(3, 'asdasd', 'asdasdasd', 13123, 123, 'adasd', 'sdasdd', 0, 'asdas'),
-(4, 'Layka', 'NPC AREA A, DELENA COMPD., ROAD 7 EXT., GSIS HILLS', 2121, 11111, 'asdasdd', 'asdasda', 0, 'sdasdas');
+INSERT INTO `request_brgycor` (`id`, `account_id`, `transaction_id`, `name`, `address`, `year_recidency`, `contact_no`, `purpose`, `request`, `status`, `email`) VALUES
+(1, 0, 0, 'asdasd', 'asdasd', 0, 1231323123, 'aasdasd', '', 0, ''),
+(2, 0, 0, 'asdasd', 'asdasdasd', 13123, 123, 'adasd', 'sdasdd', 0, 'asdas'),
+(3, 0, 0, 'asdasd', 'asdasdasd', 13123, 123, 'adasd', 'sdasdd', 0, 'asdas'),
+(4, 0, 0, 'Layka', 'NPC AREA A, DELENA COMPD., ROAD 7 EXT., GSIS HILLS', 2121, 11111, 'asdasdd', 'asdasda', 0, 'sdasdas');
 
 -- --------------------------------------------------------
 
@@ -350,6 +359,8 @@ INSERT INTO `request_brgycor` (`id`, `name`, `address`, `year_recidency`, `conta
 
 CREATE TABLE `request_brgyid` (
   `id` int(11) NOT NULL,
+  `account_id` int(11) NOT NULL,
+  `transaction_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
   `birth_date` date NOT NULL,
@@ -362,17 +373,17 @@ CREATE TABLE `request_brgyid` (
   `emg_contact_no` varchar(20) NOT NULL,
   `status` int(2) NOT NULL,
   `email` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `request_brgyid`
 --
 
-INSERT INTO `request_brgyid` (`id`, `name`, `address`, `birth_date`, `civil_status`, `contact_no`, `precinct_no`, `gss_sss`, `tin`, `emg_name`, `emg_contact_no`, `status`, `email`) VALUES
-(1, 'Cyrus Cantero', 'Libis', '2023-12-15', 'Single', '09517563059', 123, 123456, 123456789, 'Mami Gel', '214', 0, ''),
-(2, 'JOHNLOYD KUNAG', 'KALOOCKAN', '2023-12-30', 'MARRIED', 'NUMBER GINAWA KONG V', 0, 0, 0, 'STRING', 'VARCAHR NA NUMBER', 0, ''),
-(3, 'asda', 'asda', '2023-12-07', 'dadasd', '0', 0, 0, 0, 'weqweq', '0', 0, 'Martinezlaicamae17@gmail.com'),
-(4, 'Layka', 'NPC AREA A, DELENA COMPD., ROAD 7 EXT., GSIS HILLS', '2023-12-15', 'single', '9636616469', 1112, 11111, 1111, 'maor', '11111', 0, 'Martinezlaicamae17@gmail.com');
+INSERT INTO `request_brgyid` (`id`, `account_id`, `transaction_id`, `name`, `address`, `birth_date`, `civil_status`, `contact_no`, `precinct_no`, `gss_sss`, `tin`, `emg_name`, `emg_contact_no`, `status`, `email`) VALUES
+(1, 0, 0, 'Cyrus Cantero', 'Libis', '2023-12-15', 'Single', '09517563059', 123, 123456, 123456789, 'Mami Gel', '214', 0, ''),
+(2, 0, 0, 'JOHNLOYD KUNAG', 'KALOOCKAN', '2023-12-30', 'MARRIED', 'NUMBER GINAWA KONG V', 0, 0, 0, 'STRING', 'VARCAHR NA NUMBER', 0, ''),
+(3, 0, 0, 'asda', 'asda', '2023-12-07', 'dadasd', '0', 0, 0, 0, 'weqweq', '0', 0, 'Martinezlaicamae17@gmail.com'),
+(4, 0, 0, 'Layka', 'NPC AREA A, DELENA COMPD., ROAD 7 EXT., GSIS HILLS', '2023-12-15', 'single', '9636616469', 1112, 11111, 1111, 'maor', '11111', 0, 'Martinezlaicamae17@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -382,6 +393,8 @@ INSERT INTO `request_brgyid` (`id`, `name`, `address`, `birth_date`, `civil_stat
 
 CREATE TABLE `request_busclearance` (
   `id` int(11) NOT NULL,
+  `account_id` int(11) NOT NULL,
+  `transaction_id` int(11) NOT NULL,
   `business_name` varchar(50) NOT NULL,
   `owner_name` varchar(50) NOT NULL,
   `kof_business` varchar(50) NOT NULL,
@@ -390,7 +403,7 @@ CREATE TABLE `request_busclearance` (
   `purpose` varchar(500) NOT NULL,
   `status` int(2) NOT NULL,
   `email` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -410,14 +423,14 @@ CREATE TABLE `settings` (
   `sContact` varchar(100) NOT NULL,
   `sMain` varchar(10000) NOT NULL,
   `sNorth` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `settings`
 --
 
 INSERT INTO `settings` (`id`, `sName`, `sDescription`, `sAlias`, `sLogo`, `sLinks`, `sAddress`, `sEmail`, `sContact`, `sMain`, `sNorth`) VALUES
-(2, 'University of Caloocan City Alumni Association', 'University of Caloocan City Alumni Management System', 'UCC', 'barangay.png', 'https://ucc-caloocan.edu.ph/index', 'Biglang Awa Street Cor 11th Ave Catleya, Caloocan 1400 Metro Manila, Philippines', 'admin@ucc-caloocan.edu.ph', '9231065814', 'An alumni organization for a state university is a group or association formed by former students (alumni) of that particular state university. These organizations are typically established to serve various purposes and provide benefits to alumni, the university, and the broader community. Alumni organizations are essential for maintaining the spirit and legacy of a state university. They help alumni stay engaged with their alma mater, provide valuable resources, and contribute to the overall success and reputation of the university.  An alumni organization for a state university is a group or association formed by former students (alumni) of that particular state university. These organizations are typically established to serve various purposes and provide benefits to alumni, the university, and the broader community. Alumni organizations are essential for maintaining the spirit and legacy of a state university. They help alumni stay engaged with their alma mater, provide valuable resources, and contribute to the overall success and reputation of the university.', 'An alumni organization for a state university is a group or association formed by former students (alumni) of that particular state university. These organizations are typically established to serve various purposes and provide benefits to alumni, the university, and the broader community.');
+(2, 'Barangay 20', 'Zone 2 , District II Caloocan City', 'UCC', 'barangay.png', 'https://caloocancity.gov.ph/', 'Kaunlaran Village, Caloocan, Metro Manila', 'admin@ucc-caloocan.edu.ph', '9231065814', 'Barangay 20 in Caloocan City, located in the southern part of Caloocan City, is a dynamic neighborhood that pulsates with the energy of its residents and the rhythm of city life. The community is home to people from various backgrounds and walks of life, resulting in a diverse and eclectic mix of traditions, languages, and customs. In terms of amenities and infrastructure, Barangay 20 is well-equipped to cater to the needs of its residents. Schools, healthcare facilities, and markets are easily accessible, ensuring that essential services are accessible to everyone.', 'Barangay 20 is a barangay in the city of Caloocan. Its population as determined by the 2020 Census was 7,892. This represented 0.47% of the total population of Caloocan.');
 
 -- --------------------------------------------------------
 
@@ -445,7 +458,7 @@ CREATE TABLE `user_account` (
   `account_created` timestamp NOT NULL DEFAULT current_timestamp(),
   `status` int(11) NOT NULL,
   `profile` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user_account`
@@ -520,6 +533,12 @@ ALTER TABLE `request_brgyclrs`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `request_brgycoi`
+--
+ALTER TABLE `request_brgycoi`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `request_brgycor`
 --
 ALTER TABLE `request_brgycor`
@@ -581,7 +600,7 @@ ALTER TABLE `history`
 -- AUTO_INCREMENT for table `inquire`
 --
 ALTER TABLE `inquire`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `officials`
@@ -606,6 +625,12 @@ ALTER TABLE `request_assistant`
 --
 ALTER TABLE `request_brgyclrs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `request_brgycoi`
+--
+ALTER TABLE `request_brgycoi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `request_brgycor`
