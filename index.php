@@ -191,6 +191,7 @@ while ($row = mysqli_fetch_assoc($result)){
         }
     }
 
+
     /* stats*/
     .stats {
         --color-default: #ffffff;

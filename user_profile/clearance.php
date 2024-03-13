@@ -7,8 +7,9 @@
 <title>Profile</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <style type="text/css">
-    	body{margin-top:20px;
+body{margin-top:20px;
 background-color:#ebeced;
 color:#000000;
 }
@@ -38,10 +39,10 @@ color:#000000;
     width: 100%;
     padding: 0.875rem 1.125rem;
     font-size: 0.850rem;
-    font-weight: 400;   
+    font-weight: 400;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1;
-    color: #414345;
+    color: #69707a;
     background-color: #ffffff;
     background-clip: padding-box;
     border: 1px solid #636363;
@@ -74,8 +75,8 @@ color:#000000;
 <div class="container-xl px-4 mt-4">
 
 <nav class="nav nav-borders">
-    <a class="nav-link active ms-0" >Profile</a>
-    <a class="nav-link" href="clearance.html" >Clearance</a>
+    <a class="nav-link" href="profile.php" >Profile</a>
+    <a class="nav-link active ms-0" href="" >Clearance</a>
     <a class="nav-link" href="" >Indigency</a>
     <a class="nav-link" href="" >Certificate</a>
 
@@ -105,7 +106,7 @@ color:#000000;
 <form>
 <div class="mb-3">
 <label class="small mb-1" for="inputFullname">Fullname</label>
-<input class="form-control" id="inputFullname" type="text" placeholder="Enter your fullname">
+<input class="form-control" id="inputFullname" type="text">
 </div>
 
 <div class="row gx-3 mb-3">
@@ -126,19 +127,19 @@ color:#000000;
 
 <div class="mb-3">
 <label class="small mb-1" for="inputAddress">Address</label>
-<input class="form-control" id="inputAddress" type="text" placeholder="Enter your address">
+<input class="form-control" id="inputAddress" type="text">
 </div>
 
 <div class="row gx-3 mb-3">
 
     <div class="col-md-6">
     <label class="small mb-1" for="inputContact">Contact Number</label>
-    <input class="form-control" id="inputContact" type="tel" placeholder="Enter your number">
+    <input class="form-control" id="inputContact" type="tel">
     </div>
     
     <div class="col-md-6">
     <label class="small mb-1" for="inputPrecinct">Precinct Number</label>
-    <input class="form-control" id="inputPrecinct" type="text" placeholder="Enter your tin number">
+    <input class="form-control" id="inputPrecinct" type="text">
     </div>
     </div>
 
@@ -148,7 +149,7 @@ color:#000000;
 
 <div class="col-md-6">
 <label class="small mb-1" for="inputSss">GSIS/SSS Number</label>
-<input class="form-control" id="inputSss" type="text" >
+<input class="form-control" id="inputSss" type="text">
 </div>
 
 <div class="col-md-6">
