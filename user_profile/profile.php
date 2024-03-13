@@ -7,8 +7,9 @@
 <title>Profile</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <style type="text/css">
-    	body{margin-top:20px;
+body{margin-top:20px;
 background-color:#ebeced;
 color:#000000;
 }
@@ -89,7 +90,7 @@ color:#000000;
 
 <div class="card-body text-center">
 
-<img class="img-account-profile rounded-circle mb-2" src="C:\Users\Hello\Documents\user profile\icon.png" alt>
+<img class="img-account-profile rounded-circle mb-2" src="C:\xampp\htdocs\brgy-main\user_profile\icon.png" alt>
     <h3>Arabella Belardo</h3>
     <div class="small font-italic text-muted mb-4">ID:</div>
 <button class="btn btn-primary" type="button">UPLOAD IMAGE</button>
@@ -103,19 +104,41 @@ color:#000000;
 <div class="card-body">
 
 <form>
-<div class="mb-3">
-<label class="small mb-1" for="inputFullname">Fullname</label>
-<input class="form-control" id="inputFullname" type="text" placeholder="Enter your fullname">
+<div class="row gx-3 mb-3">
+
+    <div class="col-md-4">
+    <label class="small mb-1" for="inputFirstname">First Name</label>
+    <input class="form-control" id="inputFirstname" type="tel" placeholder="Enter your firstname">
+    </div>
+    
+    <div class="col-md-4">
+    <label class="small mb-1" for="inputMidname">Middle Name</label>
+    <input class="form-control" id="inputMidname" type="text" placeholder="Enter your middle name">
+    </div>
+
+    <div class="col-md-4">
+    <label class="small mb-1" for="inputLastname">Last Name</label>
+    <input class="form-control" id="inputLastname" type="text" placeholder="Enter your lastname">
+    </div>
+
 </div>
 
 <div class="row gx-3 mb-3">
 
-<div class="col-md-6">
-<label class="small mb-1" for="inputBirthday">Birth Date</label>
-<input class="form-control" id="inputBirthday" type="date">
+<div class="col-md-4">
+    <label class="small mb-1" for="inputBirthday">Birth Date</label>
+    <input class="form-control" id="inputBirthday" type="date">
 </div>
 
-<div class="col-md-6">
+<div class="col-md-4">
+    <label class="small mb-1" for="inputGender">Gender</label>
+    <select class="form-control" id="inputGender">
+      <option value="female">Female</option> 
+      <option value="male">Male</option>
+    </select>
+  </div>
+
+  <div class="col-md-4">
     <label class="small mb-1" for="inputStatus">Civil Status</label>
     <select class="form-control" id="inputStatus">
       <option value="single">Single</option> 
@@ -124,40 +147,48 @@ color:#000000;
     </select>
   </div>
 
-<div class="mb-3">
-<label class="small mb-1" for="inputAddress">Address</label>
-<input class="form-control" id="inputAddress" type="text" placeholder="Enter your address">
+<div class="row gx-3 mb-3">
+
+<div class="col-mb-4">
+    <label class="small mb-1" for="inputAddress">Address</label>
+    <input class="form-control" id="inputAddress" type="text" placeholder="Enter your address">
 </div>
 
 <div class="row gx-3 mb-3">
 
-    <div class="col-md-6">
+    <div class="col-md-4">
     <label class="small mb-1" for="inputContact">Contact Number</label>
     <input class="form-control" id="inputContact" type="tel" placeholder="Enter your number">
     </div>
     
-    <div class="col-md-6">
+    <div class="col-md-4">
     <label class="small mb-1" for="inputPrecinct">Precinct Number</label>
     <input class="form-control" id="inputPrecinct" type="text" placeholder="Enter your tin number">
     </div>
+
+    <div class="col-md-4">
+    <label class="small mb-1" for="inputPrecinct">Precinct Number</label>
+    <input class="form-control" id="inputPrecinct" type="text" placeholder="Enter your tin number">
     </div>
+    
+</div>
 
     
 
 <div class="row gx-3 mb-3">
 
-<div class="col-md-6">
+<div class="col-md-4">
 <label class="small mb-1" for="inputSss">GSIS/SSS Number</label>
-<input class="form-control" id="inputSss" type="text" >
+<input class="form-control" id="inputSss" type="text" placeholder="Enter your sss number">
 </div>
 
-<div class="col-md-6">
+<div class="col-md-4">
 <label class="small mb-1" for="inputTin">TIN Number</label>
-<input class="form-control" id="inputTin" type="text">
+<input class="form-control" id="inputTin" type="text" placeholder="Enter your tin number">
 </div>
 </div>
 
-<button class="btn btn-primary" type="button">Save</button>
+<button class="btn btn-primary" type="button">Update</button>
 
 </form>
 </div>
