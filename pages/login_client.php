@@ -7,7 +7,7 @@
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
   <link rel="stylesheet" href="../assets/css/login.css" />
-  <title>Sign in & Sign up Form</title>
+  <title>Sign in</title>
 
   <!-- SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -86,7 +86,7 @@
                 closeButton: false,
                 onHidden: function() {
                   // Redirect to index.php after the toast message is hidden
-                  window.location.href = '../index.php';
+                  window.location.href = '../client_index.php';
                 }
               });
             } else {

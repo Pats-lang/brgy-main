@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($preparedSql->fetch()) {
                 if (password_verify($admin_password, $db_admin_password)) {
                     $response['status'] = true;
-                    $response['message'] = 'Admin Found! Logging in ...';
+                    $response['message'] = 'You Are Logging in...';
                     $_SESSION['adminLogged'] = $db_admin_username;
                 } else {
                     $response['status'] = false;
