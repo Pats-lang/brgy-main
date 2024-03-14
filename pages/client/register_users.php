@@ -413,7 +413,7 @@
                                 }, 100);
 
                                 $.ajax({
-                                    url: "register-user-api.php",
+                                    url: "../../register-user-api.php",
                                     type: "POST",
                                     data: new FormData(this),
                                     dataType: 'json',

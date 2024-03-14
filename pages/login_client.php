@@ -7,7 +7,7 @@
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../assets/css/login.css" />
     <title>Sign in & Sign up Form</title>
   </head>
   <body>
@@ -83,9 +83,10 @@
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
               ex ratione. Aliquid!
             </p>
+            <a href="../pages/client/register_users.php"> 
             <button class="btn transparent" id="sign-up-btn">
               Sign up
-            </button>
+            </button> </a>
           </div>
           <img src="img/log.svg" class="image" alt="" />
         </div>
