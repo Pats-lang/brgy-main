@@ -1,5 +1,13 @@
 <?php
 session_start();
+
+// Check if user is not logged in, redirect to login page
+if (!isset($_SESSION['adminLogged'])) {
+    // Redirect to login page
+    header("Location: ../pages/login_client.php");
+    exit;
+}
+
 unset($_SESSION['otp_sent']);
 unset($_SESSION['email_verified']);
 include 'server/client_server/conn.php';
@@ -7,6 +15,7 @@ $sql = "SELECT * FROM settings";
 $result = mysqli_query($connection, $sql);
 while ($row = mysqli_fetch_assoc($result)) {
 ?>
+
     <!DOCTYPE html>
     <html lang="en">
 
@@ -317,7 +326,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                             <a class="nav-link " href="user_profile/profile.php">Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a type="button"class="nav-link "  href="index.php">Logout</a>
+                            <a type="button"class="nav-link " >Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -750,6 +759,29 @@ while ($row = mysqli_fetch_assoc($result)) {
                 });
             });
         </script>
+
+<script>
+    $(document).ready(function() {
+      // Add click event to <li> with class nav-link
+      $('.nav-link').on('click', function(e) {
+        e.preventDefault();
+        
+        // Send an AJAX request to logout.php
+        $.ajax({
+          type: 'GET',
+          url: './server/client_logout.php',
+          success: function(response) {
+            // Redirect to the login page after successful logout
+            window.location.href = 'index.php';
+          },
+          error: function(xhr, status, error) {
+            // Handle error if needed
+            alert('An error occurred: ' + error);
+          }
+        });
+      });
+    });
+  </script>
     </body>
 
     </html>

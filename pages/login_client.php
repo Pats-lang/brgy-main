@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +37,7 @@
             <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
           </div>
           <input type="submit" value="Login" class="btn solid" />
-          <p class="social-text"> Sign in </p>
+          
         </form>
       </div>
     </div>

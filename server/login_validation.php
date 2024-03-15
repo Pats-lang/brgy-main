@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../config/connection.php';
 
 $response = array();
@@ -6,9 +7,6 @@ $response = array();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $admin_username = sanitizeData(getDatabase(), $_POST["username"]);
     $admin_password = sanitizeData(getDatabase(), $_POST["password"]);
-
-    // Start the session
-    session_start();
 
     if ($preparedSql = $db->prepare("SELECT `username`, `password` FROM `user_account` WHERE `username` = ?")) {
         $preparedSql->bind_param("s", $admin_username);
@@ -18,9 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($preparedSql->fetch()) {
                 if (password_verify($admin_password, $db_admin_password)) {
+                    $_SESSION['adminLogged'] = $db_admin_username;
                     $response['status'] = true;
                     $response['message'] = 'You Are Logging in...';
-                    $_SESSION['adminLogged'] = $db_admin_username;
                 } else {
                     $response['status'] = false;
                     $response['message'] = 'Password verification failed.';
@@ -43,4 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $response['message'] = 'Invalid request method.';
 }
 
+// Output response as JSON
 echo json_encode($response);
+?>
