@@ -60,6 +60,8 @@ include '../server/admin_login-verification.php';
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
+                                                <th>Account ID</th>
+                                                <th>Transaction ID</th>
                                                 <th>Business Name</th>
                                                 <th>Owners Name</th>
                                                 <th>Kind of Business</th>
@@ -82,12 +84,18 @@ include '../server/admin_login-verification.php';
                                                 <td>
                                                     <?php echo $row['id']; ?>
                                                 </td>
+                                                <td>
+                                                    <?php echo $row['account_id']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['transaction_id']; ?>
+                                                </td>
                                                 
                                                 <td>
                                                     <?php echo $row['business_name']; ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $row['owner_name']; ?>
+                                                    <?php echo $row['name']; ?>
                                                 </td>
                                                 <td>
                                                     <?php echo $row['kof_business']; ?>
@@ -172,11 +180,25 @@ include '../server/admin_login-verification.php';
                                 <div class="card-body">
 
                                     <div class="row ">
-                                        <div class="col-md-8">
+                                        <div class="col-md-4">
 
-                                            <label for="add_Image_id">TRANSACTION ID</label>
+                                            <label for="add_Image_id">ID</label>
+                                            <input type="text" class="form-control form-control-border" id="id"
+                                                name="id" readonly>
+
+                                        </div>
+                                        <div class="col-md-4">
+
+                                            <label for="add_Image_id">ACCOUNT ID</label>
                                             <input type="text" class="form-control form-control-border" id="account"
                                                 name="account" readonly>
+
+                                        </div>
+                                        <div class="col-md-4">
+
+                                            <label for="add_Image_id">TRANSACTION ID</label>
+                                            <input type="text" class="form-control form-control-border" id="transaction"
+                                                name="transaction" readonly>
 
                                         </div>
                                         
@@ -192,7 +214,7 @@ include '../server/admin_login-verification.php';
                                         <div class="col-md-6">
                                             <label for="register_first_name">Owners Name</label>
                                             <input type="text" class="form-control form-control-border"
-                                                id="owner_name" name="owner_name"
+                                                id="register_name" name="name"
                                                 placeholder="Owners Name" readonly>
                                         </div>
 
@@ -210,7 +232,7 @@ include '../server/admin_login-verification.php';
                                         <div class="col-md-4">
                                             <label for="register_address">Years of Residency</label>
                                             <input type="text" class="form-control form-control-border"
-                                                id="register_Residency" name="register_Residency"
+                                                id="register_yrsres" name="register_Residency"
                                                 placeholder="Type your Address" readonly>
                                         </div>
                                         <div class="col-md-4">
@@ -236,6 +258,13 @@ include '../server/admin_login-verification.php';
                                             <textarea type="text" class="form-control form-control-border"
                                                 id="register_purpose" name="register_purpose"
                                                 placeholder="Type your Birthday" readonly>
+                                                </textarea>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="register_contact">Request</label>
+                                            <textarea type="text" class="form-control form-control-border"
+                                                id="register_request" name="register_request"
+                                                placeholder="Type your Contact" readonly>
                                                 </textarea>
                                         </div>
                                        
@@ -366,20 +395,25 @@ $('#editAnnouncementForm').on('submit', function(e) {
             },
             dataType: "json",
             success: function(response_editAnnouncement) {
-                $('#account').val(response_editAnnouncement.id); // Corrected property name
+                $('#id').val(response_editAnnouncement.id); // Corrected property name
+                $('#account').val(response_editAnnouncement.account_id); // Corrected property name
+                $('#transaction').val(response_editAnnouncement.transaction_id); // Corrected property name
+
                 $('#business_name').val(response_editAnnouncement.business_name); // Corrected property name
-                $('#owner_name').val(response_editAnnouncement
-                .owner_name); // Corrected property name
-                $('#register_email').val(response_editAnnouncement
-                .email); // Corrected property name
-                $('#register_Residency').val(response_editAnnouncement
+                $('#register_name').val(response_editAnnouncement
+                .name); // Corrected property name
+                $('#kof').val(response_editAnnouncement
+                .kof_business); // Corrected property name
+                $('#register_yrsres').val(response_editAnnouncement
                 .yrs_res); // Corrected property name
                 $('#register_contact').val(response_editAnnouncement
                 .contact_no); // Corrected property name
                 $('#register_purpose').val(response_editAnnouncement
                 .purpose); // Corrected property name
-                $('#kof').val(response_editAnnouncement
-                .kof_business); // Corrected property name
+                $('#register_request').val(response_editAnnouncement
+                .request); // Corrected property name
+                $('#register_email').val(response_editAnnouncement
+                .email); // Corrected property name
 
                 $('#status').val(response_editAnnouncement.status); // Corrected property name
 

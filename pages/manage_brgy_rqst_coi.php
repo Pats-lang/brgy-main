@@ -60,6 +60,8 @@ include '../server/admin_login-verification.php';
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
+                                                <th>Account ID</th>
+                                                <th>Transaction ID</th>
                                                 <th>Name</th>
                                                 <th>Request</th>
                                                 <th>Years Residency</th>
@@ -82,6 +84,12 @@ include '../server/admin_login-verification.php';
                                                     <?php echo $row['id']; ?>
                                                 </td>
                                                 
+                                                <td>
+                                                    <?php echo $row['account_id']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['transaction_id']; ?>
+                                                </td>
                                                 <td>
                                                     <?php echo $row['name']; ?>
                                                 </td>
@@ -168,11 +176,25 @@ include '../server/admin_login-verification.php';
                                 <div class="card-body">
 
                                     <div class="row ">
-                                        <div class="col-md-8">
+                                        <div class="col-md-4">
 
-                                            <label for="add_Image_id">TRANSACTION ID</label>
+                                            <label for="add_Image_id">ID</label>
+                                            <input type="text" class="form-control form-control-border" id="id"
+                                                name="id" readonly>
+
+                                        </div>
+                                        <div class="col-md-4">
+
+                                            <label for="add_Image_id">ACCOUNT ID</label>
                                             <input type="text" class="form-control form-control-border" id="account"
                                                 name="account" readonly>
+
+                                        </div>
+                                        <div class="col-md-4">
+
+                                            <label for="add_Image_id">TRANSACTION ID</label>
+                                            <input type="text" class="form-control form-control-border" id="transaction"
+                                                name="transaction" readonly>
 
                                         </div>
                                         
@@ -360,7 +382,10 @@ $('#editAnnouncementForm').on('submit', function(e) {
             },
             dataType: "json",
             success: function(response_editAnnouncement) {
-                $('#account').val(response_editAnnouncement.id); // Corrected property name
+                $('#id').val(response_editAnnouncement.id); // Corrected property name
+                $('#account').val(response_editAnnouncement.account_id); // Corrected property name
+                $('#transaction').val(response_editAnnouncement.transaction_id); // Corrected property name
+
                 $('#register_name').val(response_editAnnouncement.name); // Corrected property name
                 $('#register_address').val(response_editAnnouncement
                 .address); // Corrected property name

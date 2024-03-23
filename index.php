@@ -592,7 +592,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                 // Display a SweetAlert confirmation dialog
                 Swal.fire({
                     title: 'Are you sure?',
-                    text: "Register now and avail the Alumni Identification Card?",
+                    text: "Register now and create your account?",
                     icon: 'question',
                     showCancelButton: true,
                     confirmButtonColor: 'orange',
@@ -606,45 +606,6 @@ while ($row = mysqli_fetch_assoc($result)) {
                 });
             });
 
-            $(document).ready(function() {
-                $('#track-form').on('submit', function(e) {
-                    if ($('#track-form').valid()) {
-                        e.preventDefault();
-                        $.ajax({
-                            type: "POST",
-                            url: "server/client_server/track_form.php",
-                            data: new FormData(this),
-                            contentType: false,
-                            cache: false,
-                            processData: false,
-                            success: function(response) {
-
-
-                                // if (response == "success") {
-                                //     Swal.fire({
-                                //         icon: 'success',
-                                //         title: 'Your Lost ID  Has Been Sent',
-                                //     }).then(function() {
-                                //         location.href = "index.php";
-                                //     });
-                                // } else {
-                                //     Swal.fire({
-                                //         icon: 'error',
-                                //         title: 'Failed to Send Re-id.',
-                                //     });
-                                // }
-                            },
-                            error: function() {
-                                alert('Error importing data: ' + error);
-                            }
-                        });
-                    } else {
-                        validate_form.focusInvalid();
-                    }
-                });
-
-
-            });
 
 
             // Edit Announcement: Populate Fields

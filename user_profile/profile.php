@@ -76,11 +76,9 @@ color:#000000;
 
 <nav class="nav nav-borders">
     <a class="nav-link active ms-0" >Profile</a>
-    <a class="nav-link" href="clearance.php" >Clearance</a>
-    <a class="nav-link" href="" >Indigency</a>
-    <a class="nav-link" href="" >Certificate</a>
-
+    <a class="nav-link" href="request.php" >Request</a>
 </nav>
+
 <hr class="mt-0 mb-4">
 <div class="row">
 <div class="col-xl-4">
@@ -106,22 +104,24 @@ color:#000000;
 <form>
 <div class="row gx-3 mb-3">
 
-    <div class="col-md-4">
+<div class="col-md-4">
     <label class="small mb-1" for="inputFirstname">First Name</label>
     <input class="form-control" id="inputFirstname" type="tel" placeholder="Enter your firstname">
-    </div>
+</div>
     
-    <div class="col-md-4">
+<div class="col-md-4">
     <label class="small mb-1" for="inputMidname">Middle Name</label>
     <input class="form-control" id="inputMidname" type="text" placeholder="Enter your middle name">
-    </div>
+</div>
 
-    <div class="col-md-4">
+<div class="col-md-4">
     <label class="small mb-1" for="inputLastname">Last Name</label>
     <input class="form-control" id="inputLastname" type="text" placeholder="Enter your lastname">
-    </div>
+</div>
 
 </div>
+
+
 
 <div class="row gx-3 mb-3">
 
@@ -136,40 +136,37 @@ color:#000000;
       <option value="female">Female</option> 
       <option value="male">Male</option>
     </select>
-  </div>
+</div>
 
-  <div class="col-md-4">
+<div class="col-md-4">
     <label class="small mb-1" for="inputStatus">Civil Status</label>
     <select class="form-control" id="inputStatus">
       <option value="single">Single</option> 
       <option value="married">Married</option>
       <option value="divorced">Divorced</option> 
     </select>
-  </div>
-
-<div class="row gx-3 mb-3">
-
-<div class="col-mb-4">
-    <label class="small mb-1" for="inputAddress">Address</label>
-    <input class="form-control" id="inputAddress" type="text" placeholder="Enter your address">
 </div>
 
-<div class="row gx-3 mb-3">
 
-    <div class="col-md-4">
+<!-- <div class="row gx-3 mb-3">
+
+<div class="col-md-4">
     <label class="small mb-1" for="inputContact">Contact Number</label>
     <input class="form-control" id="inputContact" type="tel" placeholder="Enter your number">
-    </div>
+</div>
     
-    <div class="col-md-4">
+<div class="col-md-4">
     <label class="small mb-1" for="inputPrecinct">Precinct Number</label>
     <input class="form-control" id="inputPrecinct" type="text" placeholder="Enter your tin number">
-    </div>
+</div>
 
-    <div class="col-md-4">
-    <label class="small mb-1" for="inputPrecinct">Precinct Number</label>
-    <input class="form-control" id="inputPrecinct" type="text" placeholder="Enter your tin number">
-    </div>
+<div class="col-md-4">
+    <label class="small mb-1" for="inputReligion">Religion</label>
+    <select class="form-control" id="inputReligion">
+      <option value="female">Catholic</option> 
+      <option value="male">others</option>
+    </select>
+</div>
     
 </div>
 
@@ -178,15 +175,46 @@ color:#000000;
 <div class="row gx-3 mb-3">
 
 <div class="col-md-4">
-<label class="small mb-1" for="inputSss">GSIS/SSS Number</label>
-<input class="form-control" id="inputSss" type="text" placeholder="Enter your sss number">
+    <label class="small mb-1" for="inputSss">GSIS/SSS Number</label>
+    <input class="form-control" id="inputSss" type="text" placeholder="Enter your sss number">
 </div>
 
 <div class="col-md-4">
-<label class="small mb-1" for="inputTin">TIN Number</label>
-<input class="form-control" id="inputTin" type="text" placeholder="Enter your tin number">
+    <label class="small mb-1" for="inputTin">TIN Number</label>
+    <input class="form-control" id="inputTin" type="text" placeholder="Enter your tin number">
 </div>
+
+<div class="col-md-4">
+    <label class="small mb-1" for="inputEmail">Email Adress</label>
+    <input class="form-control" id="inputEmail" type="text" placeholder="Enter your email">
 </div>
+
+</div> -->
+
+<div class="mb-4">
+<label class="small mb-1" for="inputAddress">Address</label>
+<input class="form-control" id="inputAddress" type="text" placeholder="Enter your address">
+</div>
+
+<div class="row gx-3 mb-3">
+
+<div class="col-md-4">
+    <label class="small mb-1" for="inputContact">Contact Number</label>
+    <input class="form-control" id="inputContact" type="tel" placeholder="Enter your contact number">
+</div>
+    
+<div class="col-md-4">
+    <label class="small mb-1" for="inputPrecinct">Precinct Number</label>
+    <input class="form-control" id="inputPrecinct" type="text" placeholder="Enter your precinct number">
+</div>
+
+<div class="col-md-4">
+    <label class="small mb-1" for="inputPrecinct">Email</label>
+    <input class="form-control" id="inputPrecinct" type="text" placeholder="Enter your email">
+    </div>
+</div>
+
+    
 
 <button class="btn btn-primary" type="button">Update</button>
 
