@@ -27,6 +27,10 @@
           $response['status'] = true;
           $response['message'] = 'Successfully updated details.'; 
 
+          
+      
+    
+
 
           if ($edit_lastModifiedAnnouncements == 2) {  
           

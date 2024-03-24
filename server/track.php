@@ -33,10 +33,6 @@ if (isset($_POST['id']) && !empty($_POST['id'])) {
     
 
 
-   
-
-
-
 
 
     // Check if query was successful
