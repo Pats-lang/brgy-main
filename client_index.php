@@ -414,7 +414,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                         <a class="nav-link" href="#services">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="pages/client/contact.php">Contact us</a>
+                            <a class="nav-link" href="pages/client/contact.php">Contacts</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " href="user_profile/profile.php">Profile</a>
