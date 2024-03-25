@@ -405,7 +405,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                                 About
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="pages/client/about.php">About Barangay 20</a>
+                                <a class="dropdown-item" href="pages/client/about.php"> Barangay 20</a>
                                 <a class="dropdown-item" href="pages/client/officers.php">Barangay Officials</a>
                                 <a class="dropdown-item" href="pages/client/projects.php">Projects</a>
                             </div>
