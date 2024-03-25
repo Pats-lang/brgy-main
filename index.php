@@ -539,7 +539,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         <div id="services">
                 <div class="contain">
 
-    <h1 class="heading">Request Document</h1>
+    <h1 class="heading">Services</h1>
 
     <div class="box-contain">
 
