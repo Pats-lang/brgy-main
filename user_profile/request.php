@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 
 
-<title>Profile</title>
+<title>Request</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -76,11 +76,9 @@ color:#000000;
 
 <nav class="nav nav-borders">
     <a class="nav-link" href="profile.php" >Profile</a>
-    <a class="nav-link active ms-0" href="" >Clearance</a>
-    <a class="nav-link" href="" >Indigency</a>
-    <a class="nav-link" href="" >Certificate</a>
-
+    <a class="nav-link active ms-0" href="" >Request</a>
 </nav>
+
 <hr class="mt-0 mb-4">
 <div class="row">
 <div class="col-xl-4">
@@ -104,19 +102,34 @@ color:#000000;
 <div class="card-body">
 
 <form>
-<div class="mb-3">
-<label class="small mb-1" for="inputFullname">Fullname</label>
-<input class="form-control" id="inputFullname" type="text">
+<div class="row gx-3 mb-3">
+
+<div class="col-md-4">
+    <label class="small mb-1" for="inputFirstname">First Name</label>
+    <input class="form-control" id="inputFirstname" type="tel" placeholder="Enter your firstname">
 </div>
+    
+<div class="col-md-4">
+    <label class="small mb-1" for="inputMidname">Middle Name</label>
+    <input class="form-control" id="inputMidname" type="text" placeholder="Enter your middle name">
+</div>
+
+<div class="col-md-4">
+    <label class="small mb-1" for="inputLastname">Last Name</label>
+    <input class="form-control" id="inputLastname" type="text" placeholder="Enter your lastname">
+</div>
+
+</div>
+
 
 <div class="row gx-3 mb-3">
 
-<div class="col-md-6">
+<div class="col-md-4">
 <label class="small mb-1" for="inputBirthday">Birth Date</label>
 <input class="form-control" id="inputBirthday" type="date">
 </div>
 
-<div class="col-md-6">
+<div class="col-md-4">
     <label class="small mb-1" for="inputStatus">Civil Status</label>
     <select class="form-control" id="inputStatus">
       <option value="single">Single</option> 
@@ -125,19 +138,24 @@ color:#000000;
     </select>
   </div>
 
-<div class="mb-3">
+<div class="mb-4">
 <label class="small mb-1" for="inputAddress">Address</label>
 <input class="form-control" id="inputAddress" type="text">
 </div>
 
 <div class="row gx-3 mb-3">
 
-    <div class="col-md-6">
+    <div class="col-md-4">
     <label class="small mb-1" for="inputContact">Contact Number</label>
     <input class="form-control" id="inputContact" type="tel">
     </div>
     
-    <div class="col-md-6">
+    <div class="col-md-4">
+    <label class="small mb-1" for="inputPrecinct">Precinct Number</label>
+    <input class="form-control" id="inputPrecinct" type="text">
+    </div>
+
+    <div class="col-md-4">
     <label class="small mb-1" for="inputPrecinct">Precinct Number</label>
     <input class="form-control" id="inputPrecinct" type="text">
     </div>
@@ -147,15 +165,20 @@ color:#000000;
 
 <div class="row gx-3 mb-3">
 
-<div class="col-md-6">
+<div class="col-md-4">
 <label class="small mb-1" for="inputSss">GSIS/SSS Number</label>
 <input class="form-control" id="inputSss" type="text">
 </div>
 
-<div class="col-md-6">
+<div class="col-md-4">
 <label class="small mb-1" for="inputTin">TIN Number</label>
 <input class="form-control" id="inputTin" type="text">
 </div>
+
+<div class="col-md-4">
+    <label class="small mb-1" for="inputPrecinct">Precinct Number</label>
+    <input class="form-control" id="inputPrecinct" type="text">
+    </div>
 </div>
 
 <button class="btn btn-primary" type="button">Save</button>

@@ -60,6 +60,8 @@ include '../server/admin_login-verification.php';
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
+                                                <th>Account ID</th>
+                                                <th>Transaction ID</th>
                                                 <th>Name</th>
                                                 <th>Address</th>
                                                 <th>Years Residency</th>
@@ -81,6 +83,13 @@ include '../server/admin_login-verification.php';
                                                 <td>
                                                     <?php echo $row['id']; ?>
                                                 </td>
+
+                                                <td>
+                                                    <?php echo $row['account_id']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['transaction_id']; ?>
+                                                </td>                                               
                                                 
                                                 <td>
                                                     <?php echo $row['name']; ?>
@@ -168,11 +177,25 @@ include '../server/admin_login-verification.php';
                                 <div class="card-body">
 
                                     <div class="row ">
-                                        <div class="col-md-8">
+                                        <div class="col-md-4">
 
-                                            <label for="add_Image_id">TRANSACTION ID</label>
+                                            <label for="add_Image_id">ID</label>
+                                            <input type="text" class="form-control form-control-border" id="id"
+                                                name="id" readonly>
+
+                                        </div>
+                                        <div class="col-md-4">
+
+                                            <label for="add_Image_id">ACCOUNT ID</label>
                                             <input type="text" class="form-control form-control-border" id="account"
                                                 name="account" readonly>
+
+                                        </div>
+                                        <div class="col-md-4">
+
+                                            <label for="add_Image_id">TRANSACTION ID</label>
+                                            <input type="text" class="form-control form-control-border" id="transaction"
+                                                name="transaction" readonly>
 
                                         </div>
                                         
@@ -360,14 +383,17 @@ $('#editAnnouncementForm').on('submit', function(e) {
             },
             dataType: "json",
             success: function(response_editAnnouncement) {
-                $('#account').val(response_editAnnouncement.id); // Corrected property name
+                $('#id').val(response_editAnnouncement.id); // Corrected property name
+                $('#account').val(response_editAnnouncement.account_id); // Corrected property name
+                $('#transaction').val(response_editAnnouncement.transaction_id); // Corrected property name
+
                 $('#register_name').val(response_editAnnouncement.name); // Corrected property name
                 $('#register_address').val(response_editAnnouncement
                 .address); // Corrected property name
                 $('#register_email').val(response_editAnnouncement
                 .email); // Corrected property name
                 $('#register_Residency').val(response_editAnnouncement
-                .yrs_res); // Corrected property name
+                .year_recidency); // Corrected property name
                 $('#register_contact').val(response_editAnnouncement
                 .contact_no); // Corrected property name
                 $('#register_purpose').val(response_editAnnouncement

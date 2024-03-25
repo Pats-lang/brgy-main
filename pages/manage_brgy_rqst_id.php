@@ -60,6 +60,8 @@ include '../server/admin_login-verification.php';
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
+                                                <th>Account ID</th>
+                                                <th>Transaction ID</th>
                                                 <th>Name</th>
                                                 <th>Address</th>
                                                 <th>Birth Of Date</th>
@@ -80,6 +82,12 @@ include '../server/admin_login-verification.php';
                                             <tr id="<?php echo $row['id']; ?>">
                                                 <td>
                                                     <?php echo $row['id']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['account_id']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['transaction_id']; ?>
                                                 </td>
                                                 
                                                 <td>
@@ -168,11 +176,25 @@ include '../server/admin_login-verification.php';
                                 <div class="card-body">
 
                                     <div class="row ">
-                                        <div class="col-md-8">
+                                        <div class="col-md-4">
 
-                                            <label for="add_Image_id">TRANSACTION ID</label>
+                                            <label for="add_Image_id">ID</label>
+                                            <input type="text" class="form-control form-control-border" id="id"
+                                                name="id" readonly>
+
+                                        </div>
+                                        <div class="col-md-4">
+
+                                            <label for="add_Image_id">ACCOUNT ID</label>
                                             <input type="text" class="form-control form-control-border" id="account"
                                                 name="account" readonly>
+
+                                        </div>
+                                        <div class="col-md-4">
+
+                                            <label for="add_Image_id">TRANSACTION ID</label>
+                                            <input type="text" class="form-control form-control-border" id="transaction"
+                                                name="transaction" readonly>
 
                                         </div>
                                         
@@ -219,17 +241,24 @@ include '../server/admin_login-verification.php';
 
 
                                     <div class="row mt-4">
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <label for="register_bday">Civil Status</label>
                                             <textarea type="text" class="form-control form-control-border"
                                                 id="register_civil" name="register_civil"
                                                 placeholder="Type your Birthday" readonly>
                                                 </textarea>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <label for="register_contact">Precint No.</label>
                                             <textarea type="text" class="form-control form-control-border"
                                                 id="register_precint" name="register_precint"
+                                                placeholder="Type your Contact" readonly>
+                                                </textarea>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="register_contact">Request</label>
+                                            <textarea type="text" class="form-control form-control-border"
+                                                id="register_request" name="register_request"
                                                 placeholder="Type your Contact" readonly>
                                                 </textarea>
                                         </div>
@@ -360,20 +389,23 @@ $('#editAnnouncementForm').on('submit', function(e) {
             },
             dataType: "json",
             success: function(response_editAnnouncement) {
-                $('#account').val(response_editAnnouncement.id); // Corrected property name
+                $('#id').val(response_editAnnouncement.id); // Corrected property name
+                $('#account').val(response_editAnnouncement.account_id); // Corrected property name
+                $('#transaction').val(response_editAnnouncement.transaction_id); // Corrected property name
+
                 $('#register_name').val(response_editAnnouncement.name); // Corrected property name
                 $('#register_address').val(response_editAnnouncement
                 .address); // Corrected property name
                 $('#register_email').val(response_editAnnouncement
                 .email); // Corrected property name
-                $('#register_birth').val(response_editAnnouncement
-                .birth_date); // Corrected property name
+                $('#register_Residency').val(response_editAnnouncement
+                .year_recidency); // Corrected property name
                 $('#register_contact').val(response_editAnnouncement
                 .contact_no); // Corrected property name
-                $('#register_civil').val(response_editAnnouncement
-                .civil_status); // Corrected property name
-                $('#register_precint').val(response_editAnnouncement
-                .precinct_no); // Corrected property name
+                $('#register_purpose').val(response_editAnnouncement
+                .purpose); // Corrected property name
+                $('#register_request').val(response_editAnnouncement
+                .request); // Corrected property name
 
                 $('#status').val(response_editAnnouncement.status); // Corrected property name
 

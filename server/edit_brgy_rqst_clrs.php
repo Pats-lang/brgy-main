@@ -9,7 +9,7 @@
     
   );
 
-  $edit_Id = sanitizeData(getDatabase(), $_POST['account']);
+  $edit_Id = sanitizeData(getDatabase(), $_POST['id']);
   $edit_lastModifiedAnnouncements = sanitizeData(getDatabase(), $_POST['status']);
 
   $name = sanitizeData(getDatabase(), $_POST['register_name']);

@@ -8,9 +8,32 @@ if (isset($_POST['id']) && !empty($_POST['id'])) {
     // Sanitize the id to prevent SQL injection
     $id = mysqli_real_escape_string(getDatabase(), $_POST['id']);
 
-    // Perform the SQL query
-    $sql = "SELECT account_id, name, request, status FROM `request_brgycoi` WHERE `transaction_id` = '$id'";
+
+    $sql = "SELECT account_id, name, request, status 
+        FROM `request_brgycoi`
+        WHERE transaction_id = '$id'
+        UNION
+        SELECT account_id, name, request, status 
+        FROM `request_brgycor`
+        WHERE transaction_id = '$id'
+        UNION
+        SELECT account_id, name, request, status 
+        FROM `request_brgyid`
+        WHERE transaction_id = '$id'
+        UNION
+        SELECT account_id, name, request, status 
+        FROM `request_brgyclrs`
+        WHERE transaction_id = '$id'
+        UNION
+        SELECT account_id, name, request, status 
+        FROM `request_busclearance`
+        WHERE transaction_id = '$id'";
     $result = mysqli_query(getDatabase(), $sql);
+
+    
+
+
+
 
     // Check if query was successful
     if ($result) {
@@ -21,8 +44,8 @@ if (isset($_POST['id']) && !empty($_POST['id'])) {
             // Mapping array for status values
             $statusMapping = array(
                 0 => 'pending', 
-                1 => 'accepted',
-                2 => 'rejected'
+                1 => 'rejected',
+                2 => 'accepted'
             );
 
             // Replace numeric status with status message
