@@ -1,5 +1,10 @@
+<?php
 
 
+
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +31,7 @@
   <div class="container">
     <div class="forms-container">
       <div class="signin-signup">
-        <form id="client_logInForm" method="post" class="sign-in-form">
+        <form id="admin_logInForm" method="post" class="sign-in-form">
           <h2 class="title">Sign in</h2>
           <div class="input-field">
             <i class="fas fa-user"></i>
@@ -36,7 +41,7 @@
             <i class="fas fa-lock"></i>
             <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
           </div>
-          <input type="submit" value="Login" class="btn solid" />
+          <button type="submit" class="btn btn-primary btn-block">Sign In</button>
           
         </form>
       </div>
@@ -73,39 +78,37 @@
   </div>
 
   <script>
-    $(document).ready(function() {
-      $('#client_logInForm').on('submit', function(e) {
+    $('#admin_logInForm').on('submit', function(e) {
         e.preventDefault();
         $.ajax({
-          type: 'POST',
-          url: '../server/login_validation.php',
-          data: $(this).serialize(),
-          dataType: 'json',
-          success: function(response) {
-            if (response.status) {
-              toastr.success(response.message, '', {
-                positionClass: 'toast-top-right',
-                timeOut: 1500,
-                closeButton: false,
-                onHidden: function() {
-                  // Redirect to index.php after the toast message is hidden
-                  window.location.href = '../client_index.php';
+            type: 'POST',
+            url: '../server/login_validation.php',
+            data: $(this).serialize(),
+            dataType: 'json',
+            success: function(response) {
+                if (response.status) {
+                    toastr.success(response.message, '', {
+                        positionClass: 'toast-top-right',
+                        timeOut: 1500,
+                        closeButton: false,
+                        onHidden: function() {
+                            // Redirect to index.php after the toast message is hidden
+                            window.location.href = '../client_index.php';
+                        }
+                    });
+                } else {
+                    toastr.error(response.message, '', {
+                        positionClass: 'toast-top-right',
+                        closeButton: false
+                    });
                 }
-              });
-            } else {
-              toastr.error(response.message, '', {
-                positionClass: 'toast-top-right',
-                closeButton: false
-              });
+            },
+            error: function(xhr, status, error) {
+                alert('An error occurred: ' + error);
             }
-          },
-          error: function(xhr, status, error) {
-            alert('An error occurred: ' + error);
-          }
         });
-      });
     });
-  </script>
+</script>
 </body>
 
 </html>

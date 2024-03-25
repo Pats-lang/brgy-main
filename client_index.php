@@ -1,13 +1,5 @@
 <?php
 session_start();
-
-// Check if user is not logged in, redirect to login page
-if (!isset($_SESSION['adminLogged'])) {
-    // Redirect to login page
-    header("Location: ../pages/login_client.php");
-    exit;
-}
-
 unset($_SESSION['otp_sent']);
 unset($_SESSION['email_verified']);
 include 'server/client_server/conn.php';
@@ -15,7 +7,6 @@ $sql = "SELECT * FROM settings";
 $result = mysqli_query($connection, $sql);
 while ($row = mysqli_fetch_assoc($result)) {
 ?>
-
     <!DOCTYPE html>
     <html lang="en">
 
@@ -53,6 +44,9 @@ while ($row = mysqli_fetch_assoc($result)) {
         <script src="https://kit.fontawesome.com/301afcc9b9.js" crossorigin="anonymous"></script>
 
         <style>
+
+
+
             .navbar {
                 background-color: #333;
                 color: white;
@@ -181,6 +175,106 @@ while ($row = mysqli_fetch_assoc($result)) {
                 color: #ffffff;
 
             }
+
+            .contain {
+    background:#f4f4f4;
+    padding:15px 9%;
+    
+}
+
+.contain .heading{
+    text-align: center;
+    padding-bottom: 15px;
+    color:#000;
+    
+    font-size: 35px;
+}
+
+.contain .box-contain{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap:15px;
+}
+
+.contain .box-contain .box{
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    border-radius: 5px;
+    background: #fff;
+    text-align: center;
+    padding:30px 20px;
+}
+
+.contain .box-contain .box img{
+    height: 80px;
+}
+
+.contain .box-contain .box h3{
+    color:#444;
+    font-size: 22px;
+    padding:10px 0;
+}
+
+.contain .box-contain .box p{
+    color:#777;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.contain .box-contain .box .btn{
+    margin-top: 10px;
+    display: inline-block;
+    background:#333;
+    color:#fff;
+    font-size: 17px;
+    border-radius: 5px;
+    padding: 8px 25px;
+}
+
+.contain .box-contain .box .btn:hover{
+    letter-spacing: 1px;
+}
+
+.contain .box-contain .box:hover{
+    box-shadow: 0 10px 15px rgba(0,0,0,.3);
+    transform: scale(1.03);
+}
+
+@media (max-width:768px){
+    .contain{
+        padding:20px;
+    }
+}
+
+.modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
 
             /* .about .icon-boxes .col-md-6:nth-child(2) .icon-box,
             .about .icon-boxes .col-md-6:nth-child(4) .icon-box {
@@ -311,22 +405,22 @@ while ($row = mysqli_fetch_assoc($result)) {
                                 About
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="pages/client/about.php">About Barangay 20</a>
-                                <a class="dropdown-item" href="pages/client/officers.php">Barangay Officials
-                                </a>
+                                <a class="dropdown-item" href="pages/client/about.php"> Barangay 20</a>
+                                <a class="dropdown-item" href="pages/client/officers.php">Barangay Officials</a>
+                                <a class="dropdown-item" href="pages/client/projects.php">Projects</a>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="pages/client/projects.php">Projects</a>
+                        <a class="nav-link" href="#services">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="pages/client/contact.php">Contact us</a>
+                            <a class="nav-link" href="pages/client/contact.php">Contacts</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " href="user_profile/profile.php">Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a type="button"class="nav-link " >Logout</a>
+                            <a class="nav-link " href="server/client_logout.php">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -440,8 +534,74 @@ while ($row = mysqli_fetch_assoc($result)) {
                 </div>
             </section>
 
+            <!-- request  -->
+            <section>
+        <div id="services">
+                <div class="contain">
 
-            <!-- about  -->
+    <h1 class="heading">Services</h1>
+
+    <div class="box-contain">
+
+        <div class="box">
+            <img src="assets/images/docu/1.jpg" alt="">
+            <h3>Barangay ID </h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
+            <a class="btn read-more">read more</a>
+        </div>
+
+        <div class="box">
+            <img src="assets/images/docu/2.jpg" alt="">
+            <h3>Barangay Clearance</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
+            <a class="btn read-more">read more</a>
+        </div>
+
+        <div class="box">
+            <img src="assets/images/docu/4.jpg" alt="">
+            <h3>Barangay Certificate</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
+            <a class="btn read-more">read more</a>
+        </div>
+
+        <div class="box">
+            <img src="assets/images/docu/5.jpg" alt="">
+            <h3>Business Clearance</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
+            <a class="btn read-more">read more</a>
+        </div>
+
+        <div class="box">
+            <img src="assets/images/docu/3.png" alt="">
+            <h3>Business Permit</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
+            <a class="btn read-more">read more</a>
+        </div>
+
+        <div class="box">
+            <img src="assets/images/docu/6.jpg" alt="">
+            <h3>Assistance</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
+            <a class="btn read-more">read more</a>
+        </div>
+
+    </div>
+
+</div>   
+</div>     
+                        
+</section>   
+<!-- modal ng request  -->   
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Modal Header</h2>
+        <p>This is some sample text in the modal.</p>
+    </div>
+</div>         
+
+
+            
             <section id="about" class="about">
                 <div class="container" data-aos="fade-up" data-aos-delay="100">
                     <div class="row align-items-xl-center gy-5 ">
@@ -592,7 +752,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                     // Add an event listener for toast hidden event
                     $('#registrationSuccessToast').on('hidden.bs.toast', function() {
                         // Reload the page (index.php)
-                        window.location.href = 'client_index.php';
+                        window.location.href = 'index.php';
                     });
                 }
             });
@@ -761,27 +921,36 @@ while ($row = mysqli_fetch_assoc($result)) {
         </script>
 
 <script>
-    $(document).ready(function() {
-      // Add click event to <li> with class nav-link
-      $('.nav-link').on('click', function(e) {
-        e.preventDefault();
-        
-        // Send an AJAX request to logout.php
-        $.ajax({
-          type: 'GET',
-          url: './server/client_logout.php',
-          success: function(response) {
-            // Redirect to the login page after successful logout
-            window.location.href = 'index.php';
-          },
-          error: function(xhr, status, error) {
-            // Handle error if needed
-            alert('An error occurred: ' + error);
-          }
-        });
-      });
-    });
-  </script>
+    // JavaScript to handle modal functionality
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btns = document.getElementsByClassName("read-more");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].onclick = function() {
+            modal.style.display = "block";
+        }
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
     </body>
 
     </html>

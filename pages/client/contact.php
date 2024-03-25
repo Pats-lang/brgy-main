@@ -41,6 +41,7 @@ while ($row = mysqli_fetch_assoc($result)){
                                     <span class="mx-1">/</span>
                                     <a href="" class="text-reset" style="text-decoration:none;">Contact Us</a>
                                 </div>
+                                
 
                             </div>
                         </div>
