@@ -245,6 +245,11 @@ while ($row = mysqli_fetch_assoc($result)) {
     }
 }
 
+.modal-backdrop {
+    z-index: 0;
+}
+
+
 .modal {
         display: none;
         position: fixed;
@@ -879,10 +884,9 @@ while ($row = mysqli_fetch_assoc($result)) {
                     });
                 });
             });
-        </script>
 
-<script>
-    // JavaScript to handle modal functionality
+
+        // JavaScript to handle modal functionality
     // Get the modal
     var modal = document.getElementById("myModal");
 
@@ -910,7 +914,9 @@ while ($row = mysqli_fetch_assoc($result)) {
             modal.style.display = "none";
         }
     }
-</script>
+        </script>
+
+
 
     </body>
 
