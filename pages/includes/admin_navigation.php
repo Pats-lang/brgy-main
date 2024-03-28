@@ -89,6 +89,14 @@
                                 <p>Brgy Officials</p>
                             </a>
                         </li>
+
+                        <li class="nav-item">
+                            <a href="../pages/assistance.php" class="nav-link">
+                                <i class="fa-solid fa-circle-question nav-icon"></i>
+                                <p>Assistance</p>
+                            </a>
+                        </li>
+
                         <li class="nav-item">
                             <a href="../pages/manage-client_projects.php" class="nav-link">
                                 <i class="fa-solid fa-paintbrush nav-icon"></i>
@@ -101,6 +109,7 @@
                                 <p>History</p>
                             </a>
                         </li>
+
                         <li class="nav-item">
                             <a href="../pages/manage-client_inquiries.php" class="nav-link">
                                 <i class="fa-solid fa-circle-question nav-icon"></i>

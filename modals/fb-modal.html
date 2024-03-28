@@ -1,0 +1,64 @@
+
+<div class="modal fade" id="add-promo" tabindex="-1" aria-labelledby="add-promo" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Add Feedback</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="add-promo-form" enctype="multipart/form-data">
+                    <div class="form-group mb-3">
+                        <label for="promoPicture">Customer Picture:</label>
+                        <input type="file" class="form-control" id="cPicture" name="cPicture" required>
+
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="promoName">Customer Name:</label>
+                        <input type="text" class="form-control" id="cName" name="cName" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="promoDescription">Customer Feedback:</label>
+                            <textarea class="form-control" id="cfb" name="cfb" rows="5"></textarea>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+    <div class="modal fade" id="update-promo" tabindex="-1" aria-labelledby="update-promo" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Update Feedback</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="update-promo-form" >
+                        <div class="form-group">
+                           <input type="text" id="uid" name="uid" hidden> 
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="promoName">Customer Name:</label>
+                            <input type="text" class="form-control" id="uName" name="uName" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="promoDescription">Customer Feedback:</label>
+                                <textarea class="form-control" id="ufb" name="ufb" rows="5"></textarea>
+    
+                        </div>
+                        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    

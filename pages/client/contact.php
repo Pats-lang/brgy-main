@@ -39,7 +39,7 @@ while ($row = mysqli_fetch_assoc($result)){
                                         style="text-decoration:none;">Home</a>
 
                                     <span class="mx-1">/</span>
-                                    <a href="" class="text-reset" style="text-decoration:none;">Contact Us</a>
+                                    <a href="" class="text-reset" style="text-decoration:none;">Contacts</a>
                                 </div>
                                 
 

@@ -1,0 +1,64 @@
+<div class="modal fade" id="add-promo" tabindex="-1" aria-labelledby="add-promo" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Add Promo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="add-promo-form" enctype="multipart/form-data">
+                    <div class="form-group mb-3">
+                        <label for="promoPicture">Promo Picture:</label>
+                        <input type="file" class="form-control" id="promoPicture" name="promoPicture" required>
+
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="promoName">Promo Name:</label>
+                        <input type="text" class="form-control" id="promoName" name="promoName" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="promoDescription">Promo Description:</label>
+                            <textarea class="form-control" id="promoDescription" name="promoDescription" rows="3"></textarea>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+    <div class="modal fade" id="update-promo" tabindex="-1" aria-labelledby="update-promo" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Update Promo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="update-promo-form" >
+                        <div class="form-group">
+                           <input type="text" id="uid" name="uid" hidden> 
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="promoName">Promo Name:</label>
+                            <input type="text" class="form-control" id="UpdatepromoName" name="UpdatepromoName" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="promoDescription">Promo Description:</label>
+                            <!-- <input type="text" class="form-control" id="UpdatepromoDescription" name="UpdatepromoDescription"
+                                rows="3" required></textarea> -->
+                                <textarea class="form-control" id="UpdatepromoDescription"name="UpdatepromoDescription" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    

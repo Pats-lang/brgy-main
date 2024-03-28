@@ -416,7 +416,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                             </div>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#services">Services</a>
+                        <a class="nav-link" href="pages/client/services_client.php">Services</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="pages/client/contact.php">Contacts</a>
@@ -539,74 +539,8 @@ while ($row = mysqli_fetch_assoc($result)) {
                 </div>
             </section>
 
-            <!-- request  -->
-            <section>
-        <div id="services">
-                <div class="contain">
-
-    <h1 class="heading">Services</h1>
-
-    <div class="box-contain">
-
-        <div class="box">
-            <img src="assets/images/docu/1.jpg" alt="">
-            <h3>Barangay ID </h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-            <a class="btn read-more">read more</a>
-        </div>
-
-        <div class="box">
-            <img src="assets/images/docu/2.jpg" alt="">
-            <h3>Barangay Clearance</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-            <a class="btn read-more">read more</a>
-        </div>
-
-        <div class="box">
-            <img src="assets/images/docu/4.jpg" alt="">
-            <h3>Barangay Certificate</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-            <a class="btn read-more">read more</a>
-        </div>
-
-        <div class="box">
-            <img src="assets/images/docu/5.jpg" alt="">
-            <h3>Business Clearance</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-            <a class="btn read-more">read more</a>
-        </div>
-
-        <div class="box">
-            <img src="assets/images/docu/3.png" alt="">
-            <h3>Business Permit</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-            <a class="btn read-more">read more</a>
-        </div>
-
-        <div class="box">
-            <img src="assets/images/docu/6.jpg" alt="">
-            <h3>Assistance</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-            <a class="btn read-more">read more</a>
-        </div>
-
-    </div>
-
-</div>   
-</div>     
-                        
-</section>   
-<!-- modal ng request  -->   
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Modal Header</h2>
-        <p>This is some sample text in the modal.</p>
-    </div>
-</div>         
-
-
-            
+            <!-- about  -->
+        
             <section id="about" class="about">
                 <div class="container" data-aos="fade-up" data-aos-delay="100">
                     <div class="row align-items-xl-center gy-5 ">
@@ -886,34 +820,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             });
 
 
-        // JavaScript to handle modal functionality
-    // Get the modal
-    var modal = document.getElementById("myModal");
-
-    // Get the button that opens the modal
-    var btns = document.getElementsByClassName("read-more");
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks the button, open the modal 
-    for (var i = 0; i < btns.length; i++) {
-        btns[i].onclick = function() {
-            modal.style.display = "block";
-        }
-    }
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+       
         </script>
 
 

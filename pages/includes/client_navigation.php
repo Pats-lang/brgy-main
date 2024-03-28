@@ -90,23 +90,23 @@
                         About
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="about.php">About Barangay 20</a>
-                        <a class="dropdown-item" href="officers.php">About Barangay Officials</a>
-                        <a class="dropdown-item" href="projects.php">Projects</a>
+                        <a class="dropdown-item" href="../../pages/client/about.php">About Barangay 20</a>
+                        <a class="dropdown-item" href="../../pages/client/officers.php">About Barangay Officials</a>
+                        <a class="dropdown-item" href="../../pages/client/projects.php">Projects</a>
                         <!-- Add more dropdown items here if needed -->
                     </div>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#services">Services</a>
+                    <a class="nav-link" href="../../pages/client/services_client.php">Services</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.php">Contact us</a>
+                    <a class="nav-link" href="../../pages/client/contact.php">Contacts</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link " href="pages/login_client.php">Login</a>
+                    <a class="nav-link " href="../../pages/login_client.php">Login</a>
                 </li>
 
                 <li class="nav-item">
