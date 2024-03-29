@@ -176,110 +176,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
             }
 
-            .contain {
-    background:#f4f4f4;
-    padding:15px 9%;
-    
-}
-
-.contain .heading{
-    text-align: center;
-    padding-bottom: 15px;
-    color:#000;
-    
-    font-size: 35px;
-}
-
-.contain .box-contain{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-    gap:15px;
-}
-
-.contain .box-contain .box{
-    box-shadow: 0 5px 10px rgba(0,0,0,.2);
-    border-radius: 5px;
-    background: #fff;
-    text-align: center;
-    padding:30px 20px;
-}
-
-.contain .box-contain .box img{
-    height: 80px;
-}
-
-.contain .box-contain .box h3{
-    color:#444;
-    font-size: 22px;
-    padding:10px 0;
-}
-
-.contain .box-contain .box p{
-    color:#777;
-    font-size: 15px;
-    line-height: 1.8;
-}
-
-.contain .box-contain .box .btn{
-    margin-top: 10px;
-    display: inline-block;
-    background:#333;
-    color:#fff;
-    font-size: 17px;
-    border-radius: 5px;
-    padding: 8px 25px;
-}
-
-.contain .box-contain .box .btn:hover{
-    letter-spacing: 1px;
-}
-
-.contain .box-contain .box:hover{
-    box-shadow: 0 10px 15px rgba(0,0,0,.3);
-    transform: scale(1.03);
-}
-
-@media (max-width:768px){
-    .contain{
-        padding:20px;
-    }
-}
-
-.modal-backdrop {
-    z-index: 0;
-}
-
-
-.modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0,0,0,0.4);
-    }
-    .modal-content {
-        background-color: #fefefe;
-        margin: 15% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-    }
-    .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-    .close:hover,
-    .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-    }
+           
 
             /* .about .icon-boxes .col-md-6:nth-child(2) .icon-box,
             .about .icon-boxes .col-md-6:nth-child(4) .icon-box {
@@ -461,7 +358,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         $itemClass = ($active) ? 'active' : '';
                     ?>
-                        <!-- announcement  -->
+                        
                         <div class="carousel-item <?php echo $itemClass; ?>">
                             <div class="position-relative">
                                 <img src="assets/images/announcement/<?php echo $row['img']; ?>" class="img-fluid d-block" style="width:100%; height:700px;" alt="Image">
@@ -469,7 +366,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                                       background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));">
                                 </div>
                                 <div class="carousel-caption d-none d-md-block">
-                                    <div class="card mx-auto" style="width: 60rem; background-color: rgba(0, 0, 0, 0.5); color: white; border: solid;" data-aos-duration="3000" data-aos="fade-up">
+                                    <div class="card mx-auto" style=" background-color: rgba(0, 0, 0, 0.5); color: white; border: solid;max-width: 80%;" data-aos-duration="3000" data-aos="fade-up" >
                                         <div class="card-body">
                                             <h4 class="card-title"><?php echo $row['title']; ?></h4>
                                             <hr>
@@ -511,7 +408,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
             <!-- alumni count -->
             <section id="alumni" class="stats">
-                <img src="assets/images/background.jpg" alt="" data-aos="fade-in">
+                <img src="assets/images/cou.avif" alt="" data-aos="fade-in">
                 <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
                     <div class="row gy-4">
                         <?php
