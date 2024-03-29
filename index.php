@@ -22,6 +22,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
         <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
         </script>
@@ -277,6 +278,21 @@ while ($row = mysqli_fetch_assoc($result)) {
                     transform: translateX(-100%);
                 }
             }
+
+            .gotopbtn{
+                position:fixed;
+                width:50px;
+                height: 50px;
+                background: green;
+                bottom: 40px;
+                right: 50px;
+
+                text-decoration: none;
+                text-align: center;
+                line-height:50px;
+                
+
+            }
         </style>
     </head>
 
@@ -435,6 +451,8 @@ while ($row = mysqli_fetch_assoc($result)) {
                     </div>
                 </div>
             </section>
+
+            <a class="gotopbtn" href="# "><i class="fa-solid fa-arrow-up fa-lg" style="color: #ff8800;"></i> </a>
 
             <!-- about  -->
         
