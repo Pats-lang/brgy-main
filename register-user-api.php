@@ -1,6 +1,6 @@
 <?php
 
-include '../brgy/config/connection.php';
+include './config/connection.php';
 
 $response = array(
     'status' => true,
