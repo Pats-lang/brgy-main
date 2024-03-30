@@ -8,4 +8,5 @@
         if (!$connection) {
             die("Can't connect to the database server. Error: " . mysqli_connect_error());
         }
-?>
+
+
