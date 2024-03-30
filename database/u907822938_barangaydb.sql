@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2024 at 07:03 PM
+-- Generation Time: Mar 30, 2024 at 03:21 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -61,7 +61,20 @@ CREATE TABLE `announcement` (
 --
 
 INSERT INTO `announcement` (`id`, `img`, `title`, `description`, `last_modified`) VALUES
-(1, '421942795_939844190823403_4852506872741483609_n.jpg', 'adsad', 'ajsdahj', '2024-03-13 04:56:00');
+(1, '421942795_939844190823403_4852506872741483609_n.jpg', 'adsad', 'ajsdahj', '2024-03-13 04:56:00'),
+(5, 'officials.jpg', 'Barangay Officials', '', '2024-03-26 07:53:10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `client_login`
+--
+
+CREATE TABLE `client_login` (
+  `id` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -169,7 +182,8 @@ INSERT INTO `inquire` (`id`, `i_name`, `i_email`, `i_message`, `r_message`, `i_s
 (29, 'asd', 'asd@test', 'asd', '', 0),
 (30, 'johnloydconag', 'patriciapascual031@gmail.com', 'awwwww', '', 0),
 (31, 'Paolo Rafael Salazar Tampico', 'paolorafaeltampico@gmail.com', 'Hello', 'Hi', 1),
-(32, 'barangay20', 'barangay020@gmail.com', 'sample format', 'testing', 1);
+(32, 'barangay20', 'barangay020@gmail.com', 'sample format', 'testing', 1),
+(33, 'Layka', 'Martinezlaicamae17@gmail.com', 'bhjbjhuhgu', 'hello', 1);
 
 -- --------------------------------------------------------
 
@@ -190,17 +204,17 @@ CREATE TABLE `officials` (
 --
 
 INSERT INTO `officials` (`id`, `name_officials`, `img_officials`, `position`, `direct_timestamp`) VALUES
-(1, 'Roel Alunan Esmana', 'captain.gif', 'Barangay Captain', '2024-03-13 04:57:35'),
-(2, 'example 2', '393091956_1782656165518275_7114133208836903559_n.jpg', 'Barangay Secretary', '2024-03-05 19:18:04'),
-(3, 'example 3', 'keyboard.png', 'SK Chairman', '2024-03-05 19:18:04'),
-(4, 'example 4', 'mouse.jpg', 'Barangay Treasurer', '2024-03-05 19:20:44'),
-(5, 'Kagawad 1', '1.jpg', 'Barangay Kagawad', '2024-03-05 19:21:52'),
-(6, 'Kagawad 2', 'marry-my-husband-kdrama.jpg', 'Barangay Kagawad', '2024-03-05 19:22:17'),
-(7, 'Kagawad 3', 'doc.jpg', 'Barangay Kagawad', '2024-03-05 19:32:51'),
-(8, 'Kagawad 4', '422140981_2822606041211741_8446018631910494698_n.jpg', 'Barangay Kagawad', '2024-03-05 19:37:29'),
-(9, 'Kagawad 5', 'logo.jpg', 'Barangay Kagawad', '2024-03-05 19:37:53'),
-(10, 'Kagawad 6', 'marry-my-husband-kdrama.jpg', 'Barangay Kagawad', '2024-03-05 19:38:18'),
-(11, 'Kagawad 7', 'bada.jpg', 'Barangay Kagawad', '2024-03-05 19:38:46');
+(1, 'Roel Alunan Esmana', 'KAP.jpg', 'Barangay Captain', '2024-03-25 11:23:10'),
+(2, 'example 2', '300648639_438737708041921_250166913395214156_n.jpg', 'Barangay Secretary', '2024-03-25 11:27:00'),
+(3, 'example 3', '309226377_5631596233589941_8774137317337940525_n.jpg', 'SK Chairman', '2024-03-25 11:27:20'),
+(4, 'example 4', '370600580_988056842515636_3987781324144370246_n.jpg', 'Barangay Treasurer', '2024-03-25 11:27:32'),
+(5, 'Alejandro E. Bautista', 'Alejandro E. Bautista.jpg', 'Barangay Kagawad', '2024-03-25 11:19:27'),
+(6, 'Arlan Gurnot', 'Arlan Gurnot.jpg', 'Barangay Kagawad', '2024-03-25 11:20:08'),
+(7, 'Arnold P. Bautista', 'Arnold P. Bautista.jpg', 'Barangay Kagawad', '2024-03-25 11:20:33'),
+(8, 'Jeffrey Y. Tan', 'Jeffrey Y. Tan.jpg', 'Barangay Kagawad', '2024-03-25 11:20:49'),
+(9, 'Jhoanna C. Cimarra', 'Jhoanna C. Cimarra.jpg', 'Barangay Kagawad', '2024-03-25 11:21:06'),
+(10, 'Myla M. Nadurata', 'Myla M. Nadurata.jpg', 'Barangay Kagawad', '2024-03-25 11:21:27'),
+(11, 'Nolan C. Asistio', 'Nolan C. Asistio.jpg', 'Barangay Kagawad', '2024-03-25 11:21:46');
 
 -- --------------------------------------------------------
 
@@ -221,18 +235,12 @@ CREATE TABLE `projects` (
 --
 
 INSERT INTO `projects` (`id`, `img`, `title`, `description`, `last_modified`) VALUES
-(13, '3.jpg', 'UCC’s First Alumni Grand Homecoming', 'Since July 1, 1971, UCC’s foremost alumni reunion took place yet the historical event seemed belittled by alumni - interpreted by 136 registrants on attendance sheet, the night of Feb. 8, 2014 at Oukami Events Place, Grace Park, Caloocan City.', '2024-03-05 14:43:58'),
-(16, '3.jpg', 'UCC’s First Alumni Grand Homecoming', 'Since July 1, 1971, UCC’s foremost alumni reunion took place yet the historical event seemed belittled by alumni - interpreted by 136 registrants on attendance sheet, the night of Feb. 8, 2014 at Oukami Events Place, Grace Park, Caloocan City.', '2024-03-05 14:43:58'),
-(17, '1.jpg', 'UCC’s First Alumni Grand Homecoming', 'Since July 1, 1971, UCC’s foremost alumni reunion took place yet the historical event seemed belittled by alumni - interpreted by 136 registrants on attendance sheet, the night of Feb. 8, 2014 at Oukami Events Place, Grace Park, Caloocan City.', '2024-03-05 14:43:58'),
-(18, '3.jpg', 'UCC’s First Alumni Grand Homecoming', 'Since July 1, 1971, UCC’s foremost alumni reunion took place yet the historical event seemed belittled by alumni - interpreted by 136 registrants on attendance sheet, the night of Feb. 8, 2014 at Oukami Events Place, Grace Park, Caloocan City.', '2024-03-05 14:43:58'),
-(19, '3.jpg', 'UCC’s First Alumni Grand Homecoming', 'Since July 1, 1971, UCC’s foremost alumni reunion took place yet the historical event seemed belittled by alumni - interpreted by 136 registrants on attendance sheet, the night of Feb. 8, 2014 at Oukami Events Place, Grace Park, Caloocan City.', '2024-03-05 14:43:58'),
-(20, '1.jpg', 'UCC’s First Alumni Grand Homecoming', 'Since July 1, 1971, UCC’s foremost alumni reunion took place yet the historical event seemed belittled by alumni - interpreted by 136 registrants on attendance sheet, the night of Feb. 8, 2014 at Oukami Events Place, Grace Park, Caloocan City.', '2024-03-05 14:43:58'),
-(21, '3.jpg', 'UCC’s First Alumni Grand Homecoming', 'Since July 1, 1971, UCC’s foremost alumni reunion took place yet the historical event seemed belittled by alumni - interpreted by 136 registrants on attendance sheet, the night of Feb. 8, 2014 at Oukami Events Place, Grace Park, Caloocan City.', '2024-03-05 14:43:58'),
-(22, '3.jpg', 'UCC’s First Alumni Grand Homecoming', 'Since July 1, 1971, UCC’s foremost alumni reunion took place yet the historical event seemed belittled by alumni - interpreted by 136 registrants on attendance sheet, the night of Feb. 8, 2014 at Oukami Events Place, Grace Park, Caloocan City.', '2024-03-05 14:43:58'),
-(23, '1.jpg', 'UCC’s First Alumni Grand Homecoming', 'Since July 1, 1971, UCC’s foremost alumni reunion took place yet the historical event seemed belittled by alumni - interpreted by 136 registrants on attendance sheet, the night of Feb. 8, 2014 at Oukami Events Place, Grace Park, Caloocan City.', '2024-03-05 14:43:58'),
-(24, '3.jpg', 'UCC’s First Alumni Grand Homecoming', 'Since July 1, 1971, UCC’s foremost alumni reunion took place yet the historical event seemed belittled by alumni - interpreted by 136 registrants on attendance sheet, the night of Feb. 8, 2014 at Oukami Events Place, Grace Park, Caloocan City.', '2024-03-05 14:43:58'),
-(25, '3.jpg', 'UCC’s First Alumni Grand Homecoming', 'Since July 1, 1971, UCC’s foremost alumni reunion took place yet the historical event seemed belittled by alumni - interpreted by 136 registrants on attendance sheet, the night of Feb. 8, 2014 at Oukami Events Place, Grace Park, Caloocan City.', '2024-03-05 14:43:58'),
-(26, '1.jpg', 'UCC’s First Alumni Grand Homecoming', 'Since July 1, 1971, UCC’s foremost alumni reunion took place yet the historical event seemed belittled by alumni - interpreted by 136 registrants on attendance sheet, the night of Feb. 8, 2014 at Oukami Events Place, Grace Park, Caloocan City.', '2024-03-05 14:43:58');
+(13, 'kaunlaran elementary school.jpg', 'Kaunlaran Elementary School', '', '2024-03-25 11:58:04'),
+(16, 'covered court.jpg', 'Covered Court', '', '2024-03-25 11:57:10'),
+(17, 'fire station.jpg', 'Fire Station', '', '2024-03-25 11:57:34'),
+(18, 'palengke 2.jpg', 'Barangay 20 Palengke', '', '2024-03-25 11:58:38'),
+(19, 'palengke.jpg', 'Barangay 20 Palengke', '', '2024-03-25 11:59:04'),
+(20, 'palengke 3.jpg', 'Barangay 20 Palengke', '', '2024-03-25 12:01:45');
 
 -- --------------------------------------------------------
 
@@ -430,7 +438,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `sName`, `sDescription`, `sAlias`, `sLogo`, `sLinks`, `sAddress`, `sEmail`, `sContact`, `sMain`, `sNorth`) VALUES
-(2, 'Barangay 20', 'Zone 2 , District II Caloocan City', 'UCC', 'barangay.png', 'https://caloocancity.gov.ph/', 'Kaunlaran Village, Caloocan, Metro Manila', 'admin@ucc-caloocan.edu.ph', '9231065814', 'Barangay 20 in Caloocan City, located in the southern part of Caloocan City, is a dynamic neighborhood that pulsates with the energy of its residents and the rhythm of city life. The community is home to people from various backgrounds and walks of life, resulting in a diverse and eclectic mix of traditions, languages, and customs. In terms of amenities and infrastructure, Barangay 20 is well-equipped to cater to the needs of its residents. Schools, healthcare facilities, and markets are easily accessible, ensuring that essential services are accessible to everyone.', 'Barangay 20 is a barangay in the city of Caloocan. Its population as determined by the 2020 Census was 7,892. This represented 0.47% of the total population of Caloocan.');
+(2, 'Barangay 20', 'Zone 2 , District II Caloocan City', 'UCC', 'barangay.png', 'https://www.facebook.com/barangay20zone2district2', 'Kaunlaran Village, Caloocan, Metro Manila', 'Barangay20@gmail.com', '9231065814', 'Barangay 20 in Caloocan City, located in the southern part of Caloocan City, is a dynamic neighborhood that pulsates with the energy of its residents and the rhythm of city life. The community is home to people from various backgrounds and walks of life, resulting in a diverse and eclectic mix of traditions, languages, and customs. In terms of amenities and infrastructure, Barangay 20 is well-equipped to cater to the needs of its residents. Schools, healthcare facilities, and markets are easily accessible, ensuring that essential services are accessible to everyone.', 'Barangay 20 is a barangay in the city of Caloocan. Its population as determined by the 2020 Census was 7,892. This represented 0.47% of the total population of Caloocan.');
 
 -- --------------------------------------------------------
 
@@ -488,6 +496,12 @@ ALTER TABLE `admin_users`
 -- Indexes for table `announcement`
 --
 ALTER TABLE `announcement`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `client_login`
+--
+ALTER TABLE `client_login`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -582,7 +596,13 @@ ALTER TABLE `admin_users`
 -- AUTO_INCREMENT for table `announcement`
 --
 ALTER TABLE `announcement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `client_login`
+--
+ALTER TABLE `client_login`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -600,7 +620,7 @@ ALTER TABLE `history`
 -- AUTO_INCREMENT for table `inquire`
 --
 ALTER TABLE `inquire`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `officials`
