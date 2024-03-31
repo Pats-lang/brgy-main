@@ -31,15 +31,15 @@ if (mysqli_num_rows($result) > 0) {
 
     // If no tracking number exists for the current year, start from 1
     if ($lastNumber === null) {
-        $trackingNumber = $currentYear . '-01-B';
+        $trackingNumber = $currentYear . '-000001-E';
     } else {
         // Increment the last number and format it with leading zeros if necessary
         $nextNumber = str_pad($lastNumber + 1, 2, '0', STR_PAD_LEFT);
-        $trackingNumber = $currentYear . '-' . $nextNumber . '-B';
+        $trackingNumber = $currentYear . '-' . $nextNumber . '-E';
     }
 } else {
     // No rows returned, set a default tracking number
-    $trackingNumber = $currentYear . '-01-B';
+    $trackingNumber = $currentYear . '-000001-E';
 }
 ?>
 <!DOCTYPE html>
@@ -119,7 +119,7 @@ if (mysqli_num_rows($result) > 0) {
     <form  id="editAnnouncementForm">
         
         <div class="row mb-4">
-    <div class="col-3">
+    <div class="col-4">
         <div data-mdb-input-init class="form-outline">
             <input type="text" id="trackingNumber" class="form-control" value="<?php echo $trackingNumber; ?>" readonly />
             <label class="form-label" for="trackingNumber">Transaction Id</label>

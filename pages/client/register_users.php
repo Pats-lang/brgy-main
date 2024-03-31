@@ -1,24 +1,3 @@
-<?php
-// Your database connection and other PHP logic here...
-include 'header.php';
-include '../../server/client_server/conn.php';
-// Generate the account ID
-$currentYear = date("Y"); // Get the current year
-// Construct a query to find the maximum account number in the current year
-$query = "SELECT MAX(SUBSTRING_INDEX(account_id, '-', -1)) AS max_account_number FROM user_account WHERE SUBSTRING_INDEX(account_id, '-', 1) = '$currentYear'";
-$result = mysqli_query($connection, $query);
-$row = mysqli_fetch_assoc($result);
-$maxAccountNumber = $row['max_account_number'];
-
-// Increment the maximum account number
-$newAccountNumber = $maxAccountNumber + 1;
-$newAccountNumberPadded = str_pad($newAccountNumber, 6, '0', STR_PAD_LEFT); // Pad with leading zeros
-
-// Construct the new account ID
-$newAccountID = "$currentYear-$newAccountNumberPadded-01";
-
-?>
-
 <!DOCTYPE html>
 <!-- Coding By CodingNepal - codingnepalweb.com -->
 <html lang="en">
@@ -241,26 +220,12 @@ $newAccountID = "$currentYear-$newAccountNumberPadded-01";
     .footer {
         margin-top: 20%;
     }
-    .account-id-box {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-
-.account-id {
-    background-color: #f1f1f1;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
 </style>
 
 <body>
     <div class="container">
         <header>Residential Form</header>
-        <div class="account-id-box">
-        <div class="account-id">Account ID: <?php echo $newAccountID; ?></div>
-    </div>
+
         <form action="#" id="barangay_register" method="post" enctype="multipart/form-data">
             <div class="form first">
                 <div class="details personal">
@@ -309,10 +274,12 @@ $newAccountID = "$currentYear-$newAccountNumberPadded-01";
 
                     <div class="fields">
                         <div class="input-field">
+                        <label>Date of Birth</label>
                             <input type="date" id="birthday" name="birthday" placeholder="Enter Birth Date" required>
                         </div>
 
                         <div class="input-field">
+                        <label>Marital Status</label>
                             <select id="martial_status" name="marital_status">
                                 <option disabled selected>Select Marital Status</option>
                                 <option value="Single">Single</option>
@@ -322,14 +289,17 @@ $newAccountID = "$currentYear-$newAccountNumberPadded-01";
                         </div>
 
                         <div class="input-field">
+                        <label>Address</label>
                             <input type="text" name="address" placeholder="Address" required>
                         </div>
 
                         <div class="input-field">
+                        <label>Email</label>
                             <input type="email" id="email" name="email" placeholder="Enter Email" required>
                         </div>
 
                         <div class="input-field">
+                        <label>Religion</label>
                             <select id="religion" name="religion">
                                 <option hidden>Select Religion</option>
                                 <option value="Christian">Christian</option>
@@ -339,6 +309,7 @@ $newAccountID = "$currentYear-$newAccountNumberPadded-01";
                         </div>
 
                         <div class="input-field">
+                        <label>Sector</label>
                             <select id="sector" name="sector">
                                 <option hidden>Select Sector</option>
                                 <option value="Residential">Residential</option>

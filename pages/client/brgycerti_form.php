@@ -1,6 +1,46 @@
 <?php
 include 'header.php';
 include '../../server/client_server/conn.php';
+
+// Check if the database connection is successful
+if (!$connection) {
+    die("Database connection failed: " . mysqli_connect_error());
+}
+
+// Get the current year
+$currentYear = date('Y');
+
+// Get the last used tracking number for the current year
+$query = "SELECT MAX(SUBSTRING_INDEX(transaction_id, '-', 1)) AS last_tracking_number FROM request_busclearance WHERE YEAR(transaction_id) = $currentYear";
+
+// Execute the query
+$result = mysqli_query($connection, $query);
+
+// Check if the query execution was successful
+if (!$result) {
+    die("Query execution failed: " . mysqli_error($connection));
+}
+
+// Check if any rows were returned
+if (mysqli_num_rows($result) > 0) {
+    // Fetch the result row
+    $row = mysqli_fetch_assoc($result);
+    
+    // Extract the last number from the tracking number
+    $lastNumber = $row['last_tracking_number'];
+
+    // If no tracking number exists for the current year, start from 1
+    if ($lastNumber === null) {
+        $trackingNumber = $currentYear . '-000001-D';
+    } else {
+        // Increment the last number and format it with leading zeros if necessary
+        $nextNumber = str_pad($lastNumber + 1, 2, '0', STR_PAD_LEFT);
+        $trackingNumber = $currentYear . '-' . $nextNumber . '-D';
+    }
+} else {
+    // No rows returned, set a default tracking number
+    $trackingNumber = $currentYear . '-000001-D';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,8 +117,18 @@ include '../../server/client_server/conn.php';
         </section>
 <div class="container w-50 border my-5 p-5">
     <form  id="editAnnouncementForm">
+        
+        <div class="row mb-4">
+    <div class="col-4">
+        <div data-mdb-input-init class="form-outline">
+            <input type="text" id="trackingNumber" class="form-control" value="<?php echo $trackingNumber; ?>" readonly />
+            <label class="form-label" for="trackingNumber">Transaction Id</label>
+        </div>
+    </div>
+</div>
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-4">
+                
                 <div class="col">
                 <div data-mdb-input-init class="form-outline">
                     <input type="text" id="name" class="form-control" />
@@ -87,15 +137,17 @@ include '../../server/client_server/conn.php';
                 </div>
                 <div class="col">
                     <div data-mdb-input-init class="form-outline">
-                        <input type="text" id="request" class="form-control" value="Barangay ID" readonly style="background-color: #f2f2f2;"/>
+                        <input type="text" id="request" class="form-control" value="Barangay Certificate" readonly style="background-color: #f2f2f2;"/>
                         <label class="form-label" for="form6Example2">Request</label>
                     </div>
                 </div>
             </div>
 
+          
+
             <!-- Text input -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <input type="number" id="residency" class="form-control" />
+            <input type="number" id="residency" class="form-control" />
                 <label class="form-label" for="form6Example3">Year Residency</label>
             </div>
 
