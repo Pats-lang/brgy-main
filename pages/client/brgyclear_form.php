@@ -2,7 +2,6 @@
 include 'header.php';
 include '../../server/client_server/conn.php';
 
-// Check if the database connection is successful
 if (!$connection) {
     die("Database connection failed: " . mysqli_connect_error());
 }
@@ -10,38 +9,14 @@ if (!$connection) {
 // Get the current year
 $currentYear = date('Y');
 
-// Get the last used tracking number for the current year
-$query = "SELECT MAX(SUBSTRING_INDEX(transaction_id, '-', 1)) AS last_tracking_number FROM request_busclearance WHERE YEAR(transaction_id) = $currentYear";
+// Generate a random 6-digit number
+$randomNumber = mt_rand(100000, 999999);
 
-// Execute the query
-$result = mysqli_query($connection, $query);
-
-// Check if the query execution was successful
-if (!$result) {
-    die("Query execution failed: " . mysqli_error($connection));
-}
-
-// Check if any rows were returned
-if (mysqli_num_rows($result) > 0) {
-    // Fetch the result row
-    $row = mysqli_fetch_assoc($result);
-    
-    // Extract the last number from the tracking number
-    $lastNumber = $row['last_tracking_number'];
-
-    // If no tracking number exists for the current year, start from 1
-    if ($lastNumber === null) {
-        $trackingNumber = $currentYear . '-000001-C';
-    } else {
-        // Increment the last number and format it with leading zeros if necessary
-        $nextNumber = str_pad($lastNumber + 1, 2, '0', STR_PAD_LEFT);
-        $trackingNumber = $currentYear . '-' . $nextNumber . '-C';
-    }
-} else {
-    // No rows returned, set a default tracking number
-    $trackingNumber = $currentYear . '-000001-C';
-}
+// Create the transaction ID
+$transaction_id = $currentYear . '-' . $randomNumber ;
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -121,8 +96,8 @@ if (mysqli_num_rows($result) > 0) {
         <div class="row mb-4">
     <div class="col-4">
         <div data-mdb-input-init class="form-outline">
-            <input type="text" id="trackingNumber" class="form-control" value="<?php echo $trackingNumber; ?>" readonly />
-            <label class="form-label" for="trackingNumber">Transaction Id</label>
+            <input type="text" id="transaction_id" class="form-control" value="<?php echo $transaction_id; ?>" readonly />
+            <label class="form-label" for="transaction_id">Transaction Id</label>
         </div>
     </div>
 </div>
@@ -131,13 +106,13 @@ if (mysqli_num_rows($result) > 0) {
                 
                 <div class="col">
                 <div data-mdb-input-init class="form-outline">
-                    <input type="text" id="name" class="form-control" />
+                    <input type="text" name="name" id="name" class="form-control" />
                     <label class="form-label" for="form6Example1">Name</label>
                 </div>
                 </div>
                 <div class="col">
                     <div data-mdb-input-init class="form-outline">
-                        <input type="text" id="request" class="form-control" value="Barangay Clearance" readonly style="background-color: #f2f2f2;"/>
+                        <input type="text" name="request" id="request" class="form-control" value="Barangay Clearance" readonly style="background-color: #f2f2f2;"/>
                         <label class="form-label" for="form6Example2">Request</label>
                     </div>
                 </div>
@@ -147,31 +122,31 @@ if (mysqli_num_rows($result) > 0) {
 
             <!-- Text input -->
             <div data-mdb-input-init class="form-outline mb-4">
-            <input type="number" id="residency" class="form-control" />
+            <input type="number" name="residency" id="residency" class="form-control" />
                 <label class="form-label" for="form6Example3">Year Residency</label>
             </div>
 
             <!-- Text input -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <input type="text" id="address" class="form-control" />
+                <input type="text" name="address" id="address" class="form-control" />
                 <label class="form-label" for="form6Example4">Address</label>
             </div>
 
             <!-- Email input -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <input type="email" id="email" class="form-control" />
+                <input type="email" name="email" id="email" class="form-control" />
                 <label class="form-label" for="form6Example5">Email</label>
             </div>
 
             <!-- Number input -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <input type="number" id="contact" class="form-control" />
+                <input type="number" name="contact" id="contact" class="form-control" />
                 <label class="form-label" for="form6Example6">Contact Number</label>
             </div>
 
             <!-- Message input -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <textarea class="form-control" id="purpose" rows="4"></textarea>
+                <textarea class="form-control"name="purpose" id="purpose" rows="4"></textarea>
                 <label class="form-label" for="form6Example7">Purpose</label>
             </div>
 
@@ -188,54 +163,160 @@ if (mysqli_num_rows($result) > 0) {
             <?php include('../includes/client_footer.php'); ?>
         </footer>
 <script>
+  $(document).ready(function() {
     $('#editAnnouncementForm').on('submit', function(e) {
-    e.preventDefault();
-    Swal.fire({
-        title: 'Do you want to send this request?',
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: ' Send ',
-        denyButtonText: 'Dont Send',
-    }).then((result) => {
-        
-        if (result.isConfirmed) {
-            $.ajax({
-                url: "../brgy-main/server/add_brgy_rest_coi.php",
-                type: "POST",
-                data: new FormData(this),
-                dataType: 'json',
-                processData: false,
-                contentType: false,
-                success: function(response_editAnnouncement) {
-                    if (response_editAnnouncement.status) {
-                        toastr.success(response_editAnnouncement.message, '', {
-                            timeOut: 1000,
-                            closeButton: false,
-                            onHidden: function() {
-                                setTimeout(function() {
-                                    location.reload();
-                                }, 500); // Adjust the delay as needed
-                            }
-                        });
-                    } else {
-                        toastr.error(response_editAnnouncement.message, '', {
-                            closeButton: false,
+        e.preventDefault();
+        Swal.fire({
+            title: 'Do you want to send this request?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: ' Send ',
+            denyButtonText: 'Dont Send',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Retrieve the transaction_id from the form
+                var transaction_id = $('#transaction_id').val();
+                // Create FormData object with form data
+                var formData = new FormData(this);
+                // Append transaction_id to FormData object
+                formData.append('transaction_id', transaction_id);
+                // Send Ajax request
+                $.ajax({
+                    url: "../../req_brgyclrs_apii.php",
+                    type: "POST",
+                    data: formData,
+                    dataType: 'json',
+                    processData: false,
+                    contentType: false,
+                    success: function(response_editAnnouncement) {
+                        if (response_editAnnouncement.status) {
+                            toastr.success(response_editAnnouncement.message, '', {
+                                timeOut: 1000,
+                                closeButton: false,
+                                onHidden: function() {
+                                    setTimeout(function() {
+                                        location.reload(); // Reload the page
+                                    }, 500); // Adjust the delay as needed
+                                }
+                            });
+                        } else {
+                            toastr.error(response_editAnnouncement.message, '', {
+                                closeButton: false,
+                            });
+                        }
+                    },
+                    error: function(error) {
+                        toastr.error('An Error occurred: ' + error, '', {
+                            positionClass: 'toast-top-end',
+                            closeButton: false
                         });
                     }
+                });
+                //
+             },
+                            willClose: () => {
+                                clearInterval(timerInterval);
+                            }
+                        });
+                    } else if (result.isDenied) {
+                        toastr.info('Changes are not saved', '', {
+                            closeButton: false
+                        });
+                    }
+                });
+            } else {
+                validate_form.focusInvalid();
+            }
+        }),
+    
+
+        $(document).ready(function() {
+            // Add custom validation method for alphabetic characters with space
+            jQuery.validator.addMethod("alphabeticWithSpace", function(value, element) {
+                return this.optional(element) || /^[a-zA-Z\s]+$/.test(value);
+            }, "Please enter alphabetic characters only.");
+
+            // Form validation for the second part of the form
+            var validate_form = $('#barangay_register').validate({
+                rules: {
+                    first_name: {
+                        required: true,
+                        alphabeticWithSpace: true,
+                        minlength: 3,
+                    },
+                    middle_name: {
+                        required: true,
+                        alphabeticWithSpace: true,
+                        minlength: 3,
+                    },
+                    last_name: {
+                        required: true,
+                        alphabeticWithSpace: true,
+                        minlength: 3,
+                    },
+                    gender: {
+                        required: true,
+                    },
+                    contact_number: {
+                        required: true,
+                        maxlength: 11,
+                        minlength: 11,
+                    },
+                    precinct_number: {
+                        required: true,
+                    },
+                    birthday: {
+                        required: true,
+                    },
+                    marital_status: {
+                        required: true,
+                    },
+                    address: {
+                        required: true,
+                        minlength: 5,
+                    },
+                    email: {
+                        required: true,
+                        minlength: 10,
+                        email: true,
+                    },
+                    religion: {
+                        required: true,
+                    },
+                    sector: {
+                        required: true,
+                    },
+                    profile: {
+                        required: true,
+                        accept: "image/jpeg, image/png",
+                    },
+                    proof_of_residency: {
+                        required: true,
+                        accept: "image/jpeg, image/png",
+                    },
+                    username: {
+                        required: true,
+                    },
+                    password: {
+                        required: true,
+                    },
                 },
-                error: function(error) {
-                    toastr.error('An Error occurred: ' + error, '', {
-                        positionClass: 'toast-top-end',
-                        closeButton: false
-                    });
+                messages: {
+                    // Add appropriate error messages for each field
+                },
+                errorElement: 'span',
+                errorPlacement: function(error, element) {
+                    error.addClass('invalid-feedback');
+                    error.insertAfter(element);
+                },
+                highlight: function(element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function(element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                    $(element).addClass('is-valid');
                 }
             });
-        } else if (result.isDenied) {
-            toastr.info('Request did not send', '', {
-                closeButton: false
-            });
-        }
-    });
-});
+        });
 </script>
 </html>

@@ -17,6 +17,7 @@
         'message' => ''
     );
     $name = $_POST['name'];
+    $transaction_id = $_POST['trackingNumber'];
     $address = $_POST['address'];
     $yrs_res = $_POST['yrs_res'];
     $contact = $_POST['contact'];
@@ -26,8 +27,8 @@
     $status = 0;
 
 
-    if ($preparedSql = $conn->prepare("INSERT INTO `request_brgyclrs` (`name`, `address`, `yrs_res`, `contact_no`, `purpose`,`request`,`email`,`status`) VALUES (?,?,?,?,?,?,?,?)")) {
-        $preparedSql->bind_param("ssiissss", $name, $address, $yrs_res, $contact, $purpose, $request, $email, $status);
+    if ($preparedSql = $conn->prepare("INSERT INTO `request_brgyclrs` (`trackingNumber`,`name`, `address`, `yrs_res`, `contact_no`, `purpose`,`request`,`email`,`status`) VALUES (?,?,?,?,?,?,?,?,?)")) {
+        $preparedSql->bind_param("sssiissss",$transaction_id $name, $address, $yrs_res, $contact, $purpose, $request, $email, $status);
         if ($preparedSql->execute()) {
             $response['status'] = true;
             $response['message'] = "Successfully";

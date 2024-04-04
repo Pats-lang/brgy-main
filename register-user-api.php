@@ -32,7 +32,7 @@ if (!in_array($profileExtension, $allowedExtensions) || !in_array($proof_of_resi
     move_uploaded_file($profileTmpName, $uploadedprofilePath);
     move_uploaded_file($proof_of_residencyTmpName, $uploadedproof_of_residencyPath);
     
-   
+    $register_accountId = sanitizeData(getDatabase(), $_POST['account_id']);
     $register_firstName = sanitizeData(getDatabase(), $_POST['first_name']);
     $register_middleName = sanitizeData(getDatabase(), $_POST['middle_name']);
     $register_lastName = sanitizeData(getDatabase(), $_POST['last_name']);
@@ -49,10 +49,12 @@ if (!in_array($profileExtension, $allowedExtensions) || !in_array($proof_of_resi
     $register_password = sanitizeData(getDatabase(), $_POST['password']);
     $status = 0;
 
-    if ($prepared_membersSql = $db->prepare("INSERT INTO `user_account` (`precinct_number`, `first_name`, `middle_name`, `last_name`, `gender`, `birthday`, `marital_status`, `contact`, `religion`, `sector`, `address`, `email`, `proof_of_identity`, `profile`,`username`,`password`,`status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?)")) {
+    if ($prepared_membersSql = $db->prepare("INSERT INTO `user_account` (`account_id`,`precinct_number`, `first_name`, `middle_name`, `last_name`, `gender`, `birthday`, `marital_status`, `contact`, `religion`, `sector`, `address`, `email`, `proof_of_identity`, `profile`,`username`,`password`,`status`) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?)")) {
+
         $prepared_membersSql->bind_param(
-            "sssssssisssssssss", // Updated to match the correct number of data types
-            
+            "ssssssssisssssssss", // Updated to match the correct number of data types
+
+            $register_accountId,
             $register_precinctNumber,
             $register_firstName,
             $register_middleName,
