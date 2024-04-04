@@ -3,20 +3,7 @@
 // Your database connection and other PHP logic here...
 include 'header.php';
 include '../../server/client_server/conn.php';
-// Generate the account ID
-$currentYear = date("Y"); // Get the current year
-// Construct a query to find the maximum account number in the current year
-$query = "SELECT MAX(SUBSTRING_INDEX(account_id, '-', -1)) AS max_account_number FROM user_account WHERE SUBSTRING_INDEX(account_id, '-', 1) = '$currentYear'";
-$result = mysqli_query($connection, $query);
-$row = mysqli_fetch_assoc($result);
-$maxAccountNumber = $row['max_account_number'];
 
-// Increment the maximum account number
-$newAccountNumber = $maxAccountNumber + 1;
-$newAccountNumberPadded = str_pad($newAccountNumber, 6, '0', STR_PAD_LEFT); // Pad with leading zeros
-
-// Construct the new account ID
-$newAccountID = "$currentYear-$newAccountNumberPadded-01";
 
 ?>
 <!DOCTYPE html>
@@ -261,7 +248,7 @@ $newAccountID = "$currentYear-$newAccountNumberPadded-01";
         <header>Residential Form</header>
 
         <div class="account-id-box">
-        <div class="account-id">Account ID: <?php echo $newAccountID; ?></div>
+        
     </div>
 
         <form action="#" id="barangay_register" method="post" enctype="multipart/form-data">

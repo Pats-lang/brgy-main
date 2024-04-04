@@ -162,161 +162,61 @@ $transaction_id = $currentYear . '-' . $randomNumber ;
 <footer>
             <?php include('../includes/client_footer.php'); ?>
         </footer>
-<script>
-  $(document).ready(function() {
-    $('#editAnnouncementForm').on('submit', function(e) {
-        e.preventDefault();
-        Swal.fire({
-            title: 'Do you want to send this request?',
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: ' Send ',
-            denyButtonText: 'Dont Send',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // Retrieve the transaction_id from the form
-                var transaction_id = $('#transaction_id').val();
-                // Create FormData object with form data
-                var formData = new FormData(this);
-                // Append transaction_id to FormData object
-                formData.append('transaction_id', transaction_id);
-                // Send Ajax request
-                $.ajax({
-                    url: "../../req_brgyclrs_apii.php",
-                    type: "POST",
-                    data: formData,
-                    dataType: 'json',
-                    processData: false,
-                    contentType: false,
-                    success: function(response_editAnnouncement) {
-                        if (response_editAnnouncement.status) {
-                            toastr.success(response_editAnnouncement.message, '', {
-                                timeOut: 1000,
-                                closeButton: false,
-                                onHidden: function() {
-                                    setTimeout(function() {
-                                        location.reload(); // Reload the page
-                                    }, 500); // Adjust the delay as needed
-                                }
-                            });
-                        } else {
-                            toastr.error(response_editAnnouncement.message, '', {
-                                closeButton: false,
+        <script>
+    $(document).ready(function() {
+        $('#editAnnouncementForm').on('submit', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Do you want to send this request?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: ' Send ',
+                denyButtonText: 'Don\'t Send',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var transaction_id = $('#transaction_id').val();
+                    var formData = new FormData(this);
+                    formData.append('transaction_id', transaction_id);
+                    $.ajax({
+                        url: "../../req_brgyclrs_apii.php",
+                        type: "POST",
+                        data: formData,
+                        dataType: 'json',
+                        processData: false,
+                        contentType: false,
+                        success: function(response_editAnnouncement) {
+                            if (response_editAnnouncement.status) {
+                                toastr.success(response_editAnnouncement.message, '', {
+                                    timeOut: 1000,
+                                    closeButton: false,
+                                    onHidden: function() {
+                                        setTimeout(function() {
+                                            location.reload(); // Reload the page
+                                        }, 500);
+                                    }
+                                });
+                            } else {
+                                toastr.error(response_editAnnouncement.message, '', {
+                                    closeButton: false,
+                                });
+                            }
+                        },
+                        error: function(error) {
+                            toastr.error('An Error occurred: ' + error, '', {
+                                positionClass: 'toast-top-end',
+                                closeButton: false
                             });
                         }
-                    },
-                    error: function(error) {
-                        toastr.error('An Error occurred: ' + error, '', {
-                            positionClass: 'toast-top-end',
-                            closeButton: false
-                        });
-                    }
-                });
-                //
-             },
-                            willClose: () => {
-                                clearInterval(timerInterval);
-                            }
-                        });
-                    } else if (result.isDenied) {
-                        toastr.info('Changes are not saved', '', {
-                            closeButton: false
-                        });
-                    }
-                });
-            } else {
-                validate_form.focusInvalid();
-            }
-        }),
-    
-
-        $(document).ready(function() {
-            // Add custom validation method for alphabetic characters with space
-            jQuery.validator.addMethod("alphabeticWithSpace", function(value, element) {
-                return this.optional(element) || /^[a-zA-Z\s]+$/.test(value);
-            }, "Please enter alphabetic characters only.");
-
-            // Form validation for the second part of the form
-            var validate_form = $('#barangay_register').validate({
-                rules: {
-                    first_name: {
-                        required: true,
-                        alphabeticWithSpace: true,
-                        minlength: 3,
-                    },
-                    middle_name: {
-                        required: true,
-                        alphabeticWithSpace: true,
-                        minlength: 3,
-                    },
-                    last_name: {
-                        required: true,
-                        alphabeticWithSpace: true,
-                        minlength: 3,
-                    },
-                    gender: {
-                        required: true,
-                    },
-                    contact_number: {
-                        required: true,
-                        maxlength: 11,
-                        minlength: 11,
-                    },
-                    precinct_number: {
-                        required: true,
-                    },
-                    birthday: {
-                        required: true,
-                    },
-                    marital_status: {
-                        required: true,
-                    },
-                    address: {
-                        required: true,
-                        minlength: 5,
-                    },
-                    email: {
-                        required: true,
-                        minlength: 10,
-                        email: true,
-                    },
-                    religion: {
-                        required: true,
-                    },
-                    sector: {
-                        required: true,
-                    },
-                    profile: {
-                        required: true,
-                        accept: "image/jpeg, image/png",
-                    },
-                    proof_of_residency: {
-                        required: true,
-                        accept: "image/jpeg, image/png",
-                    },
-                    username: {
-                        required: true,
-                    },
-                    password: {
-                        required: true,
-                    },
-                },
-                messages: {
-                    // Add appropriate error messages for each field
-                },
-                errorElement: 'span',
-                errorPlacement: function(error, element) {
-                    error.addClass('invalid-feedback');
-                    error.insertAfter(element);
-                },
-                highlight: function(element, errorClass, validClass) {
-                    $(element).addClass('is-invalid');
-                },
-                unhighlight: function(element, errorClass, validClass) {
-                    $(element).removeClass('is-invalid');
-                    $(element).addClass('is-valid');
+                    });
+                } else if (result.isDenied) {
+                    toastr.info('Changes are not saved', '', {
+                        closeButton: false
+                    });
                 }
             });
         });
+    });
 </script>
+
+</body>
 </html>

@@ -2,7 +2,6 @@
 include 'header.php';
 include '../../server/client_server/conn.php';
 
-// Check if the database connection is successful
 if (!$connection) {
     die("Database connection failed: " . mysqli_connect_error());
 }
@@ -10,37 +9,11 @@ if (!$connection) {
 // Get the current year
 $currentYear = date('Y');
 
-// Get the last used tracking number for the current year
-$query = "SELECT MAX(SUBSTRING_INDEX(transaction_id, '-', 1)) AS last_tracking_number FROM request_busclearance WHERE YEAR(transaction_id) = $currentYear";
+// Generate a random 6-digit number
+$randomNumber = mt_rand(100000, 999999);
 
-// Execute the query
-$result = mysqli_query($connection, $query);
-
-// Check if the query execution was successful
-if (!$result) {
-    die("Query execution failed: " . mysqli_error($connection));
-}
-
-// Check if any rows were returned
-if (mysqli_num_rows($result) > 0) {
-    // Fetch the result row
-    $row = mysqli_fetch_assoc($result);
-    
-    // Extract the last number from the tracking number
-    $lastNumber = $row['last_tracking_number'];
-
-    // If no tracking number exists for the current year, start from 1
-    if ($lastNumber === null) {
-        $trackingNumber = $currentYear . '-000001-D';
-    } else {
-        // Increment the last number and format it with leading zeros if necessary
-        $nextNumber = str_pad($lastNumber + 1, 2, '0', STR_PAD_LEFT);
-        $trackingNumber = $currentYear . '-' . $nextNumber . '-D';
-    }
-} else {
-    // No rows returned, set a default tracking number
-    $trackingNumber = $currentYear . '-000001-D';
-}
+// Create the transaction ID
+$transaction_id = $currentYear . '-' . $randomNumber ;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -121,8 +94,8 @@ if (mysqli_num_rows($result) > 0) {
         <div class="row mb-4">
     <div class="col-4">
         <div data-mdb-input-init class="form-outline">
-            <input type="text" id="trackingNumber" class="form-control" value="<?php echo $trackingNumber; ?>" readonly />
-            <label class="form-label" for="trackingNumber">Transaction Id</label>
+        <input type="text" id="transaction_id" class="form-control" value="<?php echo $transaction_id; ?>" readonly />
+            <label class="form-label" for="transaction_id">Transaction Id</label>
         </div>
     </div>
 </div>
@@ -188,54 +161,59 @@ if (mysqli_num_rows($result) > 0) {
             <?php include('../includes/client_footer.php'); ?>
         </footer>
 <script>
-    $('#editAnnouncementForm').on('submit', function(e) {
-    e.preventDefault();
-    Swal.fire({
-        title: 'Do you want to send this request?',
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: ' Send ',
-        denyButtonText: 'Dont Send',
-    }).then((result) => {
-        
-        if (result.isConfirmed) {
-            $.ajax({
-                url: "../brgy-main/server/add_brgy_rest_coi.php",
-                type: "POST",
-                data: new FormData(this),
-                dataType: 'json',
-                processData: false,
-                contentType: false,
-                success: function(response_editAnnouncement) {
-                    if (response_editAnnouncement.status) {
-                        toastr.success(response_editAnnouncement.message, '', {
-                            timeOut: 1000,
-                            closeButton: false,
-                            onHidden: function() {
-                                setTimeout(function() {
-                                    location.reload();
-                                }, 500); // Adjust the delay as needed
+   $(document).ready(function() {
+        $('#editAnnouncementForm').on('submit', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Do you want to send this request?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: ' Send ',
+                denyButtonText: 'Don\'t Send',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var transaction_id = $('#transaction_id').val();
+                    var formData = new FormData(this);
+                    formData.append('transaction_id', transaction_id);
+                    $.ajax({
+                        url: "../../req_brgycerti_apii.php",
+                        type: "POST",
+                        data: formData,
+                        dataType: 'json',
+                        processData: false,
+                        contentType: false,
+                        success: function(response_editAnnouncement) {
+                            if (response_editAnnouncement.status) {
+                                toastr.success(response_editAnnouncement.message, '', {
+                                    timeOut: 1000,
+                                    closeButton: false,
+                                    onHidden: function() {
+                                        setTimeout(function() {
+                                            location.reload(); // Reload the page
+                                        }, 500);
+                                    }
+                                });
+                            } else {
+                                toastr.error(response_editAnnouncement.message, '', {
+                                    closeButton: false,
+                                });
                             }
-                        });
-                    } else {
-                        toastr.error(response_editAnnouncement.message, '', {
-                            closeButton: false,
-                        });
-                    }
-                },
-                error: function(error) {
-                    toastr.error('An Error occurred: ' + error, '', {
-                        positionClass: 'toast-top-end',
+                        },
+                        error: function(error) {
+                            toastr.error('An Error occurred: ' + error, '', {
+                                positionClass: 'toast-top-end',
+                                closeButton: false
+                            });
+                        }
+                    });
+                } else if (result.isDenied) {
+                    toastr.info('Changes are not saved', '', {
                         closeButton: false
                     });
                 }
             });
-        } else if (result.isDenied) {
-            toastr.info('Request did not send', '', {
-                closeButton: false
-            });
-        }
+        });
     });
-});
 </script>
+</body>
 </html>
