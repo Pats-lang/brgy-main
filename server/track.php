@@ -71,5 +71,5 @@ if (isset($_POST['id']) && !empty($_POST['id'])) {
     }
 } else {
     // ID not set or empty
-    echo json_encode(array('error' => 'ID not provided.'));
+    echo json_encode(array('error' => 'ID not provided.'));  
 }
