@@ -1,7 +1,8 @@
 <?php
 
-include './config/connection.php';
-
+include 'config/connection.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 $response = array(
     'status' => true,
     'icon' => '',
@@ -75,8 +76,123 @@ if (!in_array($profileExtension, $allowedExtensions) || !in_array($proof_of_resi
         );
 
         if (!$prepared_membersSql->execute()) {
-            $response['status'] = true;
-            $response['message'] = "successfully registered";
+          
+
+            require 'plugins/PHPMailer/src/Exception.php';
+            require 'plugins/PHPMailer/src/PHPMailer.php';
+            require 'plugins/PHPMailer/src/SMTP.php';
+        
+              
+            $mail = new PHPMailer(true);
+        
+            try {
+        
+        
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'barangay020@gmail.com';
+                $mail->Password = 'bbcwbtiyfcxduefe';
+                $mail->SMTPSecure = 'ssl';
+                $mail->Port = 465;
+                
+                $mail->setFrom('barangay020@gmail.com');
+              
+                $mail->addAddress($register_email); // Replace with your actual email address
+               
+                $imageUrl = 'https://i.ibb.co/NC26SjV/barangay.gif';
+    
+            
+                    $approvalMessage = " <b>Your Account Verification status is currently <span style='color:yellow;'> &nbsp; Pending</span></b></p  
+    
+                                    <p>I trust this message finds you well.
+                                    <b>We are pleased to inform you that your registration is pending.</b></p>
+                                  
+                                   <p> If you have any questions or need assistance, feel free to reach out.
+                                    </p>
+                                  
+                                    ";
+                    
+                    $mailSubject = 'Account Verification Request - Pending Status';
+           
+               
+                
+    
+                $mail->Subject =  $mailSubject;
+                $mail->Body = '<html>
+                <head>
+                    <style>
+                        body {
+                            font-family: \'Arial\', sans-serif;
+                            background-color: #f4f4f4;
+                            color: #333;
+                            margin: 0;
+                        }
+                
+                        table.container {
+                            max-width: 600px;
+                            width: 100%;
+                            margin: 0 auto;
+                            background-color: #EDE9E8;
+                            border-radius: 5px;
+                            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                        }
+                        
+                        td.img-container {
+                            background-image: url("https://i.ibb.co/Kz2fshy/410931164-1509662996487803-4024040495286225472-n.jpg");             
+                              background-size: cover; /* Adjust as needed */
+                               background-position: center; /* Adjust as needed */
+                               padding: 100px;
+                               border-radius: 5px 5px 0px 0px;
+                               text-align: center;
+                           
+                           }
+                
+                        img {
+                            width: 100px;
+                            height: 100px;
+                        }
+                
+                        td.form-details {
+                            text-align: center;
+                            border-radius: 0px 0px 5px 5px;
+                            background-color: #FFF;
+                            padding: 25px;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <table class="container">
+                    <tr>
+                    <td class="img-container"></td>
+                </tr>
+                        <tr>
+                        <td class="form-details">
+                        <h2>Greetings "' . $register_firstName . '"!</h2>
+                        <p>"' .$approvalMessage  . '"!</p>
+                       
+                        <b><p>For more inquiries feel free to reach us!</p></b>
+                    </td>
+                        </tr>
+                    </table>
+                </body>
+                </html>';
+        
+        
+                $mail->isHTML(true);
+                $mail->send();
+        
+                http_response_code(200); // OK
+                $response['status'] = true;
+                $response['message'] = 'Successfully .'; 
+            
+                
+            } catch (Exception $e) {
+                http_response_code(500); // Internal Server Error
+                $response['status'] = false;
+                $response['message'] = "Failed to update announcement information: " . $preparedSql->error;
+            }
+           
         }
         $prepared_membersSql->close();
     } else {

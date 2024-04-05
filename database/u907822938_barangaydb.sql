@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2024 at 03:21 PM
+-- Generation Time: Apr 05, 2024 at 11:50 AM
 -- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -61,8 +61,9 @@ CREATE TABLE `announcement` (
 --
 
 INSERT INTO `announcement` (`id`, `img`, `title`, `description`, `last_modified`) VALUES
-(1, '421942795_939844190823403_4852506872741483609_n.jpg', 'adsad', 'ajsdahj', '2024-03-13 04:56:00'),
-(5, 'officials.jpg', 'Barangay Officials', '', '2024-03-26 07:53:10');
+(1, '421942795_939844190823403_4852506872741483609_n.jpg', 'Barangay 20', 'Welcome!', '2024-04-05 06:06:35'),
+(5, 'officials.jpg', 'Barangay Officials', '', '2024-03-26 07:53:10'),
+(7, 'received_586949182760855-1.jpeg', 'SK', '', '2024-03-31 19:09:24');
 
 -- --------------------------------------------------------
 
@@ -183,7 +184,8 @@ INSERT INTO `inquire` (`id`, `i_name`, `i_email`, `i_message`, `r_message`, `i_s
 (30, 'johnloydconag', 'patriciapascual031@gmail.com', 'awwwww', '', 0),
 (31, 'Paolo Rafael Salazar Tampico', 'paolorafaeltampico@gmail.com', 'Hello', 'Hi', 1),
 (32, 'barangay20', 'barangay020@gmail.com', 'sample format', 'testing', 1),
-(33, 'Layka', 'Martinezlaicamae17@gmail.com', 'bhjbjhuhgu', 'hello', 1);
+(33, 'Layka', 'Martinezlaicamae17@gmail.com', 'bhjbjhuhgu', 'hello', 1),
+(34, 'ronaaaaaaaaa', 'rsales059@gmail.com', 'hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 'helooooooooooooooo', 1);
 
 -- --------------------------------------------------------
 
@@ -268,7 +270,7 @@ CREATE TABLE `request_assistant` (
 CREATE TABLE `request_brgyclrs` (
   `id` int(11) NOT NULL,
   `account_id` int(11) NOT NULL,
-  `transaction_id` int(11) NOT NULL,
+  `transaction_id` varchar(1000) NOT NULL,
   `name` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
   `yrs_res` int(4) NOT NULL,
@@ -284,23 +286,9 @@ CREATE TABLE `request_brgyclrs` (
 --
 
 INSERT INTO `request_brgyclrs` (`id`, `account_id`, `transaction_id`, `name`, `address`, `yrs_res`, `contact_no`, `purpose`, `request`, `status`, `email`) VALUES
-(1, 1, 6789, 'exampleName', 'exampleAddress', 20, 123456, 'examplePurpose', 'exampleRequest\r\n', 2, ''),
-(2, 0, 0, 'Layka', 'NPC AREA A, DELENA COMPD., ROAD 7 EXT., GSIS HILLS', 12121, 11111111, 'adafasf', 'afasfaf', 2, 'afafa'),
-(3, 0, 0, 'Layka', 'NPC AREA A, DELENA COMPD., ROAD 7 EXT., GSIS HILLS', 12121, 11111111, 'adafasf', 'afasfaf', 2, 'afafa'),
-(4, 0, 0, 'qweqwe', 'qweqweq', 35345345, 234234234, 'sdfwewfw', 'wefwefwe', 2, 'werwer'),
-(5, 0, 0, 'asdas', 'asdas', 231, 0, 'dasd', 'adasd', 2, 'asdas'),
-(6, 0, 0, 'johloyd', '50 malolos', 2021, 90909091, 'asdasdasd', 'asdasdasd', 2, 'johnloydconag17@gmail.com'),
-(7, 0, 0, 'lasasda', '50 malolos', 2121, 1111111, 'hah', 'agaga', 2, 'johnloydconag17@gmail.com`'),
-(8, 0, 0, 'marco guzman', '50 malolos ave', 2321, 2147483647, 'educational purpose', 'barangay clearance', 2, 'johnloydconag17@gmail.com'),
-(13, 0, 0, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com'),
-(14, 0, 0, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com'),
-(15, 0, 0, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com'),
-(16, 0, 0, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com'),
-(17, 0, 0, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com'),
-(18, 0, 0, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com'),
-(19, 0, 0, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com'),
-(20, 0, 0, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com'),
-(21, 0, 0, 'arabella', 'belardo', 212, 1323123, 'dasdasd', 'asdasd', 0, 'belardoarabella05@gmail.com');
+(1, 1, '6789', 'exampleName', 'exampleAddress', 20, 123456, 'examplePurpose', 'exampleRequest\r\n', 2, ''),
+(2, 0, '2024-262936', '', '', 0, 0, '', '', 0, ''),
+(3, 0, '2024-135434', 'Hilel Combs', 'Iure ducimus volupt', 93, 79, 'Dolores quaerat sit', 'Barangay Clearance', 0, 'soliqyn@mailinator.com');
 
 -- --------------------------------------------------------
 
@@ -338,7 +326,7 @@ INSERT INTO `request_brgycoi` (`id`, `account_id`, `transaction_id`, `name`, `re
 CREATE TABLE `request_brgycor` (
   `id` int(11) NOT NULL,
   `account_id` int(11) NOT NULL,
-  `transaction_id` int(11) NOT NULL,
+  `transaction_id` varchar(100) NOT NULL,
   `name` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
   `year_recidency` int(50) NOT NULL,
@@ -354,10 +342,15 @@ CREATE TABLE `request_brgycor` (
 --
 
 INSERT INTO `request_brgycor` (`id`, `account_id`, `transaction_id`, `name`, `address`, `year_recidency`, `contact_no`, `purpose`, `request`, `status`, `email`) VALUES
-(1, 0, 0, 'asdasd', 'asdasd', 0, 1231323123, 'aasdasd', '', 0, ''),
-(2, 0, 0, 'asdasd', 'asdasdasd', 13123, 123, 'adasd', 'sdasdd', 0, 'asdas'),
-(3, 0, 0, 'asdasd', 'asdasdasd', 13123, 123, 'adasd', 'sdasdd', 0, 'asdas'),
-(4, 0, 0, 'Layka', 'NPC AREA A, DELENA COMPD., ROAD 7 EXT., GSIS HILLS', 2121, 11111, 'asdasdd', 'asdasda', 0, 'sdasdas');
+(1, 0, '0', 'asdasd', 'asdasd', 0, 1231323123, 'aasdasd', '', 0, ''),
+(2, 0, '0', 'asdasd', 'asdasdasd', 13123, 123, 'adasd', 'sdasdd', 0, 'asdas'),
+(3, 0, '0', 'asdasd', 'asdasdasd', 13123, 123, 'adasd', 'sdasdd', 0, 'asdas'),
+(4, 0, '0', 'Layka', 'NPC AREA A, DELENA COMPD., ROAD 7 EXT., GSIS HILLS', 2121, 11111, 'asdasdd', 'asdasda', 0, 'sdasdas'),
+(5, 0, '2024', '', '', 0, 0, '', '', 0, ''),
+(6, 0, '2024-940826', '', '', 0, 0, '', '', 0, ''),
+(7, 0, '2024-732368', '', '', 0, 0, '', '', 0, ''),
+(8, 0, '2024-163107', 'Gil Brown', '', 0, 0, '', '', 0, ''),
+(9, 0, '2024-980272', 'Penelope Holder', 'Aperiam quia vel hic', 19, 80, 'Obcaecati quidem par', 'Barangay Certificate', 0, 'dezyli@mailinator.com');
 
 -- --------------------------------------------------------
 
@@ -447,7 +440,8 @@ INSERT INTO `settings` (`id`, `sName`, `sDescription`, `sAlias`, `sLogo`, `sLink
 --
 
 CREATE TABLE `user_account` (
-  `account_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `account_id` varchar(20) NOT NULL,
   `precinct_number` varchar(11) NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `middle_name` varchar(255) NOT NULL,
@@ -472,15 +466,16 @@ CREATE TABLE `user_account` (
 -- Dumping data for table `user_account`
 --
 
-INSERT INTO `user_account` (`account_id`, `precinct_number`, `first_name`, `middle_name`, `last_name`, `gender`, `birthday`, `marital_status`, `religion`, `sector`, `contact`, `address`, `email`, `proof_of_identity`, `username`, `password`, `account_created`, `status`, `profile`) VALUES
-(1, 'example1', 'arabella', 'bellardo', 'example1', 'Others', '2023-12-01', 'Others', 'Others', 'None', 11111111111, '1 street', 'patriciapascual031@gmail.com', '656c7deaada71_NOV-09-23.png', 'arabella', 'belardo', '2023-12-03 05:09:07', 2, 'logo.jpg'),
-(2, 'example2', 'laica', 'mae', 'martinez', 'Others', '2023-12-01', 'Others', 'Others', 'None', 22222222222, '2 street', '2', '656c7deaada71_NOV-09-23.png', 'laica', '12345', '2023-12-03 05:11:35', 2, 'logo.jpg'),
-(3, '3', 'example3', 'example3', 'example3', 'Others', '2023-12-01', 'Others', 'Others', 'None', 33333333333, '3 street', '3', '656c7deaada71_NOV-09-23.png', 'example3', '$2y$10$Hj2xAkoHWXnAPXk78YP77eDw4.bKlHzoH3xedzZbQFWKKa2/bmP9y', '2023-12-03 06:15:33', 2, 'logo.jpg'),
-(4, 'example4', 'example4', 'example4', 'example4', 'Others', '2023-12-19', 'Others', 'Others', 'None', 44444444444, 'street 4', '4', '656c7deaada71_NOV-09-23.png', 'example4', '$2y$10$z1dl5CAx8b7hwBcB/ZgPsOkJrdkFjcNmD1Q7laXvjTTrFeW2YtLka', '2023-12-03 06:27:59', 2, 'logo.jpg'),
-(5, 'example7', 'example7', 'example7', 'example7', 'Others', '2023-12-01', 'Others', 'Others', 'None', 77777777777, '7 street id', '7', '656c7deaada71_NOV-09-23.png', 'example7', '$2y$10$9UlRMZdFMorR5GdCmgI4auYKRKEKGS3ObE2XcdjCZkdtHZljJuWpy', '2023-12-03 06:42:49', 2, 'logo.jpg'),
-(6, 'example9', 'example9', 'example9', 'example9', 'Others', '2023-11-30', 'Others', 'Others', 'None', 99999999999, 'example9', '0', '656c7deaada71_NOV-09-23.png', 'admin', 'admin\r\n', '2023-12-03 06:55:40', 0, 'logo.jpg'),
-(7, '', 'Marco', 'A.', 'de Guzman', 'Others', '2023-12-17', 'Others', 'Others', 'None', 9155555555, '2ND STREET', '0', '656ef205a594b_Screenshot (100)', 'mrco13', '$2y$10$06KRrJF01NnZ82qRK5dyo.0usCQVrfwpwCXG3ZoNArw6czrdDASXu', '2023-12-05 01:49:24', 0, 'logo.jpg'),
-(8, '121212', 'ABEGAIL', 'PASION', 'RESIDUO', '0', '2023-12-30', 'Married', 'Christian', 'Residential', 9613443104, 'NPC AREA A, DELENA COMPD., ROAD 7 EXT., GSIS HILLS SUBD., BGY. 164, CALOOCAN CITY', 'belardoarabella05@gmail.com', '377465262_1889204731481842_2798947189495658249_n.jpg', '', '', '2023-12-18 18:27:20', 0, '377465262_1889204731481842_2798947189495658249_n.jpg');
+INSERT INTO `user_account` (`id`, `account_id`, `precinct_number`, `first_name`, `middle_name`, `last_name`, `gender`, `birthday`, `marital_status`, `religion`, `sector`, `contact`, `address`, `email`, `proof_of_identity`, `username`, `password`, `account_created`, `status`, `profile`) VALUES
+(10002, '5', '3', 'example3', 'example3', 'example3', 'Others', '2023-12-01', 'Others', 'Others', 'None', 33333333333, '3 street', '3', '656c7deaada71_NOV-09-23.png', 'example3', '$2y$10$Hj2xAkoHWXnAPXk78YP77eDw4.bKlHzoH3xedzZbQFWKKa2/bmP9y', '2023-12-03 06:15:33', 0, 'logo.jpg'),
+(10003, '', '394', 'Iris', 'Shaeleigh Salazar', 'Trevino', 'Female', '2005-12-18', 'Single', 'Other', 'Education', 46111222112, 'Nostrum vero vel aut', 'patriciapascual031@gmail.com', 'Flu Vaccine.jpg', 'japipekazo', 'Pa$$w0rd!', '2024-04-05 08:47:07', 2, 'doc.jpg'),
+(10004, '', '974', 'Emerson', 'Camilla Morrow', 'Farmer', 'Male', '1981-05-04', 'Widowed', 'Christian', 'Education', 59744455566, 'Ut labore ut blandit', 'rsales059@gmail.com', '422140981_2822606041211741_8446018631910494698_n.jpg', 'rona!', '$2y$10$91WwoY8tPlWxbonuG3hleejoixNDmcOThbiR.YTyDP3qoF4LRzdPW', '2024-04-05 09:12:59', 2, '421942795_939844190823403_4852506872741483609_n.jpg'),
+(10005, '', '8', 'Shellie', 'Elaine Campbell', 'Stone', 'Female', '2004-11-09', 'Single', 'Christian', 'Business', 38064783950, 'Delectus cupiditate', 'rsales059@gmail.com', '1.jpg', 'ara', '$2y$10$twS0viR13q6V56p14tnnT..nhxS/n/cgmBjMHv1yfZVpj4PA5W662', '2024-04-05 09:40:40', 0, 'Flu Vaccine.jpg'),
+(10006, '', '870', 'Belle', 'Anthony Kane', 'West', 'Male', '2012-08-19', 'Married', 'Other', 'Education', 44867890088, 'Rerum maiores quas v', 'rsales059@gmail.com', '422140981_2822606041211741_8446018631910494698_n.jpg', 'laica', '$2y$10$PwI9dgGrUWtULGfnDRzV2OEWaBPa7drzgwlJJWvxE/iaEbogW0GU.', '2024-04-05 09:42:16', 0, 'Flu Vaccine.jpg'),
+(10007, '', '935', 'May', 'Adara Mueller', 'Aguirre', 'Male', '2011-02-21', 'Married', 'Muslim', 'Select Sector', 9191231313, 'Illo fugiat minima', 'patriciapascual031@gmail.com', 'Screenshot 2024-03-23 222149.png', 'rona', '$2y$10$4TUTG1F1OZuYNATLKmZwgO1NojxFqRFIK70gSea8bKz.UwmwAho6S', '2024-04-05 09:44:14', 0, 'Screenshot 2024-03-23 224448.png'),
+(10008, '', '780', 'Denise', 'Kibo Barnett', 'Williams', 'Female', '2018-09-07', 'Single', 'Other', 'Business', 99845667789, 'Eligendi aliquam cil', 'gitehyno@mailinator.com', 'Screenshot 2024-03-23 222149.png', 'rocyto', '$2y$10$NCmF4zDnbn8w4Py9yvHJlOgZi85QG0JTnfClGApmw1Bb/35jG9zKm', '2024-04-05 09:46:44', 0, 'Screenshot 2024-03-23 222149.png'),
+(10009, '', '780', 'Denise', 'Kibo Barnett', 'Williams', 'Female', '2018-09-07', 'Single', 'Other', 'Business', 99845667789, 'Eligendi aliquam cil', 'patriciapascual031@gmail.com', 'Screenshot 2024-03-23 222149.png', 'rocyto', '$2y$10$74Wsm5Tjh/vidXEISR6lXuF0ui8mjSZD1/CP1Qjj5aWjyJ34g66AS', '2024-04-05 09:47:50', 0, 'Screenshot 2024-03-23 222149.png'),
+(10010, '', '780', 'Denise', 'Kibo Barnett', 'Williams', 'Female', '2018-09-07', 'Single', 'Other', 'Business', 99845667789, 'Eligendi aliquam cil', 'patriciapascual031@gmail.com', 'Screenshot 2024-03-23 222149.png', 'rocyto', '$2y$10$dj/Q7oS/JML/NSVBTc1CSezyXFOmYz41/Qr2Op7D.IGQ8nxxiG41.', '2024-04-05 09:48:01', 0, 'Screenshot 2024-03-23 222149.png');
 
 --
 -- Indexes for dumped tables
@@ -580,7 +575,7 @@ ALTER TABLE `settings`
 -- Indexes for table `user_account`
 --
 ALTER TABLE `user_account`
-  ADD PRIMARY KEY (`account_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -596,7 +591,7 @@ ALTER TABLE `admin_users`
 -- AUTO_INCREMENT for table `announcement`
 --
 ALTER TABLE `announcement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `client_login`
@@ -620,7 +615,7 @@ ALTER TABLE `history`
 -- AUTO_INCREMENT for table `inquire`
 --
 ALTER TABLE `inquire`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `officials`
@@ -644,7 +639,7 @@ ALTER TABLE `request_assistant`
 -- AUTO_INCREMENT for table `request_brgyclrs`
 --
 ALTER TABLE `request_brgyclrs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `request_brgycoi`
@@ -656,7 +651,7 @@ ALTER TABLE `request_brgycoi`
 -- AUTO_INCREMENT for table `request_brgycor`
 --
 ALTER TABLE `request_brgycor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `request_brgyid`
@@ -680,7 +675,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `user_account`
 --
 ALTER TABLE `user_account`
-  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10011;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
