@@ -10,7 +10,7 @@ include '../server/admin_login-verification.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UCC | Alumni Management System</title>
+    <title>EGBMS | E-Governance Barangay Management System</title>
     <script src="../assets/js/system_changes.js?v=<?php echo time(); ?>" defer></script>
     <?php include 'import.php'; ?>
 </head>
@@ -18,7 +18,7 @@ include '../server/admin_login-verification.php';
 <body class="hold-transition sidebar-mini layout-fixed">
 
     <div class="wrapper">
-  
+
         <div class="content-wrapper">
             <section class="content-header">
                 <div class="container-fluid">
@@ -142,8 +142,8 @@ include '../server/admin_login-verification.php';
                                 <select class="form-control" id="admin" name="admin">
                                     <option value="1">Super Admin</option>
                                     <option value="2">Admin</option>
-                                   
-                                </select>               
+
+                                </select>
                             </div>
                         </div>
 
@@ -200,8 +200,8 @@ include '../server/admin_login-verification.php';
                                 <select class="form-control" id="view_admin" name="view_admin">
                                     <option value="1">Super Admin</option>
                                     <option value="2">Admin</option>
-                                   
-                                </select>               
+
+                                </select>
                             </div>
                         </div>
 
@@ -249,7 +249,7 @@ include '../server/admin_login-verification.php';
                                 <select class="form-control" id="edit_admin" name="edit_admin">
                                     <option value="1">Super Admin</option>
                                     <option value="2">Admin</option>
-                                </select>               
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -400,8 +400,8 @@ include '../server/admin_login-verification.php';
                     // $('#view_adminPassword').val(response_viewAdmin.admin_password);
                     $('#view_adminFullName').val(response_viewAdmin.admin_fullname);
                     $('#view_admin').val(response_viewAdmin.admin);
-             
-                    
+
+
                 },
                 error: function(error) {
                     toastr.error('Error occurred: ' + error, '', {
@@ -426,7 +426,7 @@ include '../server/admin_login-verification.php';
                     $('#edit_adminUsername').val(response_editAdmin.admin_username);
                     $('#edit_adminFullName').val(response_editAdmin.admin_fullname);
                     $('#edit_admin').val(response_editAdmin.admin);
-               
+
                 }
             })
         })
