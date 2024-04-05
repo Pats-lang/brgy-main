@@ -10,7 +10,7 @@ include '../server/admin_login-verification.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UCC | Alumni Management System</title>
+    <title>EGBMS | E-Governance Barangay Management System</title>
     <script src="../config/config.js?v=<?php echo time(); ?>"></script>
     <script src="../assets/js/system_changes.js?v=<?php echo time(); ?>" defer></script>
     <?php include 'import.php'; ?>
@@ -18,7 +18,7 @@ include '../server/admin_login-verification.php';
 
 <body class="hold-transition sidebar-mini layout-fixed">
 
-<?php include 'includes/admin_navigation.php'; ?>
+    <?php include 'includes/admin_navigation.php'; ?>
 
     <!-- Site wrapper -->
     <div class="wrapper">
@@ -59,7 +59,7 @@ include '../server/admin_login-verification.php';
                                                 <th>Image</th>
                                                 <th>Mission</th>
                                                 <th>Vission</th>
-                                               
+
                                                 <th class="text-center align-center" style="width: 150px;">Actions</th>
                                             </tr>
                                         </thead>
@@ -81,7 +81,7 @@ include '../server/admin_login-verification.php';
                                                     <td>
                                                         <?php echo $row['vission']; ?>
                                                     </td>
-                                                   
+
 
                                                     <td class="text-center">
 
@@ -118,7 +118,7 @@ include '../server/admin_login-verification.php';
 
     </div>
 
-   
+
     <!-- View Announcements Modal -->
     <div class="modal fade" id="viewAnnouncement_modal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -141,7 +141,7 @@ include '../server/admin_login-verification.php';
                         <div class="row py-1">
                             <div class="col">
                                 <label for="view_titleAnnouncements">Title</label>
-                                <textarea class="form-control form-control-border" id="view_titleAnnouncements" name="view_titleAnnouncements"  style="height: 125px; resize: none;" placeholder="Description" readonly></textarea>
+                                <textarea class="form-control form-control-border" id="view_titleAnnouncements" name="view_titleAnnouncements" style="height: 125px; resize: none;" placeholder="Description" readonly></textarea>
                             </div>
                         </div>
 
@@ -152,7 +152,7 @@ include '../server/admin_login-verification.php';
                             </div>
                         </div>
 
-                      
+
                     </div>
 
                     <div class="modal-footer">
@@ -245,7 +245,7 @@ include '../server/admin_login-verification.php';
                         extend: 'pdf',
                         text: '<i class="fas fa-file-pdf"></i> PDF'
                     },
-                   
+
                     {
                         extend: 'colvis',
                         text: '<i class="fas fa-columns"></i> Columns'
@@ -256,8 +256,8 @@ include '../server/admin_login-verification.php';
             });
         });
 
-           // Add Announcement: Submit Fields
-           $('#addAnnouncementForm').on('submit', function(e) {
+        // Add Announcement: Submit Fields
+        $('#addAnnouncementForm').on('submit', function(e) {
             e.preventDefault();
             $.ajax({
                 type: 'POST',
@@ -294,8 +294,8 @@ include '../server/admin_login-verification.php';
             });
         })
 
-   // Edit Announcement: Submit Fields
-   $('#editAnnouncementForm').on('submit', function(e) {
+        // Edit Announcement: Submit Fields
+        $('#editAnnouncementForm').on('submit', function(e) {
             e.preventDefault();
             Swal.fire({
                 title: 'Do you want to save the changes?',
@@ -357,7 +357,7 @@ include '../server/admin_login-verification.php';
                     $('#view_ImageAnnouncements').attr('src', '../assets/images/history/' + response_viewAnnouncement.img);
                     $('#view_titleAnnouncements').val(response_viewAnnouncement.mission);
                     $('#view_descriptionAnnouncements').val(response_viewAnnouncement.vission);
-                 
+
                 }
             })
 
@@ -405,7 +405,7 @@ include '../server/admin_login-verification.php';
         });
 
 
-     
+
         // Delete Announcement: Delete Fields
         $(document).on('click', 'button[data-role=deleteAnnouncement_btn]', function(e) {
             e.preventDefault();

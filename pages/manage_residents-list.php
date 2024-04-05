@@ -10,7 +10,7 @@ include '../server/admin_login-verification.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMS | Barangay Management System</title>
+    <title>EGBMS | E-Governance Barangay Management System</title>
 
 
     <?php include 'includes/admin_navigation.php'; ?>
@@ -73,7 +73,7 @@ include '../server/admin_login-verification.php';
 
                                             <?php
                                             $query = "SELECT * FROM `user_account` WHERE `status` = '2' ";
-$count=1;
+                                            $count = 1;
                                             $result = mysqli_query(getDatabase(), $query);
                                             while ($row = mysqli_fetch_array($result)) {
                                             ?>
