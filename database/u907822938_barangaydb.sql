@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 05, 2024 at 11:50 AM
+-- Generation Time: Apr 05, 2024 at 04:04 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -269,7 +269,7 @@ CREATE TABLE `request_assistant` (
 
 CREATE TABLE `request_brgyclrs` (
   `id` int(11) NOT NULL,
-  `account_id` int(11) NOT NULL,
+  `account_id` int(20) NOT NULL,
   `transaction_id` varchar(1000) NOT NULL,
   `name` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
@@ -286,9 +286,7 @@ CREATE TABLE `request_brgyclrs` (
 --
 
 INSERT INTO `request_brgyclrs` (`id`, `account_id`, `transaction_id`, `name`, `address`, `yrs_res`, `contact_no`, `purpose`, `request`, `status`, `email`) VALUES
-(1, 1, '6789', 'exampleName', 'exampleAddress', 20, 123456, 'examplePurpose', 'exampleRequest\r\n', 2, ''),
-(2, 0, '2024-262936', '', '', 0, 0, '', '', 0, ''),
-(3, 0, '2024-135434', 'Hilel Combs', 'Iure ducimus volupt', 93, 79, 'Dolores quaerat sit', 'Barangay Clearance', 0, 'soliqyn@mailinator.com');
+(1, 1, '6789', 'exampleName', 'exampleAddress', 20, 123456, 'examplePurpose', 'exampleRequest\r\n', 2, '');
 
 -- --------------------------------------------------------
 
@@ -298,7 +296,7 @@ INSERT INTO `request_brgyclrs` (`id`, `account_id`, `transaction_id`, `name`, `a
 
 CREATE TABLE `request_brgycoi` (
   `id` int(11) NOT NULL,
-  `account_id` int(11) NOT NULL,
+  `account_id` int(20) NOT NULL,
   `transaction_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `request` varchar(50) NOT NULL,
@@ -325,7 +323,7 @@ INSERT INTO `request_brgycoi` (`id`, `account_id`, `transaction_id`, `name`, `re
 
 CREATE TABLE `request_brgycor` (
   `id` int(11) NOT NULL,
-  `account_id` int(11) NOT NULL,
+  `account_id` int(20) NOT NULL,
   `transaction_id` varchar(100) NOT NULL,
   `name` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
@@ -342,15 +340,7 @@ CREATE TABLE `request_brgycor` (
 --
 
 INSERT INTO `request_brgycor` (`id`, `account_id`, `transaction_id`, `name`, `address`, `year_recidency`, `contact_no`, `purpose`, `request`, `status`, `email`) VALUES
-(1, 0, '0', 'asdasd', 'asdasd', 0, 1231323123, 'aasdasd', '', 0, ''),
-(2, 0, '0', 'asdasd', 'asdasdasd', 13123, 123, 'adasd', 'sdasdd', 0, 'asdas'),
-(3, 0, '0', 'asdasd', 'asdasdasd', 13123, 123, 'adasd', 'sdasdd', 0, 'asdas'),
-(4, 0, '0', 'Layka', 'NPC AREA A, DELENA COMPD., ROAD 7 EXT., GSIS HILLS', 2121, 11111, 'asdasdd', 'asdasda', 0, 'sdasdas'),
-(5, 0, '2024', '', '', 0, 0, '', '', 0, ''),
-(6, 0, '2024-940826', '', '', 0, 0, '', '', 0, ''),
-(7, 0, '2024-732368', '', '', 0, 0, '', '', 0, ''),
-(8, 0, '2024-163107', 'Gil Brown', '', 0, 0, '', '', 0, ''),
-(9, 0, '2024-980272', 'Penelope Holder', 'Aperiam quia vel hic', 19, 80, 'Obcaecati quidem par', 'Barangay Certificate', 0, 'dezyli@mailinator.com');
+(1, 1, '1234', 'asdasd', 'asdasd', 0, 1231323123, 'aasdasd', '', 0, '');
 
 -- --------------------------------------------------------
 
@@ -394,7 +384,7 @@ INSERT INTO `request_brgyid` (`id`, `account_id`, `transaction_id`, `name`, `add
 
 CREATE TABLE `request_busclearance` (
   `id` int(11) NOT NULL,
-  `account_id` int(11) NOT NULL,
+  `account_id` int(20) NOT NULL,
   `transaction_id` int(11) NOT NULL,
   `business_name` varchar(50) NOT NULL,
   `owner_name` varchar(50) NOT NULL,
@@ -405,6 +395,13 @@ CREATE TABLE `request_busclearance` (
   `status` int(2) NOT NULL,
   `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `request_busclearance`
+--
+
+INSERT INTO `request_busclearance` (`id`, `account_id`, `transaction_id`, `business_name`, `owner_name`, `kof_business`, `yrs_res`, `contact_no`, `purpose`, `status`, `email`) VALUES
+(1, 1, 234, 'Hello', 'Hi', 'Food', 2, 0, 'Hello', 0, '');
 
 -- --------------------------------------------------------
 
@@ -431,7 +428,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `sName`, `sDescription`, `sAlias`, `sLogo`, `sLinks`, `sAddress`, `sEmail`, `sContact`, `sMain`, `sNorth`) VALUES
-(2, 'Barangay 20', 'Zone 2 , District II Caloocan City', 'UCC', 'barangay.png', 'https://www.facebook.com/barangay20zone2district2', 'Kaunlaran Village, Caloocan, Metro Manila', 'Barangay20@gmail.com', '9231065814', 'Barangay 20 in Caloocan City, located in the southern part of Caloocan City, is a dynamic neighborhood that pulsates with the energy of its residents and the rhythm of city life. The community is home to people from various backgrounds and walks of life, resulting in a diverse and eclectic mix of traditions, languages, and customs. In terms of amenities and infrastructure, Barangay 20 is well-equipped to cater to the needs of its residents. Schools, healthcare facilities, and markets are easily accessible, ensuring that essential services are accessible to everyone.', 'Barangay 20 is a barangay in the city of Caloocan. Its population as determined by the 2020 Census was 7,892. This represented 0.47% of the total population of Caloocan.');
+(2, 'Barangay 20', 'Zone 2 , District II Caloocan City', 'EGBMS', 'barangay.png', 'https://www.facebook.com/barangay20zone2district2', 'Kaunlaran Village, Caloocan, Metro Manila', 'Barangay20@gmail.com', '9231065814', 'Barangay 20 in Caloocan City, located in the southern part of Caloocan City, is a dynamic neighborhood that pulsates with the energy of its residents and the rhythm of city life. The community is home to people from various backgrounds and walks of life, resulting in a diverse and eclectic mix of traditions, languages, and customs. In terms of amenities and infrastructure, Barangay 20 is well-equipped to cater to the needs of its residents. Schools, healthcare facilities, and markets are easily accessible, ensuring that essential services are accessible to everyone.', 'Barangay 20 is a barangay in the city of Caloocan. Its population as determined by the 2020 Census was 7,892. This represented 0.47% of the total population of Caloocan.');
 
 -- --------------------------------------------------------
 
@@ -441,7 +438,7 @@ INSERT INTO `settings` (`id`, `sName`, `sDescription`, `sAlias`, `sLogo`, `sLink
 
 CREATE TABLE `user_account` (
   `id` int(11) NOT NULL,
-  `account_id` varchar(20) NOT NULL,
+  `account_id` int(20) NOT NULL,
   `precinct_number` varchar(11) NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `middle_name` varchar(255) NOT NULL,
@@ -467,15 +464,7 @@ CREATE TABLE `user_account` (
 --
 
 INSERT INTO `user_account` (`id`, `account_id`, `precinct_number`, `first_name`, `middle_name`, `last_name`, `gender`, `birthday`, `marital_status`, `religion`, `sector`, `contact`, `address`, `email`, `proof_of_identity`, `username`, `password`, `account_created`, `status`, `profile`) VALUES
-(10002, '5', '3', 'example3', 'example3', 'example3', 'Others', '2023-12-01', 'Others', 'Others', 'None', 33333333333, '3 street', '3', '656c7deaada71_NOV-09-23.png', 'example3', '$2y$10$Hj2xAkoHWXnAPXk78YP77eDw4.bKlHzoH3xedzZbQFWKKa2/bmP9y', '2023-12-03 06:15:33', 0, 'logo.jpg'),
-(10003, '', '394', 'Iris', 'Shaeleigh Salazar', 'Trevino', 'Female', '2005-12-18', 'Single', 'Other', 'Education', 46111222112, 'Nostrum vero vel aut', 'patriciapascual031@gmail.com', 'Flu Vaccine.jpg', 'japipekazo', 'Pa$$w0rd!', '2024-04-05 08:47:07', 2, 'doc.jpg'),
-(10004, '', '974', 'Emerson', 'Camilla Morrow', 'Farmer', 'Male', '1981-05-04', 'Widowed', 'Christian', 'Education', 59744455566, 'Ut labore ut blandit', 'rsales059@gmail.com', '422140981_2822606041211741_8446018631910494698_n.jpg', 'rona!', '$2y$10$91WwoY8tPlWxbonuG3hleejoixNDmcOThbiR.YTyDP3qoF4LRzdPW', '2024-04-05 09:12:59', 2, '421942795_939844190823403_4852506872741483609_n.jpg'),
-(10005, '', '8', 'Shellie', 'Elaine Campbell', 'Stone', 'Female', '2004-11-09', 'Single', 'Christian', 'Business', 38064783950, 'Delectus cupiditate', 'rsales059@gmail.com', '1.jpg', 'ara', '$2y$10$twS0viR13q6V56p14tnnT..nhxS/n/cgmBjMHv1yfZVpj4PA5W662', '2024-04-05 09:40:40', 0, 'Flu Vaccine.jpg'),
-(10006, '', '870', 'Belle', 'Anthony Kane', 'West', 'Male', '2012-08-19', 'Married', 'Other', 'Education', 44867890088, 'Rerum maiores quas v', 'rsales059@gmail.com', '422140981_2822606041211741_8446018631910494698_n.jpg', 'laica', '$2y$10$PwI9dgGrUWtULGfnDRzV2OEWaBPa7drzgwlJJWvxE/iaEbogW0GU.', '2024-04-05 09:42:16', 0, 'Flu Vaccine.jpg'),
-(10007, '', '935', 'May', 'Adara Mueller', 'Aguirre', 'Male', '2011-02-21', 'Married', 'Muslim', 'Select Sector', 9191231313, 'Illo fugiat minima', 'patriciapascual031@gmail.com', 'Screenshot 2024-03-23 222149.png', 'rona', '$2y$10$4TUTG1F1OZuYNATLKmZwgO1NojxFqRFIK70gSea8bKz.UwmwAho6S', '2024-04-05 09:44:14', 0, 'Screenshot 2024-03-23 224448.png'),
-(10008, '', '780', 'Denise', 'Kibo Barnett', 'Williams', 'Female', '2018-09-07', 'Single', 'Other', 'Business', 99845667789, 'Eligendi aliquam cil', 'gitehyno@mailinator.com', 'Screenshot 2024-03-23 222149.png', 'rocyto', '$2y$10$NCmF4zDnbn8w4Py9yvHJlOgZi85QG0JTnfClGApmw1Bb/35jG9zKm', '2024-04-05 09:46:44', 0, 'Screenshot 2024-03-23 222149.png'),
-(10009, '', '780', 'Denise', 'Kibo Barnett', 'Williams', 'Female', '2018-09-07', 'Single', 'Other', 'Business', 99845667789, 'Eligendi aliquam cil', 'patriciapascual031@gmail.com', 'Screenshot 2024-03-23 222149.png', 'rocyto', '$2y$10$74Wsm5Tjh/vidXEISR6lXuF0ui8mjSZD1/CP1Qjj5aWjyJ34g66AS', '2024-04-05 09:47:50', 0, 'Screenshot 2024-03-23 222149.png'),
-(10010, '', '780', 'Denise', 'Kibo Barnett', 'Williams', 'Female', '2018-09-07', 'Single', 'Other', 'Business', 99845667789, 'Eligendi aliquam cil', 'patriciapascual031@gmail.com', 'Screenshot 2024-03-23 222149.png', 'rocyto', '$2y$10$dj/Q7oS/JML/NSVBTc1CSezyXFOmYz41/Qr2Op7D.IGQ8nxxiG41.', '2024-04-05 09:48:01', 0, 'Screenshot 2024-03-23 222149.png');
+(0, 1, 'SDdS', 'SsadSDa', 'SDsdS', 'sdSDsd', 'Male', '2024-04-11', 'Single', 'Muslim', 'Residential', 9321312312, 'SDsADad', 'example@gmail.com', '370205988_3368413556792750_9038403049331180789_n.jpg', 'example', '$2y$10$/AI6f9X6WYsazYN9dpJtMOIPTyBBfsfF0IU67GUq7y9G216aXd78i', '2024-04-05 12:27:53', 2, '370205988_3368413556792750_9038403049331180789_n.jpg');
 
 --
 -- Indexes for dumped tables
@@ -539,19 +528,22 @@ ALTER TABLE `request_assistant`
 -- Indexes for table `request_brgyclrs`
 --
 ALTER TABLE `request_brgyclrs`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `account_id` (`account_id`);
 
 --
 -- Indexes for table `request_brgycoi`
 --
 ALTER TABLE `request_brgycoi`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `account_id` (`account_id`);
 
 --
 -- Indexes for table `request_brgycor`
 --
 ALTER TABLE `request_brgycor`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `account_id` (`account_id`);
 
 --
 -- Indexes for table `request_brgyid`
@@ -563,7 +555,8 @@ ALTER TABLE `request_brgyid`
 -- Indexes for table `request_busclearance`
 --
 ALTER TABLE `request_busclearance`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `account_id` (`account_id`);
 
 --
 -- Indexes for table `settings`
@@ -575,7 +568,7 @@ ALTER TABLE `settings`
 -- Indexes for table `user_account`
 --
 ALTER TABLE `user_account`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`account_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -663,7 +656,7 @@ ALTER TABLE `request_brgyid`
 -- AUTO_INCREMENT for table `request_busclearance`
 --
 ALTER TABLE `request_busclearance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `settings`
@@ -672,10 +665,32 @@ ALTER TABLE `settings`
   MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `user_account`
+-- Constraints for dumped tables
 --
-ALTER TABLE `user_account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10011;
+
+--
+-- Constraints for table `request_brgyclrs`
+--
+ALTER TABLE `request_brgyclrs`
+  ADD CONSTRAINT `request_clrs` FOREIGN KEY (`account_id`) REFERENCES `user_account` (`account_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `request_brgycoi`
+--
+ALTER TABLE `request_brgycoi`
+  ADD CONSTRAINT `request_coi` FOREIGN KEY (`account_id`) REFERENCES `user_account` (`account_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `request_brgycor`
+--
+ALTER TABLE `request_brgycor`
+  ADD CONSTRAINT `request_cor` FOREIGN KEY (`account_id`) REFERENCES `user_account` (`account_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `request_busclearance`
+--
+ALTER TABLE `request_busclearance`
+  ADD CONSTRAINT `request_busclearance_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `user_account` (`account_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
