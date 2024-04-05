@@ -14,18 +14,14 @@ if (isset($_POST['id']) && !empty($_POST['id'])) {
         WHERE transaction_id = '$id'
         UNION
         SELECT account_id, name, request, status 
-        FROM `request_brgycor`
-        WHERE transaction_id = '$id'
-        UNION
-        SELECT account_id, name, request, status 
-        FROM `request_brgyid`
-        WHERE transaction_id = '$id'
-        UNION
-        SELECT account_id, name, request, status 
         FROM `request_brgyclrs`
         WHERE transaction_id = '$id'
         UNION
         SELECT account_id, name, request, status 
+        FROM `request_brgycor`
+        WHERE transaction_id = '$id'
+        UNION
+        SELECT account_id, business_name, purpose, status 
         FROM `request_busclearance`
         WHERE transaction_id = '$id'";
     $result = mysqli_query(getDatabase(), $sql);
@@ -66,8 +62,8 @@ if (isset($_POST['id']) && !empty($_POST['id'])) {
             echo json_encode(array('error' => 'No data found for the given ID.'));
         }
     } else {
-        // Query failed
-        echo json_encode(array('error' => 'Query failed: ' . mysqli_error(getDatabase())));
+        $errorMsg = mysqli_error(getDatabase());
+        echo json_encode(array('error' => 'Query failed: ' . $errorMsg)) ;
     }
 } else {
     // ID not set or empty

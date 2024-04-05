@@ -95,7 +95,7 @@ include '../server/admin_login-verification.php';
                                                         <?php echo $row['business_name']; ?>
                                                     </td>
                                                     <td>
-                                                        <?php echo $row['name']; ?>
+                                                        <?php echo $row['owner_name']; ?>
                                                     </td>
                                                     <td>
                                                         <?php echo $row['kof_business']; ?>
