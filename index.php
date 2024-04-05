@@ -629,7 +629,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     $('#alumniButton').click(function() {
         window.location.href =
-        'pages/client/register_users.php'; // Replace 'registration_page.php' with your actual registration page URL
+        'pages/client/send_otp.php'; // Replace 'registration_page.php' with your actual registration page URL
     });
 
 
