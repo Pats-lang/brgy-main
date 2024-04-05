@@ -9,13 +9,13 @@ $response = array(
    
 );
 
-$edit_IdAnnouncements = sanitizeData(getDatabase(), $_POST['account']);
+$edit_IdAnnouncements = sanitizeData(getDatabase(), $_POST['id']);
 $edit_lastModifiedAnnouncements = sanitizeData(getDatabase(), $_POST['status']);
 $email = sanitizeData(getDatabase(), $_POST['register_email']);
 
 $Main_name = sanitizeData(getDatabase(), $_POST['register_first_name']);
 
-if ($preparedSql = $db->prepare("UPDATE `user_account` SET `status`= ? WHERE account_id =? ")) {
+if ($preparedSql = $db->prepare("UPDATE `user_account` SET `status`= ? WHERE id =? ")) {
     $preparedSql->bind_param("ii", $edit_lastModifiedAnnouncements, $edit_IdAnnouncements);
 
     if ($preparedSql->execute()) {
@@ -176,7 +176,7 @@ if ($edit_lastModifiedAnnouncements  === '1') {
     // Validate $Main_id to prevent SQL injection
     if (!empty($edit_IdAnnouncements)) {
         // Use prepared statement to prevent SQL injection
-        $stmtDelete = $db->prepare("DELETE FROM `user_account` WHERE `account_id` = ?");
+        $stmtDelete = $db->prepare("DELETE FROM `user_account` WHERE `id` = ?");
         $stmtDelete->bind_param("i", $edit_IdAnnouncements);
 
         // Execute the delete statement

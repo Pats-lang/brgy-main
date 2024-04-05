@@ -506,33 +506,34 @@ while ($row = mysqli_fetch_assoc($result)) {
 
             <!-- alumni count -->
             <section id="alumni" class="stats">
-                <img src="assets/images/background.jpg" alt="" data-aos="fade-in">
-                <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
-                    <div class="row gy-4">
-                        <?php
+            <img src="assets/images/logo/brgy-bg.png" class="img-fluid h-100 w-100 object-fit-cover" alt="" data-aos="fade-in">
+            <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+                <div class="row gy-4">
+                    <?php
                         $sql = "SELECT COUNT(*) AS account_id FROM user_account WHERE status = '2'";
                         $result = mysqli_query($connection, $sql);
                         $row = mysqli_fetch_assoc($result);
                         $account_id = $row['account_id'];
-
-                        // Format the total count as "00:01"
-                        $formatted_count = sprintf("%02d:%02d", floor($account_id / 60), $account_id % 60);
+                        
                         ?>
 
-                        <div class="col-lg-12 col-md-12 mx-auto">
 
-                            <div class="stats-item text-center w-100 h-100">
-                                <span class="stats-count" style="font-size: 120px;"><?php echo $formatted_count; ?></span>
 
-                                <span style="font-size: 24px;">TOTAL REGISTERED POPULATION</span>
-                            </div>
+
+                    <div class="col-lg-12 col-md-12 mx-auto">
+                        <div class="stats-item text-center w-100 h-100">
+                            <!-- Create a span to hold the count -->
+                            <span class="stats-count" style="font-size: 120px; color:black;">0</span>
+                            <span style="font-size: 30 px;">TOTAL REGISTERED POPULATION</span>
                         </div>
-
-
-
                     </div>
+
+
+
                 </div>
-            </section>
+            </div>
+        </section>
+
 
             <!-- request  -->
             <section>
@@ -949,6 +950,27 @@ while ($row = mysqli_fetch_assoc($result)) {
             modal.style.display = "none";
         }
     }
+
+    function animateValue(id, start, end, duration) {
+        var range = end - start;
+        var current = start;
+        var increment = end > start ? 1 : -1;
+        var stepTime = Math.abs(Math.floor(duration / range));
+        var obj = document.getElementsByClassName(id)[0];
+        var timer = setInterval(function() {
+            current += increment;
+            obj.textContent = current;
+            if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+                clearInterval(timer);
+                obj.textContent = end; // Ensure final count is accurate
+            }
+        }, stepTime);
+    }
+
+    // Call the animateValue function after the page has loaded
+    window.onload = function() {
+        animateValue("stats-count", 0, <?php echo $account_id; ?>, 1500); // Adjust duration as needed
+    };
 </script>
 
     </body>

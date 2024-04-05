@@ -73,13 +73,13 @@ include '../server/admin_login-verification.php';
 
                                             <?php
                                             $query = "SELECT * FROM `user_account` WHERE `status` = '2' ";
-
+$count=1;
                                             $result = mysqli_query(getDatabase(), $query);
                                             while ($row = mysqli_fetch_array($result)) {
                                             ?>
                                                 <tr id="<?php echo $row['account_id']; ?>">
                                                     <td>
-                                                        <?php echo $row['account_id']; ?>
+                                                        <?php echo $count++ ?>
                                                     </td>
                                                     <td>
                                                         <?php echo $row['first_name']; ?>

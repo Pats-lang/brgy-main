@@ -23,7 +23,7 @@ $purpose = isset($_POST['purpose']) ? sanitizeData(getDatabase(), $_POST['purpos
 $status = 0;
 
 // Example query to insert data into request_brygcoi table
-$query = "INSERT INTO request_brgyclrs (transaction_id, name, request, yrs_res, address, email, contact_no, purpose, status) VALUES ('$transaction_id','$name', '$request', '$residency', '$address', '$email', '$contact', '$purpose', '$status')";
+$query = "INSERT INTO request_brgycor (transaction_id, name, request, year_recidency, address, email, contact_no, purpose, status) VALUES ('$transaction_id','$name', '$request', '$residency', '$address', '$email', '$contact', '$purpose', '$status')";
 
 // Execute the query
 $result = mysqli_query(getDatabase(), $query);

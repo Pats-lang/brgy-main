@@ -104,13 +104,13 @@ $transaction_id = $currentYear . '-' . $randomNumber ;
                 
                 <div class="col">
                 <div data-mdb-input-init class="form-outline">
-                    <input type="text" id="name" class="form-control" />
+                    <input type="text" name="name" id="name" class="form-control" />
                     <label class="form-label" for="form6Example1">Name</label>
                 </div>
                 </div>
                 <div class="col">
                     <div data-mdb-input-init class="form-outline">
-                        <input type="text" id="request" class="form-control" value="Barangay Certificate" readonly style="background-color: #f2f2f2;"/>
+                        <input type="text" name="request" id="request" class="form-control" value="Barangay Certificate" readonly style="background-color: #f2f2f2;"/>
                         <label class="form-label" for="form6Example2">Request</label>
                     </div>
                 </div>
@@ -120,31 +120,31 @@ $transaction_id = $currentYear . '-' . $randomNumber ;
 
             <!-- Text input -->
             <div data-mdb-input-init class="form-outline mb-4">
-            <input type="number" id="residency" class="form-control" />
+            <input type="number" name="residency" id="residency" class="form-control" />
                 <label class="form-label" for="form6Example3">Year Residency</label>
             </div>
 
             <!-- Text input -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <input type="text" id="address" class="form-control" />
+                <input type="text" name="address" id="address" class="form-control" />
                 <label class="form-label" for="form6Example4">Address</label>
             </div>
 
             <!-- Email input -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <input type="email" id="email" class="form-control" />
+                <input type="email" name="email" id="email" class="form-control" />
                 <label class="form-label" for="form6Example5">Email</label>
             </div>
 
             <!-- Number input -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <input type="number" id="contact" class="form-control" />
+                <input type="number" name="contact" id="contact" class="form-control" />
                 <label class="form-label" for="form6Example6">Contact Number</label>
             </div>
 
             <!-- Message input -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <textarea class="form-control" id="purpose" rows="4"></textarea>
+                <textarea class="form-control" name="purpose" id="purpose" rows="4"></textarea>
                 <label class="form-label" for="form6Example7">Purpose</label>
             </div>
 

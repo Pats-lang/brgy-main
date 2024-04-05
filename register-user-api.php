@@ -13,7 +13,7 @@ $response = array(
 );
 
 // personal_information
-$uploadDirectory = "./assets/images/proof-profiles";
+$uploadDirectory = "./assets/images/proof-pictures/";
 $profileName = $_FILES['profile']['name'];
 $profileTmpName = $_FILES['profile']['tmp_name'];
 $proof_of_residencyName = $_FILES['proof_of_residency']['name'];
@@ -48,7 +48,7 @@ if (!in_array($profileExtension, $allowedExtensions) || !in_array($proof_of_resi
     $register_username = sanitizeData(getDatabase(), $_POST['username']);
     $register_password = sanitizeData(getDatabase(), $_POST['password']);
     $status = 0;
-
+    $hashed_password = password_hash($register_password, PASSWORD_DEFAULT);
     if ($prepared_membersSql = $db->prepare("INSERT INTO `user_account` (`precinct_number`, `first_name`, `middle_name`, `last_name`, `gender`, `birthday`, `marital_status`, `contact`, `religion`, `sector`, `address`, `email`, `proof_of_identity`, `profile`,`username`,`password`,`status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?)")) {
 
         $prepared_membersSql->bind_param(
@@ -70,7 +70,7 @@ if (!in_array($profileExtension, $allowedExtensions) || !in_array($proof_of_resi
             $proof_of_residencyName,
             $profileName,
             $register_username,
-            $register_password,
+            $hashed_password, 
             $status
         );
 

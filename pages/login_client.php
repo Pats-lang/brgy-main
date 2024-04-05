@@ -95,7 +95,7 @@
                         closeButton: false,
                         onHidden: function() {
                             // Redirect to index.php after the toast message is hidden
-                            window.location.href = '../client_index.php';
+                            window.location.href = '..';
                         }
                     });
                 } else {

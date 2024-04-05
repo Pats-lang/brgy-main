@@ -77,9 +77,9 @@ include '../server/admin_login-verification.php';
                                             $result = mysqli_query(getDatabase(), $query);
                                             while ($row = mysqli_fetch_array($result)) {
                                             ?>
-                                            <tr id="<?php echo $row['account_id']; ?>">
+                                            <tr id="<?php echo $row['id']; ?>">
                                                 <td>
-                                                    <?php echo $row['account_id']; ?>
+                                                    <?php echo $row['id']; ?>
                                                 </td>
                                                 <td>
                                                     <?php echo $row['first_name']; ?>
@@ -118,7 +118,7 @@ include '../server/admin_login-verification.php';
 
                                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                         data-bs-target="#reviewInquiry_modal"
-                                                        data-id="<?php echo $row['account_id']; ?>"
+                                                        data-id="<?php echo $row['id']; ?>"
                                                         data-role="editAnnouncement_btn">
                                                         Verify
                                                     </button>
@@ -169,10 +169,8 @@ include '../server/admin_login-verification.php';
 
                                     <div class="row ">
                                         <div class="col-md-8">
-                                        <label for="register_last_name">Last Name</label>
-                                        <input type="text"  class="form-control form-control-border"
-                                                id="account" name="account"
-                                               readonly>
+                                        <input class="form-control form-control-border"
+                                                id="id" name="id" hidden>
                                             <label for="add_Image_id">Proof of Residency </label>
                                             <img alt="Member Picture" id="addPreview_Image_id" class="w-100">
                                             <input type="file" class="form-control form-control-border"
@@ -181,8 +179,7 @@ include '../server/admin_login-verification.php';
                                         <div class="col-md-4">
                                             <label for="add_Image_profile">Profile Image</label>
                                             <img alt="Member Picture" id="addPreview_Image_profile" class="w-100">
-                                            <input type="file" class="form-control form-control-border"
-                                                id="add_Image_profile" name="add_Image_profile" disabled>
+                                           
 
                                         </div>
                                     </div>
@@ -201,25 +198,33 @@ include '../server/admin_login-verification.php';
                                                 placeholder="Type your First Name" readonly>
                                         </div>
                                         <div class="col-md-4">
-                                            <label for="register_middle_name">Middle Name</label>
+                                            <label for="register_address">Middle Name</label>
                                             <input type="text" class="form-control form-control-border"
-                                                id="register_middle_name" name="register_middle_name"
-                                                placeholder="Type your Middle Name" readonly>
-
+                                                id="middle_name" name="middle_name"
+                                                placeholder="Type your Address" readonly>
                                         </div>
+
                                     </div>
 
                                     <div class="row mt-4">
-                                        <div class="col-md-6">
+                                        
+                                    <div class="col-md-4">
                                             <label for="register_address">Address</label>
                                             <input type="text" class="form-control form-control-border"
                                                 id="register_address" name="register_address"
                                                 placeholder="Type your Address" readonly>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <label for="register_email">Email Address</label>
                                             <input type="text" class="form-control form-control-border"
                                                 id="register_email" name="register_email"
+                                                placeholder="Type your Email Address" readonly>
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="register_email">Religion</label>
+                                            <input type="text" class="form-control form-control-border"
+                                                id="register_religion" name="register_religion"
                                                 placeholder="Type your Email Address" readonly>
 
                                         </div>
@@ -251,11 +256,12 @@ include '../server/admin_login-verification.php';
                                             </select>
                                         </div>
 
-                                        <div class="col-md-4">
+                                        <div class="col-md-12 mt-3">
                                             <label for="register_status">Status</label>
                                             <select type="text" class="form-control form-control-border"
                                                 id="status" name="status"
                                                 placeholder="Choose your Status" >
+                                                <option class="form-control form-control-border" value="0" disabled>PENDING</option>
                                                 <option class="form-control form-control-border" value="2"> APPROVED</option>
                                                 <option class="form-control form-control-border" value="1">REJECT</option>
                             
@@ -371,11 +377,14 @@ include '../server/admin_login-verification.php';
             },
             dataType: "json",
             success: function(response_editAnnouncement) {
-                $('#account').val(response_editAnnouncement.account_id); // Corrected property name
+                $('#id').val(response_editAnnouncement.id); // Corrected property name
+                $('#account').val(response_editAnnouncement.id); // Corrected property name
                 $('#register_last_name').val(response_editAnnouncement.last_name); // Corrected property name
                 $('#register_first_name').val(response_editAnnouncement.first_name); // Corrected property name
                 $('#register_address').val(response_editAnnouncement.address); // Corrected property name
                 $('#register_email').val(response_editAnnouncement.email); // Corrected property name
+                $('#middle_name').val(response_editAnnouncement.middle_name); // Corrected property name
+                $('#register_religion').val(response_editAnnouncement.religion); // Corrected property name
                 $('#register_bday').val(response_editAnnouncement.birthday); // Corrected property name
                 $('#register_contact').val(response_editAnnouncement.contact); // Corrected property name
                 $('#register_status').val(response_editAnnouncement.marital_status); // Corrected property name

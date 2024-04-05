@@ -7,7 +7,7 @@ $response = array(
 
 $id = sanitizeData(getDatabase(), $_POST['id']);
 
-$sql = "SELECT * FROM `user_account` WHERE `account_id` = '$id' ";
+$sql = "SELECT * FROM `user_account` WHERE `id` = '$id' ";
 $result = mysqli_query(getDatabase(), $sql);
 $row = mysqli_fetch_array($result);
 
