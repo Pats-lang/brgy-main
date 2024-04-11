@@ -23,8 +23,8 @@ if(isset($_POST['email'])) {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com'; 
     $mail->SMTPAuth = true;
-    $mail->Username = 'eventsjkos@gmail.com';
-    $mail->Password = 'ubixdskhobsotqmr';
+    $mail->Username = 'miscsd.ucc@gmail.com';
+    $mail->Password = 'vcnz kkoo ekoi lqpy';
    
     $mail->SMTPSecure = 'ssl';
     $mail->Port = 465;
@@ -40,9 +40,9 @@ if(isset($_POST['email'])) {
 
 
     // Set email content
-    $mail->setFrom('eventsjkos@gmail.com', 'ALUMNI ASSOCIATION');
+    $mail->setFrom('miscsd.ucc@gmail.com', 'BARANGAY 20');
     $mail->addAddress($email);
-    $mail->Subject = 'Greetings UCCIAN!';
+    $mail->Subject = 'Greetings BARANGAY 20!';
     $mail->isHTML(true);
 
     // Email body with activation link (you can customize this)
@@ -71,7 +71,7 @@ if(isset($_POST['email'])) {
            }
            
            td.img-container {
-               background-image: url('https://i.ibb.co/9VtGSvj/Header-1.png');
+            background-image: url('https://i.ibb.co/Y8L9Gkn/barangay20-header.png'); 
                background-size: cover; /* Adjust as needed */
                background-position: center; /* Adjust as needed */
                padding: 100px;
@@ -153,8 +153,8 @@ if(isset($_POST['email'])) {
             </td>
         </tr>
         <div class='footer '>
-        <p>&copy; 2023 UNIVERSITY OF CALOOCAN CITY ALUMNI. ASSOCIATION ALL RIGHTS RESERVED.</p>
-        <p><a href=' https://www.facebook.com/groups/uccalumnioraganization/'>ALUMNI FB PAGE</a> .</p>
+        <p>&copy; 2024 BARANGAY 20, ZONE 2, DISTRICT II ALL RIGHTS RESERVED.</p>
+        <p><a href=' https://www.facebook.com/groups/uccalumnioraganization/'>BRGY 20 FB PAGE</a> .</p>
 </div>
         </table>
     </body>

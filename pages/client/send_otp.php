@@ -12,7 +12,7 @@ include '../../server/client_server/conn.php';
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Alumni Association</title>
+        <title>EGBMS</title>
 
         <style>
             /* Additional custom styles */
@@ -70,9 +70,9 @@ include '../../server/client_server/conn.php';
                         <div class="p-2 breadcrumb-container">
                             <div class="d-flex justify-content-center align-items-center mt-2 flex-wrap">
                                 <h2>
-                                    <img src="../../assets/images/logo.png" alt="Logo" width="60" height="60">
-                                    UNIVERSITY OF CALOOCAN CITY ALUMNI ORGANIZATION
-                                    <img src="../../assets/images/logo.png" alt="Logo" width="60" height="60">
+                                    <img src="../../assets/images/logo/barangay.png" alt="Logo" width="60" height="60">
+                                    BARANGAY 20
+                                    <img src="../../assets/images/logo/caloocan.png" alt="Logo" width="60" height="60">
                                 </h2>
                             </div>
                         </div>

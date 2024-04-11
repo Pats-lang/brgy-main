@@ -50,12 +50,12 @@ require '../plugins/PHPMailer/src/SMTP.php';
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'eventsjkos@gmail.com';
-    $mail->Password = 'ubixdskhobsotqmr';
+    $mail->Username = 'miscsd.ucc@gmail.com';
+    $mail->Password = 'vcnz kkoo ekoi lqpy';
     $mail->SMTPSecure = 'ssl';
     $mail->Port = 465;
 
-    $mail->setFrom('eventsjkos@gmail.com', 'ALUMNI ASSOCIATION');
+    $mail->setFrom('miscsd.ucc@gmail.com', 'BARANGAY 20');
     $mail->addAddress($i_email);
     $mail->isHTML(true);
     
@@ -167,7 +167,7 @@ require '../plugins/PHPMailer/src/SMTP.php';
             </tr>
             <div class='footer '>
             <p>&copy; 2024 BARANGAY 20, ZONE 2, DISTRICT II ALL RIGHTS RESERVED.</p>
-            <p><a href=' https://www.facebook.com/groups/uccalumnioraganization/'>ALUMNI FB PAGE</a> .</p>
+            <p><a href=' https://www.facebook.com/groups/uccalumnioraganization/'>BARANGAY 20 FB PAGE</a> .</p>
     </div>
             </table>
 
