@@ -20,7 +20,7 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EGBMS</title>
+    <title>EGBMS|BARANGAY 20 OR-KA-NA DAGAT-DAGATAN</title>
     <script src="../../assets/js/register_campus.js?v=<?php echo time(); ?>" defer></script>
     <script src="../../assets/js/client/submit_member-details.js?v=<?php echo time(); ?>" defer></script>
 
@@ -133,8 +133,8 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                     <div class="line"></div>
                                     <!-- Work Experience -->
                                     <div class="step" data-target="#address-part">
-                                        <button type="button" class="step-trigger" role="tab" aria-controls="address-part"
-                                            id="work-trigger">
+                                        <button type="button" class="step-trigger" role="tab"
+                                            aria-controls="address-part" id="work-trigger">
 
                                             <span class="bs-stepper-circle">2</span>
                                             <span class="bs-stepper-label">Address</span>
@@ -143,12 +143,12 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
 
                                     <div class="line"></div>
 
-                                    <!-- Trainings/Seminars -->
-                                    <div class="step" data-target="#awards-part">
+                                    <!-- Emergency -->
+                                    <div class="step" data-target="#emergency-part">
                                         <button type="button" class="step-trigger" role="tab"
-                                            aria-controls="awards-part" id="awards-part-trigger">
+                                            aria-controls="emergency-part" id="emergency-part-trigger">
                                             <span class="bs-stepper-circle">3</span>
-                                            <span class="bs-stepper-label">Emergency Contact</span>
+                                            <span class="bs-stepper-label">Emergency Details</span>
                                         </button>
                                     </div>
 
@@ -156,11 +156,21 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
 
                                     <!-- Affiliations -->
 
-                                    <div class="step" data-target="#affil-part">
-                                        <button type="button" class="step-trigger" role="tab" aria-controls="affil-part"
-                                            id="affil-part-trigger">
+                                    <div class="step" data-target="#proof-part">
+                                        <button type="button" class="step-trigger" role="tab" aria-controls="proof-part"
+                                            id="proof-part-trigger">
                                             <span class="bs-stepper-circle">4</span>
                                             <span class="bs-stepper-label">Proof of Residency</span>
+                                        </button>
+                                    </div>
+                                    <div class="line"></div>
+
+                                    <!-- Awards -->
+                                    <div class="step" data-target="#information-part">
+                                        <button type="button" class="step-trigger" role="tab"
+                                            aria-controls="information-part" id="information-part-trigger">
+                                            <span class="bs-stepper-circle">5</span>
+                                            <span class="bs-stepper-label">User Account</span>
                                         </button>
                                     </div>
 
@@ -179,9 +189,9 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
 
                                             <div class="row">
                                                 <div class="col form-group ">
-                                                    <label for="register_name" class="mt-1">Precinct No.</label>
+                                                    <label for="register_precinctNo" class="mt-1">Precinct No.</label>
                                                     <input type="text" class="form-control form-control-border mt-1"
-                                                        id="recinct_number" name="precinct_number"
+                                                        id="register_precinctNo" name="register_precinctNo"
                                                         placeholder="Precinct No." required>
                                                 </div>
 
@@ -207,11 +217,11 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
 
                                             <div class="row">
                                                 <div class="col form-group ">
-                                                    <label for="register_status" class="mt-2">Gender</label>
+                                                    <label for="register_gender" class="mt-2">Gender</label>
                                                     <select
                                                         class="custom-select rounded-0 form-control form-control-border mt-1"
                                                         id="campus" name="campus" required>
-                                                        <option value="" data-campus-id="">Select a Gender</option>
+                                                        <option selected disabled>Select a Gender</option>
                                                         <option value="male" data-campus-id="01">Male
                                                         </option>
                                                         <option value="female" data-campus-id="02">Female
@@ -240,10 +250,10 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
 
                                             <div class="row">
                                                 <div class="col form-group">
-                                                    <label for="register_course" class="mt-2">Religion</label>
+                                                    <label for="register_religion" class="mt-2">Religion</label>
                                                     <select
                                                         class="custom-select rounded-0 form-control form-control-border mt-1"
-                                                        id="register_course" name="register_course" required>
+                                                        id="register_religion" name="register_religion" required>
                                                         <option selected disabled>Select a Religion</option>
                                                         <option id="catholic">Catholic</option>
                                                         <option id="INC">Iglesia ni Cristo</option>
@@ -268,6 +278,7 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                                         <option id="ls">Legally Separated</option>
                                                         <option id="livingin">LIVING-IN</option>
                                                         <option id="separated">Separated</option>
+                                                        <option id="others">Others</option>
                                                     </select>
                                                 </div>
 
@@ -362,38 +373,40 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                                     <label for="register_addResidency" class="mt-2">Residency</label>
                                                     <select
                                                         class="custom-select rounded-0 form-control form-control-border mt-1"
-                                                        id="register_addResidency" name="register_addResidency" required>
+                                                        id="register_addResidency" name="register_addResidency"
+                                                        required>
                                                         <option selected disabled>Residency</option>
                                                         <option id="home">Home Owner</option>
                                                         <option id="tenant">Tenant</option>
                                                         <option id="helper">Helper</option>
                                                         <option id="CW">Constraction Worker</option>
                                                         <option id="others">Others</option>
-                                                        
+
                                                     </select>
                                                 </div>
 
                                                 <div class="col form-group">
-                                                    <label for="register_addYears" class="mt-2">Years Of Residency</label>
+                                                    <label for="register_addYears" class="mt-2">Years Of
+                                                        Residency</label>
                                                     <input type="text" class="form-control form-control-border mt-2"
                                                         id="register_addYears" name="register_addYears[]"
-                                                        placeholder="Years Of Residency">
+                                                        placeholder="Years Of Residency" required>
                                                 </div>
 
                                                 <div class="col form-group">
                                                     <label for="register_address" class="mt-2">Address</Address></label>
                                                     <input type="text" class="form-control form-control-border mt-2"
                                                         id="register_address" name="register_address[]"
-                                                        placeholder="Address">
+                                                        placeholder="Address" required>
                                                 </div>
                                             </div>
 
                                             <div class="row" id="address_container">
-                                            <div class="col form-group">
+                                                <div class="col form-group">
                                                     <label for="register_addPostal" class="mt-2">Postal Code</label>
                                                     <input type="text" class="form-control form-control-border mt-2"
                                                         id="register_addPostal" name="register_addPostal[]"
-                                                        placeholder="Postal Code">
+                                                        placeholder="Postal Code" required>
                                                 </div>
 
                                                 <div class="col form-group">
@@ -405,45 +418,49 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                                         <option id="home">District I</option>
                                                         <option id="tenant">District II</option>
                                                         <option id="helper">District III</option>
-                                                    
-                                                        
+
+
                                                     </select>
                                                 </div>
 
                                                 <div class="col form-group">
-                                                    <label for="register_addBarangay" class="mt-2" >Barangay</label>
-                                                    <input type="text" class="form-control form-control-border mt-2" value="Barangay 20" readonly style="background-color: #f2f2f2;"
+                                                    <label for="register_addBarangay" class="mt-2">Barangay</label>
+                                                    <input type="text" class="form-control form-control-border mt-2"
+                                                        value="Barangay 20" readonly style="background-color: #f2f2f2;"
                                                         id="register_addBarangay" name="register_addBarangay[]"
-                                                        placeholder="Barangay">
+                                                        placeholder="Barangay" required>
                                                 </div>
                                             </div>
 
                                             <div class="row" id="address_container">
-                                            <div class="col form-group">
-                                                    <label for="register_addRegion" class="mt-2" >Region</label>
-                                                    <input type="text" class="form-control form-control-border mt-2" value="Metro Manila" readonly style="background-color: #f2f2f2;"
+                                                <div class="col form-group">
+                                                    <label for="register_addRegion" class="mt-2">Region</label>
+                                                    <input type="text" class="form-control form-control-border mt-2"
+                                                        value="Metro Manila" readonly style="background-color: #f2f2f2;"
                                                         id="register_addRegion" name="register_addRegion[]"
-                                                        placeholder="Region">
+                                                        placeholder="Region" required>
                                                 </div>
 
                                                 <div class="col form-group">
-                                                    <label for="register_addProvince" class="mt-2" >Province</label>
-                                                    <input type="text" class="form-control form-control-border mt-2" value="Metro Manila" readonly style="background-color: #f2f2f2;"
+                                                    <label for="register_addProvince" class="mt-2">Province</label>
+                                                    <input type="text" class="form-control form-control-border mt-2"
+                                                        value="Metro Manila" readonly style="background-color: #f2f2f2;"
                                                         id="register_addProvince" name="register_addProvince[]"
-                                                        placeholder="Province">
+                                                        placeholder="Province" required>
                                                 </div>
 
                                                 <div class="col form-group">
-                                                    <label for="register_addCity" class="mt-2" >City</label>
-                                                    <input type="text" class="form-control form-control-border mt-2" value="Caloocan City" readonly style="background-color: #f2f2f2;"
-                                                        id="register_addCity" name="register_addCity[]"
-                                                        placeholder="City">
+                                                    <label for="register_addCity" class="mt-2">City</label>
+                                                    <input type="text" class="form-control form-control-border mt-2"
+                                                        value="Caloocan City" readonly
+                                                        style="background-color: #f2f2f2;" id="register_addCity"
+                                                        name="register_addCity[]" placeholder="City" required>
                                                 </div>
                                             </div>
 
 
                                             <div class="row">
-                                               
+
                                                 <div class="col-md-6">
                                                     <a class="btn btn-primary col-md-12 mt-3"
                                                         onclick="stepper.previous()">Back</a>
@@ -458,96 +475,122 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                         <!-- ./Work Experience -->
 
 
-                                        <!-- Trainings and Seminars -->
-                                        <div id="awards-part" class="content mt-3" role="tabpanel"
-                                            aria-labelledby="awards-part-trigger">
-                                            <h5>Trainings and Seminars
+                                        <!-- Emergency Contact-->
+                                        <div id="emergency-part" class="content mt-3" role="tabpanel"
+                                            aria-labelledby="emergency-part-trigger">
+                                            <h5>Emergency Details
                                                 <i class="fa-solid fa-circle-plus" style="color:green"
-                                                    onclick="addFields('trainings', this)"></i>
+                                                    onclick="addFields('emergency', this)"></i>
                                             </h5>
                                             <div class="row" id="trainings_container">
                                                 <div class="col form-group">
-                                                    <label for="register_trainingTitle "
-                                                        class="mt-2">Title/Course</label>
+                                                    <label for="register_emergencyName" class="mt-2">Emergency Contact
+                                                        Name
+                                                    </label>
                                                     <input type="text" class="form-control form-control-border mt-2"
-                                                        id="register_trainingTitle" name="register_trainingTitle[]"
-                                                        placeholder="Title/Course">
+                                                        id="register_emergencyName" name="register_emergencyName[]"
+                                                        placeholder="Emergency Contact" required>
                                                 </div>
 
                                                 <div class="col form-group">
-                                                    <label for="register_trainingVenue" class="mt-2">Venue</label>
+                                                    <label for="register_emergencyRelation" class="mt-2">Emergency
+                                                        Contact Relationship</label>
                                                     <input type="text" class="form-control form-control-border  mt-2"
-                                                        id="register_trainingVenue" name="register_trainingVenue[]"
-                                                        placeholder="Venue">
+                                                        id="register_emergencyRelation"
+                                                        name="register_emergencyRelation[]"
+                                                        placeholder="Emergency Contact Relationship" required>
+                                                </div>
+                                                <div class="row" id="trainings_container">
+                                                    <div class="col form-group">
+                                                        <label for="register_emergencyContact" class="mt-2">Emergency
+                                                            Contact
+                                                            #</label>
+                                                        <input type="number"
+                                                            class="form-control form-control-border mt-1"
+                                                            id="register_emergencyContact"
+                                                            name="register_emergencyContact"
+                                                            placeholder="Emergency Contact #" required>
+                                                    </div>
+
+                                                    <div class="col form-group">
+                                                        <label for="register_emergencyAddress" class="mt-2">Emergency
+                                                            Contact Address</label>
+                                                        <input type="text"
+                                                            class="form-control form-control-border  mt-2"
+                                                            id="register_emergencyAddress"
+                                                            name="register_emergencyAddress[]"
+                                                            placeholder="Emergency Contact Address" required>
+                                                    </div>
+
+
                                                 </div>
 
-                                                <div class="col form-group">
-                                                    <label for="register_trainingDuration" class="mt-2">Duration</label>
-                                                    <input type="text" class="form-control form-control-border  mt-2"
-                                                        id="register_trainingDuration"
-                                                        name="register_trainingDuration[]" placeholder="Duration">
-                                                </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <a class="btn btn-primary  col-md-12 mt-3"
-                                                        onclick="validateAndMoveToNext()">Next </a>
-                                                </div>
-                                                <div class="col-md-6">
                                                     <a class="btn btn-primary col-md-12 mt-3"
                                                         onclick="stepper.previous()">Back</a>
                                                 </div>
+                                                <div class="col-md-6">
+                                                    <a class="btn btn-primary  col-md-12 mt-3"
+                                                        onclick="validateAndMoveToNext()">Next </a>
+                                                </div>
+
                                             </div>
                                         </div>
 
-                                        <!--Affiliations/Organizations -->
-                                        <div id="affil-part" class="content mt-3" role="tabpanel"
-                                            aria-labelledby="affil-part-trigger">
-                                            <h5>Affiliations/Organizations
+                                        <!--Proof of Residency -->
+                                        <div id="proof-part" class="content mt-3" role="tabpanel"
+                                            aria-labelledby="proof-part-trigger">
+                                            <h5>Proof of Residency
                                                 <i class="fa-solid fa-circle-plus" style="color:green"
-                                                    onclick="addFields('affiliations', this)"></i>
+                                                    onclick="addFields('residency', this)"></i>
                                             </h5>
+                                            <small class="text-muted">
+                                                Please provide one (1) valid ID and one (1) proof of residence.
+                                                <pre>
+    *The address on your proof of residence should match exactly with the addressstated address.
+    *Documents have to be dated within this month or the previous month.
+    *The file uploaded must show the entire page of your proof of residence and not just a portion of it. 
+    *Do not fold or cover any part of your proof of residence.</pre>
+                                            </small>
                                             <div class="row" id="affiliations_container">
-                                                <div class="col form-group">
-                                                    <label for="register_affiliationsOrganizations "
-                                                        class="mt-2">Title/Course</label>
-                                                    <input type="text" class="form-control form-control-border mt-2"
-                                                        id="register_affiliationsOrganizations"
-                                                        name="register_affiliationsOrganizations[]"
-                                                        placeholder="Title/Course">
+                                                <div class="row">
+                                                    <div class="col form-group">
+                                                        <label for="register_proofId" class="mt-2">Valid Id</label>
+                                                        <input type="file" class="form-control form-control-border mt-1"
+                                                            accept="image/*" id="register_proofId"
+                                                            name="register_proofId[]" multiple required>
+                                                    </div>
+
+
+                                                    <div class="col form-group">
+                                                        <label for="register_proofResidence" class="mt-2">Proof of
+                                                            Residence</label>
+                                                        <input type="file" class="form-control form-control-border mt-1"
+                                                            accept="image/*" id="register_proofResidence"
+                                                            name="register_proofResidence[]" required>
+                                                    </div>
+
                                                 </div>
 
-                                                <div class="col form-group">
-                                                    <label for="register_affiliationsPositions"
-                                                        class="mt-2">Venue</label>
-                                                    <input type="text" class="form-control form-control-border  mt-2"
-                                                        id="rregister_affiliationsPositions"
-                                                        name="register_affiliationsPositions[]" placeholder="Venue">
-                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <a class="btn btn-primary col-md-12 mt-3"
+                                                            onclick="stepper.previous()">Back</a>
+                                                    </div>
 
-                                                <div class="col form-group">
-                                                    <label for="register_affiliationsDuration"
-                                                        class="mt-2">Duration</label>
-                                                    <input type="text" class="form-control form-control-border  mt-2"
-                                                        id="register_affiliationsDuration"
-                                                        name="register_affiliationsDuration[]" placeholder="Duration">
+
+                                                    <div class="col-md-6">
+                                                        <a class="btn btn-primary  col-md-12 mt-3"
+                                                            onclick="validateAndMoveToNext()">Next </a>
+                                                    </div>
+
                                                 </div>
                                             </div>
 
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <a class="btn btn-primary  col-md-12 mt-3"
-                                                        onclick="validateAndMoveToNext()">Next </a>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <a class="btn btn-primary col-md-12 mt-3"
-                                                        onclick="stepper.previous()">Back</a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Awards/Special Achievements -->
+                                         <!-- Awards/Special Achievements -->
                                         <div id="information-part" class="content mt-3" role="tabpanel"
                                             aria-labelledby="information-part-trigger">
                                             <h5>Awards/Special Achievements
@@ -575,6 +618,7 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                             </div>
                                         </div>
                                         <!-- ./Awards/Special Achievements -->
+                                        
                                     </div>
                                 </form>
                             </div>
@@ -632,17 +676,17 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
     // Form validation
     var validate_form = $('#registerMemberForm').validate({
         rules: {
+            register_precinctNo: {
+                required: true,
+                minlength: 3,
+            },
             register_name: {
                 required: true,
                 alphabeticWithSpace: true,
                 minlength: 3,
             },
-            register_yearGraduated: {
-                required: true,
-                maxlength: 4,
-                minlength: 4,
-            },
-            register_address: {
+
+            register_addAddress: {
                 required: true,
                 minlength: 20,
             },
@@ -653,14 +697,17 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
             register_birthDate: {
                 required: true,
             },
+            register_emergencyContact: {
+                required: true,
+                maxlength: 11,
+                minlength: 11,
+            },
             register_cellNo: {
                 required: true,
                 maxlength: 11,
                 minlength: 11,
             },
-            register_course: {
-                required: true,
-            },
+
             register_status: {
                 required: true,
             },
@@ -672,28 +719,40 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                 required: true,
                 accept: "image/jpeg, image/png",
             },
+            register_proofId: {
+                required: true,
+                accept: "image/jpeg, image/png",
+            },
+            register_proofResidence: {
+                required: true,
+                accept: "image/jpeg, image/png",
+            },
             campus: {
                 required: true,
             },
-            'register_workCompany[]': {
+            
+            'register_addResidency[]': {
                 alphabeticWithSpace: true,
             },
-            'register_workPosition[]': {
+            'register_addYear[]': {
                 alphabeticWithSpace: true,
             },
-            'register_workDuration[]': {
+            'register_addPostal[]': {
                 alphabeticWithSpace: true,
             },
-            'register_trainingTitle[]': {
+            'register_addDistrict[]': {
                 alphabeticWithSpace: true,
             },
-            'register_trainingVenue[]': {
+            'register_emergencyName[]': {
                 alphabeticWithSpace: true,
             },
-            'register_trainingDuration[]': {
+            'register_emergencyRelation[]': {
                 alphabeticWithSpace: true,
             },
-            'register_affiliationsOrganizations[]': {
+            'register_emergencyContact[]': {
+                alphabeticWithSpace: true,
+            },
+            'register_emergencyAddress[]': {
                 alphabeticWithSpace: true,
             },
             'register_affiliationsPositions[]': {
@@ -708,15 +767,14 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
         },
 
         messages: {
+            register_precinctNo: {
+                required: 'Please provide a Precinct No.!',
+            },
             register_name: {
-                required: 'Please provide a valid username!',
+                required: 'Please Enter your Name!',
             },
-            register_yearGraduated: {
-                required: 'Please provide a valid year',
-                maxlength: 'Please enter a valid 4-digit year.',
-                minlength: 'Please enter a valid 4 digits'
-            },
-            register_address: {
+
+            register_addAddress: {
                 required: 'Please provide a valid Address!',
             },
             register_emailAddress: {
@@ -728,11 +786,12 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
             register_cellNo: {
                 maxlength: 'Please provide 11 digits!',
             },
-            register_course: {
-                required: ' Please select a course to register!',
+            register_emergencyContact: {
+                maxlength: 'Please provide 11 digits!',
             },
+
             register_status: {
-                required: 'Please select a status to register',
+                required: 'Please select a Civil Status ',
             },
             register_picture: {
                 accept: 'Please select a valid JPG or PNG image file.'
@@ -741,7 +800,13 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                 accept: 'Please select a valid JPG or PNG image file.'
             },
             campus: {
-                required: 'Select Campus is required!'
+                required: 'Select Gender is required!'
+            },
+            register_accountUser: {
+                required: 'Please provide username!'
+            },
+            register_accountPassword: {
+                required: 'Please provide password!'
             },
         },
         errorElement: 'span',

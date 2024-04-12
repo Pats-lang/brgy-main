@@ -43,8 +43,8 @@ function getMemberId(campus_id, sender) {
   })
 }
 
-var moreInformation = ["address", "emergency", "proof of residency"];
-var max_clickable = [4, 4, 4];
+var moreInformation = ["address", "emergency", "proof of residency", "user account"];
+var max_clickable = [4, 4, 4, 4];
 
 function addFields(moreInfo, element) {
   var index = moreInformation.indexOf(moreInfo);
