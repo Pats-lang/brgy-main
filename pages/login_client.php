@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 
 
 
@@ -95,7 +96,7 @@
                         closeButton: false,
                         onHidden: function() {
                             // Redirect to index.php after the toast message is hidden
-                            window.location.href = '..';
+                            window.location.href = '../client_index.php';
                         }
                     });
                 } else {

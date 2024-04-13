@@ -4,6 +4,7 @@ include '../config/connection.php';
 
 $response = array();
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $admin_username = sanitizeData(getDatabase(), $_POST["username"]);
     $admin_password = sanitizeData(getDatabase(), $_POST["password"]);

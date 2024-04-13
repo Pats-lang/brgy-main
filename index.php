@@ -346,7 +346,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             $sql = "SELECT * FROM announcement";
             $result = mysqli_query($connection, $sql);
             ?>
-            <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div id="myCarousel" class="carousel slide p-4" style="background-color: #f4f4f4; "data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <?php
                     $indicatorIndex = 0;
@@ -371,9 +371,10 @@ while ($row = mysqli_fetch_assoc($result)) {
 
                         <div class="carousel-item <?php echo $itemClass; ?>">
                             <div class="position-relative">
-                                <img src="assets/images/announcement/<?php echo $row['img']; ?>" class="img-fluid d-block" style="width:100%; height:700px;" alt="Image">
-                                <div class="mask" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-                                      background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));">
+                                <img src="assets/images/announcement/<?php echo $row['img']; ?>" class="img-fluid icon-box d-block" style="width:100%; height:500px; border-radius: 10px;
+                                ">
+                                <div  style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+                                     ">
                                 </div>
                                 <div class="carousel-caption d-none d-md-block">
                                     <div class="card mx-auto" style=" background-color: rgba(0, 0, 0, 0.5); color: white; border: solid;max-width: 80%;" data-aos-duration="3000" data-aos="fade-up">
@@ -740,6 +741,9 @@ while ($row = mysqli_fetch_assoc($result)) {
             window.onload = function() {
                 animateValue("stats-count", 0, <?php echo $account_id; ?>, 1500); // Adjust duration as needed
             };
+
+
+            
         </script>
 
 

@@ -2,21 +2,38 @@
 session_start();
 unset($_SESSION['otp_sent']);
 unset($_SESSION['email_verified']);
+
+$adminLogged = $_SESSION['adminLogged'];
+
+if (empty($adminLogged)) {
+    header('Location: pages\login_client.php');
+    exit;
+}
+
 include 'server/client_server/conn.php';
-$sql = "SELECT * FROM settings";
+$sql = "SELECT * FROM user_account WHERE username = '$adminLogged'";
 $result = mysqli_query($connection, $sql);
-while ($row = mysqli_fetch_assoc($result)) {
-?>
+
+if ($result && mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+
+    $sql_2 = "SELECT * FROM settings";
+    $result_2 = mysqli_query($connection, $sql_2);
+    $row_2 = mysqli_fetch_assoc($result_2);
+    ?>
+    
+
     <!DOCTYPE html>
     <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>BARANGAY OR-KA-NA DAGAT-DAGATAN</title>
+        <title>CLIENT BARANGAY OR-KA-NA DAGAT-DAGATAN</title>
 
         <!-- LOGO SA TAAS -->
-        <link rel="icon" href="assets/images/logo/<?php echo $row['sLogo']; ?> " />
+        
+        <link rel="icon" href="assets/images/logo/<?php echo $row_2['sLogo']; ?> " />
         <!--PERSONAL CSS -->
         <!-- <link rel="stylesheet" href="assets/css/index.css" /> -->
         <!-- jQuery -->
@@ -384,10 +401,11 @@ while ($row = mysqli_fetch_assoc($result)) {
         <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top custom-navbar ">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="#">
-                    <img src="assets/images/logo/<?php echo $row['sLogo']; ?> " alt="Logo" width="50" height="50">
-                    <div class="alumni-organization-container pl-2">
-                        <span class="alumni-text"><?php echo $row['sName']; ?></span>
-                        <span class="organization-text"><?php echo $row['sDescription']; ?></span>
+                    <img src="assets/images/proof-pictures/<?php echo $row['profile']; ?> " class="rounded-circle mx-2 img-fluid     object-position: center;
+ object-fit-cover" alt="Logo" width="50" height="50">
+                    <div class="alumni-organization-container pl-3">
+                        <span class="alumni-text"><?php echo $row['first_name'] . ' ' . $row['middle_name'] . ' ' . $row['last_name'];
+ ?></span>
                     </div>
                 <?php } ?>
                 </a>
@@ -398,7 +416,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item ">
-                            <a class="nav-link " href="index.php">Home</a>
+                            <a class="nav-link " href="client_index.php">Home</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -919,10 +937,30 @@ while ($row = mysqli_fetch_assoc($result)) {
                     });
                 });
             });
-        </script>
+    
 
-<script>
-    // JavaScript to handle modal functionality
+    function animateValue(id, start, end, duration) {
+        var range = end - start;
+        var current = start;
+        var increment = end > start ? 1 : -1;
+        var stepTime = Math.abs(Math.floor(duration / range));
+        var obj = document.getElementsByClassName(id)[0];
+        var timer = setInterval(function() {
+            current += increment;
+            obj.textContent = current;
+            if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+                clearInterval(timer);
+                obj.textContent = end; // Ensure final count is accurate
+            }
+        }, stepTime);
+    }
+
+    // Call the animateValue function after the page has loaded
+    window.onload = function() {
+        animateValue("stats-count", 0, <?php echo $account_id; ?>, 1500); // Adjust duration as needed
+    };
+
+     // JavaScript to handle modal functionality
     // Get the modal
     var modal = document.getElementById("myModal");
 
@@ -950,27 +988,6 @@ while ($row = mysqli_fetch_assoc($result)) {
             modal.style.display = "none";
         }
     }
-
-    function animateValue(id, start, end, duration) {
-        var range = end - start;
-        var current = start;
-        var increment = end > start ? 1 : -1;
-        var stepTime = Math.abs(Math.floor(duration / range));
-        var obj = document.getElementsByClassName(id)[0];
-        var timer = setInterval(function() {
-            current += increment;
-            obj.textContent = current;
-            if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
-                clearInterval(timer);
-                obj.textContent = end; // Ensure final count is accurate
-            }
-        }, stepTime);
-    }
-
-    // Call the animateValue function after the page has loaded
-    window.onload = function() {
-        animateValue("stats-count", 0, <?php echo $account_id; ?>, 1500); // Adjust duration as needed
-    };
 </script>
 
     </body>

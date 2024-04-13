@@ -2,6 +2,14 @@
 session_start();
 include '../config/connection.php';
 
+$adminLogged = $_SESSION['adminLogged'];
+
+if (empty($adminLogged)) {
+    header('Location: pages\login_client.php');
+    exit;
+}
+
+
 ?>
 
 <!DOCTYPE html>
