@@ -74,6 +74,45 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
         overflow-x: auto;
         /* Allow horizontal scrolling for step labels */
     }
+
+    .privacy-policy-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Transparent black background */
+        z-index: 9999;
+    }
+
+    .privacy-policy-card {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 90%;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .privacy-policy-card .card-header {
+        background-color: #000000;
+        color: #ffffff;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        padding: 10px;
+    }
+
+    .privacy-policy-card .card-body {
+        padding: 20px;
+    }
+
+    .card-header strong {
+        color: #ffffff;
+    }
     </style>
 </head>
 
@@ -305,14 +344,14 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                                         <label for="register_picture" class="mt-2">Picture</label>
                                                         <input type="file" class="form-control form-control-border mt-1"
                                                             accept="image/*" id="register_picture"
-                                                            name="register_picture" required>
+                                                            name="register_picture" >
                                                     </div>
 
                                                     <div class="col form-group">
                                                         <label for="register_signature" class="mt-2">Signature</label>
                                                         <input type="file" class="form-control form-control-border mt-1"
                                                             accept="image/*" id="register_signature"
-                                                            name="register_signature" required>
+                                                            name="register_signature" >
                                                     </div>
                                                 </div>
 
@@ -561,16 +600,16 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                                         <label for="register_proofId" class="mt-2">Valid Id</label>
                                                         <input type="file" class="form-control form-control-border mt-1"
                                                             accept="image/*" id="register_proofId"
-                                                            name="register_proofId[]" multiple required>
+                                                            name="register_proofId[]" >
                                                     </div>
 
 
                                                     <div class="col form-group">
-                                                        <label for="register_proofResidence" class="mt-2">Proof of
+                                                        <label for="register_proofResidency" class="mt-2">Proof of
                                                             Residence</label>
                                                         <input type="file" class="form-control form-control-border mt-1"
-                                                            accept="image/*" id="register_proofResidence"
-                                                            name="register_proofResidence[]" required>
+                                                            accept="image/*" id="register_proofResidency"
+                                                            name="register_proofResidency[]" >
                                                     </div>
 
                                                 </div>
@@ -590,7 +629,7 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- Awards/Special Achievements -->
+                                        <!-- Account -->
                                         <div id="information-part" class="content mt-3" role="tabpanel"
                                             aria-labelledby="information-part-trigger">
                                             <h5>User Account
@@ -598,48 +637,130 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                                     onclick="addFields('awards', this)"></i>
                                             </h5>
                                             <div class="row" id="trainings_container">
-                                                <div class="col form-group" >
-                                                    <label for="register_emergencyName" class="mt-2">Emergency Contact
-                                                        Name
+                                                <div class="col form-group">
+                                                    <label for="register_accountUser" class="mt-2">Username
                                                     </label>
                                                     <input type="text" class="form-control form-control-border mt-2"
-                                                        id="register_achievements" name="register_achievements[]"
-                                                        placeholder="Achievements">
+                                                        id="register_accountUser" name="register_accountUser[]"
+                                                        placeholder="Username">
                                                 </div>
-                                                <div class="col form-group" >
-                                                    <label for="register_emergencyName" class="mt-2">Emergency Contact
-                                                        Name
+                                                <div class="col form-group">
+                                                    <label for="register_aaccountPassword" class="mt-2">Password
                                                     </label>
                                                     <input type="text" class="form-control form-control-border mt-2"
-                                                        id="register_achievements" name="register_achievements[]"
-                                                        placeholder="Achievements">
+                                                        id="register_aaccountPassword" name="register_aaccountPassword[]"
+                                                        placeholder="Password">
                                                 </div>
                                             </div>
-                                        
-                                        <div class="row">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="privacy_agreement_checkbox">
+                                                        <label class="form-check-label"
+                                                            for="privacy_agreement_checkbox">
+                                                            I have read and agree to the <a href="#"
+                                                                onclick="showPrivacyPolicy()">Terms and Privacy Policy</a>.
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="privacy_policy_modal" class="modal fade" tabindex="-1"
+                                                role="dialog">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Privacy Policy</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body"
+                                                            style="max-height: 400px; overflow-y: auto;">
+                                                            <!-- Insert your privacy policy content here -->
+<p> <strong>Terms of Service</strong>
+<pre>
+  These Terms of Service ("Terms") govern your use of the
+  Barangay 20 website ("Website") operated by [E-Governance 
+  Barangay Management System] ("us", "we", or "our").
 
-                                            <div class="col-md-6">
-                                                <a class="btn btn-primary col-md-12 mt-3"
-                                                    onclick="stepper.previous()">Back</a>
+  By accessing or using the Website, you agree to be bound
+  by these Terms. If you disagree with any part of the
+  Terms, then you may not access the Website.
+</pre>
+<strong> Privacy Policy</strong>
+<pre>
+
+  Your privacy is important to us. It is [Your Company
+  Name]'s policy to respect your privacy regarding any
+  information we may collect from you through our Website.
+
+  We only ask for personal information when we truly need
+  it to provide a service to you. We collect it by fair
+  and lawful means, with your knowledge and consent. We
+  also let you know why we’re collecting it and how it
+  will be used.
+
+  We do not share the collected data with any third
+  parties. Any information collected from users is used
+  solely for academic purposes.
+</pre>
+<strong> Data Security</strong>
+<pre>
+
+  We take reasonable precautions to protect your
+  information. When you submit sensitive information via
+  the Website, your information is protected both online
+  and offline.
+</pre>
+<strong>Changes to Terms and Privacy Policy</strong>
+<pre>
+
+  We reserve the right to update or change our Terms and
+  Privacy Policy at any time. Your continued use of the
+  Website after we post any modifications to the Terms and
+  Privacy Policy on this page will constitute your
+  acknowledgment of the modifications and your consent to
+  abide and be bound by the modified Terms and Privacy
+  Policy.
+</pre>
+<strong>Contact Us</strong>
+<pre>
+
+  If you have any questions about these Terms and Privacy
+  Policy, please contact us at [your contact information].
+</pre>
+                                                            </p>
+                                                        </div>
+                                                       
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <button type="submit"
-                                                    class="btn btn-primary col-md-12 mt-3">Submit</button>
+                                            <div class="row">
+
+                                                <div class="col-md-6">
+                                                    <a class="btn btn-primary col-md-12 mt-3"
+                                                        onclick="stepper.previous()">Back</a>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <button type="submit"
+                                                        class="btn btn-primary col-md-12 mt-3">Submit</button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- ./Awards/Special Achievements -->
+                                        <!-- ./Awards/Special Achievements -->
 
+                                    </div>
+                                </form>
                             </div>
-                            </form>
+
                         </div>
 
                     </div>
-
                 </div>
-            </div>
 
-        </div>
+            </div>
         </div>
 
         <!-- /.card-body -->
@@ -847,8 +968,23 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
 
         }
     }
-    </script>
+    
+    function showPrivacyPolicy() {
+        $('#privacy_policy_modal').modal('show');
+    }
 
+ 
+
+    function submitForm() {
+        if ($('#privacy_agreement_checkbox').prop('checked')) {
+            // Privacy policy agreed, proceed with form submission
+            // Example: document.getElementById('myForm').submit();
+            console.log('Privacy policy agreed');
+        } else {
+            alert('Please agree to the privacy policy before submitting the form.');
+        }
+    }
+    </script>
 </body>
 
 </html>

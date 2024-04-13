@@ -15,6 +15,10 @@ $pictureName = $_FILES['register_picture']['name'];
 $pictureTmpName = $_FILES['register_picture']['tmp_name'];
 $signatureName = $_FILES['register_signature']['name'];
 $signatureTmpName = $_FILES['register_signature']['tmp_name'];
+$pictureName = $_FILES['register_proofId']['name'];
+$pictureTmpName = $_FILES['register_proofId']['tmp_name'];
+$signatureName = $_FILES['register_proofResidency']['name'];
+$signatureTmpName = $_FILES['register_proofResidency']['tmp_name'];
 $allowedExtensions = ['jpg', 'jpeg', 'png'];
 $pictureExtension = strtolower(pathinfo($pictureName, PATHINFO_EXTENSION));
 $signatureExtension = strtolower(pathinfo($signatureName, PATHINFO_EXTENSION));
@@ -74,7 +78,7 @@ if ($prepared_membersSql = $db->prepare("INSERT INTO `members` (`member_id`, `ye
    $response['message'] ="An error occurred while preparing the Personal Information SQL statement: " . $prepared_membersSql->error;
 }
 
-// work_experience
+// address
 $register_workCompany = $_POST['register_workCompany'];
 $register_workPosition = $_POST['register_workPosition'];
 $register_workDuration = $_POST['register_workDuration'];
@@ -95,7 +99,7 @@ for ($i = 0; $i < count($register_workCompany); $i++) { //Using any open failed 
     }
 }
 
-// trainings
+// Emergency
 $register_trainingTitle = $_POST['register_trainingTitle'];
 $register_trainingVenue = $_POST['register_trainingVenue'];
 $register_trainingDuration = $_POST['register_trainingDuration'];
@@ -116,24 +120,23 @@ for ($i = 0; $i < count($register_trainingTitle); $i++) {
     }
 }
 
-// affiliations
-$register_affiliationsOrganizations = $_POST['register_affiliationsOrganizations'];
-$register_affiliationsPositions = $_POST['register_affiliationsPositions'];
-$register_affiliationsDuration = $_POST['register_affiliationsDuration'];
-for ($i = 0; $i < count($register_affiliationsOrganizations); $i++) {
-    $organizations = sanitizeData(getDatabase(), $register_affiliationsOrganizations[$i]);
-    $positions = sanitizeData(getDatabase(), $register_affiliationsPositions[$i]);
-    $duration = sanitizeData(getDatabase(), $register_affiliationsDuration[$i]);
+// Proof
+$register_proofId = $_POST['register_proofId'];
+$register_proofResidency = $_POST['register_proofResidency'];
+for ($i = 0; $i < count($register_proofID); $i++) {
+    $valid_id = sanitizeData(getDatabase(), $register_proofId[$i]);
+    $proof_residency = sanitizeData(getDatabase(), $register_proofResidency[$i]);
+   
 
-    if ($prepared_affiliationsSql = $db->prepare("INSERT INTO `affiliations` (`member_id`, `organizations`, `position`, `duration`) VALUES (?, ?, ?, ?)")) {
-        $prepared_affiliationsSql->bind_param("isss", $register_memberId, $organizations, $positions, $duration);
-        if (!$prepared_affiliationsSql->execute()) {
+    if ($prepared_proofSql = $db->prepare("INSERT INTO `proof` (`member_id`, `valid_id`, `proof_residency``) VALUES (?, ?, ?)")) {
+        $prepared_proofSql->bind_param("iss", $register_memberId, $valid_id, $proof_residency);
+        if (!$prepared_proofSql->execute()) {
             $response['false'] = false;
-           $response['message'] ="Error executing Affililiations SQL statement:" . $prepared_affiliationsSql->error;
+           $response['message'] ="Error executing Affililiations SQL statement:" . $prepared_proofSql->error;
         }
-        $prepared_affiliationsSql->close();
+        $prepared_proofSql->close();
     } else {
-       $response['message'] ="An error occurred while preparing the Affililiations SQL statement:" . $prepared_affiliationsSql->error;
+       $response['message'] ="An error occurred while preparing the Affililiations SQL statement:" . $prepared_proofSql->error;
     }
 }
 
