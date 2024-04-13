@@ -589,46 +589,57 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
 
                                                 </div>
                                             </div>
-
-                                         <!-- Awards/Special Achievements -->
+                                        </div>
+                                        <!-- Awards/Special Achievements -->
                                         <div id="information-part" class="content mt-3" role="tabpanel"
                                             aria-labelledby="information-part-trigger">
-                                            <h5>Awards/Special Achievements
+                                            <h5>User Account
                                                 <i class="fa-solid fa-circle-plus" style="color:green"
                                                     onclick="addFields('awards', this)"></i>
                                             </h5>
-                                            <div class="row">
-                                                <div class="row">
-                                                    <div class="row" id="awards_container">
-                                                        <input type="text" class="form-control form-control-border mt-2"
-                                                            id="register_achievements" name="register_achievements[]"
-                                                            placeholder="Achievements">
-                                                    </div>
+                                            <div class="row" id="trainings_container">
+                                                <div class="col form-group" >
+                                                    <label for="register_emergencyName" class="mt-2">Emergency Contact
+                                                        Name
+                                                    </label>
+                                                    <input type="text" class="form-control form-control-border mt-2"
+                                                        id="register_achievements" name="register_achievements[]"
+                                                        placeholder="Achievements">
+                                                </div>
+                                                <div class="col form-group" >
+                                                    <label for="register_emergencyName" class="mt-2">Emergency Contact
+                                                        Name
+                                                    </label>
+                                                    <input type="text" class="form-control form-control-border mt-2"
+                                                        id="register_achievements" name="register_achievements[]"
+                                                        placeholder="Achievements">
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <button type="submit"
-                                                        class="btn btn-primary col-md-12 mt-3">Submit</button>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <a class="btn btn-primary col-md-12 mt-3"
-                                                        onclick="stepper.previous()">Back</a>
-                                                </div>
+                                        
+                                        <div class="row">
+
+                                            <div class="col-md-6">
+                                                <a class="btn btn-primary col-md-12 mt-3"
+                                                    onclick="stepper.previous()">Back</a>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button type="submit"
+                                                    class="btn btn-primary col-md-12 mt-3">Submit</button>
                                             </div>
                                         </div>
-                                        <!-- ./Awards/Special Achievements -->
-                                        
                                     </div>
-                                </form>
-                            </div>
+                                    <!-- ./Awards/Special Achievements -->
 
+                            </div>
+                            </form>
                         </div>
 
                     </div>
-                </div>
 
+                </div>
             </div>
+
+        </div>
         </div>
 
         <!-- /.card-body -->
@@ -730,7 +741,7 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
             campus: {
                 required: true,
             },
-            
+
             'register_addResidency[]': {
                 alphabeticWithSpace: true,
             },
