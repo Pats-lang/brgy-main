@@ -21,7 +21,6 @@ include '../server/admin_login-verification.php';
 <!-- Site wrapper -->
 <div class="wrapper">
   
-<?php include 'includes/admin_navigation.php'; ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

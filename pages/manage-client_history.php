@@ -18,7 +18,7 @@ include '../server/admin_login-verification.php';
 
 <body class="hold-transition sidebar-mini layout-fixed">
 
-    <?php include 'includes/admin_navigation.php'; ?>
+
 
     <!-- Site wrapper -->
     <div class="wrapper">

@@ -8,22 +8,20 @@ if (empty($adminLogged)) {
     exit;
 }
 
-if ($prepared_adminFullnameSql = $db->prepare("SELECT `fullname`, 'role' FROM admin_users WHERE `username` = ? ")) {
-    // if ($prepared_adminFullnameSql = $db->prepare("SELECT `fullname`, `role` FROM admin WHERE `admin_username` = ? ")) {
-
+if ($prepared_adminFullnameSql = $db->prepare("SELECT `admin_fullname`, `admin` FROM admin WHERE `admin_username` = ? ")) {
     $prepared_adminFullnameSql->bind_param("s", $adminLogged);
 
     if ($prepared_adminFullnameSql->execute()) {
-        $prepared_adminFullnameSql->bind_result($db_adminFullName,$role); // Declare admin fullname and admin column.
+        $prepared_adminFullnameSql->bind_result($db_adminFullName, $admin); // Declare admin fullname and admin column.
 
         if ($prepared_adminFullnameSql->fetch()) {
             // Check the value of the admin column and include the appropriate navigation file.
-            if ($role == 1) {
+            if ($admin == 1) {
                 include 'includes/admin_navigation.php';
-            } elseif ($role == 2) {
-                include 'includes/ad_nav.php'; // Assuming this is the correct filename.
+            } elseif ($admin == 2) {
+                include 'includes/ad_nav.php'; 
             } else {
-                // Handle other cases if needed.
+               
             }
         } else {
             // Go back to login page when the binding is not successful.
@@ -40,5 +38,4 @@ if ($prepared_adminFullnameSql = $db->prepare("SELECT `fullname`, 'role' FROM ad
 }
 
 ?>
-
 

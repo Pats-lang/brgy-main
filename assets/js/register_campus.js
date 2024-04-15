@@ -23,9 +23,9 @@ function getMemberId(campus_id, sender) {
 
         let timerInterval
         Swal.fire({
-          title: 'Generating New Alumni ID Number!',
+          title: 'Generating New ID Number!',
           html: 'I will close in <b></b> milliseconds.',
-          timer: 1000,
+          timer: 800,
           timerProgressBar: true,
           didOpen: () => {
             Swal.showLoading()

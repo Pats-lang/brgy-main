@@ -1,7 +1,6 @@
-
 <?php
  $dbHost = 'localhost';
- $dbName = 'u907822938_alumnidb';
+ $dbName = 'u907822938_barangaydb';
  $dbUsername = 'root';
  $dbPassword = '';
  $connection = mysqli_connect($dbHost, $dbUsername, $dbPassword, $dbName) ;
@@ -12,10 +11,10 @@
 $sql = "SELECT * FROM settings";
 $result = mysqli_query($connection, $sql);
 while ($row = mysqli_fetch_assoc($result)){
-
 ?>
 
-<link rel="icon" href="../assets/images/logo/<?php echo $row['sLogo']; ?> "/>
+ 
+<link rel="icon" href="../../assets/images/logo/barangay.gif <?php echo $row['sLogo']; ?>"/>
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -23,14 +22,10 @@ while ($row = mysqli_fetch_assoc($result)){
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
-       
-
         <li class="nav-item d-none d-sm-inline-block">
             <a href="dashboard.php" class="nav-link">Welcome to <?php echo $row['sName']; ?></a>
         </li>
     </ul>
-
-
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -66,7 +61,7 @@ while ($row = mysqli_fetch_assoc($result)){
 <!-- /.navbar -->
 
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar main-sidebar-custom sidebar-dark-primary elevation-4">
+<aside class="main-sidebar main-sidebar-custom sidebar-light-primary elevation-4">
     <!-- Brand Logo -->
     <a href="dashboard.php" class="brand-link text-decoration-none">
         <i class="fas fa-solid fa-address-card fa-lg ml-3 mr-2"></i>
@@ -80,17 +75,17 @@ while ($row = mysqli_fetch_assoc($result)){
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                 <li class="nav-item">
-                    <a href="admin_db.php" class="nav-link">
+                    <a href="dashboard.php" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>Dashboard</p>
                         <span class="right badge badge-warning">!</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="fa-solid fa-tv nav-icon"></i>
                         <p>
-                            Manage Client Page
+                        Manage Client Page
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -98,17 +93,36 @@ while ($row = mysqli_fetch_assoc($result)){
                         <li class="nav-item">
                             <a href="../pages/manage-client_announcements.php" class="nav-link">
                                 <i class="fa-solid fa-bullhorn nav-icon"></i>
-                                <p>Announcements</p>
+                                <p>Announcement</p>
                             </a>
                         </li>
-                        
+                        <li class="nav-item">
+                            <a href="../pages/manage-client_directors.php" class="nav-link">
+                                <i class="fa-solid fa-users nav-icon"></i>
+                                <p>Brgy Officials</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="../pages/assistance.php" class="nav-link">
+                                <i class="fa-solid fa-circle-question nav-icon"></i>
+                                <p>Assistance</p>
+                            </a>
+                        </li>
+
                         <li class="nav-item">
                             <a href="../pages/manage-client_projects.php" class="nav-link">
                                 <i class="fa-solid fa-paintbrush nav-icon"></i>
                                 <p>Projects</p>
                             </a>
                         </li>
-                       
+                        <li class="nav-item">
+                            <a href="../pages/manage-client_history.php" class="nav-link">
+                                <i class="fa-solid fa-book-open nav-icon"></i>
+                                <p>History</p>
+                            </a>
+                        </li>
+
                         <li class="nav-item">
                             <a href="../pages/manage-client_inquiries.php" class="nav-link">
                                 <i class="fa-solid fa-circle-question nav-icon"></i>
@@ -116,66 +130,80 @@ while ($row = mysqli_fetch_assoc($result)){
                             </a>
                         </li>
                     </ul>
-                </li>
-
-                <li class="nav-header">Member Registration</li>
+                </li> 
+                <li class="nav-header">Resident Registration</li>
                 <li class="nav-item">
-                    <a href="register_main-campus.php" class="nav-link">
-                        <i class="fas nav-icon fa-solid fa-user-plus ml-1" style="color: #20b503; font-size: 15px;"></i>
-                        <p>Main Campus</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="register_north-campus.php" class="nav-link">
-                        <i class="fas nav-icon fa-solid fa-user-plus ml-1" style="color: #e06c00; font-size: 15px;"></i>
-                        <p>North Campus</p>
+                    <a href="register_resident.php" class="nav-link">
+                        <i class="fas nav-icon fa-solid fa-user-plus ml-1" style="color:#4285f4; font-size: 15px;"></i>
+                        <p>Registration</p>
                     </a>
                 </li>
 
-                <li class="nav-header">Alumni Members</li>
+                <li class="nav-header">
+                    Residents</li>
                 <li class="nav-item">
-                    <a href="members_main-campus.php" class="nav-link">
-                        <i class="fas fa-building nav-icon" style="color: #20b503;"></i>
-                        <p>Main Campus</p>
+                    <a href="manage_residents-verification.php" class="nav-link">
+                      
+                        <i class="fas nav-icon fa-user-check " style="color: #4285f4; font-size: 15px;"></i>
+                        <p>Residents Verification</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="members_north-campus.php" class="nav-link">
-                        <i class="fas fa-solid fa-building nav-icon" style="color: #e06c00;"></i>
-                        <p>North Campus</p>
+                    <a href="manage_residents-list.php" class="nav-link">
+                    <i class="fas  nav-icon fa-list" style="color: #4285f4; font-size: 15px;"></i>
+                        <p>Residents List</p>
                     </a>
                 </li>
+               
+
+                <li class="nav-header">Request</li>
 
                 <li class="nav-item">
-                    <a href="Idgenerator.php" class="nav-link">
-                    <i class="fa-solid fa-id-card nav-icon" style="color: #d9c80d;"></i>
-                        <p>Id Generator</p>
+                    <a href="manage_brgy_rqst_busclearance.php" class="nav-link">
+                    <i class="fas  nav-icon fa-certificate" style="color: #4285f4; font-size: 15px;"></i>
+                        <p style="font-size: 13px;">Barangay Business Clearance  </p>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="id_inquiries.php" class="nav-link">
-                        <i class="fa-solid fa-id-card nav-icon"></i>
-                        <p>Alumni ID Inquiries</p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="lost_id.php" class="nav-link">
-                    <i class="fa-solid fa-rotate-right nav-icon"></i>
-                        <p>Lost Alumni ID Inquiries</p>
+                    <a href="manage_brgy_rqst_clrs.php" class="nav-link">
+                    <i class="fas  nav-icon fa-certificate" style="color: #4285f4; font-size: 15px;"></i>
+                        <p>Barangay Clearance</p>
                     </a>
                 </li>
                 
-                
+                <li class="nav-item">
+                    <a href="manage_brgy_rqst_id.php" class="nav-link">
+                    <i class="fas  nav-icon fa-certificate" style="color: #4285f4; font-size: 15px;"></i>
+                        <p>Barangay Id</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="manage_brgy_rqst_coi.php" class="nav-link">
+                    <i class="fas  nav-icon fa-certificate" style="color: #4285f4; font-size: 15px;"></i>
+                        <p>Barangay Indigency</p>
+                    </a>
+                </li>
+             
+                <li class="nav-item">
+                    <a href="manage_brgy_rqst_cor.php" class="nav-link">
+                    <i class="fas  nav-icon fa-certificate" style="color: #4285f4; font-size: 15px;"></i>
+                        <p>Barangay Residency</p>
+                    </a>
+                </li>
+
+
                 <li class="nav-header">System </li>
+              
                 <li class="nav-item">
                     <a href="settings.php" class="nav-link">
-                        <i class="fa-solid fa-gears nav-icon"></i>
+                        <i class="fa-solid fa-gears nav-icon" style="color: #4285f4; font-size: 15px;"></i>
                         <p>Settings</p>
                     </a>
                 </li>
                
+                
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

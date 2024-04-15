@@ -27,7 +27,7 @@ include '../server/admin_login-verification.php';
     <div class="wrapper">
 
 
-        <?php include 'includes/admin_navigation.php'; ?>
+
         <div class="content-wrapper">
             <section class="content-header">
                 <div class="container-fluid">

@@ -1,5 +1,9 @@
 <?php
+include '../config/connection.php';
 
+$query = "SELECT * FROM `settings` where id=2";
+$result = mysqli_query(getDatabase(), $query);
+while ($row = mysqli_fetch_array($result)) {
 
 
 
@@ -52,7 +56,7 @@
                             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
                         </div>
                     </div>
-                   
+                    <?php } ?>
                 </form>
 
             </div>

@@ -488,12 +488,12 @@ include '../server/admin_login-verification.php';
             rules: {
                 edit_adminUsername: {
                     required: true,
-                    alphabeticWithSpace: true,
+                    pattern: /^[A-Za-z0-9!@#$%^&*()-_+=~`[\]{}|\\:;"'<>,.?/ ]+$/,
                     minlength: 4,
                 },
                 edit_adminFullName: {
                     required: true,
-                    alphabeticWithSpace: true,
+                    pattern: /^[A-Za-z0-9!@#$%^&*()-_+=~`[\]{}|\\:;"'<>,.?/ ]+$/,
                     minlength: 5,
                 },
             },
@@ -528,7 +528,7 @@ include '../server/admin_login-verification.php';
             rules: {
                 add_adminUsername: {
                     required: true,
-                    alphabeticWithSpace: true,
+                    pattern: /^[A-Za-z0-9!@#$%^&*()-_+=~`[\]{}|\\:;"'<>,.?/ ]+$/,
                     minlength: 4,
                 },
                 add_adminPassword: {
@@ -536,7 +536,7 @@ include '../server/admin_login-verification.php';
                 },
                 add_adminFullName: {
                     required: true,
-                    alphabeticWithSpace: true,
+                    pattern: /^[A-Za-z0-9!@#$%^&*()-_+=~`[\]{}|\\:;"'<>,.?/ ]+$/,
                     minlength: 5,
                 },
             },
