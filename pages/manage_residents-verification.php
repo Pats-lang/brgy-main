@@ -104,8 +104,8 @@ include '../server/admin_login-verification.php';
                         <th>Picture</th>
                         <th>Member ID</th>
                         <th>Name</th>
-                        <th>Course</th>
-                        <th>Year Graduated</th>
+                        <th>Address</th>
+                        <th>Precinct</th>
                         <th>Gender</th>
                         <th>Status</th>
                         <th class="text-center" style="width: 150px;">Actions</th>
@@ -142,10 +142,10 @@ include '../server/admin_login-verification.php';
                             <?php echo $row['name']; ?>
                           </td>
                           <td>
-                            <?php echo $row['course']; ?>
+                            <?php echo $row['address']; ?>
                           </td>
                           <td>
-                            <?php echo $row['year_graduated']; ?>
+                            <?php echo $row['precinct']; ?>
                           </td>
 
                           <td>
@@ -234,8 +234,8 @@ include '../server/admin_login-verification.php';
                         <label for="member_name" class="form-label">Name</label>
                         <input type="text" class="form-control" id="member_name" name="member_name" placeholder="Name" required readonly>
                         
-                        <label for="member_yearGraduated" class="form-label">Year Graduated</label>
-                        <input type="number" class="form-control" id="member_yearGraduated" name="member_yearGraduated" placeholder="Year Graduated" required readonly>
+                        <label for="member_precinct" class="form-label">Precinct No.</label>
+                        <input type="text" class="form-control" id="member_precinct" name="member_precinct" placeholder="Precinct No." required readonly>
                       </div>
                 </div>
 
@@ -260,8 +260,8 @@ include '../server/admin_login-verification.php';
                         <input type="number" class="form-control" id="member_cellNo" name="member_cellNo" placeholder="Tel/Cellphone #" required readonly>
                     </div>
                     <div class="col-4">
-                        <label for="member_course" class="form-label">Course</label>
-                        <input type="text" class="form-control" id="member_course" name="member_course" placeholder="Course" required readonly>
+                        <label for="member_religion" class="form-label">Religion</label>
+                        <input type="text" class="form-control" id="member_religion" name="member_religion" placeholder="religion" required readonly>
                     </div>
                 </div>
 
@@ -331,8 +331,8 @@ include '../server/admin_login-verification.php';
                           <label for="Editmember_name" class="form-label">Name</label>
                           <input type="text" class="form-control" id="Editmember_name" name="Editmember_name" placeholder="Name">
                         
-                          <label for="Editmember_yearGraduated" class="form-label">Year Graduated</label>
-                          <input type="number" class="form-control" id="Editmember_yearGraduated" name="Editmember_yearGraduated" placeholder="Year Graduated">
+                          <label for="Editmember_precinct" class="form-label">Precinct No.</label>
+                          <input type="text" class="form-control" id="Editmember_precinct" name="Editmember_precinct" placeholder="Precinct No.">
                         
                         </div>
                   </div>
@@ -359,8 +359,8 @@ include '../server/admin_login-verification.php';
                           <input type="number" class="form-control" id="Editmember_cellNo" name="Editmember_cellNo" placeholder="Tel/Cellphone #">
                       </div>
                       <div class="col-4">
-                          <label for="Editmember_course" class="form-label">Course</label>
-                          <input type="text" class="form-control" id="Editmember_course" name="Editmember_course" placeholder="Course">
+                          <label for="Editmember_religion" class="form-label">Religion</label>
+                          <input type="text" class="form-control" id="Editmember_religion" name="Editmember_religion" placeholder="Religion">
                       </div>
                   </div>
 
@@ -451,12 +451,12 @@ include '../server/admin_login-verification.php';
         success: function(response_viewMember) {
           $('#member_id').val(response_viewMember.member_id);
           $('#member_name').val(response_viewMember.name);
-          $('#member_yearGraduated').val(response_viewMember.year_graduated);
+          $('#member_precinct').val(response_viewMember.precinct);
           $('#member_emailAddress').val(response_viewMember.email_address);
           $('#member_address').val(response_viewMember.address);
           $('#member_birthDate').val(response_viewMember.birth_date);
           $('#member_cellNo').val(response_viewMember.cellphone_no);
-          $('#member_course').val(response_viewMember.course);
+          $('#member_religion').val(response_viewMember.religion);
           $('#member_civilStatus').val(response_viewMember.civil_status);
           $('#stats').val(response_viewMember.status);
           $('#member_picture').attr('src', '../assets/images/member_pictures/' + response_viewMember.picture);
@@ -477,12 +477,12 @@ include '../server/admin_login-verification.php';
         success: function(response_Editmember) {
           $('#Editmember_id').val(response_Editmember.member_id);
           $('#Editmember_name').val(response_Editmember.name);
-          $('#Editmember_yearGraduated').val(response_Editmember.year_graduated);
+          $('#Editmember_precinct').val(response_Editmember.precinct);
           $('#Editmember_emailAddress').val(response_Editmember.email_address);
           $('#Editmember_address').val(response_Editmember.address);
           $('#Editmember_birthDate').val(response_Editmember.birth_date);
           $('#Editmember_cellNo').val(response_Editmember.cellphone_no);
-          $('#Editmember_course').val(response_Editmember.course);
+          $('#Editmember_religion').val(response_Editmember.religion);
           $('#Editmember_civilStatus').val(response_Editmember.civil_status);
           $('#Editmember_picture').attr('src', '../assets/images/member_pictures/' + response_Editmember.picture);
           $('#Editmember_signature').attr('src', '../assets/images/member_pictures/' + response_Editmember.signature);
@@ -664,10 +664,10 @@ signatureFileInput.on("change", function() {
             required :true,
             alphabeticWithSpace: true,
           },
-          Editmember_yearGraduated:{
+          Editmember_precinct:{
             required :true,
-            maxlength: 4,
-            minlength: 4,
+            maxlength: 6,
+            minlength: 6,
           },
           Editmember_address:{
             required :true,
@@ -680,7 +680,7 @@ signatureFileInput.on("change", function() {
             maxlength: 11,
             minlength:11,
           },
-          Editmember_course:{
+          Editmember_religion:{
             required :true,
           },
           Editmember_civilStatus:{
@@ -705,10 +705,10 @@ messages: {
     required:'This field is required!',
     alphabeticWithSpace:"Only letters and spaces are allowed!"
     },
-    Editmember_yearGraduated:{
+    Editmember_precinct:{
       required:'This field is required!',
-      maxlength: 'Year should be exactly 4 digits long.',
-      minlength: 'Year should be exactly 4 digits long.'
+      maxlength: 'Year should be exactly 6 digits long.',
+      minlength: 'Year should be exactly 6 digits long.'
     },
     Editmember_address:{
       required:'This field is required!'
@@ -721,7 +721,7 @@ messages: {
           maxlength: 'Cell number must be exactly 11 digits long.',
           minlength: 'Cell number must be exactly 11 digits long.'
           },
-          Editmember_course:{
+          Editmember_religion:{
             required:'This field is required!'
             },
             Editmember_civilStatus:{
