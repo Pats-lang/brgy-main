@@ -60,7 +60,7 @@ if ($prepared_membersSql = $db->prepare("INSERT INTO `members` (`member_id`, `ye
         $register_name,
         $register_precinctNo,
         $register_birthDate,
-        $register_address
+        $register_address,
         $register_status,
         $register_religion,
         $register_emailAddress,
