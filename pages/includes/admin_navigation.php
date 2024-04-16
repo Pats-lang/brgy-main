@@ -197,7 +197,7 @@ while ($row = mysqli_fetch_assoc($result)){
                 <li class="nav-header">System </li>
                 <li class="nav-item">
                     <a href="system_administrators.php" class="nav-link">
-                        <i class="fa-solid fa-screwdriver-wrench nav-icon"></i>
+                        <i class="fa-solid fa-screwdriver-wrench nav-icon" style="color: #4285f4; font-size: 15px;"></i>
                         <p>System Administrators</p>
                     </a>
                 </li>
@@ -209,7 +209,7 @@ while ($row = mysqli_fetch_assoc($result)){
                 </li>
                 <li class="nav-item">
                     <a href="change_logs.php" class="nav-link">
-                        <i class="fa-solid fa-clipboard nav-icon"></i>
+                        <i class="fa-solid fa-clipboard nav-icon" style="color: #4285f4; font-size: 15px;"></i>
                         <p>Change Logs</p>
                     </a>
                 </li>

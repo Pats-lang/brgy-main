@@ -193,7 +193,7 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
 
                                     <div class="line"></div>
 
-                                    <!-- Affiliations -->
+                                    <!-- Proof -->
 
                                     <div class="step" data-target="#proof-part">
                                         <button type="button" class="step-trigger" role="tab" aria-controls="proof-part"
@@ -204,7 +204,7 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                     </div>
                                     <div class="line"></div>
 
-                                    <!-- Awards -->
+                                    <!-- account -->
                                     <div class="step" data-target="#information-part">
                                         <button type="button" class="step-trigger" role="tab"
                                             aria-controls="information-part" id="information-part-trigger">
@@ -443,7 +443,7 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                             <div class="row" id="address_container">
                                                 <div class="col form-group">
                                                     <label for="register_addPostal" class="mt-2">Postal Code</label>
-                                                    <input type="text" class="form-control form-control-border mt-2"
+                                                    <input type="number" class="form-control form-control-border mt-2"
                                                         id="register_addPostal" name="register_addPostal[]"
                                                         placeholder="Postal Code" required>
                                                 </div>
@@ -547,7 +547,7 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                                         <input type="number"
                                                             class="form-control form-control-border mt-1"
                                                             id="register_emergencyContact"
-                                                            name="register_emergencyContact"
+                                                            name="register_emergencyContact[]"
                                                             placeholder="Emergency Contact #" required>
                                                     </div>
 
@@ -634,7 +634,7 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                             aria-labelledby="information-part-trigger">
                                             <h5>User Account
                                                 <i class="fa-solid fa-circle-plus" style="color:green"
-                                                    onclick="addFields('awards', this)"></i>
+                                                    onclick="addFields('account', this)"></i>
                                             </h5>
                                             <div class="row" id="trainings_container">
                                                 <div class="col form-group">
@@ -645,10 +645,10 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                                         placeholder="Username">
                                                 </div>
                                                 <div class="col form-group">
-                                                    <label for="register_aaccountPassword" class="mt-2">Password
+                                                    <label for="register_accountPassword" class="mt-2">Password
                                                     </label>
                                                     <input type="text" class="form-control form-control-border mt-2"
-                                                        id="register_aaccountPassword" name="register_aaccountPassword[]"
+                                                        id="register_accountPassword" name="register_accountPassword[]"
                                                         placeholder="Password">
                                                 </div>
                                             </div>
@@ -749,7 +749,7 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- ./Awards/Special Achievements -->
+                                        <!-- ./account -->
 
                                     </div>
                                 </form>
@@ -810,7 +810,8 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
         rules: {
             register_precinctNo: {
                 required: true,
-                minlength: 3,
+                maxlength: 6,
+                minlength: 6,
             },
             register_name: {
                 required: true,
@@ -825,19 +826,16 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
             register_emailAddress: {
                 required: true,
                 minlength: 10,
+                email:true,
             },
             register_birthDate: {
                 required: true,
-            },
-            register_emergencyContact: {
-                required: true,
-                maxlength: 11,
-                minlength: 11,
             },
             register_cellNo: {
                 required: true,
                 maxlength: 11,
                 minlength: 11,
+                pattern: /^09\d{9}$/,
             },
 
             register_status: {
@@ -851,14 +849,7 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                 required: true,
                 accept: "image/jpeg, image/png",
             },
-            register_proofId: {
-                required: true,
-                accept: "image/jpeg, image/png",
-            },
-            register_proofResidence: {
-                required: true,
-                accept: "image/jpeg, image/png",
-            },
+       
             campus: {
                 required: true,
             },
@@ -870,7 +861,9 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                 alphabeticWithSpace: true,
             },
             'register_addPostal[]': {
-                alphabeticWithSpace: true,
+                required: true,
+                maxlength: 4,
+                minlength: 4,
             },
             'register_addDistrict[]': {
                 alphabeticWithSpace: true,
@@ -882,19 +875,29 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                 alphabeticWithSpace: true,
             },
             'register_emergencyContact[]': {
-                alphabeticWithSpace: true,
+                required: true,
+                maxlength: 11,
+                minlength: 11,
+                pattern: /^09\d{9}$/,
             },
             'register_emergencyAddress[]': {
                 alphabeticWithSpace: true,
             },
-            'register_affiliationsPositions[]': {
-                alphabeticWithSpace: true,
+            'register_register_proofId[]': {
+                required: true,
+                accept: "image/jpeg, image/png",
             },
-            'register_affiliationsDuration[]': {
-                alphabeticWithSpace: true,
+            'register_register_proofResidency[]': {
+                required: true,
+                accept: "image/jpeg, image/png",
             },
-            'register_achievements[]': {
-                alphabeticWithSpace: true,
+            'register_accountUser[]': {
+                required: true,
+                pattern: /^[A-Za-z0-9!@#$%^&*()-_+=~`[\]{}|\\:;"'<>,.?/ ]+$/,
+            },
+            'register_accountPassword[]': {
+                required: true,
+                
             },
         },
 
@@ -918,7 +921,7 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
             register_cellNo: {
                 maxlength: 'Please provide 11 digits!',
             },
-            register_emergencyContact: {
+            'register_emergencyContact[]': {
                 maxlength: 'Please provide 11 digits!',
             },
 
