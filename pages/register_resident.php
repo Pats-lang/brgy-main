@@ -31,7 +31,7 @@ include '../server/admin_login-verification.php';
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>Member Registration</h1>
+                <h1>Resident Registration</h1>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -244,7 +244,7 @@ include '../server/admin_login-verification.php';
                                             <div class="row" id="address_container">
                                                 <div class="col form-group">
                                                     <label for="register_addPostal" class="mt-2">Postal Code</label>
-                                                    <input type="text" class="form-control form-control-border mt-2"
+                                                    <input type="number" class="form-control form-control-border mt-2"
                                                         id="register_addPostal" name="register_addPostal[]"
                                                         placeholder="Postal Code" required>
                                                 </div>
@@ -332,7 +332,7 @@ include '../server/admin_login-verification.php';
                                                         <input type="number"
                                                             class="form-control form-control-border mt-1"
                                                             id="register_emergencyContact"
-                                                            name="register_emergencyContact"
+                                                            name="register_emergencyContact[]"
                                                             placeholder="Emergency Contact #" required>
                                                     </div>
 
@@ -359,14 +359,7 @@ include '../server/admin_login-verification.php';
                                                <!--   <i class="fa-solid fa-circle-plus" style="color:green"
                                                     onclick="addFields('residency', this)"></i> -->
                                             </h5>
-                                            <small class="text-muted">
-                                                Please provide one (1) valid ID and one (1) proof of residence.
-                                                <pre>
-    *The address on your proof of residence should match exactly with the addressstated address.
-    *Documents have to be dated within this month or the previous month.
-    *The file uploaded must show the entire page of your proof of residence and not just a portion of it. 
-    *Do not fold or cover any part of your proof of residence.</pre>
-                                            </small>
+                                          
                                             <div class="row" id="affiliations_container">
                                                 <div class="row">
                                                     <div class="col form-group">
@@ -404,10 +397,10 @@ include '../server/admin_login-verification.php';
                                                         placeholder="Username">
                                                 </div>
                                                 <div class="col form-group">
-                                                    <label for="register_aaccountPassword" class="mt-2">Password
+                                                    <label for="register_accountPassword" class="mt-2">Password
                                                     </label>
-                                                    <input type="text" class="form-control form-control-border mt-2"
-                                                        id="register_aaccountPassword" name="register_aaccountPassword[]"
+                                                    <input type="password" class="form-control form-control-border mt-2"
+                                                        id="register_accountPassword" name="register_accountPassword[]"
                                                         placeholder="Password">
                                                 </div>
                                             </div>
@@ -460,6 +453,7 @@ include '../server/admin_login-verification.php';
 
     <script>
     //   getMemberId("01", "../server/create_member-id.php"); 01 for Main/Edsa/South Campus
+    
     const campusSelect = document.getElementById('campus');
     const registerCampusIdInput = document.getElementById('register_campusId');
 
@@ -479,7 +473,8 @@ include '../server/admin_login-verification.php';
         rules: {
             register_precinctNo: {
                 required: true,
-                minlength: 3,
+                maxlength: 6,
+                minlength: 6,
             },
             register_name: {
                 required: true,
@@ -494,19 +489,16 @@ include '../server/admin_login-verification.php';
             register_emailAddress: {
                 required: true,
                 minlength: 10,
+                email:true,
             },
             register_birthDate: {
                 required: true,
-            },
-            register_emergencyContact: {
-                required: true,
-                maxlength: 11,
-                minlength: 11,
             },
             register_cellNo: {
                 required: true,
                 maxlength: 11,
                 minlength: 11,
+                pattern: /^09\d{9}$/,
             },
 
             register_status: {
@@ -520,14 +512,7 @@ include '../server/admin_login-verification.php';
                 required: true,
                 accept: "image/jpeg, image/png",
             },
-            register_proofId: {
-                required: true,
-                accept: "image/jpeg, image/png",
-            },
-            register_proofResidence: {
-                required: true,
-                accept: "image/jpeg, image/png",
-            },
+       
             campus: {
                 required: true,
             },
@@ -539,7 +524,9 @@ include '../server/admin_login-verification.php';
                 alphabeticWithSpace: true,
             },
             'register_addPostal[]': {
-                alphabeticWithSpace: true,
+                required: true,
+                maxlength: 4,
+                minlength: 4,
             },
             'register_addDistrict[]': {
                 alphabeticWithSpace: true,
@@ -551,19 +538,29 @@ include '../server/admin_login-verification.php';
                 alphabeticWithSpace: true,
             },
             'register_emergencyContact[]': {
-                alphabeticWithSpace: true,
+                required: true,
+                maxlength: 11,
+                minlength: 11,
+                pattern: /^09\d{9}$/,
             },
             'register_emergencyAddress[]': {
                 alphabeticWithSpace: true,
             },
-            'register_affiliationsPositions[]': {
-                alphabeticWithSpace: true,
+            'register_register_proofId[]': {
+                required: true,
+                accept: "image/jpeg, image/png",
             },
-            'register_affiliationsDuration[]': {
-                alphabeticWithSpace: true,
+            'register_register_proofResidency[]': {
+                required: true,
+                accept: "image/jpeg, image/png",
             },
-            'register_achievements[]': {
-                alphabeticWithSpace: true,
+            'register_accountUser[]': {
+                required: true,
+                pattern: /^[A-Za-z0-9!@#$%^&*()-_+=~`[\]{}|\\:;"'<>,.?/ ]+$/,
+            },
+            'register_accountPassword[]': {
+                required: true,
+                
             },
         },
 
@@ -587,7 +584,7 @@ include '../server/admin_login-verification.php';
             register_cellNo: {
                 maxlength: 'Please provide 11 digits!',
             },
-            register_emergencyContact: {
+            'register_emergencyContact[]': {
                 maxlength: 'Please provide 11 digits!',
             },
 

@@ -647,7 +647,7 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                                 <div class="col form-group">
                                                     <label for="register_accountPassword" class="mt-2">Password
                                                     </label>
-                                                    <input type="text" class="form-control form-control-border mt-2"
+                                                    <input type="password" class="form-control form-control-border mt-2"
                                                         id="register_accountPassword" name="register_accountPassword[]"
                                                         placeholder="Password">
                                                 </div>
