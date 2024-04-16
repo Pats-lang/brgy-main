@@ -17,6 +17,8 @@ while ($row = mysqli_fetch_array($result)) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barangay Managemnt System</title>
+    <link rel="icon" href="../assets/images/logo/<?php echo $row['sLogo']; ?> "/>
+    <script src="../assets/js/system_changes.js?v=<?php echo time(); ?>" defer></script>
 
    
 
@@ -66,7 +68,7 @@ while ($row = mysqli_fetch_array($result)) {
 
     <script>
     $('#admin_logInForm').on('submit', function(e) {
-        e.preventDefault();
+        e.preventDefault()
         $.ajax({
             type: 'POST',
             url: '../server/admin_validation.php',
@@ -83,6 +85,16 @@ while ($row = mysqli_fetch_array($result)) {
                             window.location.href = 'dashboard.php';
                         }
                     });
+                    // Check if a redirect path is provided in the response
+                    if (response.redirect) {
+                        setTimeout(function() {
+                            location.replace(response.redirect);
+                        }, 1500);
+                    } else {
+                        console.error("No redirect path provided in the response.");
+                    }
+
+                    systemChanges(response.admin, response.operation, response.description);
                 } else {
                     toastr.error(response.message, '', {
                         positionClass: 'toast-top-right',
@@ -95,10 +107,8 @@ while ($row = mysqli_fetch_array($result)) {
             }
         });
     });
-</script>
-</body>
+    </script>
 
-</body>
 
 </body>
 
