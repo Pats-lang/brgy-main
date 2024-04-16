@@ -90,6 +90,13 @@ include '../server/admin_login-verification.php';
                                                         id="register_birthDate" name="register_birthDate"
                                                         placeholder="Birth Date" required>
                                                 </div>
+
+                                                <div class="col form-group">
+                                                    <label for="register_address" class="mt-2">Address</Address></label>
+                                                    <input type="text" class="form-control form-control-border mt-2"
+                                                        id="register_address" name="register_address[]"
+                                                        placeholder="Address" required>
+                                                </div>
                                             </div>
 
 
@@ -233,34 +240,24 @@ include '../server/admin_login-verification.php';
                                                         placeholder="Years Of Residency" required>
                                                 </div>
 
-                                                <div class="col form-group">
-                                                    <label for="register_address" class="mt-2">Address</Address></label>
-                                                    <input type="text" class="form-control form-control-border mt-2"
-                                                        id="register_address" name="register_address[]"
-                                                        placeholder="Address" required>
-                                                </div>
+                                               
                                             </div>
 
                                             <div class="row" id="address_container">
                                                 <div class="col form-group">
                                                     <label for="register_addPostal" class="mt-2">Postal Code</label>
                                                     <input type="number" class="form-control form-control-border mt-2"
+                                                        value="1400" readonly style="background-color: #f2f2f2;"
                                                         id="register_addPostal" name="register_addPostal[]"
                                                         placeholder="Postal Code" required>
                                                 </div>
 
                                                 <div class="col form-group">
                                                     <label for="register_addDistrict" class="mt-2">District</label>
-                                                    <select
-                                                        class="custom-select rounded-0 form-control form-control-border mt-1"
-                                                        id="register_addDistrict" name="register_addDistrict" required>
-                                                        <option selected disabled>District</option>
-                                                        <option id="home">District I</option>
-                                                        <option id="tenant">District II</option>
-                                                        <option id="helper">District III</option>
-
-
-                                                    </select>
+                                                    <input type="text" class="form-control form-control-border mt-2"
+                                                        value="District II" readonly style="background-color: #f2f2f2;"
+                                                        id="register_addDistrict" name="register_addDistrict[]"
+                                                        placeholder="Barangay" required>
                                                 </div>
 
                                                 <div class="col form-group">
@@ -366,7 +363,7 @@ include '../server/admin_login-verification.php';
                                                         <label for="register_proofId" class="mt-2">Valid Id</label>
                                                         <input type="file" class="form-control form-control-border mt-1"
                                                             accept="image/*" id="register_proofId"
-                                                            name="register_proofId[]" >
+                                                            name="register_proofId[]" required>
                                                     </div>
 
 
@@ -375,7 +372,7 @@ include '../server/admin_login-verification.php';
                                                             Residence</label>
                                                         <input type="file" class="form-control form-control-border mt-1"
                                                             accept="image/*" id="register_proofResidency"
-                                                            name="register_proofResidency[]" >
+                                                            name="register_proofResidency[]" required >
                                                     </div>
 
                                                 </div>
@@ -482,9 +479,9 @@ include '../server/admin_login-verification.php';
                 minlength: 3,
             },
 
-            register_addAddress: {
+            register_Address: {
                 required: true,
-                minlength: 20,
+                minlength: 15,
             },
             register_emailAddress: {
                 required: true,

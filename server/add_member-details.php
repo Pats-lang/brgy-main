@@ -38,6 +38,7 @@ $register_memberId = sanitizeData(getDatabase(), $_POST['register_memberId']);
 $register_precinctNo = sanitizeData(getDatabase(), $_POST['register_precinctNo']);
 $register_name = sanitizeData(getDatabase(), $_POST['register_name']);
 $register_birthDate = sanitizeData(getDatabase(), $_POST['register_birthDate']);
+$register_address = sanitizeData(getDatabase(), $_POST['register_address']);
 $register_emailAddress = sanitizeData(getDatabase(), $_POST['register_emailAddress']);
 $register_cellNo = sanitizeData(getDatabase(), $_POST['register_cellNo']);
 $register_religion = sanitizeData(getDatabase(), $_POST['register_religion']);
@@ -49,9 +50,9 @@ $register_campusId = sanitizeData(getDatabase(), $_POST['register_campusId']);
 $cid = 1;
 $status= 0;
 
-if ($prepared_membersSql = $db->prepare("INSERT INTO `members` (`member_id`, `year`, `member_count`, `campus_id`, `name`, `precinct`, `birth_date`, `civil_status`, `religion`, `email_address`, `cellphone_no`, `picture`, `signature`, `cid`, `status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
+if ($prepared_membersSql = $db->prepare("INSERT INTO `members` (`member_id`, `year`, `member_count`, `campus_id`, `name`, `precinct`, `birth_date` , `address`, `civil_status`, `religion`, `email_address`, `cellphone_no`, `picture`, `signature`, `cid`, `status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
     $prepared_membersSql->bind_param(
-        "isissssssssssii",
+        "isisssssssssssii",
         $register_memberId,
         $register_yearToday,
         $register_memberCount,
@@ -59,6 +60,7 @@ if ($prepared_membersSql = $db->prepare("INSERT INTO `members` (`member_id`, `ye
         $register_name,
         $register_precinctNo,
         $register_birthDate,
+        $register_address
         $register_status,
         $register_religion,
         $register_emailAddress,
@@ -82,7 +84,7 @@ if ($prepared_membersSql = $db->prepare("INSERT INTO `members` (`member_id`, `ye
 // address
 $register_addResidency = (array)$_POST['register_addResidency'];
 $register_addYears = (array)$_POST['register_addYears'];
-$register_address = (array)$_POST['register_address'];
+
 $register_addPostal = (array)$_POST['register_addPostal'];
 $register_addDistrict = (array)$_POST['register_addDistrict'];
 $register_addBarangay = (array)$_POST['register_addBarangay'];
@@ -92,7 +94,7 @@ $register_addCity = (array)$_POST['register_addCity'];
 for ($i = 0; $i < count($register_addResidency); $i++) { //Using any open failed to count the maximum count of rows.
     $residency = sanitizeData(getDatabase(), $register_addResidency[$i]);
     $yrs_res = sanitizeData(getDatabase(), $register_addYears[$i]);
-    $address = sanitizeData(getDatabase(), $register_address[$i]);
+
     $postal = sanitizeData(getDatabase(), $register_addPostal[$i]);
     $district = sanitizeData(getDatabase(), $register_addDistrict[$i]);
     $brgy = sanitizeData(getDatabase(), $register_addBarangay[$i]);
@@ -100,8 +102,8 @@ for ($i = 0; $i < count($register_addResidency); $i++) { //Using any open failed
     $province = sanitizeData(getDatabase(), $register_addProvince[$i]);
     $city = sanitizeData(getDatabase(), $register_addCity[$i]);
 
-    if ($prepared_membersWorkSql = $db->prepare("INSERT INTO `member_address` (`member_id`, `residency`, `yrs_res`, `address`, `postal`, `district`, `brgy`, `region`, `province`, `city`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
-        $prepared_membersWorkSql->bind_param("isssssssss", $register_memberId, $residency, $yrs_res, $address, $postal, $district, $brgy, $region, $province, $city);
+    if ($prepared_membersWorkSql = $db->prepare("INSERT INTO `member_address` (`member_id`, `residency`, `yrs_res`, `postal`, `district`, `brgy`, `region`, `province`, `city`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
+        $prepared_membersWorkSql->bind_param("issssssss", $register_memberId, $residency, $yrs_res, $postal, $district, $brgy, $region, $province, $city);
         if (!$prepared_membersWorkSql->execute()) {
             $response['false'] = false;
            $response['message'] ="Error executing Work Experience SQL statement:" . $prepared_membersWorkSql->error;

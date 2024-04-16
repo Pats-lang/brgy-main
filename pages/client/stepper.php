@@ -251,6 +251,13 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                                         id="register_birthDate" name="register_birthDate"
                                                         placeholder="Birth Date" required>
                                                 </div>
+
+                                                <div class="col form-group">
+                                                    <label for="register_address" class="mt-2">Address</Address></label>
+                                                    <input type="text" class="form-control form-control-border mt-2"
+                                                        id="register_address" name="register_address"
+                                                        placeholder="Address" required>
+                                                </div>
                                             </div>
 
 
@@ -432,34 +439,24 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                                         placeholder="Years Of Residency" required>
                                                 </div>
 
-                                                <div class="col form-group">
-                                                    <label for="register_address" class="mt-2">Address</Address></label>
-                                                    <input type="text" class="form-control form-control-border mt-2"
-                                                        id="register_address" name="register_address[]"
-                                                        placeholder="Address" required>
-                                                </div>
+                                               
                                             </div>
 
                                             <div class="row" id="address_container">
-                                                <div class="col form-group">
+                                            <div class="col form-group">
                                                     <label for="register_addPostal" class="mt-2">Postal Code</label>
                                                     <input type="number" class="form-control form-control-border mt-2"
+                                                        value="1400" readonly style="background-color: #f2f2f2;"
                                                         id="register_addPostal" name="register_addPostal[]"
                                                         placeholder="Postal Code" required>
                                                 </div>
 
                                                 <div class="col form-group">
                                                     <label for="register_addDistrict" class="mt-2">District</label>
-                                                    <select
-                                                        class="custom-select rounded-0 form-control form-control-border mt-1"
-                                                        id="register_addDistrict" name="register_addDistrict" required>
-                                                        <option selected disabled>District</option>
-                                                        <option id="home">District I</option>
-                                                        <option id="tenant">District II</option>
-                                                        <option id="helper">District III</option>
-
-
-                                                    </select>
+                                                    <input type="text" class="form-control form-control-border mt-2"
+                                                        value="District II" readonly style="background-color: #f2f2f2;"
+                                                        id="register_addDistrict" name="register_addDistrict[]"
+                                                        placeholder="Barangay" required>
                                                 </div>
 
                                                 <div class="col form-group">
@@ -600,7 +597,7 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                                         <label for="register_proofId" class="mt-2">Valid Id</label>
                                                         <input type="file" class="form-control form-control-border mt-1"
                                                             accept="image/*" id="register_proofId"
-                                                            name="register_proofId[]" >
+                                                            name="register_proofId[]" required>
                                                     </div>
 
 
@@ -609,7 +606,7 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                                             Residence</label>
                                                         <input type="file" class="form-control form-control-border mt-1"
                                                             accept="image/*" id="register_proofResidency"
-                                                            name="register_proofResidency[]" >
+                                                            name="register_proofResidency[]" required >
                                                     </div>
 
                                                 </div>
@@ -642,14 +639,14 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                                     </label>
                                                     <input type="text" class="form-control form-control-border mt-2"
                                                         id="register_accountUser" name="register_accountUser[]"
-                                                        placeholder="Username">
+                                                        placeholder="Username" required>
                                                 </div>
                                                 <div class="col form-group">
                                                     <label for="register_accountPassword" class="mt-2">Password
                                                     </label>
                                                     <input type="password" class="form-control form-control-border mt-2"
                                                         id="register_accountPassword" name="register_accountPassword[]"
-                                                        placeholder="Password">
+                                                        placeholder="Password" required>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -660,7 +657,7 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                                         <label class="form-check-label"
                                                             for="privacy_agreement_checkbox">
                                                             I have read and agree to the <a href="#"
-                                                                onclick="showPrivacyPolicy()">Terms and Privacy Policy</a>.
+                                                                onclick="showPrivacyPolicy() required">Terms and Privacy Policy </a>.
                                                         </label>
                                                     </div>
                                                 </div>
@@ -819,9 +816,9 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                 minlength: 3,
             },
 
-            register_addAddress: {
+            register_Address: {
                 required: true,
-                minlength: 20,
+                minlength: 15,
             },
             register_emailAddress: {
                 required: true,
@@ -909,7 +906,7 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                 required: 'Please Enter your Name!',
             },
 
-            register_addAddress: {
+            register_Address: {
                 required: 'Please provide a valid Address!',
             },
             register_emailAddress: {
