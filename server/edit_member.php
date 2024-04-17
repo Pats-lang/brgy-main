@@ -87,13 +87,13 @@ $_address = $_POST['Editmember_address'];
 $_emailaddress = $_POST['Editmember_emailAddress'];
 $_birthDate = $_POST['Editmember_birthDate'];
 $_cellNo = $_POST['Editmember_cellNo'];
-$_course = $_POST['Editmember_course'];
+$_religion = $_POST['Editmember_religion'];
 $_civilStatus = $_POST['Editmember_civilStatus'];
 $_id = $_POST['Editmember_id'];
 $status = $_POST['stats'];
 
-if ($preparedSql = $db->prepare("UPDATE `members` SET `name`= ?, `address`= ?, `birth_date`= ?, `civil_status`= ?, `course`= ?, `precinct`= ?, `email_address`= ?, `cellphone_no`= ?, `picture`= ?,`signature`= ?, `status`= ? WHERE `member_id`= ?")) {
-    $preparedSql->bind_param("sssssisissis", $_name, $_address, $_birthDate, $_civilStatus, $_course, $_precinct, $_emailaddress, $_cellNo, $_picture, $_signature, $status, $_id);
+if ($preparedSql = $db->prepare("UPDATE `members` SET `name`= ?, `address`= ?, `birth_date`= ?, `civil_status`= ?, `religion`= ?, `precinct`= ?, `email_address`= ?, `cellphone_no`= ?, `picture`= ?,`signature`= ?, `status`= ? WHERE `member_id`= ?")) {
+    $preparedSql->bind_param("sssssisissis", $_name, $_address, $_birthDate, $_civilStatus, $_religion, $_precinct, $_emailaddress, $_cellNo, $_picture, $_signature, $status, $_id);
 
     if ($preparedSql->execute()) {
         $response['status'] = true;

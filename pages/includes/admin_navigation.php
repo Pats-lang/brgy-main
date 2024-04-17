@@ -193,6 +193,14 @@ while ($row = mysqli_fetch_assoc($result)){
                     </a>
                 </li>
 
+                <li class="nav-header">ID  </li>
+                <li class="nav-item">
+                    <a href="Idgenerator.php" class="nav-link">
+                        <i class="fa-solid fa-id-card nav-icon" style="color: #4285f4; font-size: 15px;"></i>
+                        <p>Generated ID</p>
+                    </a>
+                </li>
+
 
                 <li class="nav-header">System </li>
                 <li class="nav-item">
@@ -205,6 +213,12 @@ while ($row = mysqli_fetch_assoc($result)){
                     <a href="settings.php" class="nav-link">
                         <i class="fa-solid fa-gears nav-icon" style="color: #4285f4; font-size: 15px;"></i>
                         <p>Settings</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="archive.php" class="nav-link">
+                        <i class="fa-solid fa-box-archive nav-icon" style="color: #4285f4; font-size: 15px;"></i>
+                        <p>Archive</p>
                     </a>
                 </li>
                 <li class="nav-item">

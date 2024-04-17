@@ -61,8 +61,8 @@ include '../../server/client_server/conn.php';
     </head>
 
     <body class="index-page" data-bs-spy="scroll" data-bs-target="#navmenu">
-
-        <!-- Breadcrumb Background (placed first in the HTML structure) -->
+    <?php include '../includes/client_navigation.php'; ?>
+        <!-- Breadcrumb Background (placed first in the HTML structure) 
         <section>
             <div class="bg-warning py-0">
                 <div class="container">
@@ -79,7 +79,7 @@ include '../../server/client_server/conn.php';
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- Centered Card -->
         <div class="container d-flex justify-content-center align-items-center" style="height: 80vh;">

@@ -74,13 +74,13 @@ include '../server/admin_login-verification.php';
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Resident Verification</h1>
+              <h1>Archive</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item text-decoration-none"><a href="dashboard.php">Home</a></li>
-                <li class="breadcrumb-item text-decoration-none text-secondary"><i>Resident Verification</i>
-                <li class="breadcrumb-item text-secondary">Verification </li>
+                <li class="breadcrumb-item text-decoration-none text-secondary"><i>Archive</i>
+                <li class="breadcrumb-item text-secondary">Archive </li>
               </ol>
             </div>
           </div>
@@ -93,7 +93,7 @@ include '../server/admin_login-verification.php';
               <div class="card card-primary">
                 <div class="ribbon-wrapper ribbon-lg">
                   <div class="ribbon text-white text-bold" style="background-color: #20b503">
-                     Verification
+                  Archive
                   </div>
                 </div>
 
@@ -115,7 +115,7 @@ include '../server/admin_login-verification.php';
                     <tbody>
 
                       <?php
-                      $query = "SELECT * FROM `members` WHERE `status` = '0' ";
+                      $query = "SELECT * FROM `members` WHERE `status` = '2' ";
                       $result = mysqli_query(getDatabase(), $query);
                       while ($row = mysqli_fetch_array($result)) {
 

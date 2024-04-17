@@ -64,8 +64,8 @@ if (!isset($_SESSION['email_verified']) || $_SESSION['email_verified'] !== true)
     </head>
 
     <body class="index-page" data-bs-spy="scroll" data-bs-target="#navmenu">
-
-        <section>
+    <?php include '../includes/client_navigation.php'; ?>
+      <!--   <section>
             <div class="bg-warning py-0">
                 <div class="container">
                     <div class="mx-auto">
@@ -81,7 +81,7 @@ if (!isset($_SESSION['email_verified']) || $_SESSION['email_verified'] !== true)
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <div class="container d-flex justify-content-center align-items-center" style="height: 80vh;">
             <div class="col-md-8">

@@ -117,8 +117,8 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
 </head>
 
 <body class="index-page" data-bs-spy="scroll" data-bs-target="#navmenu">
-
-    <section>
+<?php include '../includes/client_navigation.php'; ?>
+<!--  <section>
         <div class="bg-warning py-0">
             <div class="container">
                 <div class="mx-auto">
@@ -134,7 +134,7 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- <div data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000" data-aos-easing="ease-in-out"
             data-aos-offset="200" data-aos-anchor="#my-element" data-aos-once="true">
