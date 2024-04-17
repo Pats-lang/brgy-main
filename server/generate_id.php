@@ -44,3 +44,5 @@ $connection->close();
 echo json_encode(['success' => true, 'pictureFileName' => $pictureFileName, 'signatureFileName' => $signatureFileName]);
 
 ?>
+
+

@@ -187,24 +187,27 @@ for ($i = 0; $i < count($proofIdName); $i++) {
     }
 
 
-// account
+//account
 $register_accountUser = $_POST['register_accountUser'];
 $register_accountPassword = $_POST['register_accountPassword'];
+
 for ($i = 0; $i < count($register_accountUser); $i++) {
     $username = sanitizeData(getDatabase(), $register_accountUser[$i]);
     $password = sanitizeData(getDatabase(), $register_accountPassword[$i]);
+    $register_accountPassword_hashed = password_hash($password, PASSWORD_DEFAULT); // Hash the password here
 
     if ($prepared_achievementsSql = $db->prepare("INSERT INTO `member_account` (`member_id`, `username`, `password`) VALUES (?, ?, ?)")) {
-        $prepared_achievementsSql->bind_param("iss", $register_memberId, $username, $password);
+        $prepared_achievementsSql->bind_param("iss", $register_memberId, $username, $register_accountPassword_hashed);
         if (!$prepared_achievementsSql->execute()) {
             $response['false'] = false;
-           $response['message'] ="Error executing Achievements SQL statement:" . $prepared_achievementsSql->error;
+            $response['message'] ="Error executing Achievements SQL statement:" . $prepared_achievementsSql->error;
         }
         $prepared_achievementsSql->close();
     } else {
-       $response['message'] ="An error occurred while preparing the Achievements SQL statement:" . $prepared_achievementsSql->error;
+        $response['message'] ="An error occurred while preparing the Achievements SQL statement:" . $prepared_achievementsSql->error;
     }
 }
+
 
 
 
