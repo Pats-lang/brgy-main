@@ -1,13 +1,14 @@
 <?php
 include '../config/connection.php';
 session_start();
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
 $response = array(
     'status' => true,
     'icon' => '',
     'message' => '',
     'count' => 0,
+    'admin' => '',
+    'operation' => '',
+    'description' => ''
 );
 // personal_information
 $uploadDirectory = "../assets/images/member_pictures/";
@@ -38,7 +39,7 @@ $register_memberId = sanitizeData(getDatabase(), $_POST['register_memberId']);
 $register_precinctNo = sanitizeData(getDatabase(), $_POST['register_precinctNo']);
 $register_name = sanitizeData(getDatabase(), $_POST['register_name']);
 $register_birthDate = sanitizeData(getDatabase(), $_POST['register_birthDate']);
-$register_address = sanitizeData(getDatabase(), $_POST['register_address']);
+$register_addAddress = sanitizeData(getDatabase(), $_POST['register_addAddress']);
 $register_emailAddress = sanitizeData(getDatabase(), $_POST['register_emailAddress']);
 $register_cellNo = sanitizeData(getDatabase(), $_POST['register_cellNo']);
 $register_religion = sanitizeData(getDatabase(), $_POST['register_religion']);
@@ -60,7 +61,7 @@ if ($prepared_membersSql = $db->prepare("INSERT INTO `members` (`member_id`, `ye
         $register_name,
         $register_precinctNo,
         $register_birthDate,
-        $register_address,
+        $register_addAddress,
         $register_status,
         $register_religion,
         $register_emailAddress,
@@ -80,7 +81,6 @@ if ($prepared_membersSql = $db->prepare("INSERT INTO `members` (`member_id`, `ye
 } else {
    $response['message'] ="An error occurred while preparing the Personal Information SQL statement: " . $prepared_membersSql->error;
 }
-
 // address
 $register_addResidency = (array)$_POST['register_addResidency'];
 $register_addYears = (array)$_POST['register_addYears'];
@@ -115,15 +115,16 @@ for ($i = 0; $i < count($register_addResidency); $i++) { //Using any open failed
 }
 
 // Emergency
-$register_emergencyName = $_POST['register_emergencyName'];
-$register_emergencyRelation = $_POST['register_emergencyRelation'];
-$register_emergencyContact = $_POST['register_emergencyContact'];
-$register_emergencyAddress = $_POST['register_emergencyAddress'];
+$register_emergencyName = $_POST['register_emergencyName'] ?? [];
+$register_emergencyRelation = $_POST['register_emergencyRelation'] ?? [];
+$register_emergencyContact = $_POST['register_emergencyContact'] ?? [];
+$register_emergencyAddress = $_POST['register_emergencyAddress'] ?? [];
 for ($i = 0; $i < count($register_emergencyName); $i++) {
-    $contact_name = sanitizeData(getDatabase(), $register_emergencyName[$i]);
-    $contact_relation = sanitizeData(getDatabase(), $register_emergencyRelation[$i]);
-    $contact_no = sanitizeData(getDatabase(), $register_emergencyContact[$i]);
-    $contact_address = sanitizeData(getDatabase(), $register_emergencyAddress[$i]);
+    $contact_name = isset($register_emergencyName[$i]) ? sanitizeData(getDatabase(), $register_emergencyName[$i]) : '';
+    $contact_relation = isset($register_emergencyRelation[$i]) ? sanitizeData(getDatabase(), $register_emergencyRelation[$i]) : '';
+    $contact_no = isset($register_emergencyContact[$i]) ? sanitizeData(getDatabase(), $register_emergencyContact[$i]) : '';
+    $contact_address = isset($register_emergencyAddress[$i]) ? sanitizeData(getDatabase(), $register_emergencyAddress[$i]) : '';
+
 
 
     if ($prepared_trainingsSql = $db->prepare("INSERT INTO `member_emergency` (`member_id`, `contact_name`, `contact_relation`, `contact_no`, `contact_address`) VALUES (?, ?, ?, ?, ?)")) {

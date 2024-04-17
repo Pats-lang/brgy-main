@@ -92,12 +92,13 @@ include '../server/admin_login-verification.php';
                                                 </div>
 
                                                 <div class="col form-group">
-                                                    <label for="register_address" class="mt-2">Address</Address></label>
+                                                    <label for="register_addAddress" class="mt-2">Address</Address></label>
                                                     <input type="text" class="form-control form-control-border mt-2"
-                                                        id="register_address" name="register_address[]"
+                                                        id="register_addAddress" name="register_addAddress"
                                                         placeholder="Address" required>
                                                 </div>
                                             </div>
+                                            
 
 
                                             <div class="row">
@@ -334,12 +335,12 @@ include '../server/admin_login-verification.php';
                                                     </div>
 
                                                     <div class="col form-group">
-                                                        <label for="register_emergencyAddress" class="mt-2">Emergency
+                                                        <label for="register_emergencyaddAddress" class="mt-2">Emergency
                                                             Contact Address</label>
                                                         <input type="text"
                                                             class="form-control form-control-border  mt-2"
-                                                            id="register_emergencyAddress"
-                                                            name="register_emergencyAddress[]"
+                                                            id="register_emergencyaddAddress"
+                                                            name="register_emergencyaddAddress[]"
                                                             placeholder="Emergency Contact Address" required>
                                                     </div>
 
@@ -479,7 +480,7 @@ include '../server/admin_login-verification.php';
                 minlength: 3,
             },
 
-            register_Address: {
+            register_addAddress: {
                 required: true,
                 minlength: 15,
             },
