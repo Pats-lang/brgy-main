@@ -187,7 +187,7 @@ for ($i = 0; $i < count($proofIdName); $i++) {
     }
 
 
-// achievements
+// account
 $register_accountUser = $_POST['register_accountUser'];
 $register_accountPassword = $_POST['register_accountPassword'];
 for ($i = 0; $i < count($register_accountUser); $i++) {

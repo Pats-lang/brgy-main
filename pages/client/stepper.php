@@ -20,7 +20,7 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EGBMS|BARANGAY 20 OR-KA-NA DAGAT-DAGATAN</title>
+    <title>EGBMS | E-Governance Barangay Management System</title>
     <script src="../../assets/js/register_campus.js?v=<?php echo time(); ?>" defer></script>
     <script src="../../assets/js/client/submit_member-details.js?v=<?php echo time(); ?>" defer></script>
 
@@ -742,7 +742,8 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                                 </div>
                                                 <div class="col-md-6">
                                                     <button type="submit"
-                                                        class="btn btn-primary col-md-12 mt-3">Submit</button>
+                                                        class="btn btn-primary col-md-12 mt-3" >
+                                                        Submit</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -799,8 +800,8 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
     });
 
 
-    jQuery.validator.addMethod("alphabeticWithSpace", function(value, element) {
-        return this.optional(element) || /^[a-zA-Z\s ]+$/.test(value);
+    jQuery.validator.addMethod("alphabeticWithSpaceAndDot", function(value, element) {
+        return this.optional(element) || /^[a-zA-Z\s.]*$/.test(value);
     }, "Please enter alphabetic characters only.");
     // Form validation
     var validate_form = $('#registerMemberForm').validate({
@@ -812,7 +813,7 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
             },
             register_name: {
                 required: true,
-                alphabeticWithSpace: true,
+                alphabeticWithSpaceAndDot: true,
                 minlength: 3,
             },
 
@@ -852,10 +853,10 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
             },
 
             'register_addResidency[]': {
-                alphabeticWithSpace: true,
+                alphabeticWithSpaceAndDot: true,
             },
             'register_addYear[]': {
-                alphabeticWithSpace: true,
+                alphabeticWithSpaceAndDot: true,
             },
             'register_addPostal[]': {
                 required: true,
@@ -863,13 +864,13 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                 minlength: 4,
             },
             'register_addDistrict[]': {
-                alphabeticWithSpace: true,
+                required: true,
             },
             'register_emergencyName[]': {
-                alphabeticWithSpace: true,
+                alphabeticWithSpaceAndDot: true,
             },
             'register_emergencyRelation[]': {
-                alphabeticWithSpace: true,
+                alphabeticWithSpaceAndDot: true,
             },
             'register_emergencyContact[]': {
                 required: true,
@@ -878,7 +879,7 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                 pattern: /^09\d{9}$/,
             },
             'register_emergencyAddress[]': {
-                alphabeticWithSpace: true,
+                alphabeticWithSpaceAndDot: true,
             },
             'register_register_proofId[]': {
                 required: true,
@@ -968,6 +969,8 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
 
         }
     }
+
+   
     
     function showPrivacyPolicy() {
         $('#privacy_policy_modal').modal('show');

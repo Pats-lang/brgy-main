@@ -463,8 +463,8 @@ include '../server/admin_login-verification.php';
     });
 
 
-    jQuery.validator.addMethod("alphabeticWithSpace", function(value, element) {
-        return this.optional(element) || /^[a-zA-Z\s ]+$/.test(value);
+    jQuery.validator.addMethod("alphabeticWithSpaceAndDot", function(value, element) {
+        return this.optional(element) ||  /^[a-zA-Z\s.]*$/.test(value);
     }, "Please enter alphabetic characters only.");
     // Form validation
     var validate_form = $('#registerMemberForm').validate({
@@ -476,7 +476,7 @@ include '../server/admin_login-verification.php';
             },
             register_name: {
                 required: true,
-                alphabeticWithSpace: true,
+                alphabeticWithSpaceAndDot: true,
                 minlength: 3,
             },
 
@@ -516,10 +516,10 @@ include '../server/admin_login-verification.php';
             },
 
             'register_addResidency[]': {
-                alphabeticWithSpace: true,
+                alphabeticWithSpaceAndDot: true,
             },
             'register_addYear[]': {
-                alphabeticWithSpace: true,
+                alphabeticWithSpaceAndDot: true,
             },
             'register_addPostal[]': {
                 required: true,
@@ -527,13 +527,13 @@ include '../server/admin_login-verification.php';
                 minlength: 4,
             },
             'register_addDistrict[]': {
-                alphabeticWithSpace: true,
+                alphabeticWithSpaceAndDot: true,
             },
             'register_emergencyName[]': {
-                alphabeticWithSpace: true,
+                alphabeticWithSpaceAndDot: true,
             },
             'register_emergencyRelation[]': {
-                alphabeticWithSpace: true,
+                alphabeticWithSpaceAndDot: true,
             },
             'register_emergencyContact[]': {
                 required: true,
@@ -542,7 +542,7 @@ include '../server/admin_login-verification.php';
                 pattern: /^09\d{9}$/,
             },
             'register_emergencyAddress[]': {
-                alphabeticWithSpace: true,
+                alphabeticWithSpaceAndDot: true,
             },
             'register_register_proofId[]': {
                 required: true,

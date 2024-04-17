@@ -185,25 +185,26 @@ for ($i = 0; $i < count($proofIdName); $i++) {
        $response['message'] ="An error occurred while preparing the Affililiations SQL statement:" . $prepared_proofSql->error;
     }
 
-
-// achievements
-$register_accountUser = $_POST['register_accountUser'];
-$register_accountPassword = $_POST['register_accountPassword'];
-for ($i = 0; $i < count($register_accountUser); $i++) {
-    $username = sanitizeData(getDatabase(), $register_accountUser[$i]);
-    $password = sanitizeData(getDatabase(), $register_accountPassword[$i]);
-
-    if ($prepared_achievementsSql = $db->prepare("INSERT INTO `member_account` (`member_id`, `username`, `password`) VALUES (?, ?, ?)")) {
-        $prepared_achievementsSql->bind_param("iss", $register_memberId, $username, $password);
-        if (!$prepared_achievementsSql->execute()) {
-            $response['false'] = false;
-           $response['message'] ="Error executing Achievements SQL statement:" . $prepared_achievementsSql->error;
+//account
+    $register_accountUser = $_POST['register_accountUser'];
+    $register_accountPassword = $_POST['register_accountPassword'];
+    
+    for ($i = 0; $i < count($register_accountUser); $i++) {
+        $username = sanitizeData(getDatabase(), $register_accountUser[$i]);
+        $password = sanitizeData(getDatabase(), $register_accountPassword[$i]);
+        $register_accountPassword_hashed = password_hash($password, PASSWORD_DEFAULT); // Hash the password here
+    
+        if ($prepared_achievementsSql = $db->prepare("INSERT INTO `member_account` (`member_id`, `username`, `password`) VALUES (?, ?, ?)")) {
+            $prepared_achievementsSql->bind_param("iss", $register_memberId, $username, $register_accountPassword_hashed);
+            if (!$prepared_achievementsSql->execute()) {
+                $response['false'] = false;
+                $response['message'] ="Error executing Achievements SQL statement:" . $prepared_achievementsSql->error;
+            }
+            $prepared_achievementsSql->close();
+        } else {
+            $response['message'] ="An error occurred while preparing the Achievements SQL statement:" . $prepared_achievementsSql->error;
         }
-        $prepared_achievementsSql->close();
-    } else {
-       $response['message'] ="An error occurred while preparing the Achievements SQL statement:" . $prepared_achievementsSql->error;
     }
-}
 
 
 
@@ -329,24 +330,19 @@ if ($response['status']) {
            <tr>
                <td class='form-details'>
                <h2>Greetings {$register_name}!</h2>
-               <p>Your reservation status is currently 
+               <p>Your Registration status is currently 
                <b><span style='color:orange;'> &nbsp; PENDING</span></b></p>
 
                <p><b>I hope this email finds you well.</b>
-               We have received your <b> request</b>, and we 
-               appreciate your prompt action in processing the payment.</p>  
+               We would like to inform you that we have received your registration request on our system.</p>  
                
-               <p>To expedite the approval process, kindly make the payment of
-                One hundred Pesos (100) to the following <b>GCash number: 09196994697</b>.</p>
+               <p>However, it seems that your registration is currently<b> PENDING</b>. We assure you that our team is diligently reviewing your request to ensure a seamless onboarding process.</p>
 
-                <p>Once the payment is made, <b>please send a screenshot of the transaction </b>
-                confirmation to this Email. This will help us verify your 
-                payment quickly and approve your  request.</p>
+                <p>Please bear with us as we finalize the verification process. Rest assured, we will notify you promptly once your account is approved and ready for use.</p>
 
-                <p>We understand the importance of having your request, and we aim to process your request promptly. 
-                Thank you for your cooperation in this matter.</p>
+                <p>In the meantime, if you have any questions or need further assistance, feel free to reach out. We're here to help!</p>
 
-                <b><p>We hope that this response answered your inquiry, we also hope that this helped you. </p> </b>
+                <b><p>Thank you for your patience and understanding. </p> </b>
                 <b><p>For more inquiries feel free to reach us!</p></b>
                </td>
            </tr>
