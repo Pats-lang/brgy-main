@@ -87,7 +87,7 @@ if (mysqli_num_rows($result) > 0) {
 
     <body class="index-page" data-bs-spy="scroll" data-bs-target="#navmenu">
 
-        <?php include('../includes/client_navigation.php'); ?>
+        <?php include('../includes/client_nav.php'); ?>
 
         <section>
             <div class="bg-light">

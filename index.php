@@ -407,13 +407,13 @@ while ($row = mysqli_fetch_assoc($result)) {
             </div>
 
             <?php
-            $sql = "SELECT COUNT(*) AS account_id FROM user_account";
+            $sql = "SELECT COUNT(*) AS member_id FROM members";
             $result = mysqli_query($connection, $sql);
             $row = mysqli_fetch_assoc($result);
-            $account_id = $row['account_id'];
+            $member_id = $row['member_id'];
 
             // Format the total count as "00:01"
-            $formatted_count = sprintf("%02d%02d", floor($account_id / 60), $account_id % 60);
+            $formatted_count = sprintf("%02d%02d", floor($member_id / 60), $member_id % 60);
             ?>
 
 
@@ -423,10 +423,10 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
                     <div class="row gy-4">
                         <?php
-                        $sql = "SELECT COUNT(*) AS account_id FROM user_account WHERE status = '2'";
+                        $sql = "SELECT COUNT(*) AS member_id FROM members WHERE status = '1'";
                         $result = mysqli_query($connection, $sql);
                         $row = mysqli_fetch_assoc($result);
-                        $account_id = $row['account_id'];
+                        $account_id = $row['member_id'];
 
                         ?>
 

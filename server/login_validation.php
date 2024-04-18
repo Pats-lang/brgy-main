@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $admin_username = sanitizeData(getDatabase(), $_POST["username"]);
     $admin_password = sanitizeData(getDatabase(), $_POST["password"]);
 
-    if ($preparedSql = $db->prepare("SELECT `username`, `password` FROM `user_account` WHERE `username` = ? AND `status` = 2")) {
+    if ($preparedSql = $db->prepare("SELECT username, password FROM member_account WHERE username = ? ")) {
         $preparedSql->bind_param("s", $admin_username);
 
         if ($preparedSql->execute()) {

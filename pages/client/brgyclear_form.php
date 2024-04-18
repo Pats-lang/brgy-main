@@ -2,6 +2,9 @@
 include 'header.php';
 include '../../server/client_server/conn.php';
 
+session_start();
+
+
 if (!$connection) {
     die("Database connection failed: " . mysqli_connect_error());
 }
@@ -14,6 +17,34 @@ $randomNumber = mt_rand(100000, 999999);
 
 // Create the transaction ID
 $transaction_id = $currentYear . '-' . $randomNumber ;
+
+$adminLogged = $_SESSION['adminLogged'];
+
+
+
+if (empty($adminLogged)) {
+    header('Location: pages\login_client.php');
+    exit;
+}
+
+include '../../server/client_server/conn.php';
+
+$sql = "SELECT members.name, members.picture
+        FROM members
+        INNER JOIN member_account ON members.member_id = member_account.member_id
+        WHERE member_account.username = '$adminLogged'";
+$result = mysqli_query($connection, $sql);
+
+if ($result && mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+
+    $sql_2 = "SELECT * FROM settings";
+    $result_2 = mysqli_query($connection, $sql_2);
+    $row_2 = mysqli_fetch_assoc($result_2);
+    
+
+
+
 ?>
 
 
@@ -62,7 +93,7 @@ $transaction_id = $currentYear . '-' . $randomNumber ;
 
     <body class="index-page" data-bs-spy="scroll" data-bs-target="#navmenu">
 
-        <?php include('../includes/client_navigation.php'); ?>
+        <?php include('../includes/client_nav.php'); }?>
 
         <section>
             <div class="bg-light">

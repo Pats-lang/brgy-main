@@ -11,7 +11,11 @@ if (empty($adminLogged)) {
 }
 
 include 'server/client_server/conn.php';
-$sql = "SELECT * FROM user_account WHERE username = '$adminLogged'";
+
+$sql = "SELECT members.name, members.picture
+        FROM members
+        INNER JOIN member_account ON members.member_id = member_account.member_id
+        WHERE member_account.username = '$adminLogged'";
 $result = mysqli_query($connection, $sql);
 
 if ($result && mysqli_num_rows($result) > 0) {
@@ -401,10 +405,10 @@ if ($result && mysqli_num_rows($result) > 0) {
         <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top custom-navbar ">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="#">
-                    <img src="assets/images/proof-pictures/<?php echo $row['profile']; ?> " class="rounded-circle mx-2 img-fluid     object-position: center;
+                    <img src="assets/images/proof-pictures/<?php echo $row['picture']; ?> " class="rounded-circle mx-2 img-fluid     object-position: center;
  object-fit-cover" alt="Logo" width="50" height="50">
                     <div class="alumni-organization-container pl-3">
-                        <span class="alumni-text"><?php echo $row['first_name'] . ' ' . $row['middle_name'] . ' ' . $row['last_name'];
+                        <span class="alumni-text"><?php echo $row['name'];
  ?></span>
                     </div>
                 <?php } ?>
@@ -555,53 +559,57 @@ if ($result && mysqli_num_rows($result) > 0) {
 
             <!-- request  -->
             <section>
+
+
+     
+       
         <div id="services">
                 <div class="contain">
 
-    <h1 class="heading">Services</h1>
+    
 
     <div class="box-contain">
 
-        <div class="box">
+        <div class="box" data-request="Barangay ID">
             <img src="assets/images/docu/1.jpg" alt="">
             <h3>Barangay ID </h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-            <a class="btn read-more">read more</a>
+            <a href="pages/client/brgyid_form.php" class="btn read-more">read more</a>
         </div>
 
-        <div class="box">
+        <div class="box" data-request="Barangay Clearance">
             <img src="assets/images/docu/2.jpg" alt="">
             <h3>Barangay Clearance</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-            <a class="btn read-more">read more</a>
+            <a href="pages/client/brgyclear_form.php" class="btn read-more">read more</a>
         </div>
 
-        <div class="box">
+        <div class="box" data-request="Barangay Certificate">
             <img src="assets/images/docu/4.jpg" alt="">
             <h3>Barangay Certificate</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-            <a class="btn read-more">read more</a>
+            <a href="pages/client/brgycerti_form.php" class="btn read-more">read more</a>
         </div>
 
-        <div class="box">
+        <div class="box" data-request="Business Clearance">
             <img src="assets/images/docu/5.jpg" alt="">
             <h3>Business Clearance</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-            <a class="btn read-more">read more</a>
+            <a href="pages/client/busiclear_form.php" class="btn read-more">read more</a>
         </div>
 
-        <div class="box">
+        <div class="box" data-request="Business Permit">
             <img src="assets/images/docu/3.png" alt="">
             <h3>Business Permit</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-            <a class="btn read-more">read more</a>
+            <a href="pages/client/busiper_form.php" class="btn read-more">read more</a>
         </div>
 
-        <div class="box">
+        <div class="box" data-request="Assistance">
             <img src="assets/images/docu/6.jpg" alt="">
             <h3>Assistance</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-            <a class="btn read-more">read more</a>
+            <a href="pages/client/assistance_form.php" class="btn read-more">read more</a>
         </div>
 
     </div>

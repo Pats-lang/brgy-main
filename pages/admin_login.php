@@ -29,7 +29,7 @@ while ($row = mysqli_fetch_array($result)) {
 <div class="login-box" style="box-shadow: 20px 20px 8px rgba(0, 0, 0, 0.5);">
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-            <h2><img src="../assets/images/logo/barangay.gif" style="width: 50px; height: 50px;"> Barangay Management System </h2>            </div>
+            <h2><img src="../assets/images/logo/barangay.png" style="width: 50px; height: 50px;"> Barangay Management System </h2>            </div>
             <div class="card-body">
                 <p class="login-box-msg text-secondary">Sign in to start your session.</p>
 
