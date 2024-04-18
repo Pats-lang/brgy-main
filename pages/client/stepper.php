@@ -424,9 +424,7 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                                         <option selected disabled>Residency</option>
                                                         <option id="home">Home Owner</option>
                                                         <option id="tenant">Tenant</option>
-                                                        <option id="helper">Helper</option>
-                                                        <option id="CW">Constraction Worker</option>
-                                                        <option id="others">Others</option>
+                                                        
 
                                                     </select>
                                                 </div>

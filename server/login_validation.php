@@ -2,7 +2,15 @@
 session_start();
 include '../config/connection.php';
 
-$response = array();
+$response = array(
+    'status' => false,
+    'icon' => '',
+    'message' => '',
+    'admin' => '',
+    'operation' => '',
+    'description' => ''
+);
+
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -20,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $_SESSION['adminLogged'] = $db_admin_username;
                     $response['status'] = true;
                     $response['message'] = 'You Are Logging in...';
+                
                 } else {
                     $response['status'] = false;
                     $response['message'] = 'Password verification failed.';
