@@ -18,8 +18,8 @@ $add_titleAnnouncements = sanitizeData(getDatabase(), $_POST['add_titleAnnouncem
 $add_descriptionAnnouncements = sanitizeData(getDatabase(), $_POST['add_descriptionAnnouncements']);
 $add_lastModifiedAnnouncements = sanitizeData(getDatabase(), $_POST['add_lastModifiedAnnouncements']);
 
-if ($preparedSql = $db->prepare("INSERT INTO `announcement` (`title`, `img`, `description`, `last_modified`) VALUES (?,?,?,?)")) {
-  $preparedSql->bind_param("ssss", $add_titleAnnouncements, $add_ImageAnnouncements, $add_descriptionAnnouncements, $add_lastModifiedAnnouncements);
+  if ($preparedSql = $db->prepare("INSERT INTO `announcement` (`title`, `img`, `description`, `last_modified`) VALUES (?,?,?,?)")) {
+    $preparedSql->bind_param("ssss", $add_titleAnnouncements, $add_ImageAnnouncements, $add_descriptionAnnouncements, $add_lastModifiedAnnouncements);
 
   if ($preparedSql->execute()) {
     $response['status'] = true;
