@@ -1,251 +1,421 @@
 <?php
 include 'header.php';
-include '../../server/client_server/conn.php';
+include '../../config/connection.php';
 
-// Check if the database connection is successful
-if (!$connection) {
-    die("Database connection failed: " . mysqli_connect_error());
-}
+session_start();
 
 // Get the current year
 $currentYear = date('Y');
 
-// Get the last used tracking number for the current year
-$query = "SELECT MAX(SUBSTRING_INDEX(transaction_id, '-', 1)) AS last_tracking_number FROM request_busclearance WHERE YEAR(transaction_id) = $currentYear";
+// Generate a random 6-digit number
+$randomNumber = mt_rand(100000, 999999);
 
-// Execute the query
-$result = mysqli_query($connection, $query);
+// Create the transaction ID
+$transaction_id = 'BSCLR-'. $currentYear . '-' . $randomNumber ;
 
-// Check if the query execution was successful
-if (!$result) {
-    die("Query execution failed: " . mysqli_error($connection));
+$adminLogged = $_SESSION['adminLogged'];
+
+
+
+if (empty($adminLogged)) {
+    header('Location: pages\login_client.php');
+    exit;
 }
 
-// Check if any rows were returned
-if (mysqli_num_rows($result) > 0) {
-    // Fetch the result row
+$sql = "SELECT members.name, members.picture
+        FROM members
+        INNER JOIN member_account ON members.member_id = member_account.member_id
+        WHERE member_account.username = '$adminLogged'";
+$result = mysqli_query($db, $sql);
+
+if ($result && mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
-    
-    // Extract the last number from the tracking number
-    $lastNumber = $row['last_tracking_number'];
 
-    // If no tracking number exists for the current year, start from 1
-    if ($lastNumber === null) {
-        $trackingNumber = $currentYear . '-000001-E';
-    } else {
-        // Increment the last number and format it with leading zeros if necessary
-        $nextNumber = str_pad($lastNumber + 1, 2, '0', STR_PAD_LEFT);
-        $trackingNumber = $currentYear . '-' . $nextNumber . '-E';
-    }
-} else {
-    // No rows returned, set a default tracking number
-    $trackingNumber = $currentYear . '-000001-E';
-}
+    $sql_2 = "SELECT * FROM settings";
+    $result_2 = mysqli_query($db, $sql_2);
+    $row_2 = mysqli_fetch_assoc($result_2);
+    
+
+
+
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Request form</title>
-    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
-        <!-- Bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-        </script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
 
-        <!-- BS Stepper -->
-        <!-- <link rel="stylesheet" href="plugins/bs-stepper/css/bs-stepper.min.css">
+    <!-- BS Stepper -->
+    <!-- <link rel="stylesheet" href="plugins/bs-stepper/css/bs-stepper.min.css">
         <link rel="stylesheet" href="plugins/bs-stepper/css/bs-stepper.css">
         <script src="plugins/bs-stepper/js/bs-stepper.min.js"></script> -->
-        <!-- Animate on Scroll (AOS) -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
-        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-        <!-- SweetAlert2 -->
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <!-- Jquery Validation (1.19.5 for all Plugins and Validation itself) -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.min.js" integrity="sha512-6S5LYNn3ZJCIm0f9L6BCerqFlQ4f5MwNKq+EthDXabtaJvg3TuFLhpno9pcm+5Ynm6jdA9xfpQoMz2fcjVMk9g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Animate on Scroll (AOS) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Jquery Validation (1.19.5 for all Plugins and Validation itself) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"
+        integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.min.js"
+        integrity="sha512-6S5LYNn3ZJCIm0f9L6BCerqFlQ4f5MwNKq+EthDXabtaJvg3TuFLhpno9pcm+5Ynm6jdA9xfpQoMz2fcjVMk9g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-        <script src="https://kit.fontawesome.com/301afcc9b9.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/301afcc9b9.js" crossorigin="anonymous"></script>
+
+    <!-- Toastr -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 
 </head>
 
 <style>
-            @media (min-width: 700px) {
-                .larger-image {
-                    max-width: 100%;
-                    height: auto;
-                    width: 100%;
-                }
-            }
-        </style>
-    </head>
+@media (min-width: 700px) {
+    .larger-image {
+        max-width: 100%;
+        height: auto;
+        width: 100%;
+    }
+}
 
-    <body class="index-page" data-bs-spy="scroll" data-bs-target="#navmenu">
+input[readonly] {
+        background-color: #f2f2f2; /* Gray background color */
+    }
+</style>
+</head>
 
-        <?php include('../includes/client_nav.php'); ?>
+<body class="index-page" data-bs-spy="scroll" data-bs-target="#navmenu">
 
-        <section>
-            <div class="bg-light">
-                <div class="container">
-                    <div class="mx-auto">
-                        <div class="p-2 breadcrumb-container">
-                            <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap">
+    <?php include('../includes/client_nav.php'); }?>
 
-                                <div>
-                                    <h2>Business Clearance Form</h2>
-                                </div>
+    <section>
+        <div class="bg-light">
+            <div class="container">
+                <div class="mx-auto">
+                    <div class="p-2 breadcrumb-container">
+                        <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap">
 
-                                <div class="d-flex flex-wrap align-items-center">
-                                    <a href="../../index.php" class="text-reset fw-bold"
-                                        style="text-decoration:none;">Home</a>
-                                    <span class="mx-1">/</span>
-                                    <a href="" class="text-reset" style="text-decoration:none;">Services</a>
-                                    <span class="mx-1">/</span>
-                                    <a href="" class="text-reset" style="text-decoration:none;">Business Clearance</a>
-                                </div>
-
+                            <div>
+                                <h2>Business Clearance Form</h2>
                             </div>
+
+                            <div class="d-flex flex-wrap align-items-center">
+                                <a href="../../index.php" class="text-reset fw-bold"
+                                    style="text-decoration:none;">Home</a>
+                                <span class="mx-1">/</span>
+                                <a href="" class="text-reset" style="text-decoration:none;">Services</a>
+                                <span class="mx-1">/</span>
+                                <a href="" class="text-reset" style="text-decoration:none;">Business Clearance Form</a>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-<div class="container w-50 border my-5 p-5">
-    <form  id="editAnnouncementForm">
-        
-        <div class="row mb-4">
-    <div class="col-4">
-        <div data-mdb-input-init class="form-outline">
-            <input type="text" id="trackingNumber" class="form-control" value="<?php echo $trackingNumber; ?>" readonly />
-            <label class="form-label" for="trackingNumber">Transaction Id</label>
         </div>
+    </section>
+
+    <div class="container my-5">
+    <form id="request_barangay-busiclear_form" method="post" class="p-5 rounded border" style="background-color: #ADE8F4; box-shadow: 0px 1px 10px rgba(0, 0, 255, 0.4);
+                background-color: #fdfdfd;">
+
+    <div class="text-center mb-5">
+        <img src="../../assets/images/logo/barangay.png" alt="Image" style="height: 20%; max-width: 100%;">
     </div>
-</div>
-            <!-- 2 column grid layout with text inputs for the first and last names -->
+
+        <?php
+        $sql = "SELECT members.member_id, members.name, members.address, members.email_address, members.cellphone_no, member_address.yrs_res
+                FROM members
+                INNER JOIN member_account ON members.member_id = member_account.member_id
+                INNER JOIN member_address ON members.member_id = member_address.member_id
+                WHERE member_account.username = '$adminLogged'";
+        $result = mysqli_query($db, $sql);
+
+        if ($result && mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+        ?>
+
             <div class="row mb-4">
-                
-                <div class="col">
-                <div data-mdb-input-init class="form-outline">
-                    <input type="text" id="name" class="form-control" />
-                    <label class="form-label" for="form6Example1">Name</label>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="transaction_id">Transaction Id</label>
+                        <input type="text" name="transaction_id" id="transaction_id" class="form-control" value="<?php echo $transaction_id; ?>" readonly>
+                    </div>
                 </div>
-                </div>
-                <div class="col">
-                    <div data-mdb-input-init class="form-outline">
-                        <input type="text" id="request" class="form-control" value="Business Clearance" readonly style="background-color: #f2f2f2;"/>
-                        <label class="form-label" for="form6Example2">Request</label>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="member_id">Member Id</label>
+                        <input type="text" name="member_id" id="member_id" class="form-control" value="<?php echo $row['member_id']; ?>" readonly>
                     </div>
                 </div>
             </div>
 
             <div class="row mb-4">
-                
-                <div class="col">
-                <div data-mdb-input-init class="form-outline">
-                    <input type="text" id="name" class="form-control" />
-                    <label class="form-label" for="form6Example1">Business Name</label>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="business_name">Business Name</label>
+                        <input type="text" name="business_name" id="business_name" class="form-control">
+                    </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="name">Owner's Name</label>
+                        <input type="text" name="name" id="name" class="form-control" value="<?php echo $row['name']; ?>">
+                    </div>
                 </div>
-                <div class="col">
-                <div data-mdb-input-init class="form-outline ">
-                <input type="number" id="residency" class="form-control" />
-                <label class="form-label" for="form6Example3">Year Residency</label>
-            </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="request">Request</label>
+                        <input type="text" name="request" id="request" class="form-control" value="Business Clearance" readonly>
+                    </div>
                 </div>
             </div>
 
-           
-
-            <!-- Text input -->
-            <div data-mdb-input-init class="form-outline mb-4">
-                <input type="text" id="address" class="form-control" />
-                <label class="form-label" for="form6Example4">Address</label>
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="kof">Kind of Business</label>
+                        <input type="text" name="kof" id="kof" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="residency">Year Residency</label>
+                        <input type="number" name="residency" id="residency" class="form-control" value="<?php echo $row['yrs_res']; ?>">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" name="address" id="address" class="form-control" value="<?php echo $row['address']; ?>">
+                    </div>
+                </div>
             </div>
 
-            <!-- Email input -->
-            <div data-mdb-input-init class="form-outline mb-4">
-                <input type="email" id="email" class="form-control" />
-                <label class="form-label" for="form6Example5">Email</label>
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" class="form-control" value="<?php echo $row['email_address']; ?>">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="contact">Contact Number</label>
+                        <input type="number" name="contact" id="contact" class="form-control" value="<?php echo $row['cellphone_no']; ?>">
+                    </div>
+                </div>
             </div>
 
-            <!-- Number input -->
-            <div data-mdb-input-init class="form-outline mb-4">
-                <input type="number" id="contact" class="form-control" />
-                <label class="form-label" for="form6Example6">Contact Number</label>
+            <div class="form-group mb-4">
+                <label for="purpose">Purpose</label>
+                <textarea class="form-control" name="purpose" id="purpose" rows="4"></textarea>
             </div>
 
-            <!-- Message input -->
-            <div data-mdb-input-init class="form-outline mb-4">
-                <textarea class="form-control" id="purpose" rows="4"></textarea>
-                <label class="form-label" for="form6Example7">Purpose</label>
+            <div class="text-center">
+            <button type="submit" class="btn btn-primary btn-block w-75">Send</button>
             </div>
 
-            
 
-
-            <!-- Submit button -->
-            <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-4">Request Button</button>
+        <?php } ?>
     </form>
-
 </div>
 
-<footer>
-            <?php include('../includes/client_footer.php'); ?>
-        </footer>
-<script>
-    $('#editAnnouncementForm').on('submit', function(e) {
-    e.preventDefault();
-    Swal.fire({
-        title: 'Do you want to send this request?',
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: ' Send ',
-        denyButtonText: 'Dont Send',
-    }).then((result) => {
-        
-        if (result.isConfirmed) {
-            $.ajax({
-                url: "../brgy-main/server/add_brgy_rest_coi.php",
-                type: "POST",
-                data: new FormData(this),
-                dataType: 'json',
-                processData: false,
-                contentType: false,
-                success: function(response_editAnnouncement) {
-                    if (response_editAnnouncement.status) {
-                        toastr.success(response_editAnnouncement.message, '', {
-                            timeOut: 1000,
-                            closeButton: false,
-                            onHidden: function() {
-                                setTimeout(function() {
-                                    location.reload();
-                                }, 500); // Adjust the delay as needed
+
+    <footer>
+        <?php include('../includes/client_footer.php'); ?>
+    </footer>
+
+    <script>
+   $(document).ready(function() {
+    $('#request_barangay-busiclear_form').on('submit', function(e) {
+        e.preventDefault(); // Prevent the default form submission
+
+        // Perform form validation
+        var isValid = $('#request_barangay-busiclear_form').valid();
+
+        // If the form is valid, proceed with the submission
+        if (isValid) {
+            Swal.fire({
+                title: 'Do you want to send this request?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Send',
+                denyButtonText: 'Don\'t Send',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var formData = new FormData($('#request_barangay-busiclear_form')[0]);
+                    $.ajax({
+                        url: "../../server/req_brgybsclr.apii.php",
+                        type: "POST",
+                        data: formData,
+                        dataType: 'json',
+                        processData: false,
+                        contentType: false,
+                        success: function(response) {
+                            if (response.status) {
+                                toastr.success(response.message, '', {
+                                    timeOut: 1000,
+                                    closeButton: false,
+                                    onHidden: function() {
+                                        setTimeout(function() {
+                                            location.reload(); // Reload the page
+                                        }, 500);
+                                    }
+                                });
+                            } else {
+                                toastr.error(response.message, '', {
+                                    closeButton: false,
+                                });
                             }
-                        });
-                    } else {
-                        toastr.error(response_editAnnouncement.message, '', {
-                            closeButton: false,
-                        });
-                    }
-                },
-                error: function(error) {
-                    toastr.error('An Error occurred: ' + error, '', {
-                        positionClass: 'toast-top-end',
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(xhr.responseText);
+                            toastr.error('An error occurred while sending the request.', '', {
+                                closeButton: false,
+                            });
+                        }
+                    });
+                } else if (result.isDenied) {
+                    toastr.info('Sending failed', '', {
                         closeButton: false
                     });
                 }
             });
-        } else if (result.isDenied) {
-            toastr.info('Request did not send', '', {
-                closeButton: false
-            });
         }
     });
 });
-</script>
+
+
+$(document).ready(function() {
+    // Add custom validation method for alphabetic characters with space
+    jQuery.validator.addMethod("alphabeticWithSpace", function(value, element) {
+        return this.optional(element) || /^[a-zA-Z\s]+$/.test(value);
+    }, "Please enter alphabetic characters only.");
+
+    // Form validation for the second part of the form
+    var validate_form = $('#request_barangay-busiclear_form').validate({
+        rules: {
+            transaction_id:{
+                required: true,
+            },
+            member_id:{
+                required: true,
+            },
+            request:{
+                required: true,
+            },
+            business_name: {
+                required: true,
+                alphabeticWithSpace: true,
+            },
+            name: {
+                required: true,
+                alphabeticWithSpace: true,
+            },
+            contact: {
+                required: true,
+                maxlength: 11,
+                minlength: 11,
+                pattern: /^09\d{9}$/,
+            },
+            address: {
+                required: true,
+            },
+            kof: {
+                required: true,
+            },
+            email: {
+                required: true,
+                email: true,
+            },
+            residency: {
+                required: true,
+                // Add additional condition for residency
+                minlength: 1,
+                digits: true,
+            },
+            purpose: {
+                required: true,
+            },
+        },
+        messages: {
+            // Add appropriate error messages for each field
+            transaction_id: {
+                required: 'Please enter Transaction ID!',
+            },
+            member_id: {
+                required: 'Please enter Member ID!',
+            },
+            request: {
+                required: 'Please enter Request!',
+            },
+            business_name: {
+                required: 'Please enter your Business Name!',
+            },
+            kof: {
+                required: 'Please enter your Kind of Business!',
+            },
+            name: {
+                required: 'Please enter your Name!',
+            },
+            address: {
+                required: 'Please provide a valid Address!',
+            },
+            email: {
+                required: 'Please provide a valid Email Address! Ex.(example@gmail.com)',
+            },
+            contact: {
+                required: 'Please provide Contact Number!',
+                maxlength: 'Please provide 11 digits! ',
+                minlength: 'Please provide 11 digits! ',
+                pattern: 'Please provide a valid Contact Number! Ex.(09123456789)',
+            },
+            residency: {
+                required: 'Please provide a valid Year Residency!',
+                minlength: 'Please provide a valid Year Residency!',
+                digits: 'Please provide a valid Year Residency!',
+            },
+        },
+        errorElement: 'span',
+        errorPlacement: function(error, element) {
+            error.addClass('invalid-feedback');
+            error.insertAfter(element);
+        },
+        highlight: function(element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+            $(element).addClass('is-valid');
+        }
+    });
+});
+
+
+
+   
+
+
+    </script>
+
+</body>
+
 </html>

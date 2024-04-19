@@ -11,7 +11,7 @@ $currentYear = date('Y');
 $randomNumber = mt_rand(100000, 999999);
 
 // Create the transaction ID
-$transaction_id = 'CLR-'. $currentYear . '-' . $randomNumber ;
+$transaction_id = 'COI-'. $currentYear . '-' . $randomNumber ;
 
 $adminLogged = $_SESSION['adminLogged'];
 
@@ -115,7 +115,7 @@ input[readonly] {
                         <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap">
 
                             <div>
-                                <h2>Barangay Clearance Form</h2>
+                                <h2>Barangay Indigency Form</h2>
                             </div>
 
                             <div class="d-flex flex-wrap align-items-center">
@@ -124,7 +124,7 @@ input[readonly] {
                                 <span class="mx-1">/</span>
                                 <a href="" class="text-reset" style="text-decoration:none;">Services</a>
                                 <span class="mx-1">/</span>
-                                <a href="" class="text-reset" style="text-decoration:none;">Barangay Clearance</a>
+                                <a href="" class="text-reset" style="text-decoration:none;">Barangay Indigency</a>
                             </div>
 
                         </div>
@@ -136,7 +136,7 @@ input[readonly] {
 
     <div class="container-fluid bg-light p-5">
 
-    <form id="request_barangay-clearanceform" method="post" class="p-5 rounded border" style=" max-width: 650px; margin: 0 auto; background-color: #ADE8F4; box-shadow: 0px 1px 10px rgba(0, 0, 255, 0.4);
+    <form id="request_barangay-coiform" method="post" class="p-5 rounded border" style=" max-width: 650px; margin: 0 auto; background-color: #ADE8F4; box-shadow: 0px 1px 10px rgba(0, 0, 255, 0.4);
                 background-color: #fdfdfd;">
 
         <div class="text-center mb-5">
@@ -180,7 +180,7 @@ input[readonly] {
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="request">Request</label>
-                            <input type="text" name="request" id="request" class="form-control" value="Barangay Clearance" readonly>
+                            <input type="text" name="request" id="request" class="form-control" value="Barangay Indigency" readonly>
                         </div>
                     </div>
                 </div>
@@ -236,11 +236,11 @@ input[readonly] {
 
     <script>
    $(document).ready(function() {
-    $('#request_barangay-clearanceform').on('submit', function(e) {
+    $('#request_barangay-coiform').on('submit', function(e) {
         e.preventDefault(); // Prevent the default form submission
 
         // Perform form validation
-        var isValid = $('#request_barangay-clearanceform').valid();
+        var isValid = $('#request_barangay-coiform').valid();
 
         // If the form is valid, proceed with the submission
         if (isValid) {
@@ -252,9 +252,9 @@ input[readonly] {
                 denyButtonText: 'Don\'t Send',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    var formData = new FormData($('#request_barangay-clearanceform')[0]);
+                    var formData = new FormData($('#request_barangay-coiform')[0]);
                     $.ajax({
-                        url: "../../server/req_brgyclrs_apii.php",
+                        url: "../../server/req_brgycoi_apii.php",
                         type: "POST",
                         data: formData,
                         dataType: 'json',
@@ -302,7 +302,7 @@ $(document).ready(function() {
     }, "Please enter alphabetic characters only.");
 
     // Form validation for the second part of the form
-    var validate_form = $('#request_barangay-clearanceform').validate({
+    var validate_form = $('#request_barangay-coiform').validate({
         rules: {
             transaction_id:{
                 required: true,

@@ -10,15 +10,16 @@ $req_transaction_id = sanitizeData(getDatabase(), $_POST['transaction_id']);
 $req_member_id = sanitizeData(getDatabase(), $_POST['member_id']);
 $req_name = sanitizeData(getDatabase(), $_POST['name']);
 $req_request = sanitizeData(getDatabase(), $_POST['request']);
-$year_of_residency = sanitizeData(getDatabase(), $_POST['residency']);
+$square_meter = sanitizeData(getDatabase(), $_POST['square_meter']);
+$floor = sanitizeData(getDatabase(), $_POST['floor']);
 $req_address = sanitizeData(getDatabase(), $_POST['address']);
 $req_email = sanitizeData(getDatabase(), $_POST['email']);
 $req_contact_number = sanitizeData(getDatabase(), $_POST['contact']);
 $req_purpose = sanitizeData(getDatabase(), $_POST['purpose']);
 $status = 0;
 
-if ($preparedSql = $db->prepare("INSERT INTO `request_brgyclrs` (`transaction_id`, `member_id`, `name`, `request`, `yrs_res`, `address`, `email`, `contact_no`, `purpose`, `status`) VALUES (?,?,?,?,?,?,?,?,?,?)")) {
-    $preparedSql->bind_param("sissississ", $req_transaction_id , $req_member_id, $req_name, $req_request, $year_of_residency, $req_address, $req_email, $req_contact_number, $req_purpose, $status);
+if ($preparedSql = $db->prepare("INSERT INTO `request_brgybp` (`transaction_id`, `member_id`, `name`, `request`, `square_meter`, `floor` , `address`, `email`, `contact_no`, `purpose`, `status`) VALUES (?,?,?,?,?,?,?,?,?,?,?)")) {
+    $preparedSql->bind_param("sissssssisi", $req_transaction_id , $req_member_id, $req_name, $req_request, $square_meter, $floor, $req_address, $req_email, $req_contact_number, $req_purpose, $status);
 
   if ($preparedSql->execute()) {
     $response['status'] = true;

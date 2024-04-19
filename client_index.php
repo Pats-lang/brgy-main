@@ -383,7 +383,10 @@ if ($result && mysqli_num_rows($result) > 0) {
                 /* Remove any border color when active */
             }
 
-
+        
+            .custom-text-justify {
+                    text-align: justify !important;
+                }
 
 
 
@@ -570,46 +573,51 @@ if ($result && mysqli_num_rows($result) > 0) {
 
     <div class="box-contain">
 
-        <div class="box" data-request="Barangay ID">
+        <div class="box" data-request="Barangay Indigency">
             <img src="assets/images/docu/1.jpg" alt="">
-            <h3>Barangay ID </h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-            <a href="pages/client/brgyid_form.php" class="btn read-more">read more</a>
+            <h3>Barangay Indigency </h3>
+            <p class="custom-text-justify"> Barangay Indigency refers to a certification issued by the Barangay (the smallest administrative division in the Philippines) 
+            confirming that an individual or family qualifies as indigent or economically disadvantaged. </p>
+            <a href="pages/client/brgycoi_form.php" class="btn read-more">Proceed</a>
         </div>
 
         <div class="box" data-request="Barangay Clearance">
             <img src="assets/images/docu/2.jpg" alt="">
             <h3>Barangay Clearance</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-            <a href="pages/client/brgyclear_form.php" class="btn read-more">read more</a>
+            <p class="custom-text-justify">A Barangay Clearance is a document issued by the local Barangay government in the Philippines, 
+                certifying that the individual named has cleared any outstanding liabilities or obligations within the community. </p>
+            <a href="pages/client/brgyclear_form.php" class="btn read-more">Proceed</a>
         </div>
 
         <div class="box" data-request="Barangay Certificate">
             <img src="assets/images/docu/4.jpg" alt="">
             <h3>Barangay Certificate</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-            <a href="pages/client/brgycerti_form.php" class="btn read-more">read more</a>
+            <p class="custom-text-justify">A Barangay Certificate is a document issued by the Barangay (the smallest administrative division in the Philippines)
+                 that certifies specific information about an individual or a situation within the community.</p>
+            <a href="pages/client/brgycerti_form.php" class="btn read-more">Proceed</a>
         </div>
 
         <div class="box" data-request="Business Clearance">
             <img src="assets/images/docu/5.jpg" alt="">
             <h3>Business Clearance</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-            <a href="pages/client/busiclear_form.php" class="btn read-more">read more</a>
+            <p class="custom-text-justify">A Barangay Business Clearance is a document issued by the Barangay (the smallest administrative division in the Philippines) 
+                that grants permission for an individual or entity to conduct business activities within the Barangay's jurisdiction. </p>
+            <a href="pages/client/busiclear_form.php" class="btn read-more">Proceed</a>
         </div>
 
-        <div class="box" data-request="Business Permit">
+        <div class="box" data-request="Building Permit">
             <img src="assets/images/docu/3.png" alt="">
-            <h3>Business Permit</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-            <a href="pages/client/busiper_form.php" class="btn read-more">read more</a>
+            <h3>Building Permit</h3>
+            <p class="custom-text-justify">A Barangay Building Permit is an official authorization issued by the Barangay (the smallest administrative division in the Philippines) 
+                that grants permission for construction or renovation activities within its jurisdiction.  </p>
+            <a href="pages/client/bp_form.php" class="btn read-more">Proceed</a>
         </div>
 
         <div class="box" data-request="Assistance">
             <img src="assets/images/docu/6.jpg" alt="">
             <h3>Assistance</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-            <a href="pages/client/assistance_form.php" class="btn read-more">read more</a>
+            <a href="pages/client/assistance_form.php" class="btn read-more">Proceed</a>
         </div>
 
     </div>

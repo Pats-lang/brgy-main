@@ -11,7 +11,7 @@ $currentYear = date('Y');
 $randomNumber = mt_rand(100000, 999999);
 
 // Create the transaction ID
-$transaction_id = 'CLR-'. $currentYear . '-' . $randomNumber ;
+$transaction_id = 'BP-'. $currentYear . '-' . $randomNumber ;
 
 $adminLogged = $_SESSION['adminLogged'];
 
@@ -98,8 +98,6 @@ if ($result && mysqli_num_rows($result) > 0) {
 input[readonly] {
         background-color: #f2f2f2; /* Gray background color */
     }
-
-
 </style>
 </head>
 
@@ -115,7 +113,7 @@ input[readonly] {
                         <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap">
 
                             <div>
-                                <h2>Barangay Clearance Form</h2>
+                                <h2>Building Permit</h2>
                             </div>
 
                             <div class="d-flex flex-wrap align-items-center">
@@ -124,7 +122,7 @@ input[readonly] {
                                 <span class="mx-1">/</span>
                                 <a href="" class="text-reset" style="text-decoration:none;">Services</a>
                                 <span class="mx-1">/</span>
-                                <a href="" class="text-reset" style="text-decoration:none;">Barangay Clearance</a>
+                                <a href="" class="text-reset" style="text-decoration:none;">Building Permit</a>
                             </div>
 
                         </div>
@@ -134,98 +132,103 @@ input[readonly] {
         </div>
     </section>
 
-    <div class="container-fluid bg-light p-5">
-
-    <form id="request_barangay-clearanceform" method="post" class="p-5 rounded border" style=" max-width: 650px; margin: 0 auto; background-color: #ADE8F4; box-shadow: 0px 1px 10px rgba(0, 0, 255, 0.4);
+    <div class="container my-5">
+    <form id="request_bpform" method="post" class="p-5 rounded border" style="background-color: #ADE8F4; box-shadow: 0px 1px 10px rgba(0, 0, 255, 0.4);
                 background-color: #fdfdfd;">
 
-        <div class="text-center mb-5">
-            <img src="../../assets/images/logo/barangay.png" alt="Image" style="height: 100px; max-width: 100px;">
-        </div>
+    <div class="text-center mb-5">
+        <img src="../../assets/images/logo/barangay.png" alt="Image" style="height: 20%; max-width: 100%;">
+    </div>
 
-            <?php
-            $sql = "SELECT members.member_id, members.name, members.address, members.email_address, members.cellphone_no, member_address.yrs_res
-                    FROM members
-                    INNER JOIN member_account ON members.member_id = member_account.member_id
-                    INNER JOIN member_address ON members.member_id = member_address.member_id
-                    WHERE member_account.username = '$adminLogged'";
-            $result = mysqli_query($db, $sql);
+        <?php
+        $sql = "SELECT members.member_id, members.name, members.address, members.email_address, members.cellphone_no, member_address.yrs_res
+                FROM members
+                INNER JOIN member_account ON members.member_id = member_account.member_id
+                INNER JOIN member_address ON members.member_id = member_address.member_id
+                WHERE member_account.username = '$adminLogged'";
+        $result = mysqli_query($db, $sql);
 
-            if ($result && mysqli_num_rows($result) > 0) {
-                $row = mysqli_fetch_assoc($result);
-            ?>
+        if ($result && mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+        ?>
 
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="transaction_id">Transaction Id</label>
-                            <input type="text" name="transaction_id" id="transaction_id" class="form-control" value="<?php echo $transaction_id; ?>" readonly>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="member_id">Member Id</label>
-                            <input type="text" name="member_id" id="member_id" class="form-control" value="<?php echo $row['member_id']; ?>" readonly>
-                        </div>
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="transaction_id">Transaction Id</label>
+                        <input type="text" name="transaction_id" id="transaction_id" class="form-control" value="<?php echo $transaction_id; ?>" readonly>
                     </div>
                 </div>
-
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" name="name" id="name" class="form-control" value="<?php echo $row['name']; ?>">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="request">Request</label>
-                            <input type="text" name="request" id="request" class="form-control" value="Barangay Clearance" readonly>
-                        </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="member_id">Member Id</label>
+                        <input type="text" name="member_id" id="member_id" class="form-control" value="<?php echo $row['member_id']; ?>" readonly>
                     </div>
                 </div>
+            </div>
 
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="residency">Year Residency</label>
-                            <input type="number" name="residency" id="residency" class="form-control" value="<?php echo $row['yrs_res']; ?>">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="address">Address</label>
-                            <input type="text" name="address" id="address" class="form-control" value="<?php echo $row['address']; ?>">
-                        </div>
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" class="form-control" value="<?php echo $row['name']; ?>">
                     </div>
                 </div>
-
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" name="email" id="email" class="form-control" value="<?php echo $row['email_address']; ?>">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="contact">Contact Number</label>
-                            <input type="number" name="contact" id="contact" class="form-control" value="<?php echo $row['cellphone_no']; ?>">
-                        </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="request">Request</label>
+                        <input type="text" name="request" id="request" class="form-control" value="Building Permit" readonly>
                     </div>
                 </div>
+            </div>
 
-                <div class="form-group mb-4">
-                    <label for="purpose">Purpose</label>
-                    <textarea class="form-control" name="purpose" id="purpose" rows="4"></textarea>
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="square_meter">Square Meter</label>
+                        <input type="text" name="square_meter" id="square_meter" class="form-control">
+                    </div>
                 </div>
-
-                <div class="text-center">
-                <button type="submit" class="btn btn-primary btn-block w-75">Send</button>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="floor">Floor</label>
+                        <input type="text" name="floor" id="floor" class="form-control">
+                    </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" name="address" id="address" class="form-control" value="<?php echo $row['address']; ?>">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" class="form-control" value="<?php echo $row['email_address']; ?>">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="contact">Contact Number</label>
+                        <input type="number" name="contact" id="contact" class="form-control" value="<?php echo $row['cellphone_no']; ?>">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group mb-4">
+                <label for="purpose">Purpose</label>
+                <textarea class="form-control" name="purpose" id="purpose" rows="4"></textarea>
+            </div>
+
+            <div class="text-center">
+            <button type="submit" class="btn btn-primary btn-block w-75">Send</button>
+            </div>
 
 
-            <?php } ?>
+        <?php } ?>
     </form>
 </div>
 
@@ -236,11 +239,11 @@ input[readonly] {
 
     <script>
    $(document).ready(function() {
-    $('#request_barangay-clearanceform').on('submit', function(e) {
+    $('#request_bpform').on('submit', function(e) {
         e.preventDefault(); // Prevent the default form submission
 
         // Perform form validation
-        var isValid = $('#request_barangay-clearanceform').valid();
+        var isValid = $('#request_bpform').valid();
 
         // If the form is valid, proceed with the submission
         if (isValid) {
@@ -252,9 +255,9 @@ input[readonly] {
                 denyButtonText: 'Don\'t Send',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    var formData = new FormData($('#request_barangay-clearanceform')[0]);
+                    var formData = new FormData($('#request_bpform')[0]);
                     $.ajax({
-                        url: "../../server/req_brgyclrs_apii.php",
+                        url: "../../server/req_brgybp_apii.php",
                         type: "POST",
                         data: formData,
                         dataType: 'json',
@@ -302,7 +305,7 @@ $(document).ready(function() {
     }, "Please enter alphabetic characters only.");
 
     // Form validation for the second part of the form
-    var validate_form = $('#request_barangay-clearanceform').validate({
+    var validate_form = $('#request_bpform').validate({
         rules: {
             transaction_id:{
                 required: true,
@@ -325,23 +328,22 @@ $(document).ready(function() {
             },
             address: {
                 required: true,
+                minlength: 3.
             },
             email: {
                 required: true,
                 email: true,
             },
-            residency: {
+            square_meter: {
                 required: true,
-                // Add additional condition for residency
-                minlength: 1,
-                digits: true,
+                minlength: 2,
+               
+            },
+            floor: {
+                required: true,
             },
             purpose: {
                 required: true,
-                maxlength: 100,
-                minlength: 2,
-
-
             },
         },
         messages: {
@@ -359,7 +361,8 @@ $(document).ready(function() {
                 required: 'Please enter your Name!',
             },
             address: {
-                required: 'Please provide a valid Address!',
+                required: 'Please provide a valid Address! Ex.(123 4th Street)',
+                minlength: 'Please provide a valid Address! Ex.(123 4th Street)',
             },
             email: {
                 required: 'Please provide a valid Email Address! Ex.(example@gmail.com)',
@@ -370,16 +373,16 @@ $(document).ready(function() {
                 minlength: 'Please provide 11 digits! ',
                 pattern: 'Please provide a valid Contact Number! Ex.(09123456789)',
             },
-            residency: {
-                required: 'Please provide a valid Year Residency!',
-                minlength: 'Please provide a valid Year Residency!',
-                digits: 'Please provide a valid Year Residency!',
+            square_meter: {
+            required: 'Please provide the square meter measurement of your building. For example, (100 square meters.)',
+            minlength: 'Please provide the square meter measurement of your building. For example, (100 square meters.)',
             },
-            purpose: {
-                maxlength: 'Please limit your input to 50 characters.',
-                minlength: 'Please provide a valid purpose! ',
 
+            floor: {
+                required: 'Please specify the number of floors in your building. For example, (5th floor)',
+                minlength: 'Please specify the number of floors in your building. For example, (5th floor)',
             },
+
         },
         errorElement: 'span',
         errorPlacement: function(error, element) {

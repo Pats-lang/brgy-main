@@ -16,7 +16,7 @@ while ($row = mysqli_fetch_assoc($result)){
 
 
 <!-- Footer -->
-<footer class="text-center text-lg-start bg-light text-muted mt-5">
+<footer class="text-center text-lg-start bg-light text-muted ">
   <!-- Section: Social media -->
   <!-- Left -->
 
@@ -24,7 +24,7 @@ while ($row = mysqli_fetch_assoc($result)){
 
   <!-- Section: Links  -->
   <section class="">
-    <div class="container text-center text-md-start mt-5">
+    <div class="container text-center text-md-start">
       <!-- Grid row -->
       <div class="row mt-3">
         <!-- Grid column -->
