@@ -27,11 +27,14 @@ while ($row = mysqli_fetch_assoc($result)) {
         integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
@@ -55,8 +58,8 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     <script src="https://kit.fontawesome.com/301afcc9b9.js" crossorigin="anonymous"></script>
     <!-- Toastr -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
     <style>
     .navbar {
@@ -302,16 +305,130 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     }
 
-  
 
-    /* Full-width inputs */
+
+    /* Services */
+
+    .contain {
+        background: #f4f4f4;
+        padding: 15px 9%;
+
+    }
+
+    .contain .heading {
+        text-align: center;
+        padding-bottom: 15px;
+        color: #000;
+
+        font-size: 35px;
+    }
+
+    .contain .box-contain {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        gap: 15px;
+    }
+
+    .contain .box-contain .box {
+        box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+        border-radius: 5px;
+        background: #fff;
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .contain .box-contain .box img {
+        height: 80px;
+    }
+
+    .contain .box-contain .box h3 {
+        color: #444;
+        font-size: 22px;
+        padding: 10px 0;
+    }
+
+    .contain .box-contain .box p {
+        color: #777;
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .contain .box-contain .box .btn {
+        margin-top: 10px;
+        display: inline-block;
+        background: #333;
+        color: #fff;
+        font-size: 17px;
+        border-radius: 5px;
+        padding: 8px 25px;
+    }
+
+    .contain .box-contain .box .btn:hover {
+        letter-spacing: 1px;
+    }
+
+    .contain .box-contain .box:hover {
+        box-shadow: 0 10px 15px rgba(0, 0, 0, .3);
+        transform: scale(1.03);
+    }
+
+    @media (max-width:768px) {
+        .contain {
+            padding: 20px;
+        }
+    }
+
+    .modal-backdrop {
+        z-index: 0;
+    }
+
+
+    .modal {
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Add the following styles */
+        justify-content: center;
+        /* Center horizontally */
+        align-items: center;
+        z-index: 100;
+        /* Center vertically */
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    body.modal-open {
+        overflow: hidden;
+    }
+
+    body.modal-open .modal {
+        overflow-y: auto;
+    }
+
+    .services-heading {
+        text-align: center;
+        font-size: 40px;
+        padding: 20px;
+    }
+
+    /* log in Full-width inputs */
     input[type=text],
     input[type=password] {
         width: 100%;
         padding: 12px 20px;
         margin: 8px 0;
         display: inline-block;
-        
+
         box-sizing: border-box;
     }
 
@@ -372,38 +489,60 @@ while ($row = mysqli_fetch_assoc($result)) {
     }
 
     #forgotPassword {
-    display: block;
-    text-align: center;
-    margin-top: 10px; /* Adjust the margin as needed */
-}
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+        /* Adjust the margin as needed */
+    }
 
-#createAccountBtn {
-    display: block;
-    margin: 0 auto; /* This centers the button horizontally */
-    margin-top: 20px; /* Adjust the top margin as needed */
-}
-.close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-}
-.imgcontainer {
-    background-color: #fff; /* Change to the color you prefer */
-    padding: 5px; /* Add padding to create space between the image and the background */
-}
-.password-container {
-    position: relative;
-}
+    #createAccountBtn {
+        display: block;
+        margin: 0 auto;
+        /* This centers the button horizontally */
+        margin-top: 20px;
+        /* Adjust the top margin as needed */
+    }
 
-.password-container .eye-icon {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    cursor: pointer;
-}
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
 
+    .imgcontainer {
+        background-color: #fff;
+        /* Change to the color you prefer */
+        padding: 5px;
+        /* Add padding to create space between the image and the background */
+    }
+
+    .password-container {
+        position: relative;
+    }
+
+    .password-container .eye-icon {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+
+    /* hidden */
+
+    .hidden {
+            display: none;
+        }
+        .show-more-container {
+            text-align: center;
+            margin-top: 20px; /* Adjust as needed */
+        }
+        .show-more {
+            cursor: pointer;
+            color: black;
+            text-decoration: underline;
+        }
     </style>
 </head>
 
@@ -443,13 +582,10 @@ while ($row = mysqli_fetch_assoc($result)) {
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/client/services_client.php">Services</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="pages/client/contact.php">Contacts</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="modal" data-target="#loginModal" href="#">Login</a>
+                        <a class="nav-link" data-toggle="modal" data-target="#loginModal">Login</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " href="pages/admin_logIn.php">Admin</a>
@@ -458,41 +594,45 @@ while ($row = mysqli_fetch_assoc($result)) {
             </div>
         </div>
     </nav>
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <form id="admin_logInForm" method="post">
-                    <div class="imgcontainer">
-                        <img src="assets/images/logo/barangay.png" alt="Avatar" class="avatar">
-                    </div>
-
-                    <!-- Close "x" -->
-                    <span class="close" data-dismiss="modal" aria-label="Close">&times;</span>
-
-                    <div class="container">
-                        <label for="username"><b>Username</b></label>
-                        <input type="text" name="username" id="username" placeholder="Enter Username" required>
-
-                        <label for="password"><b>Password</b></label>
-                        <div class="password-container">
-                            <input type="password" name="password" id="password" placeholder="Enter Password" required>
-                            <span class="eye-icon fa fa-eye-slash fa-lg" onclick="togglePasswordVisibility()"></span>
+   <!-- login modal may problema pa --->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" data-backdrop="static"
+        aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form id="admin_logInForm" method="post">
+                        <div class="imgcontainer">
+                            <img src="assets/images/logo/barangay.png" alt="Avatar" class="avatar">
                         </div>
 
-                        <button id="login" type="submit">Login</button>
-                        
-                        <!-- Both "Create Account" and "Forgot Password?" links aligned to the left -->
-                        <div style="text-align: center; margin-top: 10px;">
-                            Don't have an account? <a href="pages/client/send_otp.php">Create Account</a>
+                        <!-- Close "x" -->
+                        <span class="close" data-dismiss="modal" aria-label="Close">&times;</span>
+
+                        <div class="container">
+                            <label for="username"><b>Username</b></label>
+                            <input type="text" name="username" id="username" placeholder="Enter Username" required>
+
+                            <label for="password"><b>Password</b></label>
+                            <div class="password-container">
+                                <input type="password" name="password" id="password" placeholder="Enter Password"
+                                    required>
+                                <span class="eye-icon fa fa-eye-slash fa-lg"
+                                    onclick="togglePasswordVisibility()"></span>
+                            </div>
+
+                            <button id="login" type="submit">Login</button>
+
+                            <!-- Both "Create Account" and "Forgot Password?" links aligned to the left -->
+                            <div style="text-align: center; margin-top: 10px;">
+                                Don't have an account? <a href="pages/client/send_otp.php">Create Account</a>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
+<!----login modal--->
 
     <section>
 
@@ -578,7 +718,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
         <!-- alumni count -->
         <section id="alumni" class="stats">
-            <img src="assets/images/logo/brgy-bg.png" class="img-fluid h-100 w-100 object-fit-cover" alt=""
+            <img src="assets/images/logo/count-bg.png" class="img-fluid h-100 w-100 object-fit-cover" alt=""
                 data-aos="fade-in">
             <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
                 <div class="row gy-4">
@@ -607,8 +747,56 @@ while ($row = mysqli_fetch_assoc($result)) {
             </div>
         </section>
 
+        <!-- request  -->
+        <section>
+    <div id="services">
+        <div class="contain">
+            <h5 class="services-heading">Services</h5>
+            <div class="box-contain">
+                <div class="box" data-request="Barangay ID">
+                    <img src="assets/images/docu/1.jpg" alt="">
+                    <h3>Barangay ID </h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
+                    <a class="btn read-more get-now">Get Now</a>
+                </div>
+                <div class="box" data-request="Barangay Clearance">
+                    <img src="assets/images/docu/2.jpg" alt="">
+                    <h3>Barangay Clearance</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
+                    <a class="btn read-more get-now">Get Now</a>
+                </div>
+                <div class="box" data-request="Barangay Certificate">
+                    <img src="assets/images/docu/4.jpg" alt="">
+                    <h3>Barangay Certificate</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
+                    <a class="btn read-more get-now">Get Now</a>
+                </div>
+                <div class="box hidden" data-request="Business Clearance">
+                    <img src="assets/images/docu/5.jpg" alt="">
+                    <h3>Business Clearance</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
+                    <a class="btn read-more get-now">Get Now</a>
+                </div>
+                <div class="box hidden" data-request="Business Permit">
+                    <img src="assets/images/docu/3.png" alt="">
+                    <h3>Business Permit</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
+                    <a class="btn read-more get-now">Get Now</a>
+                </div>
+                <div class="box hidden" data-request="Assistance">
+                    <img src="assets/images/docu/6.jpg" alt="">
+                    <h3>Assistance</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
+                    <a class="btn read-more get-now">Get Now</a>
+                </div>
+            </div>
+            <div class="show-more-container">
+                <p class="show-more">Show More</p>
+            </div>
+        </div>
+    </div>
+</section>
         <a class="gotopbtn" href="# "><i class="fa-solid fa-arrow-up fa-lg" style="color: #000000;"></i> </a>
-
         <!-- about  -->
 
         <section id="about" class="about">
@@ -665,7 +853,6 @@ while ($row = mysqli_fetch_assoc($result)) {
         </section>
 
     </section>
-
     <!-- footer -->
     <footer>
         <?php include 'pages/includes/client_footer.php' ?>
@@ -751,21 +938,39 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 
     <script>
+    $(document).ready(function() {
+        // Trigger modal when "Get Now" button is clicked
+        $('.get-now').click(function() {
+            Swal.fire({
+                title: "Do you want to save the changes?",
+                text: "You won't be able to revert this!",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonText: "Sign Up!",
+               
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    $('#loginModal').modal('show');
+                } 
+            });
+        });
+    });
 
-function togglePasswordVisibility() {
-    var passwordInput = document.getElementById("password");
-    var eyeIcon = document.querySelector(".eye-icon");
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("password");
+        var eyeIcon = document.querySelector(".eye-icon");
 
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        eyeIcon.classList.remove("fa-eye-slash");
-        eyeIcon.classList.add("fa-eye");
-    } else {
-        passwordInput.type = "password";
-        eyeIcon.classList.remove("fa-eye");
-        eyeIcon.classList.add("fa-eye-slash");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
+        } else {
+            passwordInput.type = "password";
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+        }
     }
-}
 
     $(document).ready(function() {
         AOS.init();
@@ -830,7 +1035,7 @@ function togglePasswordVisibility() {
                 success: function(response_editAnnouncement) {
                     console.log(
                         response_editAnnouncement
-                        ); // Check the response in the browser console
+                    ); // Check the response in the browser console
 
                     // Clear previous data from tbody
                     $('#progress-table tbody').empty();
@@ -940,7 +1145,7 @@ function togglePasswordVisibility() {
                         closeButton: false,
                         onHidden: function() {
                             // Redirect to client_index.php after the toast message is hidden
-                            window.location.href = 'client_index.php';
+                            window.location.href = 'pages/client_dashboard.php';
                         }
                     });
                 } else {
@@ -955,9 +1160,31 @@ function togglePasswordVisibility() {
             }
         });
     });
-    </script>
-    
 
+
+    </script>
+<!-- hidden-->
+<script>
+    const showMoreLink = document.querySelector('.show-more');
+    const hiddenBoxes = document.querySelectorAll('.box.hidden');
+    let isHidden = true;
+
+    showMoreLink.addEventListener('click', () => {
+        if (isHidden) {
+            hiddenBoxes.forEach(box => {
+                box.classList.remove('hidden');
+            });
+            showMoreLink.textContent = 'Show Less';
+            isHidden = false;
+        } else {
+            hiddenBoxes.forEach(box => {
+                box.classList.add('hidden');
+            });
+            showMoreLink.textContent = 'Show More';
+            isHidden = true;
+        }
+    });
+</script>
 
 
 </body>

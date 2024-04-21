@@ -82,7 +82,7 @@ if ($preparedSql = $db->prepare("UPDATE `members` SET `fullname`= ?, `address`= 
         $response['message'] = 'Successfully updated member information';
         $response['stats'] = $status;
         $response['admin'] = $_SESSION['adminLogged'];
-        $response['operation'] = "edit";
+        $response['operation'] = "reject";
         $response['description'] = " Resident: <b>" . strtoupper($_fullname) . "</b> has been edited at <b> Resident .</b>";
     } else {
         $response['status'] = false;

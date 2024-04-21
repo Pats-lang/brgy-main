@@ -75,13 +75,13 @@ include '../server/admin_login-verification.php';
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Resident Verification</h1>
+              <h1>Rejected Resident</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item text-decoration-none"><a href="dashboard.php">Home</a></li>
-                <li class="breadcrumb-item text-decoration-none text-secondary"><i>Resident Verification</i>
-                <li class="breadcrumb-item text-secondary">Verification </li>
+                <li class="breadcrumb-item text-decoration-none text-secondary"><i>Rejected Resident</i>
+                <li class="breadcrumb-item text-secondary">Rejected Resident </li>
               </ol>
             </div>
           </div>
@@ -94,12 +94,13 @@ include '../server/admin_login-verification.php';
               <div class="card card-primary">
                 <div class="ribbon-wrapper ribbon-lg">
                   <div class="ribbon text-white text-bold" style="background-color: #20b503">
-                     Verification
+                  Rejected
                   </div>
                 </div>
+
                 <div class="card-body">
                   <table id="member_" class="table responsive">
-                  <thead>
+                    <thead>
                       <tr>
                         <th>Picture</th>
                         <th>Member ID</th>
@@ -114,8 +115,8 @@ include '../server/admin_login-verification.php';
 
                     <tbody>
 
-                    <?php
-                      $query = "SELECT * FROM `members` WHERE `status` = '0' ";
+                      <?php
+                      $query = "SELECT * FROM `members` WHERE `status` = '2' ";
                       $result = mysqli_query(getDatabase(), $query);
                       while ($row = mysqli_fetch_array($result)) {
 
@@ -162,16 +163,17 @@ include '../server/admin_login-verification.php';
                                      
 
                                         if ($status == 0) {
-                                          $link_class = 'btn btn-warning  user-select-none';
-                                          $link_text = 'PENDING';
-                                      } elseif ($status === '1') {
-                                        $link_class = 'btn btn-success  user-select-none';
-                                        $link_text = 'ACCEPTED';
-                                      }
-                                     else {
-                                      $link_class = 'btn btn-danger  user-select-none';
-                                      $link_text = 'REJECTED';
-                                      }
+                                            $link_class = 'btn btn-warning  user-select-none';
+                                     
+                                            $link_text = 'PENDING';
+                                        } elseif ($status === '1') {
+                                          $link_class = 'btn btn-success  user-select-none';
+                                          $link_text = 'ACCEPTED';
+                                        }
+                                       else {
+                                        $link_class = 'btn btn-danger  user-select-none';
+                                        $link_text = 'REJECTED';
+                                        }
                   ?>
                      <span class="badge <?php echo $link_class; ?>"><?php echo $link_text; ?></span>
                           </td>
@@ -183,7 +185,7 @@ include '../server/admin_login-verification.php';
                             <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#EditMembers" data-id="<?php echo $row['member_id']; ?>" data-role="editMember">
                               <i class="fa-solid fa-pen-to-square fa-xl" style="color: blue;"></i>
                             </button>
-                           
+                          
                           </td>
 
                         </tr>
@@ -228,7 +230,7 @@ include '../server/admin_login-verification.php';
                         <label for="member_id" class="form-label">Member ID</label>
                         <input type="text" class="form-control" id="member_id" name="member_id" placeholder="Member ID" required readonly>
                         
-                        <label for="member_fullname" class="form-label">FullName</label>
+                        <label for="member_fullname" class="form-label">Name</label>
                         <input type="text" class="form-control" id="member_fullname" name="member_fullname" placeholder="FullName" required readonly>
                         
                         <label for="member_precinct" class="form-label">Precinct No.</label>
@@ -271,7 +273,7 @@ include '../server/admin_login-verification.php';
                     <div class="col-4">
                           <label for="stats" class="form-label">STATUS</label>
                           <select class="form-select" id="stats" name="stats" disabled>
-                            <option value="0">PENDING</option>
+                           
                             <option value="1">ACCEPTED</option>
                             <option value="2">REJECTED</option>
                           </select>
@@ -323,7 +325,7 @@ include '../server/admin_login-verification.php';
                           <input type="text" class="form-control" id="Editmember_id" name="Editmember_id" placeholder="member ID" readonly>
                           
                           <label for="Editmember_fullname" class="form-label">FullName</label>
-                          <input type="text" class="form-control" id="Editmember_fullname" name="Editmember_fullname" placeholder="Name">
+                          <input type="text" class="form-control" id="Editmember_fullname" name="Editmember_fullname" placeholder="FullName">
                         
                           <label for="Editmember_precinct" class="form-label">Precinct No.</label>
                           <input type="text" class="form-control" id="Editmember_precinct" name="Editmember_precinct" placeholder="Precinct No.">
@@ -367,13 +369,13 @@ include '../server/admin_login-verification.php';
                       <div class="col-4">
                           <label for="stats" class="form-label">STATUS</label>
                           <select class="form-select" id="stats" name="stats">
-                            <option value="0">PENDING</option>
+                            
                             <option value="1">ACCEPTED</option>
                             <option value="2">REJECTED</option>
                           </select>
                     </div>
 
-                      
+                    
                   </div>
 
               </div>
@@ -425,7 +427,7 @@ include '../server/admin_login-verification.php';
       });
     });
   //View member 
-  $(document).on('click', 'button[data-role=viewMember]', function() {
+    $(document).on('click', 'button[data-role=viewMember]', function() {
       $.ajax({
         type: "POST",
         url: "../server/read_member.php",
@@ -449,7 +451,6 @@ include '../server/admin_login-verification.php';
         }
       })
     })
-
 
     //Edit member 
     $(document).on('click', 'button[data-role=editMember]',function(){
@@ -533,7 +534,7 @@ pictureFileInput.on("change", function() {
                         }, 100) 
                       
                         $.ajax({
-                            url: "../server/edit_member.php",
+                            url: "../server/edit_member_r eject.php",
                             type: "POST",
                             data: new FormData(this),
                             dataType: 'json',
@@ -582,6 +583,56 @@ pictureFileInput.on("change", function() {
             }
 
     })
+    // Delete member 
+    $(document).on('click', 'button[data-role=deleteMember]', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "POST",
+                        url: "../server/delete_member.php",
+                        data: {
+                          member_id: $(this).attr('data-id'),
+                        },
+                        dataType: "json",
+                        success: function(response_deleteMember) {
+                            if (response_deleteMember.status) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: response_deleteMember.message,
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                }).then(() => {
+                                    location.reload();
+                                });
+
+                                systemChanges(response_deleteMember.admin, response_deleteMember.operation, response_deleteMember.description);
+
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: response_deleteMember.message,
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                });
+                            }
+                        },
+                        error: function(error) {
+                            toastr.error('Error occurred: ' + error, '', {
+                                positionClass: 'toast-top-end',
+                                closeButton: false
+                            });
+                        }
+                    });
+                }
+            })
+        });
         jQuery.validator.addMethod("alphabeticWithSpaceAndDot", function(value, element) {
         return this.optional(element) || /^[a-zA-Z\s.,]*$/.test(value);
     }, "Please enter alphabetic characters only.");
@@ -748,6 +799,8 @@ pictureFileInput.on("change", function() {
                 required: 'Please provide password!'
             },
         },
+
+
         errorElement: 'span',
         errorPlacement: function (error, element) {
           error.addClass('invalid-feedback');
@@ -766,4 +819,3 @@ pictureFileInput.on("change", function() {
 </body>
 
 </html>
-

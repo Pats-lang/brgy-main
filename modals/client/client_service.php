@@ -1,17 +1,22 @@
 <?php
-include 'header.php';
-include '../../server/client_server/conn.php';
+include '../../config/connection.php';
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barangay Officials</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EGBMS | E-Governance Barangay Management System</title>
+  
 
-    <style>
+  <?php include '../import.php'; ?>
+</head>
+
+<style>
          .contain {
     background:#f4f4f4;
     padding:15px 9%;
@@ -126,93 +131,76 @@ include '../../server/client_server/conn.php';
         overflow-y: auto;
     }
     </style>
-</head>
 
-<body class="index-page" data-bs-spy="scroll" data-bs-target="#navmenu">
-
-    <?php include('../includes/client_nav.php'); ?>
-
-    <section>
-        <div class="bg-light">
-            <div class="container">
-                <div class="mx-auto">
-                    <div class="p-2 breadcrumb-container">
-                        <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap">
-
-                            <div>
-                                <h2>SERVICES</h2>
-                            </div>
-
-                            <div class="d-flex flex-wrap align-items-center">
-                                <a href="../../index.php" class="text-reset fw-bold" style="text-decoration:none;">Home</a>
-        
-                                <span class="mx-1">/</span>
-                                <a href="" class="text-reset" style="text-decoration:none;">Services</a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+<body class="hold-transition sidebar-mini layout-fixed">
+  
+<?php include '../includes/client_nav.php'; ?>
+<!-- Site wrapper -->
+<div class="wrapper">
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Service</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item text-decoration-none"><a href="dashboard.php">Home</a></li>
+              <li class="breadcrumb-item text-secondary">Service</li>
+            </ol>
+          </div>
         </div>
+      </div><!-- /.container-fluid -->
     </section>
-
-     <!-- request  -->
-
-
-
-     <section>
-
-
-     
-       
-        <div id="services">
-                <div class="contain">
-
-    
-
+    <!-- Main content -->
+    <section class="content">
+    <div id="services">
+    <div class="contain">
     <div class="box-contain">
 
         <div class="box" data-request="Barangay ID">
-            <img src="../../assets/images/docu/1.jpg" alt="">
+            <img src="../assets/images/docu/1.jpg" alt="">
             <h3>Barangay ID </h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-            <a href="../../pages/client/brgyid_form.php" class="btn read-more">read more</a>
+            <a href="../pages/client/brgyid_form.php" class="btn read-more">read more</a>
         </div>
 
         <div class="box" data-request="Barangay Clearance">
-            <img src="../../assets/images/docu/2.jpg" alt="">
+            <img src="../assets/images/docu/2.jpg" alt="">
             <h3>Barangay Clearance</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-            <a href="../../pages/client/brgyclear_form.php" class="btn read-more">read more</a>
+            <a href="../pages/client/brgyclear_form.php" class="btn read-more">read more</a>
         </div>
 
         <div class="box" data-request="Barangay Certificate">
-            <img src="../../assets/images/docu/4.jpg" alt="">
+            <img src="../assets/images/docu/4.jpg" alt="">
             <h3>Barangay Certificate</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-            <a href="../../pages/client/brgycerti_form.php" class="btn read-more">read more</a>
+            <a href="../pages/client/brgycerti_form.php" class="btn read-more">read more</a>
         </div>
 
         <div class="box" data-request="Business Clearance">
-            <img src="../../assets/images/docu/5.jpg" alt="">
+            <img src="../assets/images/docu/5.jpg" alt="">
             <h3>Business Clearance</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-            <a href="../../pages/client/busiclear_form.php" class="btn read-more">read more</a>
+            <a href="../pages/client/busiclear_form.php" class="btn read-more">read more</a>
         </div>
 
         <div class="box" data-request="Business Permit">
-            <img src="../../assets/images/docu/3.png" alt="">
+            <img src="../assets/images/docu/3.png" alt="">
             <h3>Business Permit</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-            <a href="../../pages/client/busiper_form.php" class="btn read-more">read more</a>
+            <a href="../pages/client/busiper_form.php" class="btn read-more">read more</a>
         </div>
 
         <div class="box" data-request="Assistance">
-            <img src="../../assets/images/docu/6.jpg" alt="">
+            <img src="../assets/images/docu/6.jpg" alt="">
             <h3>Assistance</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-            <a href="../../pages/client/assistance_form.php" class="btn read-more">read more</a>
+            <a href="../pages/client/assistance_form.php" class="btn read-more">read more</a>
         </div>
 
     </div>
@@ -220,54 +208,15 @@ include '../../server/client_server/conn.php';
 </div>   
 </div>     
                         
-</section>   
+    </section>
+  </div>
+  <!-- /.content-wrapper -->
 
+  <?php include '../includes/client_footer.php'; ?>
+  
+</div>
+<!-- ./wrapper -->
 
-       
-<!-- footer -->
-<footer>
-            <?php include '../../pages/includes/client_footer.php' ?>
-        </footer>
-
-
-
-
-
-
-       
-
-
-<script>
-     // JavaScript to handle modal functionality
-    // Get the modal
-    var modal = document.getElementById("myModal");
-
-    // Get the button that opens the modal
-    var btns = document.getElementsByClassName("read-more");
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks the button, open the modal 
-    for (var i = 0; i < btns.length; i++) {
-        btns[i].onclick = function() {
-            modal.style.display = "block";
-        }
-    }
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-</script>
 </body>
 
 </html>
-

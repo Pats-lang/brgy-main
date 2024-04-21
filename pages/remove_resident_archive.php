@@ -11,6 +11,7 @@ include '../server/admin_login-verification.php';
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EGBMS | E-Governance Barangay Management System</title>
   <?php include 'import.php'; ?>
+  <script src="../assets/js/system_changes.js?v=<?php echo time(); ?>" defer></script>
 </head>
 <style>
    /* Add your styles here */
@@ -74,13 +75,13 @@ include '../server/admin_login-verification.php';
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Archive</h1>
+              <h1>Removed Resident</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item text-decoration-none"><a href="dashboard.php">Home</a></li>
-                <li class="breadcrumb-item text-decoration-none text-secondary"><i>Archive</i>
-                <li class="breadcrumb-item text-secondary">Archive </li>
+                <li class="breadcrumb-item text-decoration-none text-secondary"><i>Removed Resident</i>
+                <li class="breadcrumb-item text-secondary">Removed Resident</li>
               </ol>
             </div>
           </div>
@@ -93,7 +94,7 @@ include '../server/admin_login-verification.php';
               <div class="card card-primary">
                 <div class="ribbon-wrapper ribbon-lg">
                   <div class="ribbon text-white text-bold" style="background-color: #20b503">
-                  Archive
+                  Removed
                   </div>
                 </div>
 
@@ -103,7 +104,7 @@ include '../server/admin_login-verification.php';
                       <tr>
                         <th>Picture</th>
                         <th>Member ID</th>
-                        <th>Name</th>
+                        <th>FullName</th>
                         <th>Address</th>
                         <th>Precinct</th>
                         <th>Gender</th>
@@ -115,7 +116,7 @@ include '../server/admin_login-verification.php';
                     <tbody>
 
                       <?php
-                      $query = "SELECT * FROM `members` WHERE `status` = '2' ";
+                      $query = "SELECT * FROM `members` WHERE `status` = '3' ";
                       $result = mysqli_query(getDatabase(), $query);
                       while ($row = mysqli_fetch_array($result)) {
 
@@ -139,7 +140,7 @@ include '../server/admin_login-verification.php';
                             <?php echo $row['member_id']; ?>
                           </td>
                           <td>
-                            <?php echo $row['name']; ?>
+                            <?php echo $row['fullname']; ?>
                           </td>
                           <td>
                             <?php echo $row['address']; ?>
@@ -161,17 +162,13 @@ include '../server/admin_login-verification.php';
                                         // $link_href = 'actions/status.php?id='.$id.'&status=1';
                                      
 
-                                        if ($status == 0) {
-                                            $link_class = 'btn btn-warning  user-select-none';
-                                     
-                                            $link_text = 'PENDING';
-                                        } elseif ($status === '1') {
+                                       if ($status === '1') {
                                           $link_class = 'btn btn-success  user-select-none';
-                                          $link_text = 'ACCEPTED';
+                                          $link_text = 'RECOVER';
                                         }
                                        else {
                                         $link_class = 'btn btn-danger  user-select-none';
-                                        $link_text = 'DECLINE';
+                                        $link_text = 'REMOVED';
                                         }
                   ?>
                      <span class="badge <?php echo $link_class; ?>"><?php echo $link_text; ?></span>
@@ -184,9 +181,7 @@ include '../server/admin_login-verification.php';
                             <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#EditMembers" data-id="<?php echo $row['member_id']; ?>" data-role="editMember">
                               <i class="fa-solid fa-pen-to-square fa-xl" style="color: blue;"></i>
                             </button>
-                            <button type="button" class="btn " data-bs-toggle="modal" data-id="<?php echo $row['member_id']; ?>" data-role="deleteMember">
-                              <i class="fa-solid fa-trash fa-xl" style="color: red;"></i>
-                            </button>
+                          
                           </td>
 
                         </tr>
@@ -274,9 +269,9 @@ include '../server/admin_login-verification.php';
                     <div class="col-4">
                           <label for="stats" class="form-label">STATUS</label>
                           <select class="form-select" id="stats" name="stats" disabled>
-                            <option value="0">PENDING</option>
-                            <option value="1">ACCEPTED</option>
-                            <option value="2">DECLINE</option>
+                           
+                            <option value="1">RECOVER</option>
+                            <option value="3">REMOVED</option>
                           </select>
                     </div>
                     <div class="col-4">
@@ -329,7 +324,7 @@ include '../server/admin_login-verification.php';
                           <input type="text" class="form-control" id="Editmember_id" name="Editmember_id" placeholder="member ID" readonly>
                           
                           <label for="Editmember_name" class="form-label">Name</label>
-                          <input type="text" class="form-control" id="Editmember_name" name="Editmember_name" placeholder="Name">
+                          <input type="text" class="form-control" id="Editmember_fullname" name="Editmember_fullname" placeholder="Name">
                         
                           <label for="Editmember_precinct" class="form-label">Precinct No.</label>
                           <input type="text" class="form-control" id="Editmember_precinct" name="Editmember_precinct" placeholder="Precinct No.">
@@ -373,22 +368,13 @@ include '../server/admin_login-verification.php';
                       <div class="col-4">
                           <label for="stats" class="form-label">STATUS</label>
                           <select class="form-select" id="stats" name="stats">
-                            <option value="0">PENDING</option>
-                            <option value="1">ACCEPTED</option>
-                            <option value="2">DECLINE</option>
+                            
+                            <option value="1">RECOVER</option>
+                            <option value="3">REMOVED</option>
                           </select>
                     </div>
 
-                      <div class="col-4">
-                            <label for="Editmember_signature" class="form-label">Signature</label>
-                        <div class="signature-picture-container">
-                            <input type="file" id="Editmember_signature_input" name="Editmember_signature_input" accept="image/*" style="display: none;">
-                          <label for="Editmember_signature_input" class="profile-picture-label">
-                            <img src="" width="250px" height="80px" id="Editmember_signature" name="Editmember_signature"  alt="Editmember Signature">
-                            <span class="change-picture-text">Change Signature</span>
-                          </label>
-                        </div>
-                      </div>
+                      
                   </div>
 
               </div>
@@ -460,7 +446,7 @@ include '../server/admin_login-verification.php';
           $('#member_civilStatus').val(response_viewMember.civil_status);
           $('#stats').val(response_viewMember.status);
           $('#member_picture').attr('src', '../assets/images/member_pictures/' + response_viewMember.picture);
-          $('#member_signature').attr('src', '../assets/images/member_pictures/' + response_viewMember.signature);
+          
         }
       })
     })
@@ -485,17 +471,17 @@ include '../server/admin_login-verification.php';
           $('#Editmember_religion').val(response_Editmember.religion);
           $('#Editmember_civilStatus').val(response_Editmember.civil_status);
           $('#Editmember_picture').attr('src', '../assets/images/member_pictures/' + response_Editmember.picture);
-          $('#Editmember_signature').attr('src', '../assets/images/member_pictures/' + response_Editmember.signature);
+          
           $('#stats').val(response_Editmember.status);
         }
       })
       
     });
     const pictureFileInput = $("#Editmember_picture_input");
-const signatureFileInput = $("#Editmember_signature_input");
+
 
 const picturePreview = $("#Editmember_picture");
-const signaturePreview = $("#Editmember_signature");
+
 
 // Function to handle file input changes
 function handleFileInputChange(fileInput, imagePreview) {
@@ -518,10 +504,7 @@ pictureFileInput.on("change", function() {
     handleFileInputChange(pictureFileInput, picturePreview);
 });
 
-// Bind change event for signature input
-signatureFileInput.on("change", function() {
-    handleFileInputChange(signatureFileInput, signaturePreview);
-});
+
 
 
     $('#EditMembersForm').on('submit', function(e){
@@ -536,8 +519,8 @@ signatureFileInput.on("change", function() {
                 }).then((result) => {
                     $('#EditMembers').modal('hide');
                     if (result.isConfirmed) {
-                      let timerInterval
-                Swal.fire({
+                  let timerInterval
+                   Swal.fire({
                     title: 'Wait for a while!',
                     html: 'Updating <b></b> milliseconds.',
                     timer: 1000,
@@ -649,93 +632,172 @@ signatureFileInput.on("change", function() {
                 }
             })
         });
-        jQuery.validator.addMethod("alphabeticWithSpace", function (value, element) {
-        return this.optional(element) || /^[a-zA-Z\s ]+$/.test(value);
-         }, "Please enter alphabetic characters only.");
-      // Form validation
-        var validate_form = $('#EditMembersForm').validate({
+        jQuery.validator.addMethod("alphabeticWithSpaceAndDot", function(value, element) {
+        return this.optional(element) || /^[a-zA-Z\s.,]*$/.test(value);
+    }, "Please enter alphabetic characters only.");
+    // Form validation
+    var validate_form = $('#registerMemberForm').validate({
         rules: {
-
-          Editmember_picture_input: {
-            required: true,
-            accept: "image/jpeg, image/png"
-          },
-          Editmember_name:{
-            required :true,
-            alphabeticWithSpace: true,
-          },
-          Editmember_precinct:{
-            required :true,
-            maxlength: 6,
-            minlength: 6,
-          },
-          Editmember_address:{
-            required :true,
-          },
-          Editmember_birthDate:{
-            required :true,
-          },
-          Editmember_cellNo:{
-            required :true,
-            maxlength: 11,
-            minlength:11,
-          },
-          Editmember_religion:{
-            required :true,
-          },
-          Editmember_civilStatus:{
-            required :true,
-
-          },
-          stats:{
-           required: true,
-          },
-          Editmember_signature_input:{
-            required: true,
-            accept: "image/jpeg, image/png"
-          }
-        },
-
-messages: {
-  Editmember_signature_input: {
-    required: 'Please provide a valid picture !',
-            accept: 'Please select a valid JPG or PNG image file.'
-  },
-  Editmember_name:{
-    required:'This field is required!',
-    alphabeticWithSpace:"Only letters and spaces are allowed!"
-    },
-    Editmember_precinct:{
-      required:'This field is required!',
-      maxlength: 'Year should be exactly 6 digits long.',
-      minlength: 'Year should be exactly 6 digits long.'
-    },
-    Editmember_address:{
-      required:'This field is required!'
-      },
-      Editmember_birthDate:{
-        required:'This field is required!'
-        },
-        Editmember_cellNo:{
-          required:'This field is required!',
-          maxlength: 'Cell number must be exactly 11 digits long.',
-          minlength: 'Cell number must be exactly 11 digits long.'
-          },
-          Editmember_religion:{
-            required:'This field is required!'
+            register_precinctNo: {
+                required: true,
+                maxlength: 6,
+                minlength: 6,
             },
-            Editmember_civilStatus:{
-              required:'This field is required!'
-              },
-              stats:{
-                required: 'This field is required!'
-                },
-                Editmember_picture_input: {
-                  required: 'Please provide a valid picture !',
-            accept: 'Please select a valid JPG or PNG image file.'
-          },
-            
-                },
+            register_fullname: {
+                required: true,
+                alphabeticWithSpaceAndDot: true,
+                minlength: 3,
+            },
+
+            register_lastname: {
+                required: true,
+                alphabeticWithSpaceAndDot: true,
+                minlength: 3,
+            },
+
+            register_firstname: {
+                required: true,
+                alphabeticWithSpaceAndDot: true,
+                minlength: 3,
+            },
+
+            register_middlename: {
+                required: true,
+                alphabeticWithSpaceAndDot: true,
+                minlength: 3,
+            },
+            register_surfix: {
+                
+                alphabeticWithSpaceAndDot: true,
+                
+            },
+
+            register_Address: {
+                required: true,
+                minlength: 15,
+            },
+            register_emailAddress: {
+                required: true,
+                minlength: 10,
+                email: true,
+            },
+            register_birthDate: {
+                required: true,
+            },
+            register_cellNo: {
+                required: true,
+                maxlength: 11,
+                minlength: 11,
+                pattern: /^09\d{9}$/,
+            },
+
+            register_status: {
+                required: true,
+            },
+            register_picture: {
+                required: true,
+                accept: "image/jpeg, image/png",
+            },
+            register_signature: {
+                required: true,
+                accept: "image/jpeg, image/png",
+            },
+
+            campus: {
+                required: true,
+            },
+
+            'register_addResidency[]': {
+                alphabeticWithSpaceAndDot: true,
+            },
+            'register_addYear[]': {
+                alphabeticWithSpaceAndDot: true,
+            },
+            'register_addPostal[]': {
+                required: true,
+                maxlength: 4,
+                minlength: 4,
+            },
+            'register_addDistrict[]': {
+                required: true,
+            },
+            'register_emergencyName[]': {
+                alphabeticWithSpaceAndDot: true,
+            },
+            'register_emergencyRelation[]': {
+                alphabeticWithSpaceAndDot: true,
+            },
+            'register_emergencyContact[]': {
+                required: true,
+                maxlength: 11,
+                minlength: 11,
+                pattern: /^09\d{9}$/,
+            },
+            'register_emergencyAddress[]': {
+                alphabeticWithSpaceAndDot: true,
+            },
+            'register_register_proofId[]': {
+                required: true,
+                accept: "image/jpeg, image/png",
+            },
+            'register_register_proofResidency[]': {
+                required: true,
+                accept: "image/jpeg, image/png",
+            },
+            'register_accountUser[]': {
+                required: true,
+                pattern: /^[A-Za-z0-9!@#$%^&*()-_+=~`[\]{}|\\:;"'<>,.?/ ]+$/,
+            },
+            'register_accountPassword[]': {
+                required: true,
+
+            },
+        },
+
+        messages: {
+            register_precinctNo: {
+                required: 'Please provide a Precinct No.!',
+                pattern: 'Use format: 0000-A'
+            },
+            register_fullname: {
+                required: 'Please Enter your Name!',
+            },
+
+            register_Address: {
+                required: 'Please provide a valid Address!',
+            },
+            register_emailAddress: {
+                required: 'Please provide a valid Email Address!',
+            },
+            register_birthDate: {
+                required: 'Member must be 18 years old and above!', //have additonal condition
+            },
+            register_cellNo: {
+                maxlength: 'Please provide 11 digits!',
+            },
+            'register_emergencyContact[]': {
+                maxlength: 'Please provide 11 digits!',
+            },
+
+            register_status: {
+                required: 'Please select a Civil Status ',
+            },
+            register_picture: {
+                accept: 'Please select a valid JPG or PNG image file.'
+            },
+            register_signature: {
+                accept: 'Please select a valid JPG or PNG image file.'
+            },
+            campus: {
+                required: 'Select Gender is required!'
+            },
+            register_accountUser: {
+                required: 'Please provide username!'
+            },
+            register_accountPassword: {
+                required: 'Please provide password!'
+            },
+        },
                 
 
 

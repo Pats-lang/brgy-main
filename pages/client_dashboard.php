@@ -1,6 +1,5 @@
 <?php
 include '../config/connection.php';
-include '../server/admin_login-verification.php';
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +16,8 @@ include '../server/admin_login-verification.php';
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
-
+  
+<?php include 'includes/client_nav.php'; ?>
 <!-- Site wrapper -->
 <div class="wrapper">
   
@@ -59,7 +59,7 @@ include '../server/admin_login-verification.php';
                 </div>
               </div>
               <div class="card-body">
-                Good day! <?php echo $db_adminFullName; ?>
+                Good day! <?php echo $adminLogged; ?>
               </div>
               <!-- /.card-body -->
             
@@ -77,7 +77,7 @@ include '../server/admin_login-verification.php';
                 <h3>
                 <?php
                   $conn = mysqli_connect("localhost", "root", "", "u907822938_barangaydb") or die("DI GUMANA");
-                  $sql = "SELECT * from request_brgyclrs"; 
+                  $sql = "SELECT * FROM `members` WHERE `status` = '1' ";; 
                   $result = mysqli_query($conn, $sql);
                   $count = mysqli_num_rows($result);
                   echo $count;
@@ -87,7 +87,7 @@ include '../server/admin_login-verification.php';
                 <p>Residents </p>
               </div>
               <div class="icon">
-                <i class="fas fa-shopping-cart"></i>
+                <i class="fas fa-users"></i>
               </div>
               <a href="members_main-campus.php" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
@@ -112,7 +112,7 @@ include '../server/admin_login-verification.php';
                 <p>Done Request</p>
               </div>
               <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                <i class="fa-file-text"></i>
               </div>
               <a href="#" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
@@ -127,19 +127,19 @@ include '../server/admin_login-verification.php';
                 <h3>
                 <?php
                   $conn = mysqli_connect("localhost", "root", "", "u907822938_barangaydb") or die("DI GUMANA");
-                  $sql = "SELECT * from user_account WHERE status = 0"; 
+                  $sql = "SELECT username, password FROM member_account  "; 
                   $result = mysqli_query($conn, $sql);
                   $count = mysqli_num_rows($result);
                   echo $count;
                   ?>
                 </h3>
 
-                <p>User</p>
+                <p>Registered User</p>
               </div>
               <div class="icon">
                 <i class="fas fa-user-plus"></i>
               </div>
-              <a href="#" class="small-box-footer">
+              <a href="manage_residents-verification.php" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -152,7 +152,7 @@ include '../server/admin_login-verification.php';
                 <h3>
                 <?php
                   $conn = mysqli_connect("localhost", "root", "", "u907822938_barangaydb") or die("DI GUMANA");
-                  $sql = "SELECT * from user_account WHERE status = 0"; 
+                  $sql = "SELECT * FROM `admin` WHERE 1 "; 
                   $result = mysqli_query($conn, $sql);
                   $count = mysqli_num_rows($result);
                   echo $count;
@@ -162,7 +162,7 @@ include '../server/admin_login-verification.php';
                 <p>Admins</p>
               </div>
               <div class="icon">
-                <i class="fas fa-chart-pie"></i>
+                <i class="fa-solid fa-users-gear"></i>
               </div>
               <a href="#" class="small-box-footer">
                 More info <i class="fas fa-arrow-circle-right"></i>

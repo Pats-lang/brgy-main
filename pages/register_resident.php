@@ -60,53 +60,64 @@ include '../server/admin_login-verification.php';
                   <div class="card-body p-4">
                     <form id="registerMemberForm" enctype="multipart/form-data">
 
-                        <!-- Personal Information -->
-                        <div id="personal_information" class="content mt-3" role="tabpanel"
+                       
+                          <!-- Personal Information -->
+                          <div id="personal_information" class="content mt-3" role="tabpanel"
                                             aria-labelledby="personal_information-trigger">
                                             <h5 class=" ">Personal Information</h5>
 
                                             <div class="row">
                                                 <div class="col form-group ">
+                                                    <label for="register_lastname" class="mt-1">Last Name</label>
+                                                    <input type="text" class="form-control form-control-border mt-1"
+                                                        style="height:40px" id="register_lastname"
+                                                        name="register_lastname" placeholder="Last Name" required>
+
+                                                </div>
+                                                <div class="col form-group ">
+                                                    <label for="register_firstname" class="mt-1">First Name</label>
+                                                    <input type="text" class="form-control form-control-border mt-1"
+                                                        style="height:40px" id="register_firstname"
+                                                        name="register_firstname" placeholder="First Name" required>
+
+                                                </div>
+                                                <div class="col form-group ">
+                                                    <label for="register_middlename" class="mt-1">Middle Name</label>
+                                                    <input type="text" class="form-control form-control-border mt-1"
+                                                        style="height:40px" id="register_middlename"
+                                                        name="register_middlename" placeholder="Middle Name" required>
+
+                                                </div>
+                                                <div class="col form-group ">
+                                                    <label for="register_surfix" class="mt-1">Surfix</label>
+                                                    <input type="text" class="form-control form-control-border mt-1"
+                                                        style="height:40px" id="register_surfix" name="register_surfix"
+                                                        placeholder="Surfix" >
+
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col form-group">
                                                     <label for="register_precinctNo" class="mt-1">Precinct No.</label>
                                                     <input type="text" class="form-control form-control-border mt-1"
-                                                        id="register_precinctNo" name="register_precinctNo"
-                                                        placeholder="Precinct No." required>
+                                                        style="height:40px" id="register_precinctNo"
+                                                        name="register_precinctNo" placeholder="Precinct No."
+                                                        maxlength="6" pattern="\d{4}-[A-Za-z]+" required>
                                                 </div>
 
-
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col form-group ">
-                                                    <label for="register_name" class="mt-1">Name</label>
-                                                    <input type="text" class="form-control form-control-border mt-1"
-                                                        id="register_name" name="register_name" placeholder="Name"
-                                                        required>
-                                                </div>
 
                                                 <div class="col form-group">
-                                                    <label for="register_birthDate" class="mt-2">Birth Date</label>
+                                                    <label for="register_birthDate" class="mt-1">Birth Date</label>
                                                     <input type="date" class="form-control form-control-border mt-1"
-                                                        id="register_birthDate" name="register_birthDate"
-                                                        placeholder="Birth Date" required>
+                                                        style="height:40px" id="register_birthDate"
+                                                        name="register_birthDate" placeholder="Birth Date" required>
                                                 </div>
 
-                                                <div class="col form-group">
-                                                    <label for="register_addAddress" class="mt-2">Address</Address></label>
-                                                    <input type="text" class="form-control form-control-border mt-2"
-                                                        id="register_addAddress" name="register_addAddress"
-                                                        placeholder="Address" required>
-                                                </div>
-                                            </div>
-                                            
-
-
-                                            <div class="row">
                                                 <div class="col form-group ">
                                                     <label for="register_gender" class="mt-2">Gender</label>
-                                                    <select
-                                                        class="custom-select rounded-0 form-control form-control-border mt-1"
-                                                        id="campus" name="campus" required>
+                                                    <select class="form-control form-control-border mt-1"
+                                                        style="height:40px" id="campus" name="campus" required>
                                                         <option selected disabled>Select a Gender</option>
                                                         <option value="male" data-campus-id="01">Male
                                                         </option>
@@ -114,20 +125,34 @@ include '../server/admin_login-verification.php';
                                                         </option>
                                                     </select>
                                                 </div>
+
+                                                <!-- <div class="col form-group">
+                                                    <label for="register_address" class="mt-1">Address</Address></label>
+                                                    <input type="text" class="form-control form-control-border mt-1"
+                                                        style="height:40px" id="register_address"
+                                                        name="register_address" placeholder="Street Name, Building, House No. " required>
+                                                </div>-->
+                                            </div>
+
+
+                                            <div class="row">
+
+                                            <div class="col form-group">
+                                                    <label for="register_address" class="mt-1">Address</Address></label>
+                                                    <input type="text" class="form-control form-control-border mt-1"
+                                                        style="height:40px" id="register_address"
+                                                        name="register_address" placeholder="Street Name, Building, House No. " required>
+                                                </div>
+                                                
                                                 <div class="col form-group">
                                                     <label for="register_emailAddress" class="mt-2">Email
                                                         Address</label>
-                                                    <input type="email" class="form-control form-control-border  mt-1"
-                                                        id="register_emailAddress" name="register_emailAddress"
-                                                        placeholder="Email Address" required>
+                                                    <input type="email" class="form-control form-control-border mt-1"
+                                                        style="height:40px" id="register_emailAddress"
+                                                        name="register_emailAddress" placeholder="Email Address"
+                                                        required>
                                                 </div>
-                                                <div class="col form-group">
-                                                    <label for="register_cellNo" class="mt-2">Tel/Cellphone
-                                                        #</label>
-                                                    <input type="number" class="form-control form-control-border mt-1"
-                                                        id="register_cellNo" name="register_cellNo"
-                                                        placeholder="Tel/Cellphone #" required>
-                                                </div>
+                                                
 
                                             </div>
 
@@ -135,36 +160,26 @@ include '../server/admin_login-verification.php';
 
 
                                             <div class="row">
-                                                <div class="col form-group">
-                                                    <label for="register_religion" class="mt-2">Religion</label>
-                                                    <select
-                                                        class="custom-select rounded-0 form-control form-control-border mt-1"
-                                                        id="register_religion" name="register_religion" required>
-                                                        <option selected disabled>Select a Religion</option>
-                                                        <option id="catholic">Catholic</option>
-                                                        <option id="INC">Iglesia ni Cristo</option>
-                                                        <option id="aglipay">Aglipay</option>
-                                                        <option id="baptist">Baptist</option>
-                                                        <option id="dd">Dating Daan</option>
-                                                        <option id="islam">Islam</option>
-                                                        <option id="jehovah">Jehovah's Witnesses</option>
-                                                        <option id="others">Others</option>
-                                                    </select>
+                                            <div class="col form-group">
+                                                    <label for="register_cellNo" class="mt-2">Tel/Cellphone
+                                                        #</label>
+                                                    <input type="number" class="form-control form-control-border mt-1"
+                                                        style="height:40px" id="register_cellNo" name="register_cellNo"
+                                                        placeholder="Tel/Cellphone #" required>
                                                 </div>
+                                                
 
                                                 <div class="col form-group">
                                                     <label for="register_status" class="mt-2">Civil Status</label>
-                                                    <select
-                                                        class="custom-select rounded-0 form-control form-control-border mt-1"
-                                                        id="register_status" name="register_status" required>
+                                                    <select class="form-control form-control-border mt-1"
+                                                        style="height:40px" id="register_status" name="register_status"
+                                                        required>
                                                         <option selected disabled>Select a Civil Status</option>
                                                         <option id="single">Single</option>
                                                         <option id="married">Married</option>
                                                         <option id="widow">Widow/er</option>
-                                                        <option id="ls">Legally Separated</option>
-                                                        <option id="livingin">LIVING-IN</option>
                                                         <option id="separated">Separated</option>
-                                                        <option id="others">Others</option>
+                                                        
                                                     </select>
                                                 </div>
 
@@ -187,19 +202,34 @@ include '../server/admin_login-verification.php';
                                             </div>
 -->
                                                 <div class="row">
+
+                                                <div class="col form-group">
+                                                    <label for="register_religion" class="mt-2">Religion</label>
+                                                    <select class="form-control form-control-border mt-1"
+                                                        style="height:40px" id="register_religion"
+                                                        name="register_religion" required>
+                                                        <option selected disabled>Select a Religion</option>
+                                                        <option id="catholic">Roman Catholic</option>
+                                                        <option id="INC">Iglesia ni Cristo</option>
+                                                        <option id="aglipay">Christian</option>
+                                                        <option id="others">Others</option>
+                                                    </select>
+                                                </div>
+                                               
+
                                                     <div class="col form-group">
                                                         <label for="register_picture" class="mt-2">Picture</label>
                                                         <input type="file" class="form-control form-control-border mt-1"
-                                                            accept="image/*" id="register_picture"
-                                                            name="register_picture" >
+                                                            style="height:40px" accept="image/*" id="register_picture"
+                                                            name="register_picture">
                                                     </div>
 
-                                                    <div class="col form-group">
+                                                   <!-- <div class="col form-group">
                                                         <label for="register_signature" class="mt-2">Signature</label>
                                                         <input type="file" class="form-control form-control-border mt-1"
-                                                            accept="image/*" id="register_signature"
-                                                            name="register_signature" >
-                                                    </div>
+                                                            style="height:40px" accept="image/*" id="register_signature"
+                                                            name="register_signature">
+                                                    </div> -->
                                                 </div>
 
                       <!-- Personal Information -->
@@ -209,26 +239,24 @@ include '../server/admin_login-verification.php';
                       </div>
 
                       
-                      <!-- Address Information -->
-                      <div id="address-part" class="content mt-3" role="tabpanel"
+                     
+                       <!-- Address Information -->
+                       <div id="address-part" class="content mt-3" role="tabpanel"
                                             aria-labelledby="address-part-trigger">
                                             <h5>Address
-                                               <!--   <i class="fa-solid fa-circle-plus" style="color:green"
-                                                    onclick="addFields('address', this)"></i> -->
+                                               
                                             </h5>
                                             <div class="row" id="address_container">
                                                 <div class="col form-group">
                                                     <label for="register_addResidency" class="mt-2">Residency</label>
                                                     <select
-                                                        class="custom-select rounded-0 form-control form-control-border mt-1"
+                                                        class="custom-select rounded-0 form-control form-control-border mt-1" style="height:40px"
                                                         id="register_addResidency" name="register_addResidency"
                                                         required>
                                                         <option selected disabled>Residency</option>
-                                                        <option id="home">Home Owner</option>
+                                                        <option id="home">Permanent Resident</option>
                                                         <option id="tenant">Tenant</option>
-                                                        <option id="helper">Helper</option>
-                                                        <option id="CW">Constraction Worker</option>
-                                                        <option id="others">Others</option>
+
 
                                                     </select>
                                                 </div>
@@ -236,118 +264,55 @@ include '../server/admin_login-verification.php';
                                                 <div class="col form-group">
                                                     <label for="register_addYears" class="mt-2">Years Of
                                                         Residency</label>
-                                                    <input type="text" class="form-control form-control-border mt-2"
-                                                        id="register_addYears" name="register_addYears[]"
-                                                        placeholder="Years Of Residency" required>
+                                                    <select class="form-control form-control-border mt-1"  style="height:40px"
+                                                        id="register_addYears" name="register_addYears[]" required>
+                                                        <option value="">Select Years Of Residency</option>
+                                                        <!-- Optionally include a default option -->
+                                                        <?php
+        for ($i = 1; $i <= 100; $i++) {
+            echo "<option value=\"$i\">$i</option>";
+        }
+        ?>
+                                                    </select>
                                                 </div>
 
-                                               
-                                            </div>
 
-                                            <div class="row" id="address_container">
-                                                <div class="col form-group">
-                                                    <label for="register_addPostal" class="mt-2">Postal Code</label>
-                                                    <input type="number" class="form-control form-control-border mt-2"
-                                                        value="1400" readonly style="background-color: #f2f2f2;"
-                                                        id="register_addPostal" name="register_addPostal[]"
-                                                        placeholder="Postal Code" required>
-                                                </div>
-
-                                                <div class="col form-group">
-                                                    <label for="register_addDistrict" class="mt-2">District</label>
-                                                    <input type="text" class="form-control form-control-border mt-2"
-                                                        value="District II" readonly style="background-color: #f2f2f2;"
-                                                        id="register_addDistrict" name="register_addDistrict[]"
-                                                        placeholder="Barangay" required>
-                                                </div>
-
-                                                <div class="col form-group">
-                                                    <label for="register_addBarangay" class="mt-2">Barangay</label>
-                                                    <input type="text" class="form-control form-control-border mt-2"
-                                                        value="Barangay 20" readonly style="background-color: #f2f2f2;"
-                                                        id="register_addBarangay" name="register_addBarangay[]"
-                                                        placeholder="Barangay" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="row" id="address_container">
-                                                <div class="col form-group">
-                                                    <label for="register_addRegion" class="mt-2">Region</label>
-                                                    <input type="text" class="form-control form-control-border mt-2"
-                                                        value="Metro Manila" readonly style="background-color: #f2f2f2;"
-                                                        id="register_addRegion" name="register_addRegion[]"
-                                                        placeholder="Region" required>
-                                                </div>
-
-                                                <div class="col form-group">
-                                                    <label for="register_addProvince" class="mt-2">Province</label>
-                                                    <input type="text" class="form-control form-control-border mt-2"
-                                                        value="Metro Manila" readonly style="background-color: #f2f2f2;"
-                                                        id="register_addProvince" name="register_addProvince[]"
-                                                        placeholder="Province" required>
-                                                </div>
-
-                                                <div class="col form-group">
-                                                    <label for="register_addCity" class="mt-2">City</label>
-                                                    <input type="text" class="form-control form-control-border mt-2"
-                                                        value="Caloocan City" readonly
-                                                        style="background-color: #f2f2f2;" id="register_addCity"
-                                                        name="register_addCity[]" placeholder="City" required>
-                                                </div>
                                             </div>
                       <!--end address -->
 
                       <!-- Emergency Contact-->
                       <div id="emergency-part" class="content mt-3" role="tabpanel"
                                             aria-labelledby="emergency-part-trigger">
-                                            <h5>Emergency Details
-                                               <!--   <i class="fa-solid fa-circle-plus" style="color:green"
-                                                    onclick="addFields('emergency', this)"></i> -->
+                                            <h5> In case of emergency
+                                                
                                             </h5>
                                             <div class="row" id="trainings_container">
-                                                <div class="col form-group">
-                                                    <label for="register_emergencyName" class="mt-2">Emergency Contact
-                                                        Name
-                                                    </label>
-                                                    <input type="text" class="form-control form-control-border mt-2"
-                                                        id="register_emergencyName" name="register_emergencyName[]"
-                                                        placeholder="Emergency Contact" required>
-                                                </div>
+                                            <div class="col form-group">
+                                                        <label for="register_emergencyName" class="mt-2">
+                                                            Name:
+                                                            </label>
+                                                        <input type="text"
+                                                            class="form-control form-control-border mt-1"  style="height:40px"
+                                                            id="register_emergencyName"
+                                                            name="register_emergencyName[]"
+                                                            placeholder="Name" required>
+                                                    </div>
 
                                                 <div class="col form-group">
-                                                    <label for="register_emergencyRelation" class="mt-2">Emergency
-                                                        Contact Relationship</label>
-                                                    <input type="text" class="form-control form-control-border  mt-2"
-                                                        id="register_emergencyRelation"
-                                                        name="register_emergencyRelation[]"
-                                                        placeholder="Emergency Contact Relationship" required>
-                                                </div>
-                                                <div class="row" id="trainings_container">
-                                                    <div class="col form-group">
-                                                        <label for="register_emergencyContact" class="mt-2">Emergency
-                                                            Contact
-                                                            #</label>
+                                                        <label for="register_emergencyContact" class="mt-2">
+                                                            Contact:
+                                                            </label>
                                                         <input type="number"
-                                                            class="form-control form-control-border mt-1"
+                                                            class="form-control form-control-border mt-1"  style="height:40px"
                                                             id="register_emergencyContact"
                                                             name="register_emergencyContact[]"
-                                                            placeholder="Emergency Contact #" required>
+                                                            placeholder="Contact No." required>
                                                     </div>
-
-                                                    <div class="col form-group">
-                                                        <label for="register_emergencyaddAddress" class="mt-2">Emergency
-                                                            Contact Address</label>
-                                                        <input type="text"
-                                                            class="form-control form-control-border  mt-2"
-                                                            id="register_emergencyaddAddress"
-                                                            name="register_emergencyaddAddress[]"
-                                                            placeholder="Emergency Contact Address" required>
-                                                    </div>
-
-
-                                                </div>
 
                                             </div>
+
+
+                                           
                       <!-- ./Emergency -->
 
                      <!--Proof of Residency -->
@@ -452,6 +417,27 @@ include '../server/admin_login-verification.php';
     <script>
     //   getMemberId("01", "../server/create_member-id.php"); 01 for Main/Edsa/South Campus
     
+    
+    document.getElementById("register_precinctNo").addEventListener("input", function() {
+        let value = this.value.toUpperCase(); // Convert to uppercase to handle case sensitivity
+        let formattedValue = value.replace(/[^0-9A-Z]/g,
+            ''); // Remove any non-numeric and non-letter characters
+
+        // Insert a hyphen after the fourth character if the total length is greater than 4
+        if (formattedValue.length > 4) {
+            formattedValue = formattedValue.substring(0, 4) + '-' + formattedValue.substring(4);
+        }
+
+        // Trim excess characters if the total length is greater than 6
+        if (formattedValue.length > 6) {
+            formattedValue = formattedValue.substring(0, 6);
+        }
+
+        // Update the input field value
+        this.value = formattedValue;
+    });
+
+
     const campusSelect = document.getElementById('campus');
     const registerCampusIdInput = document.getElementById('register_campusId');
 
@@ -464,7 +450,7 @@ include '../server/admin_login-verification.php';
 
 
     jQuery.validator.addMethod("alphabeticWithSpaceAndDot", function(value, element) {
-        return this.optional(element) ||  /^[a-zA-Z\s.]*$/.test(value);
+        return this.optional(element) || /^[a-zA-Z\s.,]*$/.test(value);
     }, "Please enter alphabetic characters only.");
     // Form validation
     var validate_form = $('#registerMemberForm').validate({
@@ -474,20 +460,43 @@ include '../server/admin_login-verification.php';
                 maxlength: 6,
                 minlength: 6,
             },
-            register_name: {
+            register_fullname: {
                 required: true,
                 alphabeticWithSpaceAndDot: true,
                 minlength: 3,
             },
 
-            register_addAddress: {
+            register_lastname: {
+                required: true,
+                alphabeticWithSpaceAndDot: true,
+                minlength: 3,
+            },
+
+            register_firstname: {
+                required: true,
+                alphabeticWithSpaceAndDot: true,
+                minlength: 3,
+            },
+
+            register_middlename: {
+                required: true,
+                alphabeticWithSpaceAndDot: true,
+                minlength: 3,
+            },
+            register_surfix: {
+                
+                alphabeticWithSpaceAndDot: true,
+                
+            },
+
+            register_Address: {
                 required: true,
                 minlength: 15,
             },
             register_emailAddress: {
                 required: true,
                 minlength: 10,
-                email:true,
+                email: true,
             },
             register_birthDate: {
                 required: true,
@@ -510,7 +519,7 @@ include '../server/admin_login-verification.php';
                 required: true,
                 accept: "image/jpeg, image/png",
             },
-       
+
             campus: {
                 required: true,
             },
@@ -527,7 +536,7 @@ include '../server/admin_login-verification.php';
                 minlength: 4,
             },
             'register_addDistrict[]': {
-                alphabeticWithSpaceAndDot: true,
+                required: true,
             },
             'register_emergencyName[]': {
                 alphabeticWithSpaceAndDot: true,
@@ -558,19 +567,20 @@ include '../server/admin_login-verification.php';
             },
             'register_accountPassword[]': {
                 required: true,
-                
+
             },
         },
 
         messages: {
             register_precinctNo: {
                 required: 'Please provide a Precinct No.!',
+                pattern: 'Use format: 0000-A'
             },
-            register_name: {
+            register_fullname: {
                 required: 'Please Enter your Name!',
             },
 
-            register_addAddress: {
+            register_Address: {
                 required: 'Please provide a valid Address!',
             },
             register_emailAddress: {
@@ -632,12 +642,14 @@ include '../server/admin_login-verification.php';
 
         }
     }
-    
+
+
+
     function showPrivacyPolicy() {
         $('#privacy_policy_modal').modal('show');
     }
 
- 
+
 
     function submitForm() {
         if ($('#privacy_agreement_checkbox').prop('checked')) {
@@ -647,6 +659,14 @@ include '../server/admin_login-verification.php';
         } else {
             alert('Please agree to the privacy policy before submitting the form.');
         }
+    }
+
+
+    function addDash() {
+        let input = document.getElementById('register_precinctNo');
+        let value = input.value.replace(/[^0-9]/g, ''); // Remove non-numeric characters
+        let formattedValue = value.slice(0, 5) + '-' + value.slice(5);
+        input.value = formattedValue;
     }
     </script>
 

@@ -77,11 +77,14 @@ include '../server/admin_login-verification.php';
                                                             echo '<span class="badge badge-success">Added</span>';
                                                         } else if ($row['operation'] == "edit") {
                                                             echo '<span class="badge badge-primary">Edited</span>';
-                                                        } else if ($row['operation'] == "delete") {
-                                                            echo '<span class="badge badge-danger">Deleted</span>';
+                                                        } else if ($row['operation'] == "remove") {
+                                                            echo '<span class="badge badge-danger">Removed</span>';
+                                                        } else if ($row['operation'] == "reject") {
+                                                            echo '<span class="badge badge-danger">Rejected</span>';
                                                         } else if ($row['operation'] == "login") {
                                                             echo '<span class="badge badge-info">Logged In</span>';
                                                         }
+                                                        
                                                         ?>
                                                     </td>
                                                     <td>

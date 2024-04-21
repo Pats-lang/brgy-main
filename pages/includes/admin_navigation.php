@@ -216,11 +216,28 @@ while ($row = mysqli_fetch_assoc($result)){
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="archive.php" class="nav-link">
-                        <i class="fa-solid fa-box-archive nav-icon" style="color: #4285f4; font-size: 15px;"></i>
-                        <p>Archive</p>
+                    <a href="#" class="nav-link">
+                        <i class="fa-solid fas fa-archive nav-icon" style="color: #4285f4; font-size: 15px;"></i>
+                        <p>
+                        Archive
+                            <i class="right fas fa-angle-left" ></i>
+                        </p>
                     </a>
-                </li>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="../pages/rejected_members_archive.php" class="nav-link">
+                                <i class="fa-solid fa-user-minus nav-icon" style="color: #4285f4; font-size: 15px;"></i> 
+                                <p>Rejected Resident</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../pages/remove_resident_archive.php" class="nav-link">
+                                <i class="fa-solid fa-user-minus nav-icon" style="color: #4285f4; font-size: 15px;"></i> 
+                                <p>Remove Resident </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li> 
                 <li class="nav-item">
                     <a href="change_logs.php" class="nav-link">
                         <i class="fa-solid fa-clipboard nav-icon" style="color: #4285f4; font-size: 15px;"></i>
