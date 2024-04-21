@@ -1,5 +1,5 @@
 <?php
-include 'header.php';
+include '../../pages/client/header.php';
 include '../../config/connection.php';
 
 session_start();
@@ -13,19 +13,19 @@ $randomNumber = mt_rand(100000, 999999);
 // Create the transaction ID
 $transaction_id = 'CLR-'. $currentYear . '-' . $randomNumber ;
 
-$adminLogged = $_SESSION['adminLogged'];
+$userLogged = $_SESSION['userLogged'];
 
 
 
-if (empty($adminLogged)) {
-    header('Location: pages\login_client.php');
+if (empty($userLogged)) {
+    header('Location: ../index.php');
     exit;
 }
 
 $sql = "SELECT members.name, members.picture
         FROM members
         INNER JOIN member_account ON members.member_id = member_account.member_id
-        WHERE member_account.username = '$adminLogged'";
+        WHERE member_account.username = '$userLogged'";
 $result = mysqli_query($db, $sql);
 
 if ($result && mysqli_num_rows($result) > 0) {
@@ -148,7 +148,7 @@ input[readonly] {
                     FROM members
                     INNER JOIN member_account ON members.member_id = member_account.member_id
                     INNER JOIN member_address ON members.member_id = member_address.member_id
-                    WHERE member_account.username = '$adminLogged'";
+                    WHERE member_account.username = '$userLogged'";
             $result = mysqli_query($db, $sql);
 
             if ($result && mysqli_num_rows($result) > 0) {

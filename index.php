@@ -532,17 +532,24 @@ while ($row = mysqli_fetch_assoc($result)) {
     /* hidden */
 
     .hidden {
-            display: none;
-        }
-        .show-more-container {
-            text-align: center;
-            margin-top: 20px; /* Adjust as needed */
-        }
-        .show-more {
-            cursor: pointer;
-            color: black;
-            text-decoration: underline;
-        }
+        display: none;
+    }
+
+    .show-more-container {
+        text-align: center;
+        margin-top: 20px;
+        /* Adjust as needed */
+    }
+
+    .show-more {
+        cursor: pointer;
+        color: black;
+        text-decoration: underline;
+    }
+
+    .custom-text-justify {
+        text-align: justify !important;
+    }
     </style>
 </head>
 
@@ -594,7 +601,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             </div>
         </div>
     </nav>
-   <!-- login modal may problema pa --->
+    <!-- login modal may problema pa --->
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" data-backdrop="static"
         aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -632,7 +639,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             </div>
         </div>
     </div>
-<!----login modal--->
+    <!----login modal--->
 
     <section>
 
@@ -749,53 +756,68 @@ while ($row = mysqli_fetch_assoc($result)) {
 
         <!-- request  -->
         <section>
-    <div id="services">
-        <div class="contain">
-            <h5 class="services-heading">Services</h5>
-            <div class="box-contain">
-                <div class="box" data-request="Barangay ID">
-                    <img src="assets/images/docu/1.jpg" alt="">
-                    <h3>Barangay ID </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-                    <a class="btn read-more get-now">Get Now</a>
-                </div>
-                <div class="box" data-request="Barangay Clearance">
-                    <img src="assets/images/docu/2.jpg" alt="">
-                    <h3>Barangay Clearance</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-                    <a class="btn read-more get-now">Get Now</a>
-                </div>
-                <div class="box" data-request="Barangay Certificate">
-                    <img src="assets/images/docu/4.jpg" alt="">
-                    <h3>Barangay Certificate</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-                    <a class="btn read-more get-now">Get Now</a>
-                </div>
-                <div class="box hidden" data-request="Business Clearance">
-                    <img src="assets/images/docu/5.jpg" alt="">
-                    <h3>Business Clearance</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-                    <a class="btn read-more get-now">Get Now</a>
-                </div>
-                <div class="box hidden" data-request="Business Permit">
-                    <img src="assets/images/docu/3.png" alt="">
-                    <h3>Business Permit</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-                    <a class="btn read-more get-now">Get Now</a>
-                </div>
-                <div class="box hidden" data-request="Assistance">
-                    <img src="assets/images/docu/6.jpg" alt="">
-                    <h3>Assistance</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-                    <a class="btn read-more get-now">Get Now</a>
+            <div id="services">
+                <div class="contain">
+                    <h5 class="services-heading">Services</h5>
+                    <div class="box-contain">
+                        <div class="box" data-request="Barangay ID">
+                            <img src="assets/images/docu/1.jpg" alt="">
+                            <h3>Barangay Indigency </h3>
+                            <p class="custom-text-justify"> Barangay Indigency refers to a certification issued by the
+                                Barangay (the smallest administrative division in the Philippines)
+                                confirming that an individual or family qualifies as indigent or economically
+                                disadvantaged. </p>
+                            <a class="btn read-more get-now">Get Now</a>
+                        </div>
+                        <div class="box" data-request="Barangay Clearance">
+                            <img src="assets/images/docu/2.jpg" alt="">
+                            <h3>Barangay Clearance</h3>
+                            <p class="custom-text-justify">A Barangay Clearance is a document issued by the local
+                                Barangay government in the Philippines,
+                                certifying that the individual named has cleared any outstanding liabilities or
+                                obligations within the community. </p>
+                            <a class="btn read-more get-now">Get Now</a>
+                        </div>
+                        <div class="box" data-request="Barangay Certificate">
+                            <img src="assets/images/docu/4.jpg" alt="">
+                            <h3>Barangay Certificate</h3>
+                            <p class="custom-text-justify">A Barangay Certificate is a document issued by the Barangay
+                                (the smallest administrative division in the Philippines)
+                                that certifies specific information about an individual or a situation within the
+                                community.</p>
+                            <a class="btn read-more get-now">Get Now</a>
+                        </div>
+                        <div class="box hidden" data-request="Business Clearance">
+                            <img src="assets/images/docu/5.jpg" alt="">
+                            <h3>Business Clearance</h3>
+                            <p class="custom-text-justify">A Barangay Business Clearance is a document issued by the
+                                Barangay (the smallest administrative division in the Philippines)
+                                that grants permission for an individual or entity to conduct business activities within
+                                the Barangay's jurisdiction. </p>
+                            <a class="btn read-more get-now">Get Now</a>
+                        </div>
+                        <div class="box hidden" data-request="Business Permit">
+                            <img src="assets/images/docu/3.png" alt="">
+                            <h3>Building Permit</h3>
+                            <p class="custom-text-justify">A Barangay Building Permit is an official authorization
+                                issued by the Barangay (the smallest administrative division in the Philippines)
+                                that grants permission for construction or renovation activities within its
+                                jurisdiction. </p>
+                            <a class="btn read-more get-now">Get Now</a>
+                        </div>
+                        <div class="box hidden" data-request="Assistance">
+                            <img src="assets/images/docu/6.jpg" alt="">
+                            <h3>Assistance</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
+                            <a class="btn read-more get-now">Get Now</a>
+                        </div>
+                    </div>
+                    <div class="show-more-container">
+                        <p class="show-more">Show More</p>
+                    </div>
                 </div>
             </div>
-            <div class="show-more-container">
-                <p class="show-more">Show More</p>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
         <a class="gotopbtn" href="# "><i class="fa-solid fa-arrow-up fa-lg" style="color: #000000;"></i> </a>
         <!-- about  -->
 
@@ -942,17 +964,17 @@ while ($row = mysqli_fetch_assoc($result)) {
         // Trigger modal when "Get Now" button is clicked
         $('.get-now').click(function() {
             Swal.fire({
-                title: "Do you want to save the changes?",
-                text: "You won't be able to revert this!",
+                title: "Would you like to Request a Document?",
+                text: "To proceed with your request, we kindly ask you to please sign up or log in to your account.",
                 icon: "question",
                 showCancelButton: true,
-                confirmButtonText: "Sign Up!",
-               
+                confirmButtonText: "Sign Up/Log In!",
+
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
                     $('#loginModal').modal('show');
-                } 
+                }
             });
         });
     });
@@ -1160,11 +1182,9 @@ while ($row = mysqli_fetch_assoc($result)) {
             }
         });
     });
-
-
     </script>
-<!-- hidden-->
-<script>
+    <!-- hidden-->
+    <script>
     const showMoreLink = document.querySelector('.show-more');
     const hiddenBoxes = document.querySelectorAll('.box.hidden');
     let isHidden = true;
@@ -1184,7 +1204,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             isHidden = true;
         }
     });
-</script>
+    </script>
 
 
 </body>

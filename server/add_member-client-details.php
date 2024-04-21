@@ -204,7 +204,7 @@ if ($prepared_proofSql = $db->prepare("INSERT INTO `member_proof` (`member_id`, 
 if ($response['status']) {
     $response['icon'] = "success";
     $response['message'] = "You are now a Registered BARANGAY 20!
-    Please check your email to monitor/track the status of your request.
+    Please check your email to monitor/track the status of your account registration.
     ";
 
     // Send email using PHPMailer

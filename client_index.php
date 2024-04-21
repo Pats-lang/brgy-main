@@ -37,7 +37,7 @@ if ($result && mysqli_num_rows($result) > 0) {
 
         <!-- LOGO SA TAAS -->
         
-        <link rel="icon" href="assets/images/logo/<?php echo $row_2['sLogo']; ?> " />
+        <link rel="icon" href="assets/images/logo/<?php echo $row_2['sLogo']; ?> " >
         <!--PERSONAL CSS -->
         <!-- <link rel="stylesheet" href="assets/css/index.css" /> -->
         <!-- jQuery -->

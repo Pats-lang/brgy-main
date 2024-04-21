@@ -60,7 +60,7 @@ include '../server/admin_login-verification.php';
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Account ID</th>
+                                                <th>Member ID</th>
                                                 <th>Transaction ID</th>
                                                 <th>Name</th>
                                                 <th>Request</th>
@@ -85,7 +85,7 @@ include '../server/admin_login-verification.php';
                                                     </td>
 
                                                     <td>
-                                                        <?php echo $row['account_id']; ?>
+                                                        <?php echo $row['member_id']; ?>
                                                     </td>
                                                     <td>
                                                         <?php echo $row['transaction_id']; ?>
@@ -181,8 +181,8 @@ include '../server/admin_login-verification.php';
                                         </div>
                                         <div class="col-md-4">
 
-                                            <label for="add_Image_id">ACCOUNT ID</label>
-                                            <input type="text" class="form-control form-control-border" id="account" name="account" readonly>
+                                            <label for="add_Image_id">MEMBER ID</label>
+                                            <input type="text" class="form-control form-control-border" id="member_id" name="member_id" readonly>
 
                                         </div>
                                         <div class="col-md-4">
@@ -362,7 +362,7 @@ include '../server/admin_login-verification.php';
                 dataType: "json",
                 success: function(response_editAnnouncement) {
                     $('#id').val(response_editAnnouncement.id); // Corrected property name
-                    $('#account').val(response_editAnnouncement.account_id); // Corrected property name
+                    $('#member_id').val(response_editAnnouncement.member_id); // Corrected property name
                     $('#transaction').val(response_editAnnouncement.transaction_id); // Corrected property name
 
                     $('#register_name').val(response_editAnnouncement.name); // Corrected property name
@@ -371,7 +371,7 @@ include '../server/admin_login-verification.php';
                     $('#register_email').val(response_editAnnouncement
                         .email); // Corrected property name
                     $('#register_Residency').val(response_editAnnouncement
-                        .year_recidency); // Corrected property name
+                        .yrs_res); // Corrected property name
                     $('#register_contact').val(response_editAnnouncement
                         .contact_no); // Corrected property name
                     $('#register_purpose').val(response_editAnnouncement

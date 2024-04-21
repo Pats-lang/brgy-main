@@ -60,7 +60,7 @@ include '../server/admin_login-verification.php';
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Account ID</th>
+                                                <th>Member ID</th>
                                                 <th>Transaction ID</th>
                                                 <th>Business Name</th>
                                                 <th>Owners Name</th>
@@ -85,7 +85,7 @@ include '../server/admin_login-verification.php';
                                                         <?php echo $row['id']; ?>
                                                     </td>
                                                     <td>
-                                                        <?php echo $row['account_id']; ?>
+                                                        <?php echo $row['member_id']; ?>
                                                     </td>
                                                     <td>
                                                         <?php echo $row['transaction_id']; ?>
@@ -185,8 +185,8 @@ include '../server/admin_login-verification.php';
                                         </div>
                                         <div class="col-md-4">
 
-                                            <label for="add_Image_id">ACCOUNT ID</label>
-                                            <input type="text" class="form-control form-control-border" id="account" name="account" readonly>
+                                            <label for="add_Image_id">MEMBER ID</label>
+                                            <input type="text" class="form-control form-control-border" id="member_id" name="member_id" readonly>
 
                                         </div>
                                         <div class="col-md-4">
@@ -237,7 +237,7 @@ include '../server/admin_login-verification.php';
                                     <div class="row mt-4">
                                         <div class="col-md-6">
                                             <label for="register_bday">Purpose</label>
-                                            <textarea type="text" class="form-control form-control-border" id="register_purpose" name="register_purpose" placeholder="Type your Birthday" readonly>
+                                            <textarea type="text" class="form-control form-control-border" id="register_purpose" name="register_purpose" placeholder="Type your purpose" readonly>
                                                 </textarea>
                                         </div>
                                         <div class="col-md-6">
@@ -373,12 +373,12 @@ include '../server/admin_login-verification.php';
                 dataType: "json",
                 success: function(response_editAnnouncement) {
                     $('#id').val(response_editAnnouncement.id); // Corrected property name
-                    $('#account').val(response_editAnnouncement.account_id); // Corrected property name
+                    $('#member_id').val(response_editAnnouncement.member_id); // Corrected property name
                     $('#transaction').val(response_editAnnouncement.transaction_id); // Corrected property name
 
                     $('#business_name').val(response_editAnnouncement.business_name); // Corrected property name
                     $('#register_name').val(response_editAnnouncement
-                        .name); // Corrected property name
+                        .owner_name); // Corrected property name
                     $('#kof').val(response_editAnnouncement
                         .kof_business); // Corrected property name
                     $('#register_yrsres').val(response_editAnnouncement

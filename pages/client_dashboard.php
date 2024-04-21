@@ -1,6 +1,31 @@
 <?php
 include '../config/connection.php';
+session_start();
+
+$userLogged = $_SESSION['userLogged'];
+
+if (empty($userLogged)) {
+    header('Location: ../index.php');
+    exit;
+}
+
+$sql = "SELECT members.name, members.picture
+        FROM members
+        INNER JOIN member_account ON members.member_id = member_account.member_id
+        WHERE member_account.username = '$userLogged'";
+$result = mysqli_query($db, $sql);
+
+if ($result && mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+
+    $sql_2 = "SELECT * FROM settings";
+    $result_2 = mysqli_query($connection, $sql_2);
+    $row_2 = mysqli_fetch_assoc($result_2);
+  
+    
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,9 +35,10 @@ include '../config/connection.php';
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EGBMS | E-Governance Barangay Management System</title>
-  
+  <link rel="icon" href="../assets/images/logo/"><?php echo $row_2['sLogo'];}?>
 
-  <?php include 'import.php'; ?>
+  
+  <?php include 'import.php'; ?>  
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -47,7 +73,7 @@ include '../config/connection.php';
     <section class="content">
     <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Admin</h3>
+                <h3 class="card-title">User</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -59,7 +85,24 @@ include '../config/connection.php';
                 </div>
               </div>
               <div class="card-body">
-                Good day! <?php echo $adminLogged; ?>
+            <?php
+              $conn = mysqli_connect("localhost", "root", "", "u907822938_barangaydb") or die("DI GUMANA");
+              $sql = "SELECT members.fullname
+                      FROM members
+                      INNER JOIN member_account ON members.member_id = member_account.member_id
+                      WHERE member_account.username = '$userLogged'";
+              $result = mysqli_query($conn, $sql);
+
+              // Check if the query returned any rows
+              if (mysqli_num_rows($result) > 0) {
+                  $row = mysqli_fetch_assoc($result);
+                  $fullname = $row['fullname'];
+                 
+              } else {
+                  echo "No member found for the logged-in admin.";
+              }
+              ?>
+                Good day! <?php echo  $fullname; ?>
               </div>
               <!-- /.card-body -->
             

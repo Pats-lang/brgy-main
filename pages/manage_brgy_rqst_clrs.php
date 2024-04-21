@@ -12,6 +12,11 @@ include '../server/admin_login-verification.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EGBMS | E-Governance Barangay Management System</title>
 
+    
+    <!-- Toastr -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
 
 
     <?php include 'import.php'; ?>
@@ -34,7 +39,7 @@ include '../server/admin_login-verification.php';
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Request Barangay Certificate</h1>
+                            <h1>Request Barangay Clearance</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -60,7 +65,7 @@ include '../server/admin_login-verification.php';
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Account ID</th>
+                                                <th>Member ID</th>
                                                 <th>Transaction ID</th>
                                                 <th>Name</th>
                                                 <th>Address</th>
@@ -85,7 +90,7 @@ include '../server/admin_login-verification.php';
                                                     </td>
 
                                                     <td>
-                                                        <?php echo $row['account_id']; ?>
+                                                        <?php echo $row['member_id']; ?>
                                                     </td>
                                                     <td>
                                                         <?php echo $row['transaction_id']; ?>
@@ -182,8 +187,8 @@ include '../server/admin_login-verification.php';
                                         </div>
                                         <div class="col-md-4">
 
-                                            <label for="add_Image_id">ACCOUNT ID</label>
-                                            <input type="text" class="form-control form-control-border" id="account" name="account" readonly>
+                                            <label for="add_Image_id">MEMBER ID</label>
+                                            <input type="text" class="form-control form-control-border" id="member_id" name="member_id" readonly>
 
                                         </div>
                                         <div class="col-md-4">
@@ -228,7 +233,7 @@ include '../server/admin_login-verification.php';
                                     <div class="row mt-4">
                                         <div class="col-md-6">
                                             <label for="register_bday">Purpose</label>
-                                            <textarea type="text" class="form-control form-control-border" id="register_purpose" name="register_purpose" placeholder="Type your Birthday" readonly>
+                                            <textarea type="text" class="form-control form-control-border" id="register_purpose" name="register_purpose" placeholder="Type your purpose" readonly>
                                                 </textarea>
                                         </div>
                                         <div class="col-md-6">
@@ -314,7 +319,7 @@ include '../server/admin_login-verification.php';
                 $('#editAnnouncement_modal').modal('hide');
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: "../server/edit_brgy_rqst.php",
+                        url: "../server/edit_brgy_rqst_clrs.php",
                         type: "POST",
                         data: new FormData(this),
                         dataType: 'json',
@@ -363,7 +368,7 @@ include '../server/admin_login-verification.php';
                 dataType: "json",
                 success: function(response_editAnnouncement) {
                     $('#id').val(response_editAnnouncement.id); // Corrected property name
-                    $('#account').val(response_editAnnouncement.account_id); // Corrected property name
+                    $('#member_id').val(response_editAnnouncement.member_id); // Corrected property name
                     $('#transaction').val(response_editAnnouncement.transaction_id); // Corrected property name
 
                     $('#register_name').val(response_editAnnouncement.name); // Corrected property name
@@ -372,7 +377,7 @@ include '../server/admin_login-verification.php';
                     $('#register_email').val(response_editAnnouncement
                         .email); // Corrected property name
                     $('#register_Residency').val(response_editAnnouncement
-                        .year_recidency); // Corrected property name
+                        .yrs_res); // Corrected property name
                     $('#register_contact').val(response_editAnnouncement
                         .contact_no); // Corrected property name
                     $('#register_purpose').val(response_editAnnouncement

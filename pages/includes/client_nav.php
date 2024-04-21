@@ -1,20 +1,13 @@
 <?php
- $dbHost = 'localhost';
- $dbName = 'u907822938_barangaydb';
- $dbUsername = 'root';
- $dbPassword = '';
- $connection = mysqli_connect($dbHost, $dbUsername, $dbPassword, $dbName) ;
- 
- if (!$connection) {
-     die("Can't connect to the database server. Error: " . mysqli_connect_error());
- }
+
+
 $sql = "SELECT * FROM settings";
-$result = mysqli_query($connection, $sql);
+$result = mysqli_query($db, $sql);
 while ($row = mysqli_fetch_assoc($result)){
 ?>
 
- 
-<link rel="icon" href="../../assets/images/logo/barangay.gif <?php echo $row['sLogo']; ?>"/>
+
+<link rel="icon" href="../../assets/images/logo/barangay.gif <?php echo $row['sLogo']; ?>">
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -37,7 +30,8 @@ while ($row = mysqli_fetch_assoc($result)){
             <div class="navbar-search-block">
                 <form class="form-inline">
                     <div class="input-group input-group-sm">
-                        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control form-control-navbar" type="search" placeholder="Search"
+                            aria-label="Search">
                         <div class="input-group-append">
                             <button class="btn btn-navbar" type="submit">
                                 <i class="fas fa-search"></i>
@@ -70,50 +64,81 @@ while ($row = mysqli_fetch_assoc($result)){
     <?php } ?>
     <!-- Sidebar -->
     <div class="sidebar">
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-               
-               
-               
+        <php>
 
-                <hr>
+        
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false" style="display: flex; flex-direction: column;">
 
-                <li class="nav-item">
-                    <a href="../pages/client_dashboard.php" class="nav-link">
-                        <i class="fa-solid fa-screwdriver-wrench nav-icon" style="color: #4285f4; font-size: 15px;"></i>
-                        <p>Home</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="system_administrators.php" class="nav-link">
-                        <i class="fa-solid fa-screwdriver-wrench nav-icon" style="color: #4285f4; font-size: 15px;"></i>
-                        <p>Announcement</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="../pages/client_services.php" class="nav-link">
-                        <i class="fa-solid fa-gears nav-icon" style="color: #4285f4; font-size: 15px;"></i>
-                        <p>Services</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="archive.php" class="nav-link">
-                        <i class="fa-solid fa-box-archive nav-icon" style="color: #4285f4; font-size: 15px;"></i>
-                        <p>Profile</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="change_logs.php" class="nav-link">
-                        <i class="fa-solid fa-clipboard nav-icon" style="color: #4285f4; font-size: 15px;"></i>
-                        <p>Logout</p>
-                    </a>
-                </li>
-                
-            </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
+                    <li class="nav-item">
+                        <a href="../pages/client_dashboard.php" class="nav-link">
+                            <?php
+                    $conn = mysqli_connect("localhost", "root", "", "u907822938_barangaydb") or die("DI GUMANA");
+                    $sql = "SELECT members.picture, members.firstname
+                            FROM members
+                            INNER JOIN member_account ON members.member_id = member_account.member_id
+                            WHERE member_account.username = '$userLogged'";
+                    $result = mysqli_query($conn, $sql);
+
+                    // Check if the query returned any rows
+                    if (mysqli_num_rows($result) > 0) {
+                        $row = mysqli_fetch_assoc($result);
+                        $fullname = $row['picture'];
+                        $firstname = $row['firstname'];
+                        
+                    } else {
+                        echo "No member found for the logged-in admin.";
+                    }
+                ?>
+
+                <img src="../assets/images/member_pictures/<?php echo $row['picture']; ?> " class="rounded-circle img-fluid     object-position: center;
+                object-fit-cover" alt="Logo" width="50" height="50">
+                    <p class="mx-1"><?php echo $row['firstname']; ?></p>
+                        </a>
+                    </li>
+
+                    <hr>
+
+                    <li class="nav-item">
+                        <a href="../pages/client_dashboard.php" class="nav-link">
+                            <i class="fa-solid fa-screwdriver-wrench nav-icon"
+                                style="color: #4285f4; font-size: 15px;"></i>
+                            <p>Home</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="system_administrators.php" class="nav-link">
+                            <i class="fa-solid fa-screwdriver-wrench nav-icon"
+                                style="color: #4285f4; font-size: 15px;"></i>
+                            <p>Announcement</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../pages/client_services.php" class="nav-link">
+                            <i class="fa-solid fa-gears nav-icon" style="color: #4285f4; font-size: 15px;"></i>
+                            <p>Services</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../pages/client_portal/profile.php" class="nav-link">
+                            <i class="fa-solid fa-box-archive nav-icon" style="color: #4285f4; font-size: 15px;"></i>
+                            <p>Profile</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../server/client_logout.php" class="nav-link">
+                            <i class="fa-solid fa-clipboard nav-icon" style="color: #4285f4; font-size: 15px;"></i>
+                            <p href="server/client_logout.php">Logout</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+
+            <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar 
 

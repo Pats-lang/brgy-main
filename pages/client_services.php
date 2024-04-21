@@ -1,6 +1,15 @@
 <?php
 include '../config/connection.php';
 
+session_start();
+
+$userLogged = $_SESSION['userLogged'];
+
+if (empty($userLogged)) {
+    header('Location: ../index.php');
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -181,7 +190,7 @@ include '../config/connection.php';
             <h3>Barangay Clearance</h3>
             <p class="custom-text-justify">A Barangay Clearance is a document issued by the local Barangay government in the Philippines, 
                 certifying that the individual named has cleared any outstanding liabilities or obligations within the community. </p>
-            <a href="../pages/client/brgyclear_form.php" class="btn read-more">Proceed</a>
+            <a href="../pages\client_portal\brgyclear_form.php" class="btn read-more">Proceed</a>
         </div>
 
         <div class="box" data-request="Barangay Certificate">

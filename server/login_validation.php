@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($preparedSql->fetch()) {
                 if (password_verify($admin_password, $db_admin_password)) {
-                    $_SESSION['adminLogged'] = $db_admin_username;
+                    $_SESSION['userLogged'] = $db_admin_username;
                     $response['status'] = true;
                     $response['message'] = 'You Are Logging in...';
                 

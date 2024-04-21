@@ -134,7 +134,7 @@ while ($row = mysqli_fetch_assoc($result)){
                 <li class="nav-header">Resident Registration</li>
                 <li class="nav-item">
                     <a href="register_resident.php" class="nav-link">
-                        <i class="fas nav-icon fa-solid fa-user-plus ml-1" style="color:#4285f4; font-size: 15px;"></i>
+                        <i class="fas nav-icon fa-solid fa-user-plus " style="color:#4285f4; font-size: 15px;"></i>
                         <p>Registration</p>
                     </a>
                 </li>

@@ -1,11 +1,11 @@
 <?php
 session_start();
-include '../config/connection.php';
+include '../../config/connection.php';
 
-$adminLogged = $_SESSION['adminLogged'];
+$userLogged = $_SESSION['userLogged'];
 
-if (empty($adminLogged)) {
-    header('Location: pages\login_client.php');
+if (empty($userLogged)) {
+    header('Location: ../index.php');
     exit;
 }
 
@@ -94,11 +94,14 @@ if (empty($adminLogged)) {
         margin-left: 1rem;
         margin-right: 1rem;
     }
+
+    <?php include '../pages/import.php'; ?>
+
     </style>
 </head>
 
 <body>
-    <?php include '../pages/includes/client_nav.php'; ?>
+    <?php include '../includes/client_nav.php'; ?>
 
     <div class="container-xl px-4 mt-4">
 
