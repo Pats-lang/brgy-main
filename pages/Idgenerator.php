@@ -25,11 +25,11 @@ body {
 }
 
 .id-card {
-    width: 3.5in;
-    height: 2in;
+    width: 2in;
+    height: 3.5in;
     padding: 20px;
     border: 1px solid #ccc;
-    background-image: url('../assets/images/alum.png');
+    background-image: url('../assets/images/id/front.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -44,11 +44,11 @@ body {
 }
 
 .id-back {
-    width: 3.5in;
-    height: 2in;
+    width: 2in;
+    height: 3.5in;
     padding: 20px;
     border: 1px solid #ccc;
-    background-image: url('../assets/images/back.png');
+    background-image: url('../assets/images/id/back.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -64,15 +64,15 @@ body {
 
 
 .id-card img {
-    width: 80px;
+    width: 75px;
     /* Adjust the width as needed */
-    height: 80px;
+    height: 75px;
     /* Adjust the height as needed */
     position: absolute;
     /* Set position to absolute for specific positioning */
-    margin-top: 80px;
+    margin-top: 70px;
     /* Adjust the top distance as needed */
-    left: 30px;
+    left: 101px;
     /* Adjust the left distance as needed */
 }
 
@@ -100,68 +100,106 @@ body {
 }
 
 .member-id {
-    margin-left: 140px;
+    margin-left: 115px;
     margin-right: 5px;
-    margin-top: 80px;
+    margin-top: 147px;
     /* Push the member ID to the right */
     color: black;
     position: absolute;
     /* Set position to absolute for specific positioning */
 
     font-weight: bold;
-    font-size: 30px;
+    font-size: 10px;
     /* Adjust font size as needed */
 }
 
 
 .member-name {
-    margin-left: 140px;
+    margin-left: -5px;
 
-    margin-top: 120px;
+    margin-top: 180px;
     /* Push the member ID to the right */
     color: black;
     position: absolute;
     /* Set position to absolute for specific positioning */
-    font-size: 15px;
+    font-size: 9px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 9px;
     /* Adjust font size as needed */
 }
 
 .member-address {
-    margin-left: 70px;
+    margin-left: -10px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 8px;
     color: black;
-    margin-top: -20px;
+    margin-top: 215px;
+    /* Adjust the top margin as needed */
+}
+
+.member-civilstatus {
+    margin-left: 40px;
+    font-weight: bold;
+    font-size: 10px;
+    color: black;
+    margin-top: 20px;
     /* Adjust the top margin as needed */
 }
 
 .member-bday {
-    margin-left: 70px;
+    margin-left: 40px;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 10px;
     color: black;
-    margin-top: -17px;
+    margin-top: -43px;
     /* Adjust the top margin as needed */
 }
 
-.member-course {
-    margin-left: 192px;
+
+
+.member-contact {
+    margin-left: 40px;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 10px;
     color: black;
-    margin-top: -33px
+    margin-top: -5px
+}
+
+.member-precinct {
+    margin-left: 40px;
+    font-weight: bold;
+    font-size: 10px;
+    color: black;
+    margin-top: -15px
+}
+
+.member-contact_name {
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 10px;
+    color: black;
+    margin-top: 23px
+}
+
+.member-contact_no {
+    margin-left: 45px;
+    font-weight: bold;
+    font-size: 10px;
+    color: black;
+    margin-top: -12px
 }
 
 
-.profile-signature {
+
+
+
+/*.profile-signature {
     width: 100px;
     height: 100px;
     position: absolute;
     margin-top: -5px;
     margin-left: 110px;
-}
+}*/
 </style>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -228,7 +266,10 @@ body {
             $alumid = $_POST['alumid'];
 
             // Fetch data from the members table based on the selected member ID
-            $sql = "SELECT * FROM members WHERE member_id = '$alumid'";
+            $sql = "SELECT m.*, e.contact_name, e.contact_no
+            FROM members m 
+            LEFT JOIN member_emergency e ON m.member_id = e.member_id
+            WHERE m.member_id = '$alumid'";
             $result = $connection->query($sql);
 
             if ($result->num_rows > 0) {
@@ -236,35 +277,37 @@ body {
 
                
 
-                function getCourseAbbreviation($course) {
-                    $course = trim($course); // Trim whitespace
+              //  function getCourseAbbreviation($campus_id) {
+                 //   $campus_id = trim($campus_id); // Trim whitespace
                 
-                    if ($course === 'BS Information System') {
-                        return 'BSIS';
-                    } elseif ($course === 'BS Information Technology') {
-                        return 'BSIT';
-                    } elseif ($course === 'BS Computer Science') {
-                        return 'BSCS';
-                    } elseif ($course === 'BS Entertainment and Multimedia Computing') {
-                        return 'BSEMC';
-                    } else {
-                        return $course; // Return the original course if no match
-                    }
-                }
+                 //   if ($campus_id === '01') {
+                 //       return 'Male';
+                 //   } elseif ($campus_id === '02') {
+                //        return 'Female';
+                //    } 
+                //     else {
+                 //       return $campus_id; // Return the original course if no match
+              //      }
+                //}
                 // Display the fetched data in the identity card
                 echo '<div class="id-card" id="id-card">';
                 echo '<img id="profile" src="../assets/images/member_pictures/' . $row['picture'] . '" class="profile-picture">';
                 echo '<p class="member-id"><strong>' . $row['member_id'] . '</strong></p>';
-                echo '<p class="member-name"><strong>' . $row['name'] . '</strong></p>';
+                echo '<p class="member-name"><strong>' . $row['fullname'] . '</strong></p>';
+                echo '<p class="member-address"><strong>' . $row['address'] . '</strong></p>';
                 // Include additional data fields as needed
                 echo '</div>';
 
                 // Display the fetched data in the ID back
                 echo '<div class="id-back mt-2" id="id-back">';
-                echo '<img id="profile" src="../assets/images/member_pictures/' . $row['signature'] . '" class="profile-signature">';
-                echo '<p class="member-address"><strong>' . $row['address'] . '</strong></p>';
+              //  echo '<img id="profile" src="../assets/images/member_pictures/' . $row['signature'] . '" class="profile-signature">';
+                echo '<p class="member-civilstatus"><strong>' . $row['civil_status'] . '</strong></p>';
                 echo '<p class="member-bday"><strong>' . $row['birth_date'] . '</strong></p>';
-                echo '<p class="member-course"><strong>' . getCourseAbbreviation($row['course']) . '</strong></p>';
+                echo '<p class="member-contact"><strong>' . $row['cellphone_no'] . '</strong></p>';
+                echo '<p class="member-precinct"><strong>' . $row['precinct'] . '</strong></p>';
+                echo '<p class="member-contact_name"><strong>' . $row['contact_name'] . '</strong></p>';
+                echo '<p class="member-contact_no"><strong>' . $row['contact_no'] . '</strong></p>';
+             //   echo '<p class="member-course"><strong>' . getCourseAbbreviation($row['campus_id']) . '</strong></p>';
                 // Include additional data fields as needed
                 echo '</div>';
 

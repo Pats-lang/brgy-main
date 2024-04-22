@@ -1,6 +1,5 @@
 <?php
 
-
 $sql = "SELECT * FROM settings";
 $result = mysqli_query($db, $sql);
 while ($row = mysqli_fetch_assoc($result)){
@@ -123,7 +122,7 @@ while ($row = mysqli_fetch_assoc($result)){
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="../pages/client_portal/profile.php" class="nav-link">
+                        <a href="../pages/client_profile.php" class="nav-link">
                             <i class="fa-solid fa-box-archive nav-icon" style="color: #4285f4; font-size: 15px;"></i>
                             <p>Profile</p>
                         </a>

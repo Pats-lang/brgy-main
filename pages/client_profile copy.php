@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../../config/connection.php';
+include '../config/connection.php';
 
 $userLogged = $_SESSION['userLogged'];
 
@@ -101,7 +101,7 @@ if (empty($userLogged)) {
 </head>
 
 <body>
-    <?php include '../includes/client_nav.php'; ?>
+    <?php include ' ../../includes/client_nav.php'; ?>
 
     <div class="container-xl px-4 mt-4">
 
