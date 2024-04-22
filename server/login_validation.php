@@ -17,7 +17,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $admin_username = sanitizeData(getDatabase(), $_POST["username"]);
     $admin_password = sanitizeData(getDatabase(), $_POST["password"]);
 
-    if ($preparedSql = $db->prepare("SELECT username, password FROM member_account WHERE username = ? ")) {
+    if ($preparedSql = $db->prepare("SELECT member_account.username, member_account.password 
+    FROM member_account 
+    INNER JOIN members ON member_account.member_id = members.member_id 
+    WHERE member_account.username = ? AND members.status = 1")) {
+        $preparedSql->bind_param("s", $admin_username);
+ 
         $preparedSql->bind_param("s", $admin_username);
 
         if ($preparedSql->execute()) {
@@ -35,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             } else {
                 $response['status'] = false;
-                $response['message'] = 'User not found.';
+                $response['message'] = 'Account Pending.';
             }
         } else {
             $response['status'] = false;
