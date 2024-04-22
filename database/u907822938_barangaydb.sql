@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2024 at 07:18 PM
+-- Generation Time: Apr 22, 2024 at 05:44 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -87,57 +87,7 @@ CREATE TABLE `change_logs` (
 --
 
 INSERT INTO `change_logs` (`id`, `admin`, `operation`, `description`, `timestamp`) VALUES
-(1, 'rona', 'add', 'Admin: <b>LAYKA</b> has been added to <b>System Administrators.</b>', '2024-04-16 02:36:13'),
-(2, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-16 02:46:04'),
-(3, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-16 02:46:49'),
-(4, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-16 02:49:54'),
-(5, 'rona', 'add', 'Alumni Member: <b>2024801</b> have been registered at  <b>Alumni Members.</b>', '2024-04-16 04:15:59'),
-(6, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-16 05:05:34'),
-(7, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-16 05:10:22'),
-(8, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-16 14:57:05'),
-(9, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-16 17:18:01'),
-(10, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-17 14:45:55'),
-(11, 'rona', 'add', 'Admin: <b>ARAA</b> has been added to <b>System Administrators.</b>', '2024-04-17 15:16:47'),
-(12, 'araa', 'login', 'Admin: <b>ARAA</b> Just logged on to the System', '2024-04-17 15:17:01'),
-(13, 'araa', 'add', 'Alumni Member: <b>20241302</b> have been registered at  <b>Alumni Members.</b>', '2024-04-17 15:52:36'),
-(14, 'araa', 'add', 'Alumni Member: <b>2024401</b> have been registered at  <b>Alumni Members.</b>', '2024-04-17 15:53:51'),
-(15, 'araa', 'add', 'Alumni Member: <b>2024402</b> have been registered at  <b>Alumni Members.</b>', '2024-04-17 18:00:19'),
-(16, 'araa', 'login', 'Admin: <b>ARAA</b> Just logged on to the System', '2024-04-17 18:39:36'),
-(17, 'layka', 'login', 'Admin: <b>LAYKA</b> Just logged on to the System', '2024-04-17 18:48:35'),
-(18, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-17 19:19:37'),
-(19, 'rona', 'add', 'Admin: <b>MARCO</b> has been added to <b>System Administrators.</b>', '2024-04-17 19:26:37'),
-(20, 'rona', 'add', 'Alumni Member: <b>2024601</b> have been registered at  <b>Alumni Members.</b>', '2024-04-17 21:24:34'),
-(21, 'rona', 'add', 'Alumni Member: <b>2024502</b> have been registered at  <b>Alumni Members.</b>', '2024-04-17 21:29:37'),
-(22, 'rona', 'add', 'Alumni Member: <b>2024602</b> have been registered at  <b>Alumni Members.</b>', '2024-04-17 21:31:29'),
-(23, 'rona', 'add', 'Alumni Member: <b>2024702</b> have been registered at  <b>Alumni Members.</b>', '2024-04-17 21:32:38'),
-(24, 'araa', 'login', 'Admin: <b>ARAA</b> Just logged on to the System', '2024-04-18 08:00:11'),
-(25, 'layka', 'login', 'Admin: <b>LAYKA</b> Just logged on to the System', '2024-04-18 11:07:54'),
-(26, 'layka', 'edit', 'Announcement: <b>BARANGAY 20</b> has been updated at <b>Announcements.</b>', '2024-04-18 11:08:30'),
-(27, 'layka', 'edit', 'Announcement: <b>BARANGAY 20</b> has been updated at <b>Announcements.</b>', '2024-04-18 11:12:02'),
-(28, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-18 11:56:04'),
-(29, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-18 12:33:22'),
-(30, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-18 15:52:04'),
-(31, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-18 18:05:26'),
-(32, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-19 14:33:38'),
-(33, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-21 13:59:34'),
-(34, 'marco', 'edit', ' Resident: <b>SANTOS, ANNA LOPEZ</b> has been edited at <b> Resident .</b>', '2024-04-21 14:00:21'),
-(35, 'marco', 'edit', ' Resident: <b>SANTOS, ELAINE ALIGO</b> has been edited at <b> Resident .</b>', '2024-04-21 14:05:40'),
-(36, 'marco', 'edit', ' Resident: <b>LOPEZ, SONA SANTOS</b> has been edited at <b> Resident .</b>', '2024-04-21 14:13:53'),
-(37, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-21 14:46:18'),
-(38, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-21 15:43:49'),
-(39, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-21 16:20:47');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `client_login`
---
-
-CREATE TABLE `client_login` (
-  `id` int(11) NOT NULL,
-  `username` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+(43, 'rona', 'add', 'Resident Member: <b>2024101</b> have been registered at  <b>Resident Members.</b>', '2024-04-22 03:34:03');
 
 -- --------------------------------------------------------
 
@@ -182,26 +132,6 @@ CREATE TABLE `history` (
 
 INSERT INTO `history` (`id`, `img`, `mission`, `vission`) VALUES
 (2, 'barangay.png', 'To achieve our vision, we will pursue a government that are geared towards transparency and accountability among its officials and employees, encourage community involvement among its constituents and considers environmental preservation and management in its developmental programs.', 'A self-reliant and progressive Barangay advocating principles and practices of good governance that help build and nurture accountability and responsibility among its public officials and employees, community participation among its constituents towards a livable and loveable environment.');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `info`
---
-
-CREATE TABLE `info` (
-  `id` int(100) NOT NULL,
-  `info_des 1` mediumtext NOT NULL,
-  `info_des2` mediumtext NOT NULL,
-  `info_des3` mediumtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `info`
---
-
-INSERT INTO `info` (`id`, `info_des 1`, `info_des2`, `info_des3`) VALUES
-(1, 'Alumni Association ', 'An alumni organization for a state university is a group or association formed by former students (alumni) of that particular state university. These organizations are typically established to serve various purposes and provide benefits to alumni, the university, and the broader community.', 'An alumni organization for a state university is a group or association formed by former students (alumni) of that particular state university. These organizations are typically established to serve various purposes and provide benefits to alumni, the university, and the broader community. \r\nAlumni organizations are essential for maintaining the spirit and legacy of a state university. They help alumni stay engaged with their alma mater, provide valuable resources, and contribute to the overall success and reputation of the university.');
 
 -- --------------------------------------------------------
 
@@ -287,25 +217,8 @@ CREATE TABLE `members` (
 --
 
 INSERT INTO `members` (`member_id`, `year`, `member_count`, `campus_id`, `fullname`, `lastname`, `firstname`, `middlename`, `surfix`, `precinct`, `birth_date`, `address`, `civil_status`, `religion`, `email_address`, `cellphone_no`, `picture`, `signature`, `time_registered`, `status`, `cid`, `idfront`, `idback`) VALUES
-(2024101, 2024, 1, '01', 'Wylie Scott', '', '', '', '', '0', '1995-01-08', 'Voluptas aperiam vol', 'LIVING-IN', 'Jehovah\\\'s Witnesses', 'konysi@mailinator.com', '9567575675', 'avatar1.png', 'signature1.png', '2024-04-17 16:51:58', 1, 1, '', ''),
-(2024102, 2024, 1, '02', 'Basil Duran', '', '', '', '', '0', '1981-06-22', 'Rerum molestiae moll', 'Legally Separated', 'Baptist', 'vejofyv@mailinator.com', '9546546456', 'avatar1.png', 'avatar2.png', '2024-04-17 17:03:19', 1, 1, '', ''),
-(2024201, 2024, 2, '01', 'Renee Case', '', '', '', '', '0', '1996-12-09', 'Nisi voluptas tenetu', 'Others', 'Jehovah\\\'s Witnesses', 'kylyxuc@mailinator.com', '9454353454', 'avatar5.png', 'signature2.png', '2024-04-17 17:11:59', 2, 1, '', ''),
-(2024202, 2024, 2, '02', 'Noble Hart', '', '', '', '', 'Assu56', '2006-07-30', 'Veritatis ut amet m', 'Single', 'Dating Daan', 'vipujyv@mailinator.com', '09454534444', 'avatar2.png', 'signature1.png', '2024-04-17 17:06:21', 0, 1, '', ''),
-(2024301, 2024, 3, '01', 'Blair Reid', '', '', '', '', 'Qui454', '2016-03-12', 'Exercitation possimu', 'Widow/er', 'Iglesia ni Cristo', 'jyjyha@mailinator.com', '09543453432', 'avatar5.png', 'signature1.png', '2024-04-17 17:19:11', 0, 1, '', ''),
-(2024302, 2024, 3, '02', 'Kylie Bonner', '', '', '', '', 'Est sy', '1988-05-30', 'Cumque omnis explica', 'Separated', 'Baptist', 'rsales059@gmail.com', '09545445444', 'avatar5.png', 'signature1.png', '2024-04-17 17:51:55', 0, 1, '', ''),
-(2024401, 2024, 4, '01', 'Hakeem Howard', '', '', '', '', 'Corrup', '1994-08-17', 'Sint molestiae enim', 'Others', 'Iglesia ni Cristo', 'pera@mailinator.com', '09765656756', 'avatar1.png', 'signature1.png', '2024-04-17 17:57:14', 0, 1, '', ''),
-(2024402, 2024, 4, '02', 'Zephania Calderon', '', '', '', '', '667676', '1997-12-24', 'Hic officia adipisci', 'LIVING-IN', 'Jehovah\\\'s Witnesses', 'dyzer@mailinator.com', '9767868686', 'avatar6.png', 'avatar7.png', '2024-04-17 18:00:19', 1, 1, '', ''),
-(2024501, 2024, 5, '01', 'Morgan Lee', '', '', '', '', 'Volu66', '1970-02-01', 'Ea velit tempor do', 'Legally Separated', 'Jehovah\\\'s Witnesses', 'rsales059@gmail.com', '09545645444', 'avatar8.png', 'signature5.png', '2024-04-17 18:11:47', 0, 1, '', ''),
-(2024502, 2024, 5, '02', 'Regan Manning', '', '', '', '', 'Eligen', '2000-11-02', 'Laboris dolores quis', 'Married', 'Islam', 'zici@mailinator.com', '09657567566', 'avatar8.png', 'signature5.png', '2024-04-17 21:29:37', 0, 1, '', ''),
-(2024601, 2024, 6, '01', 'Kameko Grant', '', '', '', '', '432432', '1971-06-03', 'Aute qui culpa expl', 'Others', 'Jehovah\\\'s Witnesses', 'nevawys@mailinator.com', '9432432432', 'avatar7.png', 'signature5.png', '2024-04-17 21:24:34', 1, 1, '', ''),
-(2024602, 2024, 6, '02', 'Carly Terry', '', '', '', '', 'Et exc', '1996-10-26', 'Et quae nulla quia l', 'Separated', 'Iglesia ni Cristo', 'luqe@mailinator.com', '09342434333', 'avatar10.png', 'signature5.png', '2024-04-17 21:31:29', 0, 1, '', ''),
-(2024702, 2024, 7, '02', 'Adrienne Douglas', '', '', '', '', '0', '1977-01-10', 'Magnam minima repreh', 'Legally Separated', 'Others', 'bobyhom@mailinator.com', '9655654644', 'avatar9.png', 'signature5.png', '2024-04-17 21:32:38', 1, 1, '', ''),
-(2024802, 2024, 8, '02', 'Ronalaine N Villaluna', '', '', '', '', '1234', '1994-02-23', '603 Ullamco ad nostrud m', 'Single', 'Islam', 'rsales059@gmail.com', '9743243434', 'avatar8.png', 'signature1.png', '2024-04-18 07:58:14', 1, 1, '', ''),
-(2024902, 2024, 9, '02', 'Quinn Jimenez', '', '', '', '', '212344', '2012-01-03', 'Possimus rerum exer', 'Single', 'Jehovah\\\'s Witnesses', 'dybimiz@mailinator.com', '09765656566', 'avatar7.png', 'signature5.png', '2024-04-18 08:21:28', 0, 1, '', ''),
-(20241002, 2024, 10, '02', 'Arabella Belardo', '', '', '', '', '2312', '2002-07-16', '603 PNR Compound', 'Single', 'Catholic', 'rsales059@gmail.com', '9216390456', 'avatar2.png', 'signature5.png', '2024-04-18 11:54:41', 1, 1, '', ''),
-(20241102, 2024, 11, '02', 'Santos, Elaine Aligo', 'Santos', 'Elaine', 'Aligo', '', '1234-A', '2000-09-03', '5th street 0621 Capiz Avenue', 'Single', 'Roman Catholic', 'mrcodg13@gmail.com', '09155689713', 'avatar9.png', '', '2024-04-21 13:36:39', 1, 1, '', ''),
-(20241202, 2024, 12, '02', 'Santos, Anna Lopez', 'Santos', 'Anna', 'Lopez', '', '1234-A', '2000-02-11', '21 3rd Street Avenue', 'Single', 'Roman Catholic', 'mrcodg13@gmail.com', '09155689713', 'avatar9.png', '', '2024-04-21 13:53:01', 1, 1, '', ''),
-(20241302, 2024, 13, '02', 'Lopez, Sona Santos', 'Lopez', 'Sona', 'Santos', '', '6789-A', '2001-03-12', '22 4th Street Avenue', 'Single', 'Roman Catholic', 'mrcodg13@gmail.com', '09155689713', 'avatar9.png', '', '2024-04-21 14:12:54', 1, 1, '', '');
+(2024101, 2024, 1, '01', 'Garrison, Fleur Odessa Cabrera', 'Garrison', 'Fleur', 'Odessa Cabrera', 'Veniam quaerat ad a', '9876-G', '1982-08-14', 'Quisquam id eaque q', 'Married', 'Iglesia ni Cristo', 'cofyp@mailinator.com', '09645645467', 'avatar1.png', '', '2024-04-22 03:34:03', 0, 1, '', ''),
+(2024102, 2024, 1, '02', 'Hanson, Trevor Maya Roman', 'Hanson', 'Trevor', 'Maya Roman', 'jr.', '4567-A', '2014-09-02', '603Exercitation volupta', 'Single', 'Roman Catholic', 'rsales059@gmail.com', '09656454353', 'avatar2.png', '', '2024-04-22 03:24:55', 0, 1, '', '');
 
 -- --------------------------------------------------------
 
@@ -325,31 +238,9 @@ CREATE TABLE `member_account` (
 --
 
 INSERT INTO `member_account` (`id`, `member_id`, `username`, `password`) VALUES
-(1, 2024101, '', ''),
-(2, 2024102, '', ''),
-(3, 2024202, '', ''),
-(4, 2024201, '', ''),
-(5, 2024301, '', ''),
-(6, 2024401, 'rona', '$2y$10$82Xha1o4p4sWj/i9BiESBeqUirCXg3xpFZ5GJ7m9Kjz'),
-(7, 2024402, 'araa', '$2y$10$85s8pFPS3p86Kkn8lCsMueoLt1/bMEd485Kp0PKmDN6'),
-(8, 0, '', '$2y$10$4Wk17.V.341wavGppdC81u0pfEzFJhzgSkVD1vEyK4m'),
-(9, 2024601, 'user', 'user123'),
-(10, 2024502, 'nanay', 'nanay'),
-(11, 2024602, 'jibaj', '$2y$10$diKovUn.NQJHP5gBATFa5uPhLQhj9l2PAvR6U.Ja7an'),
-(12, 2024702, 'layka', '$2y$10$C03brRC128sY6FAhxXV3weR6CRxd0Z9xD0ewXo4O1pO'),
-(13, 2024802, 'layka', '$2y$10$7LzCuv8yHIavhwakwgSccuP1LyBns1fPIKC8p5Mmwnw'),
-(14, 2024802, 'layka', '$2y$10$F54RL1L.I73kiuXZvcABleBL3FxhhoGiDCo.AGLIM2i'),
-(15, 2024902, 'ronalaine', '$2y$10$6xHp4ZV2/37OggnPflnUG.DIz9cryFCdxDcNHfqC4e4UM6kpVrmQ.'),
-(16, 20241002, 'araaa', '$2y$10$/kvqEAmRAG8fLDqHGHSJle6Pz4GO3EW0iBSXy72ze6JC05VRdyMdu'),
-(17, 20241002, 'araaa', '$2y$10$4pnp2LK/vTnYtdNFCapmCebzJtSfuD6VOPcSOTZ73kb5XaK2DjuQG'),
-(18, 20241002, 'araaa', '$2y$10$SYE65xy3DqC6Wd.u/SzUg.w6Hgj7FOPOzQATRFoMjAsZ7o3VuKV3u'),
-(19, 20241102, 'user', '$2y$10$SiIEOcua6ZUMz.4wiU6EK.OCoHWZ860sugONFwjcjy8qcsCNDm7oW'),
-(20, 20241102, 'user', '$2y$10$G1PhEaJEiEANrpUd.Hjwb.LpK1jJIm7m7kR9.r4YJ/.MYHaAxgUN6'),
-(21, 20241102, 'user', '$2y$10$MgUMwH.Oq8LiO0zMqFAwLu30AloVeemtJT2RGEa7M5N1r8HInX0zG'),
-(22, 20241102, 'user', '$2y$10$TSPBdvOQpR8jfngXzCuBDuHEeRbT1PTHA7oRR.QhCgrvyBjTjYzD.'),
-(23, 20241102, 'user', '$2y$10$w5A89AXd2ZlwScD7l7tae.AMTuOmZsNTUG.wZDzunmgWsY59rP9Im'),
-(24, 20241202, 'user', '$2y$10$P07tsBuZ8Ia.RhBkZbJ1ourCMgOv5jNY4iQrv28EjPd22aEbTcfMG'),
-(25, 20241302, 'user1', '$2y$10$GS0/.An7dyykpdUlIX6txOElwhJdDWboCUBcoAFlyBN7NpJiw4xUm');
+(27, 2024102, 'user', '$2y$10$TTh1Bi8X/tqKOGH2hA.Df.vfrZw/40hiZEMNvsH1bsuVYuw9zEEK6'),
+(28, 2024102, 'ronalaine', '$2y$10$SPTYV1CJJAxnhfMOTsERXuVfXois0F/NQWebRTXevxa5uiaGjU0i6'),
+(29, 2024101, 'quvemohupa', '$2y$10$PAMXBQrgFNOndsJpABSWbu/OTfWYlU8po.9cfUaPF0FiQct1I6Efi');
 
 -- --------------------------------------------------------
 
@@ -361,40 +252,8 @@ CREATE TABLE `member_address` (
   `id` int(20) NOT NULL,
   `member_id` int(20) DEFAULT NULL,
   `residency` varchar(50) NOT NULL,
-  `yrs_res` varchar(20) NOT NULL,
-  `postal` varchar(50) NOT NULL,
-  `district` varchar(50) NOT NULL,
-  `brgy` varchar(50) NOT NULL,
-  `region` varchar(50) NOT NULL,
-  `province` varchar(50) NOT NULL,
-  `city` varchar(50) NOT NULL
+  `yrs_res` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `member_address`
---
-
-INSERT INTO `member_address` (`id`, `member_id`, `residency`, `yrs_res`, `postal`, `district`, `brgy`, `region`, `province`, `city`) VALUES
-(1, 2024101, 'Helper', '1990', '1400', 'District II', 'Barangay 20', 'Metro Manila', 'Metro Manila', 'Caloocan City'),
-(2, 2024102, 'Constraction Worker', '1989', '1400', 'District II', 'Barangay 20', 'Metro Manila', 'Metro Manila', 'Caloocan City'),
-(3, 2024202, 'Home Owner', '2012', '1400', 'District II', 'Barangay 20', 'Metro Manila', 'Metro Manila', 'Caloocan City'),
-(4, 2024201, 'Home Owner', '1973', '1400', 'District II', 'Barangay 20', 'Metro Manila', 'Metro Manila', 'Caloocan City'),
-(5, 2024301, 'Others', '2005', '1400', 'District II', 'Barangay 20', 'Metro Manila', 'Metro Manila', 'Caloocan City'),
-(6, 2024302, 'Constraction Worker', '1983', '1400', 'District II', 'Barangay 20', 'Metro Manila', 'Metro Manila', 'Caloocan City'),
-(7, 2024302, 'Constraction Worker', '1983', '1400', 'District II', 'Barangay 20', 'Metro Manila', 'Metro Manila', 'Caloocan City'),
-(8, 2024401, 'Constraction Worker', '1977', '1400', 'District II', 'Barangay 20', 'Metro Manila', 'Metro Manila', 'Caloocan City'),
-(9, 2024402, 'Tenant', '1975', '1400', 'District II', 'Barangay 20', 'Metro Manila', 'Metro Manila', 'Caloocan City'),
-(10, 2024501, 'Tenant', '1983', '1400', 'District II', 'Barangay 20', 'Metro Manila', 'Metro Manila', 'Caloocan City'),
-(11, 2024601, 'Helper', '2010', '1400', 'District II', 'Barangay 20', 'Metro Manila', 'Metro Manila', 'Caloocan City'),
-(12, 2024502, 'Tenant', '2009', '1400', 'District II', 'Barangay 20', 'Metro Manila', 'Metro Manila', 'Caloocan City'),
-(13, 2024602, 'Tenant', '1979', '1400', 'District II', 'Barangay 20', 'Metro Manila', 'Metro Manila', 'Caloocan City'),
-(14, 2024702, 'Tenant', '1997', '1400', 'District II', 'Barangay 20', 'Metro Manila', 'Metro Manila', 'Caloocan City'),
-(15, 2024802, 'Home Owner', '1981', '1400', 'District II', 'Barangay 20', 'Metro Manila', 'Metro Manila', 'Caloocan City'),
-(16, 2024802, 'Home Owner', '1981', '1400', 'District II', 'Barangay 20', 'Metro Manila', 'Metro Manila', 'Caloocan City'),
-(17, 2024902, 'Helper', '1983', '1400', 'District II', 'Barangay 20', 'Metro Manila', 'Metro Manila', 'Caloocan City'),
-(18, 20241002, 'Home Owner', '10', '1400', 'District II', 'Barangay 20', 'Metro Manila', 'Metro Manila', 'Caloocan City'),
-(19, 20241002, 'Home Owner', '10', '1400', 'District II', 'Barangay 20', 'Metro Manila', 'Metro Manila', 'Caloocan City'),
-(20, 20241002, 'Home Owner', '10', '1400', 'District II', 'Barangay 20', 'Metro Manila', 'Metro Manila', 'Caloocan City');
 
 -- --------------------------------------------------------
 
@@ -406,44 +265,17 @@ CREATE TABLE `member_emergency` (
   `id` int(20) NOT NULL,
   `member_id` int(20) DEFAULT NULL,
   `contact_name` varchar(50) NOT NULL,
-  `contact_relation` varchar(50) NOT NULL,
-  `contact_no` varchar(20) NOT NULL,
-  `contact_address` varchar(50) NOT NULL
+  `contact_no` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `member_emergency`
 --
 
-INSERT INTO `member_emergency` (`id`, `member_id`, `contact_name`, `contact_relation`, `contact_no`, `contact_address`) VALUES
-(1, 2024101, 'Orli Ortiz', 'Perspiciatis esse', '09565766666', 'Facilis qui nostrud'),
-(2, 2024102, 'Quynn Padilla', 'Voluptatem id conseq', '09454354354', 'Nostrum deserunt nat'),
-(3, 2024202, 'Adena Gray', 'Aut obcaecati conseq', '09454353454', 'Odit magna ullam rep'),
-(4, 2024201, 'Illana Cole', 'Non mollit consequat', '09435434444', 'Qui rerum temporibus'),
-(5, 2024301, 'Doris Mcdowell', 'Proident ex possimu', '09546546545', 'Suscipit odit conseq'),
-(6, 2024302, 'Moana Hayes', 'Provident expedita', '09656565655', 'Porro illum consequ'),
-(7, 2024302, 'Moana Hayes', 'Provident expedita', '09656565655', 'Porro illum consequ'),
-(8, 2024401, 'Bryar Odonnell', 'Quos voluptatibus ve', '09565765655', 'Nesciunt lorem prov'),
-(9, 2024402, 'Knox Carrillo', 'In at ut autem sint', '09454654767', ''),
-(10, 2024501, 'Patricia George', 'Iusto in in laborum', '09656565555', 'Tempore reprehender'),
-(11, 0, '', '', '', ''),
-(12, 2024601, 'Igor Matthews', 'Et error iure sint a', '09343243244', ''),
-(13, 2024502, 'Carson Howell', 'Quia cumque ad corpo', '09554645656', ''),
-(14, 2024602, 'Barry Conrad', 'Praesentium ex liber', '09434343444', ''),
-(15, 2024702, 'Shaeleigh Tyson', 'Enim voluptatum debi', '09454654655', ''),
-(16, 2024802, 'Branden Chen', 'Ducimus et elit ob', '09767676555', 'Quas id vero expedit'),
-(17, 2024802, 'Branden Chen', 'Ducimus et elit ob', '09767676555', 'Quas id vero expedit'),
-(18, 2024902, 'May Nieves', 'Consectetur irure l', '09657656566', 'Ipsum nulla soluta'),
-(19, 20241002, 'Barbara Cohen', 'Grandmother', '09546545656', 'Compound'),
-(20, 20241002, 'Barbara Cohen', 'Grandmother', '09546545656', 'Compound'),
-(21, 20241002, 'Barbara Cohen', 'Grandmother', '09546545656', 'Compound'),
-(22, 20241102, 'Maria Santos', '', '09123456789', ''),
-(23, 20241102, 'Maria Santos', '', '09123456789', ''),
-(24, 20241102, 'Maria Santos', '', '09123456789', ''),
-(25, 20241102, 'Maria Santos', '', '09123456789', ''),
-(26, 20241102, 'Maria Santos', '', '09123456789', ''),
-(27, 20241202, 'Jane Lopez', '', '09123456789', ''),
-(28, 20241302, 'Jane Lopez', '', '09123445678', '');
+INSERT INTO `member_emergency` (`id`, `member_id`, `contact_name`, `contact_no`) VALUES
+(30, 2024102, 'Gabriel Stone', '09655564534'),
+(31, 2024102, 'Kamal Payne', '09546545333'),
+(32, 2024101, 'Neve Houston', '09765654543');
 
 -- --------------------------------------------------------
 
@@ -463,13 +295,9 @@ CREATE TABLE `member_proof` (
 --
 
 INSERT INTO `member_proof` (`id`, `member_id`, `valid_id`, `proof_residency`) VALUES
-(66, 20241102, '../assets/images/proof-pictures/id1.jpg', '../assets/images/proof-pictures/doc1.jpg'),
-(67, 20241102, '../assets/images/proof-pictures/id1.jpg', '../assets/images/proof-pictures/doc1.jpg'),
-(68, 20241102, '../assets/images/proof-pictures/id1.jpg', '../assets/images/proof-pictures/doc1.jpg'),
-(69, 20241102, '../assets/images/proof-pictures/id1.jpg', '../assets/images/proof-pictures/doc1.jpg'),
-(70, 20241102, '../assets/images/proof-pictures/id1.jpg', '../assets/images/proof-pictures/doc1.jpg'),
-(71, 20241202, '../assets/images/proof-pictures/id1.jpg', '../assets/images/proof-pictures/doc1.jpg'),
-(72, 20241302, '../assets/images/proof-pictures/id1.jpg', '../assets/images/proof-pictures/doc1.jpg');
+(74, 2024102, '../assets/images/proof-pictures/id1.jpg', '../assets/images/proof-pictures/doc3.png'),
+(75, 2024102, '../assets/images/proof-pictures/id2.jpg', '../assets/images/proof-pictures/doc3.png'),
+(76, 2024101, '../assets/images/proof-pictures/id4.png', '../assets/images/proof-pictures/doc1.jpg');
 
 -- --------------------------------------------------------
 
@@ -527,39 +355,6 @@ INSERT INTO `projects` (`id`, `img`, `title`, `description`, `last_modified`) VA
 (18, 'palengke 2.jpg', 'Barangay 20 Palengke', '', '2024-03-25 11:58:38'),
 (19, 'palengke.jpg', 'Barangay 20 Palengke', '', '2024-03-25 11:59:04'),
 (20, 'palengke 3.jpg', 'Barangay 20 Palengke', '', '2024-03-25 12:01:45');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `proof`
---
-
-CREATE TABLE `proof` (
-  `id` int(20) NOT NULL,
-  `member_id` int(20) DEFAULT NULL,
-  `valid_id` varchar(100) NOT NULL,
-  `proof_residency` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `proof`
---
-
-INSERT INTO `proof` (`id`, `member_id`, `valid_id`, `proof_residency`) VALUES
-(39, 20232201, '', ''),
-(42, 20232301, '', ''),
-(54, 2023102, 'workComA', 'workPosA'),
-(55, 2023102, 'workComB', 'workPosB'),
-(56, 20232401, '', ''),
-(57, 20232501, '', ''),
-(58, 2023202, '', ''),
-(59, 2023302, '', ''),
-(60, 2023402, '', ''),
-(61, 2024502, '', ''),
-(62, 2024602, 'Macias and Aguirre Traders', 'Quasi quae non vel e'),
-(63, 2024602, 'Macias and Aguirre Traders', 'Quasi quae non vel e'),
-(64, 2024602, 'Macias and Aguirre Traders', 'Quasi quae non vel e'),
-(65, 2024702, 'Brown and Goodwin Associates', 'Aliquid quae ipsum e');
 
 -- --------------------------------------------------------
 
@@ -872,12 +667,6 @@ ALTER TABLE `change_logs`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `client_login`
---
-ALTER TABLE `client_login`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `feedback`
 --
 ALTER TABLE `feedback`
@@ -941,13 +730,6 @@ ALTER TABLE `officials`
 --
 ALTER TABLE `projects`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `proof`
---
-ALTER TABLE `proof`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `members_id` (`member_id`);
 
 --
 -- Indexes for table `request_assistant`
@@ -1024,13 +806,7 @@ ALTER TABLE `announcement`
 -- AUTO_INCREMENT for table `change_logs`
 --
 ALTER TABLE `change_logs`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
-
---
--- AUTO_INCREMENT for table `client_login`
---
-ALTER TABLE `client_login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -1054,7 +830,7 @@ ALTER TABLE `inquire`
 -- AUTO_INCREMENT for table `member_account`
 --
 ALTER TABLE `member_account`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `member_address`
@@ -1066,13 +842,13 @@ ALTER TABLE `member_address`
 -- AUTO_INCREMENT for table `member_emergency`
 --
 ALTER TABLE `member_emergency`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `member_proof`
 --
 ALTER TABLE `member_proof`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `officials`
@@ -1085,12 +861,6 @@ ALTER TABLE `officials`
 --
 ALTER TABLE `projects`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
-
---
--- AUTO_INCREMENT for table `proof`
---
-ALTER TABLE `proof`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `request_assistant`
