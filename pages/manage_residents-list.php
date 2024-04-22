@@ -226,7 +226,7 @@ include '../server/admin_login-verification.php';
                         <input type="text" class="form-control" id="member_id" name="member_id" placeholder="Member ID" required readonly>
                         
                         <label for="member_fullname" class="form-label">FullName</label>
-                        <input type="text" class="form-control" id="member_Fullname" name="member_Fullname" placeholder="FullName" required readonly>
+                        <input type="text" class="form-control" id="member_fullname" name="member_fullname" placeholder="FullName" required readonly>
                         
                         <label for="member_precinct" class="form-label">Precinct No.</label>
                         <input type="text" class="form-control" id="member_precinct" name="member_precinct" placeholder="Precinct No." required readonly>
@@ -319,7 +319,7 @@ include '../server/admin_login-verification.php';
                           <label for="Editmember_id" class="form-label">member ID</label>
                           <input type="text" class="form-control" id="Editmember_id" name="Editmember_id" placeholder="member ID" readonly>
                           
-                          <label for="Editmember_Fullname" class="form-label">FullName</label>
+                          <label for="Editmember_fullname" class="form-label">FullName</label>
                           <input type="text" class="form-control" id="Editmember_fullname" name="Editmember_fullname" placeholder="Name">
                         
                           <label for="Editmember_precinct" class="form-label">Precinct No.</label>
