@@ -95,7 +95,7 @@ for ($i = 0; $i < count($register_addResidency); $i++) { //Using any open failed
     $yrs_res = sanitizeData(getDatabase(), $register_addYears[$i]);
   
 
-    if ($prepared_membersWorkSql = $db->prepare("INSERT INTO `member_address` (`member_id`, `residency`, `yrs_res`) VALUES (?, ?, ?")) {
+    if ($prepared_membersWorkSql = $db->prepare("INSERT INTO `member_address` (`member_id`, `residency`, `yrs_res`) VALUES (?, ?, ?)")) {
         $prepared_membersWorkSql->bind_param("iss", $register_memberId, $residency, $yrs_res);
         if (!$prepared_membersWorkSql->execute()) {
             $response['false'] = false;
