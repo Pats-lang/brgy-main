@@ -390,6 +390,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         top: 0;
         width: 100%;
         height: 100%;
+       
         overflow: auto;
         background-color: rgba(0, 0, 0, 0.4);
         /* Add the following styles */
@@ -409,6 +410,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     body.modal-open {
         overflow: hidden;
+        
     }
 
     body.modal-open .modal {
@@ -428,7 +430,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         padding: 12px 20px;
         margin: 8px 0;
         display: inline-block;
-
+        cursor: pointer;
         box-sizing: border-box;
     }
 
@@ -443,9 +445,11 @@ while ($row = mysqli_fetch_assoc($result)) {
         width: 100%;
     }
 
+
     /* Add a hover effect for buttons */
     button:hover {
         opacity: 0.8;
+       
     }
 
     /* Extra style for the cancel button (red) */
@@ -528,6 +532,9 @@ while ($row = mysqli_fetch_assoc($result)) {
         transform: translateY(-50%);
         cursor: pointer;
     }
+    .nav-item a {
+    cursor: pointer;
+}
 
     /* hidden */
 
