@@ -97,7 +97,7 @@ include '../server/admin_login-verification.php';
                                                         <?php echo $row['request']; ?>
                                                     </td>
                                                     <td>
-                                                        <?php echo $row['contact_no']; ?>
+                                                        <?php echo $row['yrs_res']; ?>
                                                     </td>
                                                     <td>
                                                         <?php echo $row['purpose']; ?>
@@ -217,8 +217,8 @@ include '../server/admin_login-verification.php';
 
                                         </div>
                                         <div class="col-md-4">
-                                            <label for="register_email">Contact Number</label>
-                                            <input type="text" class="form-control form-control-border" id="register_contact" name="register_contact" placeholder="Type your Email Address" readonly>
+                                            <label for="register_contact">Contact Number</label>
+                                            <input type="text" class="form-control form-control-border" id="register_contact" name="register_contact" placeholder="Type your Contact Number" readonly>
 
                                         </div>
                                     </div>

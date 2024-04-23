@@ -24,21 +24,17 @@ $transaction_id = 'COI-'. $currentYear . '-' . $randomNumber ;
 $sql = "SELECT * FROM settings";
 $result = mysqli_query($db, $sql);
 while ($row = mysqli_fetch_assoc($result)) {
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EGBMS | E-Governance Barangay Management System</title>
     <!-- LOGO SA TAAS -->
-    <link rel="icon" href="../assets/images/logo/<?php echo $row['sLogo']; }?>" />
-
-
+    <link rel="icon" href="../assets/images/logo/<?php echo $row['sLogo']; ?>" />
+    <?php } ?>
     <?php include 'import.php'; ?>
 </head>
 
@@ -229,8 +225,7 @@ $(document).ready(function() {
                                     closeButton: false,
                                     onHidden: function() {
                                         setTimeout(function() {
-                                            location
-                                                .reload(); // Reload the page
+                                           
                                         }, 500);
                                     }
                                 });
@@ -263,10 +258,11 @@ $(document).ready(function() {
 $(document).ready(function() {
     // Add custom validation method for alphabetic characters with space
     
+   
     jQuery.validator.addMethod("alphabeticWithSpaceAndDot", function(value, element) {
         return this.optional(element) || /^[a-zA-Z\s.,]*$/.test(value);
     }, "Please enter alphabetic characters only.");
-    // Form validation for the second part of the form
+    // Form validation
     var validate_form = $('#request_barangay-coiform').validate({
         rules: {
             transaction_id: {

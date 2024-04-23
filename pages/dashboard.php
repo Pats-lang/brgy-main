@@ -1,20 +1,21 @@
 <?php
 include '../config/connection.php';
 include '../server/admin_login-verification.php';
-?>
 
+
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EGBMS | E-Governance Barangay Management System</title>
-  
-
-  <?php include 'import.php'; ?>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EGBMS | E-Governance Barangay Management System</title>
+    <!-- LOGO SA TAAS -->
+    
+    <?php include 'import.php'; ?>
 </head>
+
 
 <body class="hold-transition sidebar-mini layout-fixed">
 
