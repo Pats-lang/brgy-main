@@ -216,7 +216,7 @@ $(document).ready(function() {
                 if (result.isConfirmed) {
                     var formData = new FormData($('#request_barangay-coiform')[0]);
                     $.ajax({
-                        url: "../../server/req_brgycoi_apii.php",
+                        url: "../server/req_brgycoi_apii.php",
                         type: "POST",
                         data: formData,
                         dataType: 'json',
