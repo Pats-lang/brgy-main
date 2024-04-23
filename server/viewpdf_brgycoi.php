@@ -31,7 +31,34 @@ $pdf->Image($imagePath1, $x1 = 70, $y1 = 60, $w1 = 75, $h1 = 75, '', '', '', fal
 
 $imagePath2 = 'https://i.ibb.co/dfT9dz7/barangay.jpg'; // Replace with the actual path to your first image file
 $pdf->Image($imagePath2, $x1 = 450, $y1 = 55, $w1 = 85, $h1 = 85, '', '', '', false, 300, '', false, false, false, false, false, false);
+// Set position for the "Prepared By:" text
+$pdf->SetXY(452, 410); // Adjust X and Y coordinates as needed
+// Output the "Prepared By:" text
+$pdf->Cell(0, 0, 'Prepared By:', 0, 0, 'L');
 
+$pdf->SetXY(440, 430); // Adjust X and Y coordinates as needed
+
+$pdf->Cell(0, 0, 'Jayne B. Soriano', 0, 0, 'L'); // Output the name
+
+$pdf->SetXY(460, 450); // Adjust X and Y coordinates as needed
+
+$pdf->Cell(0, 0, 'Secretary', 0, 0, 'L'); // Output the role
+
+$pdf->SetXY(452, 410); // Adjust X and Y coordinates as needed
+// Output the "Prepared By:" text
+$pdf->Cell(0, 0, 'Prepared By:', 0, 0, 'L');
+
+$pdf->SetXY(440, 430); // Adjust X and Y coordinates as needed
+
+$pdf->Cell(0, 0, 'Jayne B. Soriano', 0, 0, 'L'); // Output the name
+
+$pdf->SetXY(460, 450); // Adjust X and Y coordinates as needed
+
+$pdf->Cell(0, 0, 'Secretary', 0, 0, 'L'); // Output the role
+
+
+
+$pdf->SetXY(30, 0);
 // Dynamic HTML content (replace with your dynamic data)
 $html = "
 <!DOCTYPE html>
@@ -55,27 +82,17 @@ body {
 
 
 
-  .sentence{
+  p{
 
     text-align: justify;
 
   }
 
-  .prepared {
-    text-align: center;
-  }
-
-
   h3, h2, h1 {
     text-align: center;
   }
 
-  .underline {
-    border-bottom: 1px solid black; /* You can adjust the color and thickness */
-    display: inline-block; /* Ensures that the underline only spans the width of the text */
-    margin-bottom: 5px; /* Adjust as needed */
-  }
-  
+
  
   </style>
 </head>
@@ -91,20 +108,13 @@ body {
   </div>
 
   <p>TO WHOM IT MAY CONCERN:</p> 
-  <p class='sentence'>This to certify that Mrs/Mr: <b><u>{}</u></b> a resident at <u>{}</u> and residing in the aforementioned Barangay for {} year/s belongs to one of the many indigent families of the above-named barangay, the income of his/her family is barely enough to meet their day-to-day needs.  His/her situation in life will not allow them to engage in any services in relative to their immediate needs </p>
-  <p class='sentence'>This certification is issued upon request of <u>{}</u> that he/she can avail free services and for his/her <u>{}</u></p>
-  <p class='sentence'>Done in the City of Caloocan, Metro Manila this <u>{}</u></p>
-  <div style='margin-top: 20px;'></div>
+  <p>This to certify that Mrs/Mr: <b><u>{}</u></b> a resident at <u>{}</u> and residing in the aforementioned Barangay for {} year/s belongs to one of the many indigent families of the above-named barangay, the income of his/her family is barely enough to meet their day-to-day needs.  His/her situation in life will not allow them to engage in any services in relative to their immediate needs </p>
+  <p>This certification is issued upon request of <u>{}</u> that he/she can avail free services and for his/her <u>{}</u></p>
+  <p>Done in the City of Caloocan, Metro Manila this <u>{}</u></p>
 
-  <p class='prepared'>Prepared By:</p>
-  <p class='underline'>Jayne B. Soriano</p> 
-  <p class='position'>Secretary</p>
 
   <div></div>
   
-  <p>Approved By:</p>
-  <p class='underline'>Hon. ROEL A. ESMANA</p>
-  <p class='position'>Barangay Chairman</p>
 
 
 </div>
