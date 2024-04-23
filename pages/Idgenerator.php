@@ -269,7 +269,7 @@ body {
             $sql = "SELECT m.*, e.contact_name, e.contact_no
             FROM members m 
             LEFT JOIN member_emergency e ON m.member_id = e.member_id
-            WHERE m.member_id = '$alumid'";
+            WHERE m.member_id = '$alumid' AND m.status = 1";
             $result = $connection->query($sql);
 
             if ($result->num_rows > 0) {
@@ -316,7 +316,7 @@ body {
 
                 echo '<button class="generateBtn" name="generateBtn" data-id="'. $row['member_id'] .'">Generate PDF</button>';
             } else {
-                echo '<p style="color:white;">No member found with the provided ID.</p>';
+                echo '<p style="color:white;">No verified member was found with the provided ID.</p>';
             }
            
             $connection->close();

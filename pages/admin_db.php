@@ -10,7 +10,7 @@ include '../server/admin_login-verification.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UCC | Alumni Management System</title>
+    <title>EGBMS | E-Governance Barangay Management System</title>
 
 
     <?php include 'import.php'; ?>
@@ -55,8 +55,8 @@ include '../server/admin_login-verification.php';
                                     <h3>
 
                                         <?php
-                                        $sql = "SELECT * from members WHERE status = 0"; 
-                                        $result = mysqli_query($conn, $sql);
+                                        $sql = "SELECT * from members WHERE status = 1"; 
+                                        $result = mysqli_query($connection, $sql);
                                         $count = mysqli_num_rows($result);
                                         echo $count;
                                         ?>
@@ -77,10 +77,10 @@ include '../server/admin_login-verification.php';
                             <!-- small card -->
                             <div class="small-box bg-warning">
                                 <div class="inner">
-                                    <h3>                
-                                         <?php
+                                    <h3>
+                                        <?php
                                         $sql = "SELECT * from members WHERE status = 1"; 
-                                        $result = mysqli_query($conn, $sql);
+                                        $result = mysqli_query($connection, $sql);
                                         $count = mysqli_num_rows($result);
                                         echo $count;
                                         ?>
@@ -102,9 +102,9 @@ include '../server/admin_login-verification.php';
                             <div class="small-box bg-danger">
                                 <div class="inner">
                                     <h3>
-                                    <?php
+                                        <?php
                                         $sql = "SELECT * from members WHERE status = 2"; 
-                                        $result = mysqli_query($conn, $sql);
+                                        $result = mysqli_query($connection, $sql);
                                         $count = mysqli_num_rows($result);
                                         echo $count;
                                         ?>
@@ -154,7 +154,7 @@ include '../server/admin_login-verification.php';
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php
+                                            <?php
 $query = "SELECT * FROM `members` WHERE `status` = 0 AND `time_registered` <= DATE_SUB(CURDATE(), INTERVAL 2 DAY)";
 $result = mysqli_query(getDatabase(), $query);
 
@@ -164,29 +164,30 @@ $result = mysqli_query(getDatabase(), $query);
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_array($result)) {
         ?>
-         <tr id="<?php echo $row['member_id']; ?>">
-             <td>
-                 <?php echo $row['member_id']; ?>
-             </td>
-             <td>
-                 <?php echo $row['name']; ?>
-             </td>
-             <td>
-                 <?php echo $row['time_registered']; ?>
-             </td>
+                                            <tr id="<?php echo $row['member_id']; ?>">
+                                                <td>
+                                                    <?php echo $row['member_id']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['fullname']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['time_registered']; ?>
+                                                </td>
 
-             <td>
-                 <?php
+                                                <td>
+                                                    <?php
                      $status = $row['status'];
                  if ($status == 0) {
                     $link_class = 'btn btn-warning  user-select-none';
                     $link_text = 'PENDING';
                  }
                  ?>
-                 <span class="badge <?php echo $link_class; ?>"><?php echo $link_text; ?></span>
-             </td>
-         </tr>
-         <?php
+                                                    <span
+                                                        class="badge <?php echo $link_class; ?>"><?php echo $link_text; ?></span>
+                                                </td>
+                                            </tr>
+                                            <?php
     }
 } else {
     // Display a message if there are no pending orders
@@ -200,10 +201,9 @@ if (mysqli_num_rows($result) > 0) {
                                     </table>
                                 </div>
                                 <div class="card-footer row clearfix">
-                                    <a href="../pages/members_north-campus.php" class="btn col-md-6 btn-sm btn-secondary btn-block mb-2">NORTH</a>
-                                    <div class="col-md-6 mt-2 mt-md-0">
-                                    <a href="../pages/members_main-campus.php" class="btn btn-sm  btn-block btn-secondary mb-2">SOUTH</a>
-</div>
+                                    <a href="../pages/manage_residents-verification.php"
+                                        class="btn col-md-6 btn-sm btn-secondary btn-block mb-2">Resident</a>
+                                    
                                 </div>
                             </div>
                             <!-- /.card -->
@@ -253,7 +253,7 @@ if (mysqli_num_rows($result) > 0) {
                                                     <?php echo $row['member_id']; ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $row['name']; ?>
+                                                    <?php echo $row['fullname']; ?>
                                                 </td>
                                                 <td>
                                                     <?php echo $row['time_registered']; ?>

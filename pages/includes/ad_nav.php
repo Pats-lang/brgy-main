@@ -75,15 +75,15 @@ while ($row = mysqli_fetch_assoc($result)){
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                 <li class="nav-item">
-                    <a href="dashboard.php" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                    <a href="admin_db.php" class="nav-link">
+                        <i class="nav-icon fas fa-th" style="color: #4285f4; font-size: 15px;"></i>
                         <p>Dashboard</p>
                         <span class="right badge badge-warning">!</span>
                     </a>
                 </li>
                  <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="fa-solid fa-tv nav-icon"></i>
+                        <i class="fa-solid fa-tv nav-icon" style="color: #4285f4; font-size: 15px;"></i>
                         <p>
                         Manage Client Page
                             <i class="right fas fa-angle-left"></i>
@@ -92,40 +92,40 @@ while ($row = mysqli_fetch_assoc($result)){
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="../pages/manage-client_announcements.php" class="nav-link">
-                                <i class="fa-solid fa-bullhorn nav-icon"></i>
+                                <i class="fa-solid fa-bullhorn nav-icon " style="color: #4285f4; font-size: 15px;"></i>
                                 <p>Announcement</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="../pages/manage-client_directors.php" class="nav-link">
-                                <i class="fa-solid fa-users nav-icon"></i>
+                                <i class="fa-solid fa-users nav-icon" style="color: #4285f4; font-size: 15px;"></i>
                                 <p>Brgy Officials</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a href="../pages/assistance.php" class="nav-link">
-                                <i class="fa-solid fa-circle-question nav-icon"></i>
+                                <i class="fa-solid fa-circle-question nav-icon" style="color: #4285f4; font-size: 15px;"></i>
                                 <p>Assistance</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a href="../pages/manage-client_projects.php" class="nav-link">
-                                <i class="fa-solid fa-paintbrush nav-icon"></i>
+                                <i class="fa-solid fa-paintbrush nav-icon" style="color: #4285f4; font-size: 15px;"></i>
                                 <p>Projects</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="../pages/manage-client_history.php" class="nav-link">
-                                <i class="fa-solid fa-book-open nav-icon"></i>
+                                <i class="fa-solid fa-book-open nav-icon" style="color: #4285f4; font-size: 15px;"></i>
                                 <p>History</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a href="../pages/manage-client_inquiries.php" class="nav-link">
-                                <i class="fa-solid fa-circle-question nav-icon"></i>
+                                <i class="fa-solid fa-circle-question nav-icon" style="color: #4285f4; font-size: 15px;"></i>
                                 <p>Inquiries</p>
                             </a>
                         </li>
@@ -157,41 +157,51 @@ while ($row = mysqli_fetch_assoc($result)){
                
 
                 <li class="nav-header">Request</li>
-
                 <li class="nav-item">
+                    <a href="#" class="nav-link">
+                    <i class="fa-regular fa-folder-open" style="color: #4285f4; font-size: 15px;"></i>
+                        <p>
+                        Documents
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                    <li class="nav-item">
                     <a href="manage_brgy_rqst_busclearance.php" class="nav-link">
-                    <i class="fas  nav-icon fa-certificate" style="color: #4285f4; font-size: 15px;"></i>
+                    <i class="fas fa-file-alt" style="color: #4285f4; font-size: 15px;"></i>
                         <p style="font-size: 13px;">Barangay Business Clearance  </p>
                     </a>
                 </li>
-
+               
                 <li class="nav-item">
                     <a href="manage_brgy_rqst_clrs.php" class="nav-link">
-                    <i class="fas  nav-icon fa-certificate" style="color: #4285f4; font-size: 15px;"></i>
+                    <i class="fas fa-file-alt" style="color: #4285f4; font-size: 15px;"></i>
                         <p>Barangay Clearance</p>
                     </a>
                 </li>
                 
                 <li class="nav-item">
                     <a href="manage_brgy_rqst_id.php" class="nav-link">
-                    <i class="fas  nav-icon fa-certificate" style="color: #4285f4; font-size: 15px;"></i>
+                    <i class="fas fa-file-alt" style="color: #4285f4; font-size: 15px;"></i>
                         <p>Barangay Id</p>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a href="manage_brgy_rqst_coi.php" class="nav-link">
-                    <i class="fas  nav-icon fa-certificate" style="color: #4285f4; font-size: 15px;"></i>
+                    <i class="fas fa-file-alt" style="color: #4285f4; font-size: 15px;"></i>
                         <p>Barangay Indigency</p>
                     </a>
                 </li>
              
                 <li class="nav-item">
                     <a href="manage_brgy_rqst_cor.php" class="nav-link">
-                    <i class="fas  nav-icon fa-certificate" style="color: #4285f4; font-size: 15px;"></i>
+                    <i class="fas fa-file-alt" style="color: #4285f4; font-size: 15px;"></i>
                         <p>Barangay Residency</p>
                     </a>
                 </li>
+                    </ul>
+                </li> 
 
 
                 <li class="nav-header">System </li>
