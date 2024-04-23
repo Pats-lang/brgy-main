@@ -237,14 +237,14 @@ body {
                         <div class="col-md-6 mb-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <h3 class="card-title">Residence Id No. & Name </h3>
+                                    <h3 class="card-title">Residence Id </h3>
                                     <form action="" method="post" class="mt-5">
 
                                         <div class="mb-3">
-                                            <label for="alumid" class="form-label">Residence Id No:</label>
+                                            <label for="alumid" class="form-label">MEMBER Id No:</label>
                                             <input type="text" name="alumid" id="alumid" class="form-control"
-                                                placeholder="Enter Alumni ID" aria-describedby="helpId">
-                                            <small id="helpId" class="text-muted">Input your Residence No. </small>
+                                                placeholder="Enter MEMBER ID" aria-describedby="helpId">
+                                            <small id="helpId" class="text-muted">Input the Member Id. </small>
                                         </div>
 
                                         <button type="submit" name="generate" class="btn btn-primary btn-block">Generate

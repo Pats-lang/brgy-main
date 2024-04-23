@@ -1,8 +1,8 @@
 <?php
-include '../server/client_server/conn.php';
+include '../config/connection.php';
 
 // Check if the database connection is successful
-if (!$connection) {
+if (!$db) {
     die("Database connection failed: " . mysqli_connect_error());
 }
 
@@ -13,7 +13,7 @@ $currentYear = date('Y');
 $query = "SELECT MAX(SUBSTRING_INDEX(transaction_id, '-', 1)) AS last_tracking_number FROM request_busclearance WHERE YEAR(transaction_id) = $currentYear";
 
 // Execute the query
-$result = mysqli_query($connection, $query);
+$result = mysqli_query($db, $query);
 
 // Check if the query execution was successful
 if (!$result) {

@@ -311,8 +311,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     .contain {
         background: #f4f4f4;
-        padding: 15px 9%;
-
+        padding: 15px 12%;
     }
 
     .contain .heading {
@@ -325,8 +324,10 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     .contain .box-contain {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         gap: 15px;
+        
+
     }
 
     .contain .box-contain .box {
@@ -743,8 +744,8 @@ while ($row = mysqli_fetch_assoc($result)) {
                     <div class="col-lg-12 col-md-12 mx-auto">
                         <div class="stats-item text-center w-100 h-100">
                             <!-- Create a span to hold the count -->
-                            <span class="stats-count" style="font-size: 120px; color:black;">0</span>
-                            <span style="font-size: 30 px;">TOTAL REGISTERED POPULATION</span>
+                            <span class="stats-count" style="font-size: 120px; color:white;">0</span>
+                            <span style="font-size: 30 px; ">TOTAL REGISTERED POPULATION</span>
                         </div>
                     </div>
 
@@ -757,7 +758,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         <!-- request  -->
         <section>
             <div id="services">
-                <div class="contain">
+                <div class="contain" style="justify-content: center;">
                     <h5 class="services-heading">Services</h5>
                     <div class="box-contain">
                         <div class="box" data-request="Barangay ID">
@@ -796,7 +797,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                                 the Barangay's jurisdiction. </p>
                             <a class="btn read-more get-now">Get Now</a>
                         </div>
-                        <div class="box hidden" data-request="Business Permit">
+                        <div class="box hidden " data-request="Business Permit">
                             <img src="assets/images/docu/3.png" alt="">
                             <h3>Building Permit</h3>
                             <p class="custom-text-justify">A Barangay Building Permit is an official authorization
@@ -805,7 +806,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                                 jurisdiction. </p>
                             <a class="btn read-more get-now">Get Now</a>
                         </div>
-                        <div class="box hidden" data-request="Assistance">
+                        <div class="box hidden"  data-request="Assistance" >
                             <img src="assets/images/docu/6.jpg" alt="">
                             <h3>Assistance</h3>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
