@@ -15,7 +15,7 @@ while ($row = mysqli_fetch_assoc($result)){
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="dashboard.php" class="nav-link">Welcome to <?php echo $row['sName']; ?></a>
+            <a href="client_dashboard.php" class="nav-link">Welcome to <?php echo $row['sName']; ?></a>
         </li>
     </ul>
 
@@ -23,9 +23,7 @@ while ($row = mysqli_fetch_assoc($result)){
     <ul class="navbar-nav ml-auto">
         <!-- Navbar Search -->
         <li class="nav-item">
-            <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-                <i class="fas fa-search"></i>
-            </a>
+          
             <div class="navbar-search-block">
                 <form class="form-inline">
                     <div class="input-group input-group-sm">
@@ -76,7 +74,7 @@ while ($row = mysqli_fetch_assoc($result)){
                         <a href="../pages/client_dashboard.php" class="nav-link">
                             <?php
                     $conn = mysqli_connect("localhost", "root", "", "u907822938_barangaydb") or die("DI GUMANA");
-                    $sql = "SELECT members.picture, members.firstname
+                    $sql = "SELECT members.picture, members.fullname
                             FROM members
                             INNER JOIN member_account ON members.member_id = member_account.member_id
                             WHERE member_account.username = '$userLogged'";
@@ -86,7 +84,7 @@ while ($row = mysqli_fetch_assoc($result)){
                     if (mysqli_num_rows($result) > 0) {
                         $row = mysqli_fetch_assoc($result);
                         $fullname = $row['picture'];
-                        $firstname = $row['firstname'];
+                        $firstname = $row['fullname'];
                         
                     } else {
                         echo "No member found for the logged-in admin.";
@@ -95,7 +93,7 @@ while ($row = mysqli_fetch_assoc($result)){
 
                 <img src="../assets/images/member_pictures/<?php echo $row['picture']; ?> " class="rounded-circle img-fluid     object-position: center;
                 object-fit-cover" alt="Logo" width="50" height="50">
-                    <p class="mx-1"><?php echo $row['firstname']; ?></p>
+                    <p class="mx-1"><b><?php echo $row['fullname']; ?></b></p>
                         </a>
                     </li>
 

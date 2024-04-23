@@ -20,6 +20,12 @@ if (empty($userLogged)) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EGBMS | E-Governance Barangay Management System</title>
+  <?php
+    $sql_2 = "SELECT * FROM settings";
+    $result_2 = mysqli_query($db, $sql_2);
+    $row_2 = mysqli_fetch_assoc($result_2);
+  ?>
+  <link rel="icon" href="../assets/images/logo/<?php echo $row_2['sLogo']; ?>" />
   
 
   <?php include 'import.php'; ?>
@@ -139,6 +145,9 @@ if (empty($userLogged)) {
     body.modal-open .modal {
         overflow-y: auto;
     }
+    .custom-text-justify {
+        text-align: justify !important;
+    } 
     </style>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -157,7 +166,7 @@ if (empty($userLogged)) {
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item text-decoration-none"><a href="dashboard.php">Home</a></li>
+              <li class="breadcrumb-item text-decoration-none"><a>Home</a></li>
               <li class="breadcrumb-item text-secondary">Service</li>
             </ol>
           </div>
@@ -182,7 +191,7 @@ if (empty($userLogged)) {
             <h3>Barangay Indigency </h3>
             <p class="custom-text-justify"> Barangay Indigency refers to a certification issued by the Barangay (the smallest administrative division in the Philippines) 
             confirming that an individual or family qualifies as indigent or economically disadvantaged. </p>
-            <a href="../pages/client/brgycoi_form.php" class="btn read-more">Proceed</a>
+            <a href="form_brgycoi.php" class="btn read-more">Proceed</a>
         </div>
 
         <div class="box" data-request="Barangay Clearance">

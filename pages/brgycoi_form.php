@@ -2,7 +2,6 @@
 include 'header.php';
 include '../../config/connection.php';
 
-session_start();
 
 // Get the current year
 $currentYear = date('Y');
@@ -13,19 +12,12 @@ $randomNumber = mt_rand(100000, 999999);
 // Create the transaction ID
 $transaction_id = 'COI-'. $currentYear . '-' . $randomNumber ;
 
-$adminLogged = $_SESSION['adminLogged'];
 
-
-
-if (empty($adminLogged)) {
-    header('Location: pages\login_client.php');
-    exit;
-}
 
 $sql = "SELECT members.name, members.picture
         FROM members
         INNER JOIN member_account ON members.member_id = member_account.member_id
-        WHERE member_account.username = '$adminLogged'";
+        WHERE member_account.username = '$userLogged'";
 $result = mysqli_query($db, $sql);
 
 if ($result && mysqli_num_rows($result) > 0) {
