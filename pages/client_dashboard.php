@@ -18,11 +18,8 @@ $result = mysqli_query($db, $sql);
 if ($result && mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
 
-    $sql_2 = "SELECT * FROM settings";
-    $result_2 = mysqli_query($connection, $sql_2);
-    $row_2 = mysqli_fetch_assoc($result_2);
   
-    
+}
 ?>
 
 
@@ -35,7 +32,14 @@ if ($result && mysqli_num_rows($result) > 0) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EGBMS | E-Governance Barangay Management System</title>
-  <link rel="icon" href="../assets/images/logo/"><?php echo $row_2['sLogo'];}?>
+
+  <?php
+    $sql_2 = "SELECT * FROM settings";
+    $result_2 = mysqli_query($db, $sql_2);
+    $row_2 = mysqli_fetch_assoc($result_2);
+  ?>
+  <link rel="icon" href="../assets/images/logo/<?php echo $row_2['sLogo']; ?>" />
+
 
   
   <?php include 'import.php'; ?>  

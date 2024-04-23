@@ -17,7 +17,7 @@ $transaction_id = 'COI-'. $currentYear . '-' . $randomNumber ;
 $sql = "SELECT members.name, members.picture
         FROM members
         INNER JOIN member_account ON members.member_id = member_account.member_id
-        WHERE member_account.username = '$adminLogged'";
+        WHERE member_account.username = '$userLogged'";
 $result = mysqli_query($db, $sql);
 
 if ($result && mysqli_num_rows($result) > 0) {
