@@ -32,39 +32,23 @@ $pdf->Image($imagePath1, $x1 = 70, $y1 = 60, $w1 = 75, $h1 = 75, '', '', '', fal
 $imagePath2 = 'https://i.ibb.co/dfT9dz7/barangay.jpg'; // Replace with the actual path to your first image file
 $pdf->Image($imagePath2, $x1 = 450, $y1 = 55, $w1 = 85, $h1 = 85, '', '', '', false, 300, '', false, false, false, false, false, false);
 // Set position for the "Prepared By:" text
-$pdf->SetXY(452, 410); // Adjust X and Y coordinates as needed
-// Output the "Prepared By:" text
-$pdf->Cell(0, 0, 'Prepared By:', 0, 0, 'L');
 
-$pdf->SetXY(440, 430); // Adjust X and Y coordinates as needed
+$imagePath3 = 'https://i.ibb.co/qFVFjBS/qr.png'; // Replace with the actual path to your first image file
+$pdf->Image($imagePath3, $x1 = 380, $y1 = 500, $w1 = 200, $h1 = 200, '', '', '', false, 300, '', false, false, false, false, false, false);
+// Set position for the "Prepared By:" text
 
-$pdf->Cell(0, 0, 'Jayne B. Soriano', 0, 0, 'L'); // Output the name
 
-$pdf->SetXY(460, 450); // Adjust X and Y coordinates as needed
 
-$pdf->Cell(0, 0, 'Secretary', 0, 0, 'L'); // Output the role
 
-$pdf->SetXY(452, 410); // Adjust X and Y coordinates as needed
-// Output the "Prepared By:" text
-$pdf->Cell(0, 0, 'Prepared By:', 0, 0, 'L');
 
-$pdf->SetXY(440, 430); // Adjust X and Y coordinates as needed
 
-$pdf->Cell(0, 0, 'Jayne B. Soriano', 0, 0, 'L'); // Output the name
 
-$pdf->SetXY(460, 450); // Adjust X and Y coordinates as needed
+
+$pdf->SetXY(65, 480); // Adjust X and Y coordinates as needed
 
 $pdf->Cell(0, 0, 'Secretary', 0, 0, 'L'); // Output the role
 
-$pdf->SetXY(450, 500); // Adjust X and Y coordinates as needed
-
-$pdf->Cell(0, 0, 'Approved By:', 0, 0, 'L'); // Output the role
-
-$pdf->SetXY(420, 520); // Adjust X and Y coordinates as needed
-
-$pdf->Cell(0, 0, 'Hon. ROEL A. ESMANA', 0, 0, 'L'); // Output the role
-
-$pdf->SetXY(435, 540); // Adjust X and Y coordinates as needed
+$pdf->SetXY(60, 585); // Adjust X and Y coordinates as needed
 
 $pdf->Cell(0, 0, 'Barangay Chairman', 0, 0, 'L'); // Output the role
 
@@ -131,6 +115,24 @@ body {
 
 
   <div></div>
+
+  <p>Prepared By:</p>
+
+  <br>
+
+   
+  <p>Jayne B. Soriano</p>
+
+<div></div>
+<div></div>
+<p>Approved By:</p>
+
+
+<div></div>
+
+
+<p>Hon. ROEL A. ESMANA</p>
+
   
 
 
