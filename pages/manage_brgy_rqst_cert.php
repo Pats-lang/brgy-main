@@ -34,7 +34,7 @@ include '../server/admin_login-verification.php';
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Request Barangay Residency</h1>
+                            <h1>Request Barangay Certificate</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -42,7 +42,7 @@ include '../server/admin_login-verification.php';
                                 </li>
                                 <li class="breadcrumb-item text-decoration-none text-secondary"><i>Request</i>
                                 </li>
-                                <li class="breadcrumb-item text-secondary">Request Barangay Residency</li>
+                                <li class="breadcrumb-item text-secondary">Request Barangay Certificate</li>
                             </ol>
                         </div>
                     </div>
@@ -60,11 +60,10 @@ include '../server/admin_login-verification.php';
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Account ID</th>
+                                                <th>MEMBER ID</th>
                                                 <th>Transaction ID</th>
                                                 <th>Name</th>
                                                 <th>Address</th>
-                                                <th>Years Residency</th>
                                                 <th>Contact No</th>
 
                                                 <th>Status</th>
@@ -75,7 +74,7 @@ include '../server/admin_login-verification.php';
                                         <tbody>
 
                                             <?php
-                                            $query = "SELECT * FROM `request_brgycor` ";
+                                            $query = "SELECT * FROM `request_brgybp` ";
                                             $result = mysqli_query(getDatabase(), $query);
                                             while ($row = mysqli_fetch_array($result)) {
                                             ?>
@@ -85,7 +84,7 @@ include '../server/admin_login-verification.php';
                                                     </td>
 
                                                     <td>
-                                                        <?php echo $row['account_id']; ?>
+                                                        <?php echo $row['member_id']; ?>
                                                     </td>
                                                     <td>
                                                         <?php echo $row['transaction_id']; ?>
@@ -97,9 +96,7 @@ include '../server/admin_login-verification.php';
                                                     <td>
                                                         <?php echo $row['address']; ?>
                                                     </td>
-                                                    <td>
-                                                        <?php echo $row['year_recidency']; ?>
-                                                    </td>
+                                                  
                                                     <td>
                                                         <?php echo $row['contact_no']; ?>
                                                     </td>
@@ -182,8 +179,8 @@ include '../server/admin_login-verification.php';
                                         </div>
                                         <div class="col-md-4">
 
-                                            <label for="add_Image_id">ACCOUNT ID</label>
-                                            <input type="text" class="form-control form-control-border" id="account" name="account" readonly>
+                                            <label for="add_Image_id">MEMBER ID</label>
+                                            <input type="text" class="form-control form-control-border" id="member_id" name="member_id" readonly>
 
                                         </div>
                                         <div class="col-md-4">
@@ -356,14 +353,14 @@ include '../server/admin_login-verification.php';
         $(document).on('click', 'button[data-role=editAnnouncement_btn]', function() {
             $.ajax({
                 type: "POST",
-                url: "../server/read_brgy_cor.php",
+                url: "../server/read_brgy_cert.php",
                 data: {
                     id: $(this).attr('data-id'),
                 },
                 dataType: "json",
                 success: function(response_editAnnouncement) {
                     $('#id').val(response_editAnnouncement.id); // Corrected property name
-                    $('#account').val(response_editAnnouncement.account_id); // Corrected property name
+                    $('#member_id').val(response_editAnnouncement.member_id); // Corrected property name
                     $('#transaction').val(response_editAnnouncement.transaction_id); // Corrected property name
 
                     $('#register_name').val(response_editAnnouncement.name); // Corrected property name

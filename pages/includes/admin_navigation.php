@@ -173,13 +173,20 @@ while ($row = mysqli_fetch_assoc($result)){
                         <p>Barangay Clearance</p>
                     </a>
                 </li>
-                
                 <li class="nav-item">
-                    <a href="manage_brgy_rqst_id.php" class="nav-link">
+                    <a href="manage_brgy_rqst_bp.php" class="nav-link">
                     <i class="fas fa-file-alt" style="color: #4285f4; font-size: 15px;"></i>
-                        <p>Barangay Id</p>
+                        <p>Barangay Building Permit</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="manage_brgy_rqst_cert.php" class="nav-link">
+                    <i class="fas fa-file-alt" style="color: #4285f4; font-size: 15px;"></i>
+                        <p>Barangay Certificate</p>
+                    </a>
+                </li>
+                
+                
 
                 <li class="nav-item">
                     <a href="manage_brgy_rqst_coi.php" class="nav-link">
@@ -188,12 +195,8 @@ while ($row = mysqli_fetch_assoc($result)){
                     </a>
                 </li>
              
-                <li class="nav-item">
-                    <a href="manage_brgy_rqst_cor.php" class="nav-link">
-                    <i class="fas fa-file-alt" style="color: #4285f4; font-size: 15px;"></i>
-                        <p>Barangay Residency</p>
-                    </a>
-                </li>
+             
+
                     </ul>
                 </li> 
 
