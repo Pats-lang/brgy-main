@@ -129,7 +129,7 @@ include '../server/admin_login-verification.php';
                         <div class="col-6">
                             <div class="card">
                                 <div class="card-header border-transparent">
-                                    <h3 class="card-title">Priority Orders</h3>
+                                    <h3 class="card-title">Pending Resident Account</h3>
 
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -191,7 +191,7 @@ if (mysqli_num_rows($result) > 0) {
     }
 } else {
     // Display a message if there are no pending orders
-    echo '<tr><td colspan="4">No pending orders</td></tr>';
+    echo '<tr><td colspan="4">No Pending Account</td></tr>';
 }
 ?>
 
@@ -202,7 +202,7 @@ if (mysqli_num_rows($result) > 0) {
                                 </div>
                                 <div class="card-footer row clearfix">
                                     <a href="../pages/manage_residents-verification.php"
-                                        class="btn col-md-6 btn-sm btn-secondary btn-block mb-2">Resident</a>
+                                        class="btn col-md btn-sm btn-secondary btn-block mb-2">Resident</a>
                                     
                                 </div>
                             </div>
@@ -213,7 +213,7 @@ if (mysqli_num_rows($result) > 0) {
                         <div class="col-6">
                             <div class="card">
                                 <div class="card-header border-transparent">
-                                    <h3 class="card-title">Recently Added Inquiry ID</h3>
+                                    <h3 class="card-title">Recently Added Account</h3>
 
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -239,7 +239,7 @@ if (mysqli_num_rows($result) > 0) {
                                         </thead>
                                         <tbody>
                                             <?php
-$query = "SELECT * FROM `members` WHERE `cid` = 1 ";
+$query = "SELECT * FROM `members` WHERE `status` = 1 AND `time_registered` >= DATE_SUB(CURDATE(), INTERVAL 2 DAY)";
 $result = mysqli_query(getDatabase(), $query);
 
 // Log the SQL query for debugging
@@ -264,7 +264,7 @@ if (mysqli_num_rows($result) > 0) {
     }
 } else {
     // Display a message if there are no pending orders
-    echo '<tr><td colspan="4">No pending orders</td></tr>';
+    echo '<tr><td colspan="4">No Recently Added Account</td></tr>';
 }
 ?>
 
@@ -276,9 +276,8 @@ if (mysqli_num_rows($result) > 0) {
                                 </div>
                                 <div class="card-footer clearfix">
 
-                                    <a href="javascript:void(0)"
-                                        class="btn btn-sm btn-secondary btn-block float-right">View All
-                                        Orders</a>
+                                    <a href="../pages/manage_residents-list.php"
+                                        class="btn btn-sm btn-secondary btn-block float-right">View Recently Added Account</a>
                                 </div>
                             </div>
                         </div>
@@ -291,7 +290,7 @@ if (mysqli_num_rows($result) > 0) {
                         <!-- TABLE: LATEST ORDERS -->
                         <div class="card">
                             <div class="card-header border-transparent">
-                                <h3 class="card-title">Alumni Id Inquiries</h3>
+                                <h3 class="card-title">Inquiries</h3>
 
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">

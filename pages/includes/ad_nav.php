@@ -202,6 +202,13 @@ while ($row = mysqli_fetch_assoc($result)){
                 </li>
                     </ul>
                 </li> 
+                <li class="nav-header">ID  </li>
+                <li class="nav-item">
+                    <a href="Idgenerator.php" class="nav-link">
+                        <i class="fa-solid fa-id-card nav-icon" style="color: #4285f4; font-size: 15px;"></i>
+                        <p>Generated ID</p>
+                    </a>
+                </li>
 
 
                 <li class="nav-header">System </li>
