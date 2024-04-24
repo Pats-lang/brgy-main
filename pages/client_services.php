@@ -199,7 +199,7 @@ if (empty($userLogged)) {
             <h3>Barangay Clearance</h3>
             <p class="custom-text-justify">A Barangay Clearance is a document issued by the local Barangay government in the Philippines, 
                 certifying that the individual named has cleared any outstanding liabilities or obligations within the community. </p>
-            <a href="../pages\client_portal\brgyclear_form.php" class="btn read-more">Proceed</a>
+            <a href="form_brgyclr.php" class="btn read-more">Proceed</a>
         </div>
 
         <div class="box" data-request="Barangay Certificate">
