@@ -364,7 +364,7 @@ include '../server/admin_login-verification.php';
                       <div class="col-4">
                           <label for="stats" class="form-label">STATUS</label>
                           <select class="form-select" id="stats" name="stats">
-                            
+            
                             <option value="1">ACCEPTED</option>
                             <option value="3">REMOVE</option>
                           </select>
