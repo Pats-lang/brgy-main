@@ -53,7 +53,7 @@ $size = 5;
 // Error correction level (L, M, Q, H)
 $errorCorrectionLevel = 'L';
 
-// Generate QR code
+// Generate QR code and save the image
 QRcode::png($combinedDynamicData, $filename, $errorCorrectionLevel, $size);
 
 // Set position for the QR code image on the right side, aligned with the Secretary
