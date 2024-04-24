@@ -18,7 +18,7 @@ $req_purpose = sanitizeData(getDatabase(), $_POST['purpose']);
 $status = 0;
 
 if ($preparedSql = $db->prepare("INSERT INTO `request_brgycoi` (`transaction_id`, `member_id`, `name`, `request`, `yrs_res`, `address`, `email`, `contact_no`, `purpose`, `status`) VALUES (?,?,?,?,?,?,?,?,?,?)")) {
-    $preparedSql->bind_param("sissississ", $req_transaction_id , $req_member_id, $req_name, $req_request, $year_of_residency, $req_address, $req_email, $req_contact_number, $req_purpose, $status);
+    $preparedSql->bind_param("sississsss", $req_transaction_id , $req_member_id, $req_name, $req_request, $year_of_residency, $req_address, $req_email, $req_contact_number, $req_purpose, $status);
 
   if ($preparedSql->execute()) {
     $response['status'] = true;

@@ -1,8 +1,9 @@
 <?php
 include '../config/connection.php';
 include '../server/admin_login-verification.php';
-?>
 
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +11,7 @@ include '../server/admin_login-verification.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EGBMS | E-Governance Barangay Management System</title>
+<<<<<<< HEAD
 
 
     <?php include 'import.php'; ?>
@@ -31,6 +33,14 @@ include '../server/admin_login-verification.php';
         }
     </style>
 </head>
+=======
+    <!-- LOGO SA TAAS -->
+    
+    <?php include 'import.php'; ?>
+</head>
+
+
+>>>>>>> bffcccc1ac5f53a46313be85f8ab9947026a15c2
 <body class="hold-transition sidebar-mini layout-fixed">
 
     <!-- Site wrapper -->

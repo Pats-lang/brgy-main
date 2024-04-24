@@ -14,7 +14,7 @@ while ($row = mysqli_fetch_assoc($result)){
 ?>
 
  
-<link rel="icon" href="../../assets/images/logo/barangay.gif <?php echo $row['sLogo']; ?>"/>
+<link rel="icon" href="../assets/images/logo/<?php echo $row['sLogo']; ?>"/>
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->

@@ -97,7 +97,7 @@ include '../server/admin_login-verification.php';
                                                         <?php echo $row['request']; ?>
                                                     </td>
                                                     <td>
-                                                        <?php echo $row['contact_no']; ?>
+                                                        <?php echo $row['yrs_res']; ?>
                                                     </td>
                                                     <td>
                                                         <?php echo $row['purpose']; ?>
@@ -126,6 +126,9 @@ include '../server/admin_login-verification.php';
                                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reviewInquiry_modal" data-id="<?php echo $row['id']; ?>" data-role="editAnnouncement_btn">
                                                             Verify
                                                         </button>
+
+                                                        <a href="../server/viewpdf_brgycoi.php" class="btn btn-primary">View PDF</a>
+
                                                     </td>
                                                 </tr>
                                             <?php } ?>
@@ -150,6 +153,8 @@ include '../server/admin_login-verification.php';
 
         </div>
     </div>
+
+    
 
 
 
@@ -217,8 +222,8 @@ include '../server/admin_login-verification.php';
 
                                         </div>
                                         <div class="col-md-4">
-                                            <label for="register_email">Contact Number</label>
-                                            <input type="text" class="form-control form-control-border" id="register_contact" name="register_contact" placeholder="Type your Email Address" readonly>
+                                            <label for="register_contact">Contact Number</label>
+                                            <input type="text" class="form-control form-control-border" id="register_contact" name="register_contact" placeholder="Type your Contact Number" readonly>
 
                                         </div>
                                     </div>
@@ -388,6 +393,10 @@ include '../server/admin_login-verification.php';
 
 
         });
+
+        
+
+  
     </script>
 </body>
 
