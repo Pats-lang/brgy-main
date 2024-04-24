@@ -54,7 +54,7 @@ while ($row = mysqli_fetch_assoc($result)){
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar main-sidebar-custom sidebar-light-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="dashboard.php" class="brand-link text-decoration-none">
+    <a href="../pages/client_dashboard.php" class="brand-link text-decoration-none">
         <i class="fas fa-solid fa-address-card fa-lg ml-3 mr-2"></i>
         <span class="brand-text font-weight-bold"><?php echo $row['sAlias']; ?></span>
     </a>
@@ -102,7 +102,7 @@ while ($row = mysqli_fetch_assoc($result)){
 
                     <li class="nav-item">
                         <a href="../pages/client_dashboard.php" class="nav-link">
-                            <i class="fa-solid fa-screwdriver-wrench nav-icon"
+                            <i class="fa-solid fa-house nav-icon"
                                 style="color: #4285f4; font-size: 15px;"></i>
                             <p>Home</p>
                         </a>
@@ -122,13 +122,13 @@ while ($row = mysqli_fetch_assoc($result)){
                     </li>
                     <li class="nav-item">
                         <a href="../pages/client_profile.php" class="nav-link">
-                            <i class="fa-solid fa-box-archive nav-icon" style="color: #4285f4; font-size: 15px;"></i>
+                            <i class="fa-solid fa-user nav-icon" style="color: #4285f4; font-size: 15px;"></i>
                             <p>Profile</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="../server/client_logout.php" class="nav-link">
-                            <i class="fa-solid fa-clipboard nav-icon" style="color: #4285f4; font-size: 15px;"></i>
+                            <i class="fa-solid fa-right-from-bracket nav-icon" style="color: #4285f4; font-size: 15px;"></i>
                             <p href="server/client_logout.php">Logout</p>
                         </a>
                     </li>

@@ -3,7 +3,6 @@
 
 require_once('../plugins/TCPDF-main/tcpdf.php');
 require_once '../plugins/phpqrcode/qrlib.php'; // Include the necessary files for QR code generation
-
 // Ensure no output sent before generating PDF
 
 // Create a TCPDF object

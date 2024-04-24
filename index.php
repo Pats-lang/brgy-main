@@ -326,8 +326,14 @@ while ($row = mysqli_fetch_assoc($result)) {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         gap: 15px;
-        
 
+
+    }
+
+    .box {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     .contain .box-contain .box {
@@ -339,7 +345,12 @@ while ($row = mysqli_fetch_assoc($result)) {
     }
 
     .contain .box-contain .box img {
-        height: 80px;
+        max-width: 40%;
+        height: auto;
+        /* Maintain aspect ratio */
+        margin-bottom: 10px;
+        margin: 0 auto;
+        /* Center the image horizontally */
     }
 
     .contain .box-contain .box h3 {
@@ -357,7 +368,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     .contain .box-contain .box .btn {
         margin-top: 10px;
         display: inline-block;
-        background: #333;
+        background-color: orange;
         color: #fff;
         font-size: 17px;
         border-radius: 5px;
@@ -366,6 +377,8 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     .contain .box-contain .box .btn:hover {
         letter-spacing: 1px;
+        background: #529f37;
+
     }
 
     .contain .box-contain .box:hover {
@@ -391,7 +404,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         top: 0;
         width: 100%;
         height: 100%;
-       
+
         overflow: auto;
         background-color: rgba(0, 0, 0, 0.4);
         /* Add the following styles */
@@ -411,7 +424,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     body.modal-open {
         overflow: hidden;
-        
+
     }
 
     body.modal-open .modal {
@@ -450,7 +463,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     /* Add a hover effect for buttons */
     button:hover {
         opacity: 0.8;
-       
+
     }
 
     /* Extra style for the cancel button (red) */
@@ -533,9 +546,10 @@ while ($row = mysqli_fetch_assoc($result)) {
         transform: translateY(-50%);
         cursor: pointer;
     }
+
     .nav-item a {
-    cursor: pointer;
-}
+        cursor: pointer;
+    }
 
     /* hidden */
 
@@ -811,12 +825,6 @@ while ($row = mysqli_fetch_assoc($result)) {
                                 issued by the Barangay (the smallest administrative division in the Philippines)
                                 that grants permission for construction or renovation activities within its
                                 jurisdiction. </p>
-                            <a class="btn read-more get-now">Get Now</a>
-                        </div>
-                        <div class="box hidden"  data-request="Assistance" >
-                            <img src="assets/images/docu/6.jpg" alt="">
-                            <h3>Assistance</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
                             <a class="btn read-more get-now">Get Now</a>
                         </div>
                     </div>

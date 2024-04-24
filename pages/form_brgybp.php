@@ -18,7 +18,7 @@ $currentYear = date('Y');
 $randomNumber = mt_rand(100000, 999999);
 
 // Create the transaction ID
-$transaction_id = 'CLR-'. $currentYear . '-' . $randomNumber ;
+$transaction_id = 'BP-'. $currentYear . '-' . $randomNumber ;
 
 
 $sql = "SELECT * FROM settings";
@@ -27,6 +27,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -62,7 +63,7 @@ input[readonly] {
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item text-decoration-none"><a>Service</a></li>
-                                <li class="breadcrumb-item text-secondary">Barangay Clearance</li>
+                                <li class="breadcrumb-item text-secondary">Barangay Building Permit</li>
                             </ol>
                         </div>
                     </div>
@@ -75,7 +76,7 @@ input[readonly] {
 
 
                 <div class="container-fluid bg-light p-5">
-                    <form id="request_barangay-clearanceform" method="post" class="p-5 rounded border" style=" max-width: 650px; margin: 0 auto; background-color: #ADE8F4; box-shadow: 0px 1px 10px rgba(0, 0, 255, 0.4);
+                    <form id="request_bpform" method="post" class="p-5 rounded border" style=" max-width: 650px; margin: 0 auto; background-color: #ADE8F4; box-shadow: 0px 1px 10px rgba(0, 0, 255, 0.4);
                 background-color: #fdfdfd;">
 
                         <div class="text-center mb-5">
@@ -125,20 +126,24 @@ input[readonly] {
                                 <div class="form-group">
                                     <label for="request">Request</label>
                                     <input type="text" name="request" id="request" class="form-control"
-                                        value="Barangay Clearance" readonly>
+                                        value="Barangay Building Permit" readonly>
                                 </div>
                             </div>
                         </div>
-
                         <div class="row mb-4">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="residency">Year Residency</label>
-                                    <input type="number" name="residency" id="residency" class="form-control"
-                                        value="<?php echo $row['yrs_res']; ?>">
+                                    <label for="square_meter">Square Meter</label>
+                                    <input type="text" name="square_meter" id="square_meter" class="form-control">
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="floor">Floor</label>
+                                    <input type="text" name="floor" id="floor" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="address">Address</label>
                                     <input type="text" name="address" id="address" class="form-control"
@@ -173,7 +178,7 @@ input[readonly] {
 
 
                         <div class="text-center">
-                        <button type="submit" class="btn btn-primary btn-block w-75 mx-auto">Send</button>
+                            <button type="submit" class="btn btn-primary btn-block w-75 mx-auto">Send</button>
                         </div>
 
 
@@ -194,11 +199,11 @@ input[readonly] {
 
 <script>
 $(document).ready(function() {
-    $('#request_barangay-clearanceform').on('submit', function(e) {
+    $('#request_bpform').on('submit', function(e) {
         e.preventDefault(); // Prevent the default form submission
 
         // Perform form validation
-        var isValid = $('#request_barangay-clearanceform').valid();
+        var isValid = $('#request_bpform').valid();
 
         // If the form is valid, proceed with the submission
         if (isValid) {
@@ -210,9 +215,9 @@ $(document).ready(function() {
                 denyButtonText: 'Don\'t Send',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    var formData = new FormData($('#request_barangay-clearanceform')[0]);
+                    var formData = new FormData($('#request_bpform')[0]);
                     $.ajax({
-                        url: "../server/req_brgyclrs_apii.php",
+                        url: "../server/req_brgybp_apii.php",
                         type: "POST",
                         data: formData,
                         dataType: 'json',
@@ -225,7 +230,7 @@ $(document).ready(function() {
                                     closeButton: false,
                                     onHidden: function() {
                                         setTimeout(function() {
-                                           
+
                                         }, 500);
                                     }
                                 });
@@ -257,13 +262,14 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     // Add custom validation method for alphabetic characters with space
-    
-   
     jQuery.validator.addMethod("alphabeticWithSpaceAndDot", function(value, element) {
         return this.optional(element) || /^[a-zA-Z\s.,]*$/.test(value);
     }, "Please enter alphabetic characters only.");
+
+
+
     // Form validation
-    var validate_form = $('#request_barangay-clearanceform').validate({
+    var validate_form = $('#request_bpform').validate({
         rules: {
             transaction_id: {
                 required: true,
@@ -296,6 +302,16 @@ $(document).ready(function() {
                 // Add additional condition for residency
                 minlength: 1,
                 digits: true,
+            },
+            square_meter: {
+                required: true,
+                minlength: 2,
+
+                
+               
+            },
+            floor: {
+                required: true,
             },
             purpose: {
                 required: true,
@@ -336,8 +352,19 @@ $(document).ready(function() {
                 minlength: 'Please provide a valid Year Residency!',
                 digits: 'Please provide a valid Year Residency!',
             },
+            square_meter: {
+            required: 'Please provide the square meter measurement of your building. For example, (100 square meters.)',
+            minlength: 'Please provide the square meter measurement of your building. For example, (100 square meters.)',
+
+            },
+
+            floor: {
+                required: 'Please specify the number of floors in your building. For example, (5th floor)',
+                minlength: 'Please specify the number of floors in your building. For example, (5th floor)',
+            },
+
             purpose: {
-                required: 'Provide a valid purpose!',
+                required: 'Please provide a valid purpose!',
                 maxlength: 'Please limit your input to 50 characters.',
                 minlength: 'Please provide a valid purpose! ',
 
