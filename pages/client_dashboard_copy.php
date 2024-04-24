@@ -170,7 +170,99 @@ include '../server/admin_login-verification.php';
                         </div>
                         <!-- ./col -->
           
-        
+        <!-- barangay-->
+        <div class="row">
+                            <div class="col-lg-4 mt-2 mb-3">
+                                <div class="card card-secondary shadow">
+                                    <div class="card-header d-flex align-items-center justify-content-between">
+                                        <h5><i class="fas fa-solid fa-calendar fa-sm"></i> Documents:</h5>
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                            title="Collapse" data-card-show="#borrowedCardBody">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                    <div id="borrowedCardBody" class="card-body" style="display: none;">
+                                        <?php
+                // Establish database connection
+                $conn = mysqli_connect("localhost", "root", "", "u907822938_barangaydb") or die("DI GUMANA");
+
+                // SQL query to fetch counts from different request tables with specified status values
+                $sql = "SELECT 
+                            COUNT(DISTINCT coi.id) AS coi_count,
+                            COUNT(DISTINCT clrs.id) AS clrs_count,
+                            COUNT(DISTINCT busclearance.id) AS busclearance_count
+                        FROM request_brgycoi coi
+                        INNER JOIN request_brgyclrs clrs ON coi.status = clrs.status
+                        INNER JOIN request_busclearance busclearance ON clrs.status = busclearance.status
+                        WHERE coi.status = 2";
+
+                // Execute the query
+                $result = mysqli_query($conn, $sql);
+
+                // Check if query executed successfully
+                if ($result) {
+                    // Fetch counts from the result
+                    $row = mysqli_fetch_assoc($result);
+
+                    if ($row) {
+                        // Access counts for each document type
+                        $coi_count = isset($row['coi_count']) ? $row['coi_count'] : 2;
+                        $clrs_count = isset($row['clrs_count']) ? $row['clrs_count'] : 2;
+                        $busclearance_count = isset($row['busclearance_count']) ? $row['busclearance_count'] : 0;
+
+                        // Output the counts wherever needed in your HTML
+                        echo "<div class='card my-3'>
+                        <div class='card-header'>
+                            <h5 class='card-title'><a href='manage_brgy_rqst_coi.php' style='text-decoration:none;color:black;'><i class='fas fa-check-circle fa-sm'></i> Barangay Indigency</a></h5>
+                        </div>
+                        <div class='card-body'>
+                            <p class='card-text text-center fs-5' style='font-size: 1.1rem;'>Barangay Indigency: $coi_count</p>
+                        </div>
+                    </div>";
+                echo "<div class='card my-3'>
+                        <div class='card-header'>
+                            <h5 class='card-title'><a href='manage_brgy_rqst_clrs.php' style='text-decoration:none;color:black;'><i class='far fa-clock'></i> Barangay Clerance</a></h5>
+                        </div>
+                        <div class='card-body'>
+                            <p class='card-text text-center fs-4' style='font-size: 1.1rem;'>Barangay Clearance: $clrs_count</p>
+                        </div>
+                    </div>";
+                echo "<div class='card my-3'>
+                        <div class='card-header'>
+                            <h5 class='card-title'><a href='manage_brgy_rqst_busclearance.php' style='text-decoration:none;color:black;'><i class='fas fa-star'></i> Barangay Business Clearance</a></h5>
+                        </div>
+                        <div class='card-body'>
+                            <p class='card-text text-center fs-4' style='font-size: 1rem;'>Barangay Business Clearance: $busclearance_count</p>
+                        </div>
+                    </div>";
+                    } else {
+                        echo "No data found.";
+                    }
+                } else {
+                    // Handle query execution error
+                    echo "Error executing query: " . mysqli_error($conn);
+                }
+
+                // Close database connection
+                mysqli_close($conn);
+                ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                    <!-- Default box -->
+                </div>
+                <!-- /.col -->
+
+                <!-- /.content-wrapper -->
+        </div>
+        </section>
+    </div>
+
+<!-- hindi tapos-->
+
         </div>
         <!-- /.row -->
            <!-- Default box -->

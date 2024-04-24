@@ -32,8 +32,7 @@ include '../server/admin_login-verification.php';
         }
     </style>
     <!-- LOGO SA TAAS -->
-    
-    <?php include 'import.php'; ?>
+   
 </head>
 
 
@@ -169,105 +168,265 @@ include '../server/admin_login-verification.php';
                             </div>
                         </div>
                         <!-- ./col -->
-<!-- barangay-->
-                        <div class="row">
-                            <div class="col-lg-4 mt-2 mb-3">
-                                <div class="card card-secondary shadow">
-                                    <div class="card-header d-flex align-items-center justify-content-between">
-                                        <h5><i class="fas fa-solid fa-calendar fa-sm"></i> Documents:</h5>
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"
-                                            title="Collapse" data-card-show="#borrowedCardBody">
-                                            <i class="fas fa-plus"></i>
+                    
+
+
+
+                    </div>
+                    <!-- /.row -->
+
+                    <!-- /.row -->
+                    <div class="row ">
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-header border-transparent">
+                                    <h3 class="card-title">Pending Resident Account</h3>
+
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                            <i class="fas fa-times"></i>
                                         </button>
                                     </div>
-                                    <div id="borrowedCardBody" class="card-body" style="display: none;">
-                                        <?php
-                // Establish database connection
-                $conn = mysqli_connect("localhost", "root", "", "u907822938_barangaydb") or die("DI GUMANA");
+                                </div>
 
-                // SQL query to fetch counts from different request tables with specified status values
-                $sql = "SELECT 
-                            COUNT(DISTINCT coi.id) AS coi_count,
-                            COUNT(DISTINCT clrs.id) AS clrs_count,
-                            COUNT(DISTINCT busclearance.id) AS busclearance_count
-                        FROM request_brgycoi coi
-                        INNER JOIN request_brgyclrs clrs ON coi.status = clrs.status
-                        INNER JOIN request_busclearance busclearance ON clrs.status = busclearance.status
-                        WHERE coi.status = 2";
+                                <!-- /.card-header -->
+                                <div class="card-body table-responsive p-0" style="height: 300px;">
+                                    <table class="table table-head-fixed text-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th>Member ID</th>
+                                                <th>Name</th>
 
-                // Execute the query
-                $result = mysqli_query($conn, $sql);
+                                                <th>Time Stamp</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+$query = "SELECT * FROM `members` WHERE `status` = 0 AND `time_registered` <= DATE_SUB(CURDATE(), INTERVAL 2 DAY)";
+$result = mysqli_query(getDatabase(), $query);
 
-                // Check if query executed successfully
-                if ($result) {
-                    // Fetch counts from the result
-                    $row = mysqli_fetch_assoc($result);
+// Log the SQL query for debugging
 
-                    if ($row) {
-                        // Access counts for each document type
-                        $coi_count = isset($row['coi_count']) ? $row['coi_count'] : 2;
-                        $clrs_count = isset($row['clrs_count']) ? $row['clrs_count'] : 2;
-                        $busclearance_count = isset($row['busclearance_count']) ? $row['busclearance_count'] : 0;
+// Check if there are any pending orders
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_array($result)) {
+        ?>
+                                            <tr id="<?php echo $row['member_id']; ?>">
+                                                <td>
+                                                    <?php echo $row['member_id']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['fullname']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['time_registered']; ?>
+                                                </td>
 
-                        // Output the counts wherever needed in your HTML
-                        echo "<div class='card my-3'>
-                        <div class='card-header'>
-                            <h5 class='card-title'><a href='manage_brgy_rqst_coi.php' style='text-decoration:none;color:black;'><i class='fas fa-check-circle fa-sm'></i> Barangay Indigency</a></h5>
-                        </div>
-                        <div class='card-body'>
-                            <p class='card-text text-center fs-5' style='font-size: 1.1rem;'>Barangay Indigency: $coi_count</p>
-                        </div>
-                    </div>";
-                echo "<div class='card my-3'>
-                        <div class='card-header'>
-                            <h5 class='card-title'><a href='manage_brgy_rqst_clrs.php' style='text-decoration:none;color:black;'><i class='far fa-clock'></i> Barangay Clerance</a></h5>
-                        </div>
-                        <div class='card-body'>
-                            <p class='card-text text-center fs-4' style='font-size: 1.1rem;'>Barangay Clearance: $clrs_count</p>
-                        </div>
-                    </div>";
-                echo "<div class='card my-3'>
-                        <div class='card-header'>
-                            <h5 class='card-title'><a href='manage_brgy_rqst_busclearance.php' style='text-decoration:none;color:black;'><i class='fas fa-star'></i> Barangay Business Clearance</a></h5>
-                        </div>
-                        <div class='card-body'>
-                            <p class='card-text text-center fs-4' style='font-size: 1rem;'>Barangay Business Clearance: $busclearance_count</p>
-                        </div>
-                    </div>";
-                    } else {
-                        echo "No data found.";
-                    }
-                } else {
-                    // Handle query execution error
-                    echo "Error executing query: " . mysqli_error($conn);
-                }
+                                                <td>
+                                                    <?php
+                     $status = $row['status'];
+                 if ($status == 0) {
+                    $link_class = 'btn btn-warning  user-select-none';
+                    $link_text = 'PENDING';
+                 }
+                 ?>
+                                                    <span
+                                                        class="badge <?php echo $link_class; ?>"><?php echo $link_text; ?></span>
+                                                </td>
+                                            </tr>
+                                            <?php
+    }
+} else {
+    // Display a message if there are no pending orders
+    echo '<tr><td colspan="4">No Pending Account</td></tr>';
+}
+?>
 
-                // Close database connection
-                mysqli_close($conn);
-                ?>
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                                <div class="card-footer row clearfix">
+                                    <a href="../pages/manage_residents-verification.php"
+                                        class="btn col-md btn-sm btn-secondary btn-block mb-2">Resident</a>
+                                    
+                                </div>
+                            </div>
+                            <!-- /.card -->
+                        </div>
+
+
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-header border-transparent">
+                                    <h3 class="card-title">Recently Added Account</h3>
+
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                            <i class="fas fa-times"></i>
+                                        </button>
                                     </div>
+                                </div>
+
+                                <!-- /.card-header -->
+                                <div class="card-body table-responsive p-0" style="height: 300px;">
+                                    <table class="table table-head-fixed text-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th>Member ID</th>
+                                                <th>Name</th>
+
+                                                <th>Time Stamp</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+$query = "SELECT * FROM `members` WHERE `status` = 1 AND `time_registered` >= DATE_SUB(CURDATE(), INTERVAL 2 DAY)";
+$result = mysqli_query(getDatabase(), $query);
+
+// Log the SQL query for debugging
+
+// Check if there are any pending orders
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_array($result)) {
+        ?>
+                                            <tr id="<?php echo $row['member_id']; ?>">
+                                                <td>
+                                                    <?php echo $row['member_id']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['fullname']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['time_registered']; ?>
+                                                </td>
+
+                                            </tr>
+                                            <?php
+    }
+} else {
+    // Display a message if there are no pending orders
+    echo '<tr><td colspan="4">No Recently Added Account</td></tr>';
+}
+?>
+
+
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+                                <div class="card-footer clearfix">
+
+                                    <a href="../pages/manage_residents-list.php"
+                                        class="btn btn-sm btn-secondary btn-block float-right">View Recently Added Account</a>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- /.col -->
+
+
+
+
+                        <!-- TABLE: LATEST ORDERS -->
+                        <div class="card">
+                            <div class="card-header border-transparent">
+                                <h3 class="card-title">Inquiries</h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body p-0  ">
+                                <div class="table-responsive">
+                                    <table class="table m-0">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Name</th>
+
+                                                <th>Inquiry Message</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+$query = "SELECT * FROM `inquire` WHERE `i_status` = 0";
+$result = mysqli_query(getDatabase(), $query);
+
+// Log the SQL query for debugging
+
+while ($row = mysqli_fetch_array($result)) {
+    ?>
+                                            <tr id="I<?php echo $row['id']; ?>">
+                                                <td>
+                                                    I-<?php echo $row['id']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['i_name']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['i_message']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php
+            // Use an if statement to check the value of i_status
+            if ($row['i_status'] == '0') {
+                echo '<span class="badge badge-warning">Pending</span>';
+            }
+            ?>
+                                                </td>
+                                            </tr>
+                                            <?php
+}
+?>
+
+                                        </tbody>
+                                    </table>
+
+                                    <!-- /.card-body -->
+                                    <div class="card-footer clearfix">
+
+                                        <a href="./manage-client_inquiries.php"
+                                            class="btn btn-sm btn-secondary btn-block float-right">View All
+                                            Inquiries</a>
+                                    </div>
+                                    <!-- /.card-footer -->
+
+                                </div>
+                                <!-- /.card -->
+                            </div>
+
+                        </div>
+                        <!-- /.card -->
                     </div>
-                    <!-- /.row -->
-                    <!-- Default box -->
+
+                    <!-- /.content -->
+
+
+                    <?php include 'includes/admin_footer.php'; ?>
                 </div>
-                <!-- /.col -->
 
-                <!-- /.content-wrapper -->
-        </div>
-        </section>
-    </div>
-    <!-- /.content-wrapper -->
+            </section>
+            <!-- ./wrapper -->
 
+</body>
 
-
-    </div>
-  <!-- /.content-wrapper -->
-
-  
-</div>
-              </body>
-<!-- ./wrapper -->
 </html>
+<!-- ./wrapper -->
