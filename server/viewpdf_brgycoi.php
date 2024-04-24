@@ -56,6 +56,11 @@ $pdf->SetXY(460, 450); // Adjust X and Y coordinates as needed
 
 $pdf->Cell(0, 0, 'Secretary', 0, 0, 'L'); // Output the role
 
+$pdf->SetXY(450, 500); // Adjust X and Y coordinates as needed
+
+$pdf->Cell(0, 0, 'Approved By:', 0, 0, 'L'); // Output the role
+
+
 
 
 $pdf->SetXY(30, 0);

@@ -13,7 +13,7 @@ include '../server/admin_login-verification.php';
     <title>EGBMS | E-Governance Barangay Management System</title>
 
 
-
+ 
     <?php include 'import.php'; ?>
 </head>
 <style>
