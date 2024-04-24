@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2024 at 03:56 AM
+-- Generation Time: Apr 25, 2024 at 01:51 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -128,6 +128,26 @@ INSERT INTO `feedback` (`id`, `name`, `email`, `message`) VALUES
 (3, 'ARA', 'belardoarabella05@gmail.com', 'Hello!\n'),
 (4, 'ARA', 'belardoarabella05@gmail.com', 'hI!'),
 (5, 'ARA', 'belardoarabella05@gmail.com', 'YOW!');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `generatedpdf_id`
+--
+
+CREATE TABLE `generatedpdf_id` (
+  `id` int(50) NOT NULL,
+  `generated_file` varchar(10000) NOT NULL,
+  `admin` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `generatedpdf_id`
+--
+
+INSERT INTO `generatedpdf_id` (`id`, `generated_file`, `admin`) VALUES
+(1, '2024202', 'C:\\xampp\\htdocs\\brgy-main\\server/../assets/generat'),
+(2, '2024202', 'Lopez, Anna Santos_2024202.pdf');
 
 -- --------------------------------------------------------
 
@@ -684,6 +704,12 @@ ALTER TABLE `feedback`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `generatedpdf_id`
+--
+ALTER TABLE `generatedpdf_id`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `history`
 --
 ALTER TABLE `history`
@@ -824,6 +850,12 @@ ALTER TABLE `change_logs`
 --
 ALTER TABLE `feedback`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `generatedpdf_id`
+--
+ALTER TABLE `generatedpdf_id`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `history`
