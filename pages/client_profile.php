@@ -69,7 +69,6 @@ body {
 .dataTable-input {
     display: block;
     width: 100%;
-    padding: 0.875rem 1.125rem;
     font-size: 0.850rem;
     font-weight: 400;
     font-family: Arial, Helvetica, sans-serif;
@@ -131,7 +130,7 @@ body {
             <section>
 
                 <div class="container-xl px-4 mt-4">
-   
+
                     <div class="row">
                         <div class="col-xl-4">
 
@@ -143,7 +142,7 @@ body {
                                     <img class="img-account-profile rounded-circle mb-2"
                                         src="C:\Users\Hello\Documents\user profile\icon.png" alt>
                                     <h3>Arabella Belardo</h3>
-                                    <div class="small font-italic text-muted mb-4">ID:</div>
+                                    <div class="small text-muted mb-4">MEMBER ID:</div>
                                     <button class="btn btn-primary" type="button">UPLOAD IMAGE</button>
                                 </div>
                             </div>
@@ -155,24 +154,43 @@ body {
                                 <div class="card-body">
 
                                     <form>
+
+
+                                        <div class="row gx-3 mb-3">
+
+                                            <div class="col-md-3">
+                                                <label class="small mb-1" for="precinct">Precinct No.</label>
+                                                <input class="form-control" id="precinct" name="precinct" type="text"
+                                                    placeholder="Enter your precinct" maxlength="6"
+                                                    pattern="\d{4}-[A-Za-z]+" required>
+                                            </div>
+
+
+
+                                        </div>
                                         <div class="row gx-3 mb-3">
 
                                             <div class="col-md-4">
-                                                <label class="small mb-1" for="inputFirstname">First Name</label>
-                                                <input class="form-control" id="inputFirstname" type="tel"
+                                                <label class="small mb-1" for="firstname">First Name</label>
+                                                <input class="form-control" id="firstname" name="firstname" type="text"
                                                     placeholder="Enter your firstname">
                                             </div>
 
-                                            <div class="col-md-4">
-                                                <label class="small mb-1" for="inputMidname">Middle Name</label>
-                                                <input class="form-control" id="inputMidname" type="text"
-                                                    placeholder="Enter your middle name">
+                                            <div class="col-md-3">
+                                                <label class="small mb-1" for="middlename">Middle Name</label>
+                                                <input class="form-control" id="middlename" name="middlename"
+                                                    type="text" placeholder="Enter your Middle Name">
                                             </div>
 
-                                            <div class="col-md-4">
-                                                <label class="small mb-1" for="inputLastname">Last Name</label>
-                                                <input class="form-control" id="inputLastname" type="text"
+                                            <div class="col-md-3">
+                                                <label class="small mb-1" for="lastname">Last Name</label>
+                                                <input class="form-control" id="lastname" name="lastname" type="text"
                                                     placeholder="Enter your lastname">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label class="small mb-1" for="surfix">Surfix</label>
+                                                <input class="form-control" id="surfix" name="surfix" type="text"
+                                                    placeholder="Enter your surfix">
                                             </div>
 
                                         </div>
@@ -181,66 +199,91 @@ body {
                                         <div class="row gx-3 mb-3">
 
                                             <div class="col-md-4">
-                                                <label class="small mb-1" for="inputBirthday">Birth Date</label>
-                                                <input class="form-control" id="inputBirthday" type="date">
+                                                <label class="small mb-1" for="birth_date">Birth Date</label>
+                                                <input class="form-control" id="birth_date" name="birth_date" type="date">
                                             </div>
 
                                             <div class="col-md-4">
-                                                <label class="small mb-1" for="inputStatus">Civil Status</label>
-                                                <select class="form-control" id="inputStatus">
+                                                <label class="small mb-1"  for="civil_status">Civil Status</label>
+                                                <select class="form-control" id="civil_status" name="civil_status">
+                                                    <option value="single">Single</option>
+                                                    <option value="married">Married</option>
+                                                    <option value="divorced">Divorced</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="small mb-1" for="campus_id">Gender</label>
+                                                <select class="form-control " id="inputStatus">
                                                     <option value="single">Single</option>
                                                     <option value="married">Married</option>
                                                     <option value="divorced">Divorced</option>
                                                 </select>
                                             </div>
 
-                                            <div class="mb-4">
-                                                <label class="small mb-1" for="inputAddress">Address</label>
-                                                <input class="form-control" id="inputAddress" type="text">
+                                            
+
+
+                                            
+                                            <div class="col form-group ">
+                                                    <label for="register_gender" class="mt-2">Gender</label>
+                                                    <select class="form-control form-control-border mt-1"
+                                                        style="height:40px" id="campus" name="campus" required>
+                                                        <option selected disabled>Select a Gender</option>
+                                                        <option value="male" data-campus-id="01">Male
+                                                        </option>
+                                                        <option value="female" data-campus-id="02">Female
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label class="small mb-1" for="inputAddress">Address</label>
+                                            <input class="form-control" id="inputAddress" type="text">
+                                        </div>
+
+                                        <div class="row gx-3 mb-3">
+
+                                            <div class="col-md-4">
+                                                <label class="small mb-1" for="inputContact">Contact Number</label>
+                                                <input class="form-control" id="inputContact" type="tel">
                                             </div>
 
-                                            <div class="row gx-3 mb-3">
-
-                                                <div class="col-md-4">
-                                                    <label class="small mb-1" for="inputContact">Contact Number</label>
-                                                    <input class="form-control" id="inputContact" type="tel">
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <label class="small mb-1" for="inputPrecinct">Precinct
-                                                        Number</label>
-                                                    <input class="form-control" id="inputPrecinct" type="text">
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <label class="small mb-1" for="inputPrecinct">Precinct
-                                                        Number</label>
-                                                    <input class="form-control" id="inputPrecinct" type="text">
-                                                </div>
+                                            <div class="col-md-4">
+                                                <label class="small mb-1" for="inputPrecinct">Precinct
+                                                    Number</label>
+                                                <input class="form-control" id="inputPrecinct" type="text">
                                             </div>
 
+                                            <div class="col-md-4">
+                                                <label class="small mb-1" for="inputPrecinct">Precinct
+                                                    Number</label>
+                                                <input class="form-control" id="inputPrecinct" type="text">
+                                            </div>
+                                        </div>
 
 
-                                            <div class="row gx-3 mb-3">
 
-                                                <div class="col-md-4">
-                                                    <label class="small mb-1" for="inputSss">GSIS/SSS Number</label>
-                                                    <input class="form-control" id="inputSss" type="text">
-                                                </div>
+                                        <div class="row gx-3 mb-3">
 
-                                                <div class="col-md-4">
-                                                    <label class="small mb-1" for="inputTin">TIN Number</label>
-                                                    <input class="form-control" id="inputTin" type="text">
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <label class="small mb-1" for="inputPrecinct">Precinct
-                                                        Number</label>
-                                                    <input class="form-control" id="inputPrecinct" type="text">
-                                                </div>
+                                            <div class="col-md-4">
+                                                <label class="small mb-1" for="inputSss">GSIS/SSS Number</label>
+                                                <input class="form-control" id="inputSss" type="text">
                                             </div>
 
-                                            <button class="btn btn-primary" type="button">Save</button>
+                                            <div class="col-md-4">
+                                                <label class="small mb-1" for="inputTin">TIN Number</label>
+                                                <input class="form-control" id="inputTin" type="text">
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <label class="small mb-1" for="inputPrecinct">Precinct
+                                                    Number</label>
+                                                <input class="form-control" id="inputPrecinct" type="text">
+                                            </div>
+                                        </div>
+
+                                        <button class="btn btn-primary" type="button">Save</button>
 
                                     </form>
                                 </div>
