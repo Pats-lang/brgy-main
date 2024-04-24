@@ -20,7 +20,6 @@ $stmt->execute();
 $stmt->bind_result($pictureFileName, $signatureFileName, $memberName);
 $stmt->fetch();
 $stmt->close();
-$db->close();
 
 // Check if the file names are retrieved successfully
 if (!$pictureFileName || !$signatureFileName || !$memberName) {
@@ -56,15 +55,27 @@ $mpdf->Image($picturePath, 10, 10, $imageWidth, $imageHeight);
 $mpdf->Image($signaturePath, 10 + $imageWidth + 5, 10, $imageWidth, $imageHeight);
 
 // Save the PDF to a file
-$pdfFileName = __DIR__ . '/../assets/generated_pdf/' . $memberName . '_' . $alumid . '.pdf';
-$mpdf->Output($pdfFileName, 'F');
+$pdfFileName = $memberName . '_' . $alumid . '.pdf'; // Only the file name
+$pdfFilePath = __DIR__ . '/../assets/generated_pdf/' . $pdfFileName; // File path including directory
+$mpdf->Output($pdfFilePath, 'F');
+
+// Insert into the database
+$insertSql = "INSERT INTO generatedpdf_id (generated_file, admin) VALUES (?, ?)";
+$insertStmt = $db->prepare($insertSql);
+if (!$insertStmt) {
+    echo json_encode(['success' => false, 'message' => 'Database insertion preparation error: ' . $db->error]);
+    exit;
+}
+
+$insertStmt->bind_param('ss', $alumid, $pdfFileName);
+$insertStmt->execute();
+$insertStmt->close();
+$db->close();
 
 // Replace backslashes with forward slashes in the file path
-$pdfFileName = str_replace("\\", "/", $pdfFileName);
+$pdfFilePath = str_replace("\\", "/", $pdfFilePath);
 
 // Return success response with the generated PDF filename
-// Return success response with the generated PDF filename
-echo json_encode(['success' => true, 'message' => 'PDF generated successfully.', 'pdfFileName' => $pdfFileName]);
+echo json_encode(['success' => true, 'message' => 'PDF generated successfully.', 'pdfFileName' => $pdfFilePath]);
 exit;
-
 ?>
