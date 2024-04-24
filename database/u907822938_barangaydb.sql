@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2024 at 05:44 AM
+-- Generation Time: Apr 24, 2024 at 04:13 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -87,7 +87,12 @@ CREATE TABLE `change_logs` (
 --
 
 INSERT INTO `change_logs` (`id`, `admin`, `operation`, `description`, `timestamp`) VALUES
-(43, 'rona', 'add', 'Resident Member: <b>2024101</b> have been registered at  <b>Resident Members.</b>', '2024-04-22 03:34:03');
+(43, 'rona', 'add', 'Resident Member: <b>2024101</b> have been registered at  <b>Resident Members.</b>', '2024-04-22 03:34:03'),
+(44, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-23 06:39:21'),
+(45, 'rona', 'edit', ' Resident: <b>LOPEZ, ANNA SANTOS</b> has been edited at <b> Resident .</b>', '2024-04-23 06:39:41'),
+(46, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-23 12:39:57'),
+(47, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-23 17:39:57'),
+(48, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-24 01:29:57');
 
 -- --------------------------------------------------------
 
@@ -218,7 +223,8 @@ CREATE TABLE `members` (
 
 INSERT INTO `members` (`member_id`, `year`, `member_count`, `campus_id`, `fullname`, `lastname`, `firstname`, `middlename`, `surfix`, `precinct`, `birth_date`, `address`, `civil_status`, `religion`, `email_address`, `cellphone_no`, `picture`, `signature`, `time_registered`, `status`, `cid`, `idfront`, `idback`) VALUES
 (2024101, 2024, 1, '01', 'Garrison, Fleur Odessa Cabrera', 'Garrison', 'Fleur', 'Odessa Cabrera', 'Veniam quaerat ad a', '9876-G', '1982-08-14', 'Quisquam id eaque q', 'Married', 'Iglesia ni Cristo', 'cofyp@mailinator.com', '09645645467', 'avatar1.png', '', '2024-04-22 03:34:03', 0, 1, '', ''),
-(2024102, 2024, 1, '02', 'Hanson, Trevor Maya Roman', 'Hanson', 'Trevor', 'Maya Roman', 'jr.', '4567-A', '2014-09-02', '603Exercitation volupta', 'Single', 'Roman Catholic', 'rsales059@gmail.com', '09656454353', 'avatar2.png', '', '2024-04-22 03:24:55', 0, 1, '', '');
+(2024102, 2024, 1, '02', 'Hanson, Trevor Maya Roman', 'Hanson', 'Trevor', 'Maya Roman', 'jr.', '4567-A', '2014-09-02', '603Exercitation volupta', 'Single', 'Roman Catholic', 'rsales059@gmail.com', '09656454353', 'avatar2.png', '', '2024-04-22 03:24:55', 0, 1, '', ''),
+(2024202, 2024, 2, '02', 'Lopez, Anna Santos', 'Lopez', 'Anna', 'Santos', '', '1234-A', '2000-11-11', '21 3rd Street Avenue', 'Single', 'Roman Catholic', 'mrcodg13@gmail.com', '09155689713', 'avatar9.png', '', '2024-04-23 06:37:04', 1, 1, 'id_card_2024202.jpg', 'id_back_2024202.jpg');
 
 -- --------------------------------------------------------
 
@@ -240,7 +246,8 @@ CREATE TABLE `member_account` (
 INSERT INTO `member_account` (`id`, `member_id`, `username`, `password`) VALUES
 (27, 2024102, 'user', '$2y$10$TTh1Bi8X/tqKOGH2hA.Df.vfrZw/40hiZEMNvsH1bsuVYuw9zEEK6'),
 (28, 2024102, 'ronalaine', '$2y$10$SPTYV1CJJAxnhfMOTsERXuVfXois0F/NQWebRTXevxa5uiaGjU0i6'),
-(29, 2024101, 'quvemohupa', '$2y$10$PAMXBQrgFNOndsJpABSWbu/OTfWYlU8po.9cfUaPF0FiQct1I6Efi');
+(29, 2024101, 'quvemohupa', '$2y$10$PAMXBQrgFNOndsJpABSWbu/OTfWYlU8po.9cfUaPF0FiQct1I6Efi'),
+(30, 2024202, 'test', '$2y$10$nO5Rno3/wqSLWY9nvX7zFuyUKflQRC6EsY0dHUzpO6Fw8vU1.8hI6');
 
 -- --------------------------------------------------------
 
@@ -254,6 +261,13 @@ CREATE TABLE `member_address` (
   `residency` varchar(50) NOT NULL,
   `yrs_res` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `member_address`
+--
+
+INSERT INTO `member_address` (`id`, `member_id`, `residency`, `yrs_res`) VALUES
+(21, 2024202, 'Permanent Resident', '17');
 
 -- --------------------------------------------------------
 
@@ -275,7 +289,8 @@ CREATE TABLE `member_emergency` (
 INSERT INTO `member_emergency` (`id`, `member_id`, `contact_name`, `contact_no`) VALUES
 (30, 2024102, 'Gabriel Stone', '09655564534'),
 (31, 2024102, 'Kamal Payne', '09546545333'),
-(32, 2024101, 'Neve Houston', '09765654543');
+(32, 2024101, 'Neve Houston', '09765654543'),
+(33, 2024202, 'Jane Lopez', '09155689713');
 
 -- --------------------------------------------------------
 
@@ -297,7 +312,8 @@ CREATE TABLE `member_proof` (
 INSERT INTO `member_proof` (`id`, `member_id`, `valid_id`, `proof_residency`) VALUES
 (74, 2024102, '../assets/images/proof-pictures/id1.jpg', '../assets/images/proof-pictures/doc3.png'),
 (75, 2024102, '../assets/images/proof-pictures/id2.jpg', '../assets/images/proof-pictures/doc3.png'),
-(76, 2024101, '../assets/images/proof-pictures/id4.png', '../assets/images/proof-pictures/doc1.jpg');
+(76, 2024101, '../assets/images/proof-pictures/id4.png', '../assets/images/proof-pictures/doc1.jpg'),
+(77, 2024202, '../assets/images/proof-pictures/id1.jpg', '../assets/images/proof-pictures/doc1.jpg');
 
 -- --------------------------------------------------------
 
@@ -472,7 +488,7 @@ CREATE TABLE `request_brgycoi` (
   `transaction_id` varchar(500) NOT NULL,
   `name` varchar(50) NOT NULL,
   `request` varchar(50) NOT NULL,
-  `contact_no` int(11) NOT NULL,
+  `contact_no` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
   `purpose` varchar(500) NOT NULL,
   `yrs_res` int(4) NOT NULL,
@@ -486,8 +502,9 @@ CREATE TABLE `request_brgycoi` (
 --
 
 INSERT INTO `request_brgycoi` (`id`, `member_id`, `transaction_id`, `name`, `request`, `contact_no`, `address`, `purpose`, `yrs_res`, `status`, `email`, `time`) VALUES
-(1, 1, '123456', 'Layka', 'asdasda', 23123, 'dsada', 'sdasdasd', 31231, 0, 'sdasd', '2024-04-19 16:30:09'),
-(2, 2024902, 'COI-2024-230007', 'Quinn Jimenez', 'Barangay Indigency', 2147483647, 'Possimus rerum exer', 'Financial', 1983, 2, 'dybimiz@mailinator.com', '2024-04-21 17:05:03');
+(1, 1, '123456', 'Layka', 'asdasda', '23123', 'dsada', 'sdasdasd', 31231, 0, 'sdasd', '2024-04-19 16:30:09'),
+(2, 2024902, 'COI-2024-230007', 'Quinn Jimenez', 'Barangay Indigency', '2147483647', 'Possimus rerum exer', 'Financial', 1983, 2, 'dybimiz@mailinator.com', '2024-04-21 17:05:03'),
+(22, 2024202, 'COI-2024-521376', 'Lopez, Anna Santos', 'Barangay Indigency', '09155689713', '21 3rd Street Avenue', 'gagana na ba ????', 17, 0, 'mrcodg13@gmail.com', '2024-04-23 13:39:28');
 
 -- --------------------------------------------------------
 
@@ -806,7 +823,7 @@ ALTER TABLE `announcement`
 -- AUTO_INCREMENT for table `change_logs`
 --
 ALTER TABLE `change_logs`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -830,25 +847,25 @@ ALTER TABLE `inquire`
 -- AUTO_INCREMENT for table `member_account`
 --
 ALTER TABLE `member_account`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `member_address`
 --
 ALTER TABLE `member_address`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `member_emergency`
 --
 ALTER TABLE `member_emergency`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `member_proof`
 --
 ALTER TABLE `member_proof`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `officials`
@@ -890,7 +907,7 @@ ALTER TABLE `request_brgyclrs`
 -- AUTO_INCREMENT for table `request_brgycoi`
 --
 ALTER TABLE `request_brgycoi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `request_brgycor`

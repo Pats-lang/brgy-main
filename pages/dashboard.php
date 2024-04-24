@@ -31,7 +31,6 @@ include '../server/admin_login-verification.php';
             flex-shrink: 0;
         }
     </style>
-</head>
     <!-- LOGO SA TAAS -->
     
     <?php include 'import.php'; ?>
