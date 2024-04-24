@@ -33,9 +33,13 @@ $pdf->Image($imagePath1, $x1 = 70, $y1 = 60, $w1 = 75, $h1 = 75, '', '', '', fal
 $imagePath2 = 'https://i.ibb.co/dfT9dz7/barangay.jpg'; // Replace with the actual path to your first image file
 $pdf->Image($imagePath2, $x1 = 450, $y1 = 55, $w1 = 85, $h1 = 85, '', '', '', false, 300, '', false, false, false, false, false, false);
 
+
 // Generate unique IDs for each dynamic data
 $uniqueID1 = uniqid();
 $uniqueID2 = uniqid();
+
+
+
 
 // Dynamic data to be included in the QR code
 $dynamicData1 = 'Dynamic Data 1: ' . $uniqueID1;

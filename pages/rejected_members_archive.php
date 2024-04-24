@@ -371,7 +371,7 @@ include '../server/admin_login-verification.php';
                           <select class="form-select" id="stats" name="stats">
                             
                             <option value="1">ACCEPTED</option>
-                            <option value="2">REJECTED</option>
+                            <option value="2" disabled>REJECTED</option>
                           </select>
                     </div>
 
@@ -534,7 +534,7 @@ pictureFileInput.on("change", function() {
                         }, 100) 
                       
                         $.ajax({
-                            url: "../server/edit_member_r eject.php",
+                            url: "../server/edit_member_reject.php",
                             type: "POST",
                             data: new FormData(this),
                             dataType: 'json',

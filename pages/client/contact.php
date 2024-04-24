@@ -57,7 +57,7 @@ while ($row = mysqli_fetch_assoc($result)){
                         data-aos="fade-right" data-aos-delay="300" data-aos-duration="800">
 
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61760.71058205255!2d120.99488250961079!3d14.653420468293016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b686dd24e859%3A0xe442b57504cbf05f!2sUniversity%20of%20Caloocan%20City%20-%20South%20Campus!5e0!3m2!1sen!2sph!4v1695674246308!5m2!1sen!2sph"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7720.306832109561!2d120.96363088783954!3d14.647231293378395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b5c914e14b6f%3A0xd78b3619226c319!2sBrgy.%2020%2C%20Kaunlaran%20Village%2C%20Caloocan%2C%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1713979707604!5m2!1sen!2sph"
                             width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
                             <?php } ?>

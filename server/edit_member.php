@@ -82,9 +82,17 @@ if ($preparedSql = $db->prepare("UPDATE `members` SET `fullname`= ?, `address`= 
         $response['message'] = 'Successfully updated member information';
         $response['stats'] = $status;
         $response['admin'] = $_SESSION['adminLogged'];
-        $response['operation'] = "edit";
-        $response['description'] = " Resident: <b>" . strtoupper($_fullname) . "</b> has been edited at <b> Resident .</b>";
-    } else {
+        if($status == 1){
+            $response['operation'] = "accepted";
+            $response['description'] = " Resident: <b>" . strtoupper($_fullname) . "</b> has been Accepted at <b> Resident at List.</b>";
+        }else if($status == 3){
+            $response['operation'] = "remove";
+            $response['description'] = " Resident: <b>" . strtoupper($_fullname) . "</b> has been Removed at <b> Resident List .</b>";
+        }else if($status == 2){
+            $response['operation'] = "retrived";
+            $response['description'] = " Resident: <b>" . strtoupper($_fullname) . "</b> has been Rejected at <b> Resident List .</b>";
+        }
+    }else{
         $response['status'] = false;
         $response['message'] = "Failed to update member information: " . $preparedSql->error;
         http_response_code(500); // Internal Server Error

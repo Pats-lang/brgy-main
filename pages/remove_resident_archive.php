@@ -370,7 +370,7 @@ include '../server/admin_login-verification.php';
                           <select class="form-select" id="stats" name="stats">
                             
                             <option value="1">RECOVER</option>
-                            <option value="3">REMOVED</option>
+                            <option value="3" disabled>REMOVED</option>
                           </select>
                     </div>
 
@@ -462,7 +462,7 @@ include '../server/admin_login-verification.php';
         dataType: "json",
         success: function(response_Editmember) {
           $('#Editmember_id').val(response_Editmember.member_id);
-          $('#Editmember_name').val(response_Editmember.name);
+          $('#Editmember_fullname').val(response_Editmember.fullname);
           $('#Editmember_precinct').val(response_Editmember.precinct);
           $('#Editmember_emailAddress').val(response_Editmember.email_address);
           $('#Editmember_address').val(response_Editmember.address);
@@ -533,7 +533,7 @@ pictureFileInput.on("change", function() {
                         }, 100) 
                       
                         $.ajax({
-                            url: "../server/edit_member.php",
+                            url: "../server/edit_member_reject.php",
                             type: "POST",
                             data: new FormData(this),
                             dataType: 'json',
