@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2024 at 04:13 AM
+-- Generation Time: Apr 24, 2024 at 05:54 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -92,7 +92,10 @@ INSERT INTO `change_logs` (`id`, `admin`, `operation`, `description`, `timestamp
 (45, 'rona', 'edit', ' Resident: <b>LOPEZ, ANNA SANTOS</b> has been edited at <b> Resident .</b>', '2024-04-23 06:39:41'),
 (46, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-23 12:39:57'),
 (47, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-23 17:39:57'),
-(48, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-24 01:29:57');
+(48, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-24 01:29:57'),
+(49, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-24 11:13:08'),
+(50, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-24 11:57:07'),
+(51, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-24 12:16:47');
 
 -- --------------------------------------------------------
 
@@ -403,7 +406,7 @@ CREATE TABLE `request_brgybp` (
   `address` varchar(50) NOT NULL,
   `square_meter` varchar(100) NOT NULL,
   `floor` varchar(100) NOT NULL,
-  `contact_no` int(11) NOT NULL,
+  `contact_no` varchar(11) NOT NULL,
   `purpose` varchar(500) NOT NULL,
   `request` varchar(500) NOT NULL,
   `status` int(2) NOT NULL,
@@ -416,7 +419,8 @@ CREATE TABLE `request_brgybp` (
 --
 
 INSERT INTO `request_brgybp` (`id`, `member_id`, `transaction_id`, `name`, `address`, `square_meter`, `floor`, `contact_no`, `purpose`, `request`, `status`, `email`, `time`) VALUES
-(1, 2024902, 'BP-2024-357697', 'Quinn Jimenez', 'Possimus rerum exer', '100 square meters', '5th floor', 2147483647, 'House', 'Building Permit', 0, 'dybimiz@mailinator.com', '2024-04-19 08:10:29');
+(1, 2024902, 'BP-2024-357697', 'Quinn Jimenez', 'Possimus rerum exer', '100 square meters', '5th floor', '2147483647', 'House', 'Building Permit', 0, 'dybimiz@mailinator.com', '2024-04-19 08:10:29'),
+(2, 2024202, 'BP-2024-449108', 'Lopez, Anna Santos', '21 3rd Street Avenue', '1111', '', '09155689713', '', 'Barangay Building Permit', 0, 'mrcodg13@gmail.com', '2024-04-24 14:34:57');
 
 -- --------------------------------------------------------
 
@@ -431,7 +435,7 @@ CREATE TABLE `request_brgycert` (
   `name` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
   `yrs_res` int(4) NOT NULL,
-  `contact_no` int(11) NOT NULL,
+  `contact_no` varchar(11) NOT NULL,
   `purpose` varchar(500) NOT NULL,
   `request` varchar(500) NOT NULL,
   `status` int(2) NOT NULL,
@@ -444,7 +448,8 @@ CREATE TABLE `request_brgycert` (
 --
 
 INSERT INTO `request_brgycert` (`id`, `member_id`, `transaction_id`, `name`, `address`, `yrs_res`, `contact_no`, `purpose`, `request`, `status`, `email`, `time`) VALUES
-(1, 2024902, 'CERT-2024-433296', 'Quinn Jimenez', 'Possimus rerum exer', 1983, 2147483647, 'Hello', 'Barangay Certificate', 0, 'dybimiz@mailinator.com', '2024-04-19 05:34:15');
+(1, 2024902, 'CERT-2024-433296', 'Quinn Jimenez', 'Possimus rerum exer', 1983, '2147483647', 'Hello', 'Barangay Certificate', 0, 'dybimiz@mailinator.com', '2024-04-19 05:34:15'),
+(2, 2024202, 'CERT-2024-278837', 'Lopez, Anna Santos', '21 3rd Street Avenue', 17, '09155689713', 'Example Barangay Certificate', 'Barangay Certificate', 0, 'mrcodg13@gmail.com', '2024-04-24 12:52:14');
 
 -- --------------------------------------------------------
 
@@ -581,7 +586,7 @@ CREATE TABLE `request_busclearance` (
   `owner_name` varchar(50) NOT NULL,
   `kof_business` varchar(50) NOT NULL,
   `yrs_res` int(4) NOT NULL,
-  `contact_no` int(11) NOT NULL,
+  `contact_no` varchar(11) NOT NULL,
   `purpose` varchar(500) NOT NULL,
   `status` int(2) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -595,8 +600,9 @@ CREATE TABLE `request_busclearance` (
 --
 
 INSERT INTO `request_busclearance` (`id`, `member_id`, `transaction_id`, `business_name`, `owner_name`, `kof_business`, `yrs_res`, `contact_no`, `purpose`, `status`, `email`, `address`, `request`, `time`) VALUES
-(1, 1, '234', 'Hello', 'Hi', 'Food', 2, 0, 'Hello', 0, '', '', '', '2024-04-19 10:43:35'),
-(3, 2024902, 'BSCLR-2024-474781', 'Quinn Eatery', 'Quinn Jimenez', 'Food', 1983, 2147483647, 'Food', 2, 'dybimiz@mailinator.com', 'Possimus rerum exer', 'Business Clearance', '2024-04-21 17:03:54');
+(1, 1, '234', 'Hello', 'Hi', 'Food', 2, '0', 'Hello', 0, '', '', '', '2024-04-19 10:43:35'),
+(3, 2024902, 'BSCLR-2024-474781', 'Quinn Eatery', 'Quinn Jimenez', 'Food', 1983, '2147483647', 'Food', 2, 'dybimiz@mailinator.com', 'Possimus rerum exer', 'Business Clearance', '2024-04-21 17:03:54'),
+(4, 2024202, 'BSCLR-2024-858914', 'Lopez Eatery', 'Lopez, Anna Santos', 'Food', 17, '09155689713', 'Food Business', 0, 'mrcodg13@gmail.com', '21 3rd Street Avenue', 'Business Clearance', '2024-04-24 14:01:14');
 
 -- --------------------------------------------------------
 
@@ -823,7 +829,7 @@ ALTER TABLE `announcement`
 -- AUTO_INCREMENT for table `change_logs`
 --
 ALTER TABLE `change_logs`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -889,13 +895,13 @@ ALTER TABLE `request_assistant`
 -- AUTO_INCREMENT for table `request_brgybp`
 --
 ALTER TABLE `request_brgybp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `request_brgycert`
 --
 ALTER TABLE `request_brgycert`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `request_brgyclrs`
@@ -925,7 +931,7 @@ ALTER TABLE `request_brgyid`
 -- AUTO_INCREMENT for table `request_busclearance`
 --
 ALTER TABLE `request_busclearance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `settings`

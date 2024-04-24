@@ -52,16 +52,26 @@ if (empty($userLogged)) {
     gap:15px;
 }
 
+.box{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .contain .box-contain .box{
     box-shadow: 0 5px 10px rgba(0,0,0,.2);
     border-radius: 5px;
     background: #fff;
     text-align: center;
     padding:30px 20px;
+    
 }
 
 .contain .box-contain .box img{
-    height: 80px;
+    max-width: 40%;
+    height: auto; /* Maintain aspect ratio */    
+    margin-bottom: 10px;
+    margin: 0 auto; /* Center the image horizontally */
 }
 
 .contain .box-contain .box h3{
@@ -76,19 +86,21 @@ if (empty($userLogged)) {
     line-height: 1.8;
 }
 
-.contain .box-contain .box .btn{
-    margin-top: 10px;
-    display: inline-block;
-    background:#333;
-    color:#fff;
-    font-size: 17px;
-    border-radius: 5px;
-    padding: 8px 25px;
-}
+.contain .box-contain .box .btn {
+        margin-top: 10px;
+        display: inline-block;
+        background-color: orange;
+        color: #fff;
+        font-size: 17px;
+        border-radius: 5px;
+        padding: 8px 25px;
+    }
 
-.contain .box-contain .box .btn:hover{
-    letter-spacing: 1px;
-}
+    .contain .box-contain .box .btn:hover {
+        letter-spacing: 1px;
+        background: #529f37;
+
+    }
 
 .contain .box-contain .box:hover{
     box-shadow: 0 10px 15px rgba(0,0,0,.3);
@@ -207,7 +219,7 @@ if (empty($userLogged)) {
             <h3>Barangay Certificate</h3>
             <p class="custom-text-justify">A Barangay Certificate is a document issued by the Barangay (the smallest administrative division in the Philippines)
                  that certifies specific information about an individual or a situation within the community.</p>
-            <a href="../pages/client/brgycerti_form.php" class="btn read-more">Proceed</a>
+            <a href="form_certi.php" class="btn read-more">Proceed</a>
         </div>
 
         <div class="box" data-request="Business Clearance">
@@ -215,7 +227,7 @@ if (empty($userLogged)) {
             <h3>Business Clearance</h3>
             <p class="custom-text-justify">A Barangay Business Clearance is a document issued by the Barangay (the smallest administrative division in the Philippines) 
                 that grants permission for an individual or entity to conduct business activities within the Barangay's jurisdiction. </p>
-            <a href="../pages/client/busiclear_form.php" class="btn read-more">Proceed</a>
+            <a href="form_busiclear.php" class="btn read-more">Proceed</a>
         </div>
 
         <div class="box" data-request="Building Permit">
@@ -223,15 +235,9 @@ if (empty($userLogged)) {
             <h3>Building Permit</h3>
             <p class="custom-text-justify">A Barangay Building Permit is an official authorization issued by the Barangay (the smallest administrative division in the Philippines) 
                 that grants permission for construction or renovation activities within its jurisdiction.  </p>
-            <a href="../pages/client_bpermit_form.php" class="btn read-more">Proceed</a>
+            <a href="form_brgybp.php" class="btn read-more">Proceed</a>
         </div>
 
-        <div class="box" data-request="Assistance">
-            <img src="../assets/images/docu/6.jpg" alt="">
-            <h3>Assistance</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, commodi?</p>
-            <a href="../pages/client_assistance_form.php" class="btn read-more">Proceed</a>
-        </div>
 
     </div>
 

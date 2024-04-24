@@ -21,7 +21,7 @@ $status = 0;
 
 if ($preparedSql = $db->prepare("INSERT INTO `request_busclearance` (`member_id`, `transaction_id`, `business_name`, `owner_name`, `kof_business` 
 , `yrs_res`, `contact_no`, `purpose`, `email`, `address`, `request`, `status`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)")) {
-    $preparedSql->bind_param("issssiissssi", 
+    $preparedSql->bind_param("issssisssssi", 
     $req_member_id, $req_transaction_id, $business_name, $owner_name, $kof, $yrs_res, $req_contact_number, $req_purpose, $req_email, $address, $req_request, $status);
 
   if ($preparedSql->execute()) {

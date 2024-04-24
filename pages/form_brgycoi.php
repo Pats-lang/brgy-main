@@ -337,6 +337,7 @@ $(document).ready(function() {
                 digits: 'Please provide a valid Year Residency!',
             },
             purpose: {
+                required: 'Provide a valid purpose!',
                 maxlength: 'Please limit your input to 50 characters.',
                 minlength: 'Please provide a valid purpose! ',
 
