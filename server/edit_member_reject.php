@@ -82,8 +82,8 @@ if ($preparedSql = $db->prepare("UPDATE `members` SET `fullname`= ?, `address`= 
         $response['message'] = 'Successfully updated member information';
         $response['stats'] = $status;
         $response['admin'] = $_SESSION['adminLogged'];
-        $response['operation'] = "reject";
-        $response['description'] = " Resident: <b>" . strtoupper($_fullname) . "</b> has been edited at <b> Resident .</b>";
+        $response['operation'] = "retrived";
+        $response['description'] = " Resident: <b>" . strtoupper($_fullname) . "</b> has been Retrived at <b> Resident List .</b>";
     } else {
         $response['status'] = false;
         $response['message'] = "Failed to update member information: " . $preparedSql->error;

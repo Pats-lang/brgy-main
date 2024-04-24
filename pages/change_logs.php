@@ -83,6 +83,10 @@ include '../server/admin_login-verification.php';
                                                             echo '<span class="badge badge-danger">Rejected</span>';
                                                         } else if ($row['operation'] == "login") {
                                                             echo '<span class="badge badge-info">Logged In</span>';
+                                                        }else if ($row['operation'] == "retrived") {
+                                                            echo '<span class="badge badge-success">Retrived</span>';
+                                                        }else if ($row['operation'] == "accepted") {
+                                                            echo '<span class="badge badge-success">Accepted</span>';
                                                         }
                                                         
                                                         ?>

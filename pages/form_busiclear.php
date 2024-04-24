@@ -18,7 +18,7 @@ $currentYear = date('Y');
 $randomNumber = mt_rand(100000, 999999);
 
 // Create the transaction ID
-$transaction_id = 'CLR-'. $currentYear . '-' . $randomNumber ;
+$transaction_id = 'BSCLR-'. $currentYear . '-' . $randomNumber ;
 
 
 $sql = "SELECT * FROM settings";
@@ -27,6 +27,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -62,7 +63,7 @@ input[readonly] {
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item text-decoration-none"><a>Service</a></li>
-                                <li class="breadcrumb-item text-secondary">Barangay Clearance</li>
+                                <li class="breadcrumb-item text-secondary">Barangay Business Clearance</li>
                             </ol>
                         </div>
                     </div>
@@ -75,7 +76,7 @@ input[readonly] {
 
 
                 <div class="container-fluid bg-light p-5">
-                    <form id="request_barangay-clearanceform" method="post" class="p-5 rounded border" style=" max-width: 650px; margin: 0 auto; background-color: #ADE8F4; box-shadow: 0px 1px 10px rgba(0, 0, 255, 0.4);
+                    <form id="request_barangay-busiclear_form" method="post" class="p-5 rounded border" style=" max-width: 650px; margin: 0 auto; background-color: #ADE8F4; box-shadow: 0px 1px 10px rgba(0, 0, 255, 0.4);
                 background-color: #fdfdfd;">
 
                         <div class="text-center mb-5">
@@ -114,31 +115,43 @@ input[readonly] {
                         </div>
 
                         <div class="row mb-4">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
+                                    <label for="business_name">Business Name</label>
+                                    <input type="text" name="business_name" id="business_name" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="name">Owner's Name</label>
                                     <input type="text" name="name" id="name" class="form-control"
                                         value="<?php echo $row['fullname']; ?>">
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="request">Request</label>
                                     <input type="text" name="request" id="request" class="form-control"
-                                        value="Barangay Clearance" readonly>
+                                        value="Business Clearance" readonly>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row mb-4">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="kof">Kind of Business</label>
+                                    <input type="text" name="kof" id="kof" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="residency">Year Residency</label>
                                     <input type="number" name="residency" id="residency" class="form-control"
                                         value="<?php echo $row['yrs_res']; ?>">
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="address">Address</label>
                                     <input type="text" name="address" id="address" class="form-control"
@@ -173,7 +186,7 @@ input[readonly] {
 
 
                         <div class="text-center">
-                        <button type="submit" class="btn btn-primary btn-block w-75 mx-auto">Send</button>
+                            <button type="submit" class="btn btn-primary btn-block w-75 mx-auto">Send</button>
                         </div>
 
 
@@ -194,11 +207,11 @@ input[readonly] {
 
 <script>
 $(document).ready(function() {
-    $('#request_barangay-clearanceform').on('submit', function(e) {
+    $('#request_barangay-busiclear_form').on('submit', function(e) {
         e.preventDefault(); // Prevent the default form submission
 
         // Perform form validation
-        var isValid = $('#request_barangay-clearanceform').valid();
+        var isValid = $('#request_barangay-busiclear_form').valid();
 
         // If the form is valid, proceed with the submission
         if (isValid) {
@@ -210,9 +223,9 @@ $(document).ready(function() {
                 denyButtonText: 'Don\'t Send',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    var formData = new FormData($('#request_barangay-clearanceform')[0]);
+                    var formData = new FormData($('#request_barangay-busiclear_form')[0]);
                     $.ajax({
-                        url: "../server/req_brgyclrs_apii.php",
+                        url: "../server/req_brgybsclr_apii.php",
                         type: "POST",
                         data: formData,
                         dataType: 'json',
@@ -225,7 +238,7 @@ $(document).ready(function() {
                                     closeButton: false,
                                     onHidden: function() {
                                         setTimeout(function() {
-                                           
+
                                         }, 500);
                                     }
                                 });
@@ -257,13 +270,13 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     // Add custom validation method for alphabetic characters with space
-    
-   
+
+
     jQuery.validator.addMethod("alphabeticWithSpaceAndDot", function(value, element) {
         return this.optional(element) || /^[a-zA-Z\s.,]*$/.test(value);
     }, "Please enter alphabetic characters only.");
     // Form validation
-    var validate_form = $('#request_barangay-clearanceform').validate({
+    var validate_form = $('#request_barangay-busiclear_form').validate({
         rules: {
             transaction_id: {
                 required: true,
@@ -273,6 +286,10 @@ $(document).ready(function() {
             },
             request: {
                 required: true,
+            },
+            business_name: {
+                required: true,
+                alphabeticWithSpaceAndDot: true,
             },
             name: {
                 required: true,
@@ -285,6 +302,9 @@ $(document).ready(function() {
                 pattern: /^09\d{9}$/,
             },
             address: {
+                required: true,
+            },
+            kof: {
                 required: true,
             },
             email: {
@@ -315,6 +335,12 @@ $(document).ready(function() {
             },
             request: {
                 required: 'Please enter Request!',
+            },
+            business_name: {
+                required: 'Please enter your Business Name!',
+            },
+            kof: {
+                required: 'Please enter your Kind of Business!',
             },
             name: {
                 required: 'Please enter your Name!',

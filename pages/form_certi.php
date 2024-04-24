@@ -18,7 +18,7 @@ $currentYear = date('Y');
 $randomNumber = mt_rand(100000, 999999);
 
 // Create the transaction ID
-$transaction_id = 'CLR-'. $currentYear . '-' . $randomNumber ;
+$transaction_id = 'CERT-'. $currentYear . '-' . $randomNumber ;
 
 
 $sql = "SELECT * FROM settings";
@@ -62,7 +62,7 @@ input[readonly] {
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item text-decoration-none"><a>Service</a></li>
-                                <li class="breadcrumb-item text-secondary">Barangay Clearance</li>
+                                <li class="breadcrumb-item text-secondary">Barangay Certificate</li>
                             </ol>
                         </div>
                     </div>
@@ -75,7 +75,7 @@ input[readonly] {
 
 
                 <div class="container-fluid bg-light p-5">
-                    <form id="request_barangay-clearanceform" method="post" class="p-5 rounded border" style=" max-width: 650px; margin: 0 auto; background-color: #ADE8F4; box-shadow: 0px 1px 10px rgba(0, 0, 255, 0.4);
+                    <form id="request_barangay-certform" method="post" class="p-5 rounded border" style=" max-width: 650px; margin: 0 auto; background-color: #ADE8F4; box-shadow: 0px 1px 10px rgba(0, 0, 255, 0.4);
                 background-color: #fdfdfd;">
 
                         <div class="text-center mb-5">
@@ -125,7 +125,7 @@ input[readonly] {
                                 <div class="form-group">
                                     <label for="request">Request</label>
                                     <input type="text" name="request" id="request" class="form-control"
-                                        value="Barangay Clearance" readonly>
+                                        value="Barangay Certificate" readonly>
                                 </div>
                             </div>
                         </div>
@@ -194,11 +194,11 @@ input[readonly] {
 
 <script>
 $(document).ready(function() {
-    $('#request_barangay-clearanceform').on('submit', function(e) {
+    $('#request_barangay-certform').on('submit', function(e) {
         e.preventDefault(); // Prevent the default form submission
 
         // Perform form validation
-        var isValid = $('#request_barangay-clearanceform').valid();
+        var isValid = $('#request_barangay-certform').valid();
 
         // If the form is valid, proceed with the submission
         if (isValid) {
@@ -210,9 +210,9 @@ $(document).ready(function() {
                 denyButtonText: 'Don\'t Send',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    var formData = new FormData($('#request_barangay-clearanceform')[0]);
+                    var formData = new FormData($('#request_barangay-certform')[0]);
                     $.ajax({
-                        url: "../server/req_brgyclrs_apii.php",
+                        url: "../server/req_brgycerti_apii.php",
                         type: "POST",
                         data: formData,
                         dataType: 'json',
@@ -263,7 +263,7 @@ $(document).ready(function() {
         return this.optional(element) || /^[a-zA-Z\s.,]*$/.test(value);
     }, "Please enter alphabetic characters only.");
     // Form validation
-    var validate_form = $('#request_barangay-clearanceform').validate({
+    var validate_form = $('#request_barangay-certform').validate({
         rules: {
             transaction_id: {
                 required: true,
@@ -337,7 +337,7 @@ $(document).ready(function() {
                 digits: 'Please provide a valid Year Residency!',
             },
             purpose: {
-                required: 'Provide a valid purpose!',
+                required: 'Please provide a valid purpose!',
                 maxlength: 'Please limit your input to 50 characters.',
                 minlength: 'Please provide a valid purpose! ',
 

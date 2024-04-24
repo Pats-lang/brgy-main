@@ -459,7 +459,7 @@ include '../server/admin_login-verification.php';
         dataType: "json",
         success: function(response_Editmember) {
           $('#Editmember_id').val(response_Editmember.member_id);
-          $('#Editmember_name').val(response_Editmember.name);
+          $('#Editmember_fullname').val(response_Editmember.fullname);
           $('#Editmember_precinct').val(response_Editmember.precinct);
           $('#Editmember_emailAddress').val(response_Editmember.email_address);
           $('#Editmember_address').val(response_Editmember.address);
