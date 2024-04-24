@@ -91,9 +91,10 @@ while ($row = mysqli_fetch_assoc($result)){
                     }
                 ?>
 
-                <img src="../assets/images/member_pictures/<?php echo $row['picture']; ?> " class="rounded-circle img-fluid     object-position: center;
-                object-fit-cover" alt="Logo" width="50" height="50">
-                    <p class="mx-1"><b><?php echo $row['fullname']; ?></b></p>
+<div style="display: flex; align-items: center;">
+        <img src="../assets/images/member_pictures/<?php echo $row['picture']; ?>" class="rounded-circle img-fluid object-position: center; object-fit-cover" alt="Logo" width="50" height="50">
+        <p class="mx-1" style="margin-left: 5px;"><b><?php echo $row['fullname']; ?></b></p>
+    </div>
                         </a>
                     </li>
 
