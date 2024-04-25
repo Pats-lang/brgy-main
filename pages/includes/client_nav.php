@@ -107,13 +107,13 @@ while ($row = mysqli_fetch_assoc($result)){
                             <p>Home</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a href="system_administrators.php" class="nav-link">
                             <i class="fa-solid fa-screwdriver-wrench nav-icon"
                                 style="color: #4285f4; font-size: 15px;"></i>
                             <p>Announcement</p>
                         </a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a href="../pages/client_services.php" class="nav-link">
                             <i class="fa-solid fa-gears nav-icon" style="color: #4285f4; font-size: 15px;"></i>

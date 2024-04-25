@@ -622,9 +622,7 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                                             id="privacy_agreement_checkbox">
                                                         <label class="form-check-label"
                                                             for="privacy_agreement_checkbox">
-                                                            I have read and agree to the <a href="#"
-                                                                onclick="showPrivacyPolicy() required">Terms and Privacy
-                                                                Policy </a>.
+                                                            I have read and agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#privacy_policy_modal">Terms and Privacy Policy </a>.
                                                         </label>
                                                     </div>
                                                 </div>

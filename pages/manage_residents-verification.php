@@ -431,9 +431,9 @@ include '../server/admin_login-verification.php';
                                         <option value="2">REJECTED</option>
                                     </select>
                                 </div>
-
-                                <div class="col-4 d-flex align-items-end">
                                     <!-- Button for Show More -->
+
+                                <!-- <div class="col-4 d-flex align-items-end">
                                     <button type="button" class="btn btn-success w-100" id="editshowMoreBtn">Show
                                         More</button>
                                 </div>
@@ -448,7 +448,7 @@ include '../server/admin_login-verification.php';
                                                 class=" border border-dark img-fluid" alt="Editmember ID Picture">
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 
                                 
                             </div>

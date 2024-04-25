@@ -78,14 +78,14 @@ include '../server/admin_login-verification.php';
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Resident Verification</h1>
+                            <h1>Printed ID</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item text-decoration-none"><a href="dashboard.php">Home</a></li>
-                                <li class="breadcrumb-item text-decoration-none text-secondary"><i>Resident
-                                        Verification</i>
-                                <li class="breadcrumb-item text-secondary">Verification </li>
+                                <li class="breadcrumb-item text-decoration-none text-secondary"><i>Printed ID
+                                        </i>
+                                
                             </ol>
                         </div>
                     </div>

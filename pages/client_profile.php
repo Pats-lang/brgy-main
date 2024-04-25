@@ -157,8 +157,8 @@ body {
                                         <h3><?php echo $row['fullname']; ?></h3>
                                         <div class="small text-muted mb-4">MEMBER ID:<?php echo $row['member_id']; ?>
                                         </div>
-                                        <button class="btn btn-primary" id="uploadButton" type="button">UPLOAD
-                                            IMAGE</button>
+                                        <!-- <button class="btn btn-primary" id="uploadButton" type="button">UPLOAD
+                                            IMAGE</button> -->
                                         <input type="file" id="fileInput" name="changeprofilepic" style="display: none;">
                                     </div>
                                 </div>
@@ -214,7 +214,7 @@ body {
                                             <div class="col-md-2">
                                                 <label class="small mb-1" for="surfix">Surfix</label>
                                                 <input class="form-control" id="surfix" name="surfix" type="text"
-                                                    placeholder="Enter your surfix"
+                                                    placeholder=""
                                                     value="<?php echo $row['surfix']; ?>">
                                             </div>
 
@@ -348,7 +348,7 @@ body {
 
                                         </div>
 
-                                        <button class="btn btn-primary" type="submit">Save</button>
+                                        <!-- <button class="btn btn-primary" type="submit">Save</button> -->
 
                     </form>
                 </div>
