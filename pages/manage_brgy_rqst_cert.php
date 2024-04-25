@@ -74,7 +74,7 @@ include '../server/admin_login-verification.php';
                                         <tbody>
 
                                             <?php
-                                            $query = "SELECT * FROM `request_brgybp` ";
+                                            $query = "SELECT * FROM `request_brgycert` ";
                                             $result = mysqli_query(getDatabase(), $query);
                                             while ($row = mysqli_fetch_array($result)) {
                                             ?>
@@ -313,7 +313,7 @@ include '../server/admin_login-verification.php';
                 $('#editAnnouncement_modal').modal('hide');
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: "../server/edit_brgy_rqst_cor.php",
+                        url: "../server/edit_brgy_rqst_cert.php",
                         type: "POST",
                         data: new FormData(this),
                         dataType: 'json',
@@ -322,14 +322,40 @@ include '../server/admin_login-verification.php';
                         success: function(response_editAnnouncement) {
                             if (response_editAnnouncement.status) {
                                 toastr.success(response_editAnnouncement.message, '', {
-                                    timeOut: 1000,
-                                    closeButton: false,
-                                    onHidden: function() {
-                                        setTimeout(function() {
-                                            location.reload();
-                                        }, 500); // Adjust the delay as needed
+                                timeOut: 1000,
+                                closeButton: false,
+                                onHidden: function() {
+                                    // Check if applicant data is available before sending SMS
+                                    if (response_editAnnouncement
+                                        .applicant_name &&
+                                        response_editAnnouncement
+                                        .applicant_status &&
+                                        response_editAnnouncement.applicant_num
+                                    ) {
+                                        console.log(
+                                            "Calling sendSMS with parameters:",
+                                            response_editAnnouncement
+                                            .applicant_name,
+                                            response_editAnnouncement
+                                            .applicant_status,
+                                            response_editAnnouncement
+                                            .applicant_num
+                                        );
+                                        sendSMS(response_editAnnouncement
+                                            .applicant_name,
+                                            response_editAnnouncement
+                                            .applicant_status,
+                                            response_editAnnouncement
+                                            .applicant_num
+                                        );
+                                        location.reload();
+                                    } else {
+                                        console.log(
+                                            "Applicant data not available to send SMS."
+                                        );
                                     }
-                                });
+                                }
+                             });
                             } else {
                                 toastr.error(response_editAnnouncement.message, '', {
                                     closeButton: false,
@@ -350,6 +376,51 @@ include '../server/admin_login-verification.php';
                 }
             });
         });
+
+           // The sendSMS function
+    function sendSMS(name, status, num) {
+        // Define the SMS message
+        let message;
+        if (status == 2) {
+            message =
+                `Magandang araw, ${name}!Nais naming ipaalam sa inyo na maaari na pong kunin ang inyong Barangay Certificate sa tanggapan ng ating Barangay.Maraming salamat po.`;
+        } else if (status == 1) {
+            message =
+            `Magandang araw, ${name}!Nais naming ipaalam sa inyo na hindi approbado ang inyong Barangay Certificate sa tanggapan ng ating Barangay.Maraming salamat po.`;
+
+        } else {
+            message = `Default message for unknown status.`;
+        }
+        // Configuration for sending SMS
+        const smsData = {
+            cellphone: num,
+            message: message
+        };
+
+        // Log SMS data to verify formatting
+        console.log("SMS Data:", smsData);
+
+        // AJAX call to send SMS
+        $.ajax({
+            type: 'POST',
+            url: '../server/send_sms.php',
+            data: smsData,
+            dataType: 'json',
+            success: function(response) {
+                console.log('SMS sent successfully:', response);
+                // Don't reload the page after sending SMS
+                location.reload();
+            },
+            error: function(xhr, status, error) {
+                console.error('Error sending SMS:', error);
+                console.log('XHR:', xhr);
+                console.log('Status:', status);
+            }
+        });
+
+    }
+
+
 
         // Edit Announcement: Populate Fields
         $(document).on('click', 'button[data-role=editAnnouncement_btn]', function() {
