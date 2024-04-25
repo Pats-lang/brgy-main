@@ -372,7 +372,7 @@ include '../server/admin_login-verification.php';
                                             response_editAnnouncement
                                             .applicant_num
                                         );
-                                        location.reload();
+                                       
                                     } else {
                                         console.log(
                                             "Applicant data not available to send SMS."

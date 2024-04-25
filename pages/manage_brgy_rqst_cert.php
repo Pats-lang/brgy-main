@@ -348,7 +348,7 @@ include '../server/admin_login-verification.php';
                                             response_editAnnouncement
                                             .applicant_num
                                         );
-                                        location.reload();
+                                        
                                     } else {
                                         console.log(
                                             "Applicant data not available to send SMS."
@@ -383,10 +383,10 @@ include '../server/admin_login-verification.php';
         let message;
         if (status == 2) {
             message =
-                `Magandang araw, ${name}!Nais naming ipaalam sa inyo na maaari na pong kunin ang inyong Barangay Certificate sa tanggapan ng ating Barangay.Maraming salamat po.`;
+                `Magandang araw, ${name}!Nais naming ipaalam sa inyo na maaari na pong kunin ang Barangay Certificate sa tanggapan ng ating Barangay.Maraming salamat po.`;
         } else if (status == 1) {
             message =
-            `Magandang araw, ${name}!Nais naming ipaalam sa inyo na hindi approbado ang inyong Barangay Certificate sa tanggapan ng ating Barangay.Maraming salamat po.`;
+            `Magandang araw, ${name}!Nais naming ipaalam sa inyo na hindi approbado ang Barangay Certificate sa tanggapan ng ating Barangay.Maraming salamat po.`;
 
         } else {
             message = `Default message for unknown status.`;

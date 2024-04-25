@@ -26,7 +26,7 @@
 
        // Inner join query to retrieve contact_no and firstname
        $citizenQuery = "SELECT rb.contact_no, m.firstname
-       FROM  request_brgybp rb
+       FROM request_brgybp rb
        INNER JOIN members m ON rb.member_id = m.member_id 
        WHERE rb.id = ?";
 

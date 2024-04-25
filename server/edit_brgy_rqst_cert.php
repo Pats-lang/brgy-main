@@ -22,7 +22,7 @@ if ($preparedSql = $db->prepare("UPDATE `request_brgycert` SET `status` = ? WHER
     if ($preparedSql->execute()) {
         // Inner join query to retrieve contact_no and firstname
         $citizenQuery = "SELECT rb.contact_no, m.firstname
-        FROM request_brgycoi rb
+        FROM request_brgycert rb
         INNER JOIN members m ON rb.member_id = m.member_id 
         WHERE rb.id = ?";
 
