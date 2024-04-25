@@ -238,7 +238,7 @@ $(document).ready(function() {
                                     closeButton: false,
                                     onHidden: function() {
                                         setTimeout(function() {
-
+                                            location.reload();
                                         }, 500);
                                     }
                                 });
