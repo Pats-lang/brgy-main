@@ -9,17 +9,22 @@ if (isset($_POST['id']) && !empty($_POST['id'])) {
     $id = mysqli_real_escape_string(getDatabase(), $_POST['id']);
 
 
-    $sql = "SELECT *
-    FROM members
-    INNER JOIN request_brgybp ON members.member_id = request_brgybp.member_id
-    INNER JOIN request_brgycert ON members.member_id = request_brgycert.member_id
-    INNER JOIN request_brgyclrs ON members.member_id = request_brgyclrs.member_id
-    INNER JOIN request_brgycoi ON members.member_id = request_brgycoi.member_id
-    INNER JOIN request_brgybusclearance ON members.member_id = request_brgybusclearance.member_id
+    $sql = "SELECT transaction_id, member_id, request, status FROM request_brgybp
+    WHERE transaction_id = '$id'
+    UNION
+    SELECT transaction_id, member_id, request, status FROM request_brgycert
+    WHERE transaction_id = '$id'
+    UNION
+    SELECT transaction_id, member_id, request, status FROM request_brgyclrs
+    WHERE transaction_id = '$id'
+    UNION
+    SELECT transaction_id, member_id, request, status FROM request_brgycoi
+    WHERE transaction_id = '$id'
+    UNION
+    SELECT transaction_id, member_id, request, status FROM request_busclearance
+    WHERE transaction_id = '$id'";
+$result = mysqli_query(getDatabase(), $sql);
 
-
-    WHERE transaction_id = '$id'";       
-    $result = mysqli_query(getDatabase(), $sql);
 
     
 
@@ -44,7 +49,7 @@ if (isset($_POST['id']) && !empty($_POST['id'])) {
 
             // Filter only the required fields
             $filteredRow = array(
-                'account_id' => $row['member_id'],
+                'member_id' => $row['member_id'],
                 'transaction_id' => $row['transaction_id'],
                 'request' => $row['request'],
                 'status' => $status
