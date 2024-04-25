@@ -129,9 +129,7 @@ include '../server/admin_login-verification.php';
                                                         data-role="editAnnouncement_btn">
                                                         Verify
                                                     </button>
-
-                                                    <a href="../server/viewpdf_brgycoi.php" class="btn btn-primary">View
-                                                        PDF</a>
+                                                    <a href="../server/viewpdf_brgycoi.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">View PDF</a>
 
                                                 </td>
                                             </tr>
