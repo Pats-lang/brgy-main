@@ -46,7 +46,7 @@ if ($preparedSql = $db->prepare("UPDATE `request_brgycoi` SET `status` = ? WHERE
                     $response['applicant_status'] = $edit_lastModifiedAnnouncements;
 
                     $response['status'] = true;
-                    $response['message'] = 'Successfully retrieved citizen data.';
+                    $response['message'] = 'Successfully updated.';
                 } else {
                     $response['status'] = false;
                     $response['message'] = "No matching records found.";
