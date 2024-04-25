@@ -15,7 +15,6 @@ function getExistingImageName($profileid) {
     global $db; // Assuming $db is your database connection object
 
     $query = "SELECT picture FROM members WHERE member_id  = ?";
-    
     if ($stmt = $db->prepare($query)) {
         $stmt->bind_param("i", $profileid);
         $stmt->execute();
@@ -63,22 +62,23 @@ $campus_id = sanitizeData(getDatabase(), $_POST['campus_id']);
 $inputAddress = sanitizeData(getDatabase(), $_POST['inputAddress']);
 $religion = sanitizeData(getDatabase(), $_POST['religion']);
 $cellphone_no = sanitizeData(getDatabase(), $_POST['cellphone_no']);
-$residency = sanitizeData(getDatabase(), $_POST['residency']);
-$yrs_res = sanitizeData(getDatabase(), $_POST['yrs_res']);
-$contact_name = sanitizeData(getDatabase(), $_POST['contact_name']);
-$contact_no = sanitizeData(getDatabase(), $_POST['contact_no']);
 $member_id = sanitizeData(getDatabase(), $_POST['editmember_id']);
 
-if ($preparedSql = $db->prepare("UPDATE `members` 
-INNER JOIN `member_address` ON members.member_id = member_address.member_id 
-INNER JOIN `member_emergency` ON members.member_id = member_emergency.member_id 
-
-
-SET `precinct`= ?, `picture`= ?, `firstname` = ?, `middlename` = ?, 
-`lastname` = ?, `surfix` = ?, `birth_date` = ?, `civil_status` = ?, `campus_id` = ?, `address` = ?, `religion` = ?, `cellphone_no` = ?, `residency` = ?,  `yrs_res` = ?, `contact_name` = ?, `contact_no` = ?  WHERE member_id =? ")) {
-    $preparedSql->bind_param("ssssssssssssssssi", $precinct, $changeprofilepic, 
+if ($preparedSql = $db->prepare("UPDATE `members` SET `precinct`= ?, 
+`picture`= ?,
+`firstname`= ?,
+`middlename`= ?,
+`lastname`= ?,
+`surfix`= ?,
+`birth_date`= ?,
+`civil_status`= ?,
+`campus_id`= ?,
+`address`= ?,
+`religion`= ?,
+`cellphone_no`= ? WHERE `member_id `= ?,")) {
+    $preparedSql->bind_param("ssssssssssssi", $precinct, $changeprofilepic, 
     $firstname, $middlename, $lastname, $surfix, $birth_date, $civil_status,
-     $campus_id, $inputAddress, $religion, $cellphone_no, $residency, $yrs_res, $contact_name,$contact_no, $member_id);
+     $campus_id, $inputAddress, $religion, $cellphone_no, $member_id);
 
     if ($preparedSql->execute()) {
         $response['status'] = true;

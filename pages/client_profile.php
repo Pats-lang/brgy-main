@@ -130,7 +130,7 @@ body {
             <section>
 
                 <div class="container-xl px-4 mt-4">
-                    <form id="editprofileform" method="post">
+                    <form id="editprofileform" >
                         <?php
                                         // Fetch member data based on the logged-in user
                                         $sql = "SELECT *
@@ -297,7 +297,7 @@ body {
                                             <div class="col-md-4">
                                                 <label class="small mb-1" for="residency">Residency</label>
                                                 <select class="custom-select form-control" style="height: 40px"
-                                                    id="residency" name="residency" required>
+                                                    id="residency" name="residency" readonly>
                                                     <option disabled selected>Select Residency</option>
                                                     <option value="Permanent Resident"
                                                         <?php if ($row['residency'] === 'Permanent Resident') echo 'selected'; ?>>
@@ -313,7 +313,7 @@ body {
                                             <div class="col-md-4">
                                                 <label class="small mb-1" for="yrs_res">Year of Residency</label>
                                                 <select class="custom-select form-control" id="yrs_res"
-                                                    name="yrs_res" required>
+                                                    name="yrs_res" readonly>
                                                     <option value="">Select Years Of Residency</option>
                                                     <?php
                                                 for ($i = 1; $i <= 100; $i++) {
@@ -336,13 +336,13 @@ body {
                                             <div class="col-md-6">
                                                 <label class="small mb-1" for="contact_name">Name</label>
                                                 <input class="form-control" id="contact_name" name="contact_name"
-                                                    type="text" value="<?php echo $row['contact_name']; ?>">
+                                                    type="text" value="<?php echo $row['contact_name']; ?> "readonly>
                                             </div>
 
                                             <div class="col-md-6">
                                                 <label class="small mb-1" for="contact_no">Number</label>
                                                 <input class="form-control" id="contact_no" type="contact_no" name="contact_no"
-                                                    value="<?php echo $row['contact_no']; ?>">
+                                                    value="<?php echo $row['contact_no']; ?>"readonly>
                                             </div>
 
 
