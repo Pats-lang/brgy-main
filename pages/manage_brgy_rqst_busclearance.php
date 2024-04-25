@@ -17,10 +17,10 @@ include '../server/admin_login-verification.php';
     <?php include 'import.php'; ?>
 </head>
 <style>
-    .modal-lg {
-        max-width: 80%;
-        /* You can adjust the percentage according to your needs */
-    }
+.modal-lg {
+    max-width: 80%;
+    /* You can adjust the percentage according to your needs */
+}
 </style>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -80,35 +80,35 @@ include '../server/admin_login-verification.php';
                                             $result = mysqli_query(getDatabase(), $query);
                                             while ($row = mysqli_fetch_array($result)) {
                                             ?>
-                                                <tr id="<?php echo $row['id']; ?>">
-                                                    <td>
-                                                        <?php echo $row['id']; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $row['member_id']; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $row['transaction_id']; ?>
-                                                    </td>
+                                            <tr id="<?php echo $row['id']; ?>">
+                                                <td>
+                                                    <?php echo $row['id']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['member_id']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['transaction_id']; ?>
+                                                </td>
 
-                                                    <td>
-                                                        <?php echo $row['business_name']; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $row['owner_name']; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $row['kof_business']; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $row['yrs_res']; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $row['contact_no']; ?>
-                                                    </td>
+                                                <td>
+                                                    <?php echo $row['business_name']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['owner_name']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['kof_business']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['yrs_res']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['contact_no']; ?>
+                                                </td>
 
-                                                    <td>
-                                                        <?php
+                                                <td>
+                                                    <?php
                                                         if (isset($row['status'])) {
                                                             $status = $row['status'];
 
@@ -123,15 +123,18 @@ include '../server/admin_login-verification.php';
                                                             echo '<span class="badge badge-secondary">Unknown</span>';
                                                         }
                                                         ?>
-                                                    </td>
+                                                </td>
 
-                                                    <td class="text-center" style="width: 150px;">
+                                                <td class="text-center" style="width: 150px;">
 
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reviewInquiry_modal" data-id="<?php echo $row['id']; ?>" data-role="editAnnouncement_btn">
-                                                            Verify
-                                                        </button>
-                                                    </td>
-                                                </tr>
+                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                        data-bs-target="#reviewInquiry_modal"
+                                                        data-id="<?php echo $row['id']; ?>"
+                                                        data-role="editAnnouncement_btn">
+                                                        Verify
+                                                    </button>
+                                                </td>
+                                            </tr>
                                             <?php } ?>
 
                                         </tbody>
@@ -180,19 +183,22 @@ include '../server/admin_login-verification.php';
                                         <div class="col-md-4">
 
                                             <label for="add_Image_id">ID</label>
-                                            <input type="text" class="form-control form-control-border" id="id" name="id" readonly>
+                                            <input type="text" class="form-control form-control-border" id="id"
+                                                name="id" readonly>
 
                                         </div>
                                         <div class="col-md-4">
 
                                             <label for="add_Image_id">MEMBER ID</label>
-                                            <input type="text" class="form-control form-control-border" id="member_id" name="member_id" readonly>
+                                            <input type="text" class="form-control form-control-border" id="member_id"
+                                                name="member_id" readonly>
 
                                         </div>
                                         <div class="col-md-4">
 
                                             <label for="add_Image_id">TRANSACTION ID</label>
-                                            <input type="text" class="form-control form-control-border" id="transaction" name="transaction" readonly>
+                                            <input type="text" class="form-control form-control-border" id="transaction"
+                                                name="transaction" readonly>
 
                                         </div>
 
@@ -201,16 +207,20 @@ include '../server/admin_login-verification.php';
                                     <div class="row mt-4">
                                         <div class="col-md-6">
                                             <label for="register_last_name">Business Name</label>
-                                            <input type="text" class="form-control form-control-border" id="business_name" name="business_name" placeholder="Business Name" readonly>
+                                            <input type="text" class="form-control form-control-border"
+                                                id="business_name" name="business_name" placeholder="Business Name"
+                                                readonly>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="register_first_name">Owners Name</label>
-                                            <input type="text" class="form-control form-control-border" id="register_name" name="name" placeholder="Owners Name" readonly>
+                                            <input type="text" class="form-control form-control-border"
+                                                id="register_name" name="name" placeholder="Owners Name" readonly>
                                         </div>
 
                                         <div class="col-md-6">
                                             <label for="register_contact">Kind Of Business</label>
-                                            <textarea type="text" class="form-control form-control-border" id="kof" name="kof" placeholder="Kind of Business" readonly>
+                                            <textarea type="text" class="form-control form-control-border" id="kof"
+                                                name="kof" placeholder="Kind of Business" readonly>
                                                 </textarea>
                                         </div>
 
@@ -219,16 +229,22 @@ include '../server/admin_login-verification.php';
                                     <div class="row mt-4">
                                         <div class="col-md-4">
                                             <label for="register_address">Years of Residency</label>
-                                            <input type="text" class="form-control form-control-border" id="register_yrsres" name="register_Residency" placeholder="Type your Address" readonly>
+                                            <input type="text" class="form-control form-control-border"
+                                                id="register_yrsres" name="register_Residency"
+                                                placeholder="Type your Address" readonly>
                                         </div>
                                         <div class="col-md-4">
                                             <label for="register_email">Email Address</label>
-                                            <input type="text" class="form-control form-control-border" id="register_email" name="register_email" placeholder="Type your Email Address" readonly>
+                                            <input type="text" class="form-control form-control-border"
+                                                id="register_email" name="register_email"
+                                                placeholder="Type your Email Address" readonly>
 
                                         </div>
                                         <div class="col-md-4">
                                             <label for="register_email">Contact Number</label>
-                                            <input type="text" class="form-control form-control-border" id="register_contact" name="register_contact" placeholder="Type your Email Address" readonly>
+                                            <input type="text" class="form-control form-control-border"
+                                                id="register_contact" name="register_contact"
+                                                placeholder="Type your Email Address" readonly>
 
                                         </div>
                                     </div>
@@ -237,12 +253,16 @@ include '../server/admin_login-verification.php';
                                     <div class="row mt-4">
                                         <div class="col-md-6">
                                             <label for="register_bday">Purpose</label>
-                                            <textarea type="text" class="form-control form-control-border" id="register_purpose" name="register_purpose" placeholder="Type your purpose" readonly>
+                                            <textarea type="text" class="form-control form-control-border"
+                                                id="register_purpose" name="register_purpose"
+                                                placeholder="Type your purpose" readonly>
                                                 </textarea>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="register_contact">Request</label>
-                                            <textarea type="text" class="form-control form-control-border" id="register_request" name="register_request" placeholder="Type your Contact" readonly>
+                                            <textarea type="text" class="form-control form-control-border"
+                                                id="register_request" name="register_request"
+                                                placeholder="Type your Contact" readonly>
                                                 </textarea>
                                         </div>
 
@@ -251,7 +271,8 @@ include '../server/admin_login-verification.php';
 
                                     <div class="col-md-4">
                                         <label for="register_status">Status</label>
-                                        <select type="text" class="form-control form-control-border" id="status" name="status" placeholder="Choose your Status">
+                                        <select type="text" class="form-control form-control-border" id="status"
+                                            name="status" placeholder="Choose your Status">
                                             <option class="form-control form-control-border" value="2"> APPROVED
                                             </option>
                                             <option class="form-control form-control-border" value="1">REJECT</option>
@@ -284,123 +305,197 @@ include '../server/admin_login-verification.php';
     </div>
     </div>
     <script>
-        $(document).ready(function() {
-            $('#manageClient_inquiriesTable').DataTable({
-                buttons: [{
-                        extend: 'copy',
-                        text: '<i class="fas fa-copy"></i> Copy'
-                    },
-                    {
-                        extend: 'excel',
-                        text: '<i class="fas fa-file-excel"></i> Excel'
-                    },
-                    {
-                        extend: 'pdf',
-                        text: '<i class="fas fa-file-pdf"></i> PDF'
-                    }, {
-                        text: '<i class="fa-solid fa-print"></i>',
-                        className: 'print-btn',
-                        action: function(e, dt, node, config) {
-                            location.href = "../server/print_member.php";
-                        }
+    $(document).ready(function() {
+        $('#manageClient_inquiriesTable').DataTable({
+            buttons: [{
+                    extend: 'copy',
+                    text: '<i class="fas fa-copy"></i> Copy'
+                },
+                {
+                    extend: 'excel',
+                    text: '<i class="fas fa-file-excel"></i> Excel'
+                },
+                {
+                    extend: 'pdf',
+                    text: '<i class="fas fa-file-pdf"></i> PDF'
+                }, {
+                    text: '<i class="fa-solid fa-print"></i>',
+                    className: 'print-btn',
+                    action: function(e, dt, node, config) {
+                        location.href = "../server/print_member.php";
                     }
-                ],
-                dom: 'Bfrtip',
-                responsive: true
-            });
+                }
+            ],
+            dom: 'Bfrtip',
+            responsive: true
         });
+    });
 
 
-        // Edit Announcement: Submit Fields
-        $('#editAnnouncementForm').on('submit', function(e) {
-            e.preventDefault();
-            Swal.fire({
-                title: 'Do you want to save the changes?',
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: ' Save',
-                denyButtonText: 'Dont save',
-            }).then((result) => {
-                $('#editAnnouncement_modal').modal('hide');
-                if (result.isConfirmed) {
-                    $.ajax({
-                        url: "../server/edit_brgy_rqst_busclearance.php",
-                        type: "POST",
-                        data: new FormData(this),
-                        dataType: 'json',
-                        processData: false,
-                        contentType: false,
-                        success: function(response_editAnnouncement) {
-                            if (response_editAnnouncement.status) {
-                                toastr.success(response_editAnnouncement.message, '', {
-                                    timeOut: 1000,
-                                    closeButton: false,
-                                    onHidden: function() {
-                                        setTimeout(function() {
-                                            location.reload();
-                                        }, 500); // Adjust the delay as needed
+    // Edit Announcement: Submit Fields
+    $('#editAnnouncementForm').on('submit', function(e) {
+        e.preventDefault();
+        Swal.fire({
+            title: 'Do you want to save the changes?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: ' Save',
+            denyButtonText: 'Dont save',
+        }).then((result) => {
+            $('#editAnnouncement_modal').modal('hide');
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "../server/edit_brgy_rqst_busclearance.php",
+                    type: "POST",
+                    data: new FormData(this),
+                    dataType: 'json',
+                    processData: false,
+                    contentType: false,
+                    success: function(response_editAnnouncement) {
+                        if (response_editAnnouncement.status) {
+                            toastr.success(response_editAnnouncement.message, '', {
+                                timeOut: 1000,
+                                closeButton: false,
+                                onHidden: function() {
+                                    // Check if applicant data is available before sending SMS
+                                    if (response_editAnnouncement
+                                        .applicant_name &&
+                                        response_editAnnouncement
+                                        .applicant_status &&
+                                        response_editAnnouncement.applicant_num
+                                    ) {
+                                        console.log(
+                                            "Calling sendSMS with parameters:",
+                                            response_editAnnouncement
+                                            .applicant_name,
+                                            response_editAnnouncement
+                                            .applicant_status,
+                                            response_editAnnouncement
+                                            .applicant_num
+                                        );
+                                        sendSMS(response_editAnnouncement
+                                            .applicant_name,
+                                            response_editAnnouncement
+                                            .applicant_status,
+                                            response_editAnnouncement
+                                            .applicant_num
+                                        );
+                                        location.reload();
+                                    } else {
+                                        console.log(
+                                            "Applicant data not available to send SMS."
+                                        );
                                     }
-                                });
-                            } else {
-                                toastr.error(response_editAnnouncement.message, '', {
-                                    closeButton: false,
-                                });
-                            }
-                        },
-                        error: function(error) {
-                            toastr.error('An Error occurred: ' + error, '', {
-                                positionClass: 'toast-top-end',
-                                closeButton: false
+                                }
+                            });
+                        } else {
+                            toastr.error(response_editAnnouncement.message, '', {
+                                closeButton: false,
                             });
                         }
-                    });
-                } else if (result.isDenied) {
-                    toastr.info('Changes are not saved', '', {
-                        closeButton: false
-                    });
-                }
-            });
+                    },
+                    error: function(error) {
+                        toastr.error('An Error occurred: ' + error, '', {
+                            positionClass: 'toast-top-end',
+                            closeButton: false
+                        });
+                    }
+                });
+            } else if (result.isDenied) {
+                toastr.info('Changes are not saved', '', {
+                    closeButton: false
+                });
+            }
+        });
+    });
+    
+        // The sendSMS function
+        function sendSMS(name, status, num) {
+        // Define the SMS message
+        let message;
+        if (status == 2) {
+            message =
+                `Magandang araw, ${name}!Nais naming ipaalam sa inyo na maaari na pong kunin ang Business Clearance sa tanggapan ng ating Barangay.Maraming salamat po.`;
+        } else if (status == 1) {
+            message =
+            `Magandang araw, ${name}!Nais naming ipaalam sa inyo na hindi approbado ang inyong Business Clearance sa tanggapan ng ating Barangay.Maraming salamat po.`;
+
+        } else {
+            message = `Default message for unknown status.`;
+        }
+        // Configuration for sending SMS
+        const smsData = {
+            cellphone: num,
+            message: message
+        };
+
+        // Log SMS data to verify formatting
+        console.log("SMS Data:", smsData);
+
+        // AJAX call to send SMS
+        $.ajax({
+            type: 'POST',
+            url: '../server/send_sms.php',
+            data: smsData,
+            dataType: 'json',
+            success: function(response) {
+                console.log('SMS sent successfully:', response);
+                // Don't reload the page after sending SMS
+                location.reload();
+            },
+            error: function(xhr, status, error) {
+                console.error('Error sending SMS:', error);
+                console.log('XHR:', xhr);
+                console.log('Status:', status);
+            }
         });
 
-        // Edit Announcement: Populate Fields
-        $(document).on('click', 'button[data-role=editAnnouncement_btn]', function() {
-            $.ajax({
-                type: "POST",
-                url: "../server/read_brgy_busclearance.php",
-                data: {
-                    id: $(this).attr('data-id'),
-                },
-                dataType: "json",
-                success: function(response_editAnnouncement) {
-                    $('#id').val(response_editAnnouncement.id); // Corrected property name
-                    $('#member_id').val(response_editAnnouncement.member_id); // Corrected property name
-                    $('#transaction').val(response_editAnnouncement.transaction_id); // Corrected property name
-
-                    $('#business_name').val(response_editAnnouncement.business_name); // Corrected property name
-                    $('#register_name').val(response_editAnnouncement
-                        .owner_name); // Corrected property name
-                    $('#kof').val(response_editAnnouncement
-                        .kof_business); // Corrected property name
-                    $('#register_yrsres').val(response_editAnnouncement
-                        .yrs_res); // Corrected property name
-                    $('#register_contact').val(response_editAnnouncement
-                        .contact_no); // Corrected property name
-                    $('#register_purpose').val(response_editAnnouncement
-                        .purpose); // Corrected property name
-                    $('#register_request').val(response_editAnnouncement
-                        .request); // Corrected property name
-                    $('#register_email').val(response_editAnnouncement
-                        .email); // Corrected property name
-
-                    $('#status').val(response_editAnnouncement.status); // Corrected property name
+    }
 
 
 
-                }
-            });
+
+    // Edit Announcement: Populate Fields
+    $(document).on('click', 'button[data-role=editAnnouncement_btn]', function() {
+        $.ajax({
+            type: "POST",
+            url: "../server/read_brgy_busclearance.php",
+            data: {
+                id: $(this).attr('data-id'),
+            },
+            dataType: "json",
+            success: function(response_editAnnouncement) {
+                $('#id').val(response_editAnnouncement.id); // Corrected property name
+                $('#member_id').val(response_editAnnouncement.member_id); // Corrected property name
+                $('#transaction').val(response_editAnnouncement
+                .transaction_id); // Corrected property name
+
+                $('#business_name').val(response_editAnnouncement
+                .business_name); // Corrected property name
+                $('#register_name').val(response_editAnnouncement
+                    .owner_name); // Corrected property name
+                $('#kof').val(response_editAnnouncement
+                    .kof_business); // Corrected property name
+                $('#register_yrsres').val(response_editAnnouncement
+                    .yrs_res); // Corrected property name
+                $('#register_contact').val(response_editAnnouncement
+                    .contact_no); // Corrected property name
+                $('#register_purpose').val(response_editAnnouncement
+                    .purpose); // Corrected property name
+                $('#register_request').val(response_editAnnouncement
+                    .request); // Corrected property name
+                $('#register_email').val(response_editAnnouncement
+                    .email); // Corrected property name
+
+                $('#status').val(response_editAnnouncement.status); // Corrected property name
 
 
+
+            }
         });
+
+
+    });
     </script>
 </body>
 

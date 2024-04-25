@@ -372,6 +372,7 @@ include '../server/admin_login-verification.php';
                                             response_editAnnouncement
                                             .applicant_num
                                         );
+                                        location.reload();
                                     } else {
                                         console.log(
                                             "Applicant data not available to send SMS."
@@ -407,23 +408,11 @@ include '../server/admin_login-verification.php';
         let message;
         if (status == 2) {
             message =
-                `Magandang araw, ${name}!
-
-                Nais naming ipaalam sa inyo na maaari na 
-                pong kunin ang inyong Barangay Indigency sa 
-                tanggapan ng ating Barangay. Mangyaring maghanda
-                ng babayaran sakaling kinakailangan.
-
-                Maraming salamat po.`;
+                `Magandang araw, ${name}!Nais naming ipaalam sa inyo na maaari na pong kunin ang inyong Barangay Indigency sa tanggapan ng ating Barangay.Maraming salamat po.`;
         } else if (status == 1) {
             message =
-                `Magandang araw, ${name}!
+            `Magandang araw, ${name}!Nais naming ipaalam sa inyo na hindi approbado ang inyong Barangay Indigency sa tanggapan ng ating Barangay.Maraming salamat po.`;
 
-                 Nais naming ipaalam sa inyo na hindi na-aprubahan 
-                 ang inyong kahilingan para sa Barangay Indigency. 
-                 Mangyaring pumunta sa tanggapan ng Barangay upang 
-                 makipag-ugnayan at alamin ang mga dahilan kung bakit 
-                 ito na-reject.`;
         } else {
             message = `Default message for unknown status.`;
         }
