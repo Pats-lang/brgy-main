@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-  <a href="viewpdf_brgybp.php" id="generate-pdf" >Generate PDF</a>
+  <a href="viewpdf_brgyclrs.php" id="generate-pdf" >Generate PDF</a>
 
 </body>
 </html>

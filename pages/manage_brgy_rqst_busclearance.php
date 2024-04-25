@@ -130,6 +130,8 @@ include '../server/admin_login-verification.php';
                                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reviewInquiry_modal" data-id="<?php echo $row['id']; ?>" data-role="editAnnouncement_btn">
                                                             Verify
                                                         </button>
+                                                        <a href="../server/viewpdf_brgybusclearance.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">View PDF</a>
+
                                                     </td>
                                                 </tr>
                                             <?php } ?>

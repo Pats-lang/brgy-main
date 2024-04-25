@@ -31,7 +31,7 @@ if ($officialsResult->num_rows > 0) {
 }
 
 // Database query to fetch data
-$sql = "SELECT `id`, `member_id`, `transaction_id`, `name`, `request`, `contact_no`, `address`, `purpose`, `yrs_res`, `status`, `email`, `time` FROM `request_brgycoi`";
+$sql = "SELECT `id`, `member_id`, `transaction_id`, `business_name`, `owner_name`, 'kof_business', `request`, `contact_no`, `address`, `purpose`, `yrs_res`, `status`, `email`, `time` FROM `request_busclearance`";
 $result = $db->query($sql);
 
 if ($result->num_rows > 0) {
@@ -64,7 +64,7 @@ if ($result->num_rows > 0) {
         $transaction_id =  $row['transaction_id'] ;
         $member_id = $row['member_id'] ;
 
-        $dynamicData = 'GENERATED FILE: Barangay Building Permit';
+        $dynamicData = 'GENERATED FILE: Barangay Business Clearance';
         // Dynamic data to be included in the QR code
         $dynamicData1 = 'Transaction ID: ' . $transaction_id;
         $dynamicData2 = 'Member ID: '. $member_id;
@@ -126,10 +126,10 @@ if ($result->num_rows > 0) {
             echo "Error: File could not be saved at: " . $filePath;
         }
 
-        $pdf->SetXY(54, 455); // Adjust X and Y coordinates as needed
+        $pdf->SetXY(54, 470); // Adjust X and Y coordinates as needed
         $pdf->Cell(0, 0, 'Secretary', 0, 0, 'L'); // Output the role
 
-        $pdf->SetXY(54  , 540); // Adjust X and Y coordinates as needed
+        $pdf->SetXY(54  , 565); // Adjust X and Y coordinates as needed
         $pdf->Cell(0, 0, 'Barangay Chairman', 0, 0, 'L'); // Output the role
 
         $pdf->SetXY(30, 0);
@@ -173,17 +173,21 @@ if ($result->num_rows > 0) {
             <h3>Republic of the Philippines</h3>
             <h3>City of Caloocan</h3>
             <h2>BARANGAY 20, ZONE 2, DISTRICT II</h2>
-            <h1 style='margin-top:5px;'><u>Barangay Building Permit</u></h1>
+            <h1 style='margin-top:5px;'><u>Barangay Business Clearance</u></h1>
         </div>
 
         <p>TO WHOM IT MAY CONCERN:</p> 
 
-        <p><span class='indent'>This to certify that Mrs/Mr: <b><i><u>" . $row['name'] . 
-        "</u></i></b> a resident at <b><i><u>" . $row['address'] . "</u></i></b> 
-        provided that the General Orders and ordinances of the Barangay are strictly obeyed and adhered.
-       </p>  <p>This certification 
-        is issued upon request of  <b><i><u>" . $row['name'] . "</u></i></b> that he/she 
-        can start to operate the <b><i><u>" . $row['purpose'] . "</u></i></b></p>
+        <p><span class='indent'>This to certify that Mrs/Mr: <b><i><u>" . $row['owner_name']
+        . "
+        </u></i></b> a resident at <b><i><u>" . $row['address'] . "</u></i></b> 
+          Granted to operate business, practice of profession and privileges who have 
+          completed with the existing Barangay ordinance, rules and regulation whose
+          nature of business is <b><i><u>" . $row['business_name'] . "
+          </u></i></b>   </p>  <p>This certification is issued 
+          upon request of  <b><i><u>" . $row['owner_name']
+          . "</u></i></b> that he/she can 
+          avail free services and for his/her  <b><i><u>" . $row['purpose'] . "</u></i></b></p>
         <p>Done in the City of Caloocan, Metro Manila this  <b><i><u>" . $formattedDate . "</u><i></b> </p>
 
         <div></div>
