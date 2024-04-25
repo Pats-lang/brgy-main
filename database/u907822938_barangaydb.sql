@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2024 at 05:54 PM
+-- Generation Time: Apr 25, 2024 at 03:56 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -95,7 +95,15 @@ INSERT INTO `change_logs` (`id`, `admin`, `operation`, `description`, `timestamp
 (48, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-24 01:29:57'),
 (49, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-24 11:13:08'),
 (50, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-24 11:57:07'),
-(51, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-24 12:16:47');
+(51, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-24 12:16:47'),
+(52, 'rona', 'retrived', ' Resident: <b>GARRISON, FLEUR ODESSA CABRERA</b> has been Rejected at <b> Resident List .</b>', '2024-04-24 20:06:06'),
+(53, 'rona', 'retrived', ' Resident: <b>GARRISON, FLEUR ODESSA CABRERA</b> has been Retrived at <b> Resident List .</b>', '2024-04-24 20:06:37'),
+(54, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-24 22:40:47'),
+(55, 'rona', 'add', 'Resident Member: <b>2024302</b> have been registered at  <b>Resident Members.</b>', '2024-04-24 22:43:01'),
+(56, 'rona', 'accepted', ' Resident: <b>STEPHENSON, JACOB TATUM JACOBSON</b> has been Accepted at <b> Resident at List.</b>', '2024-04-24 22:43:59'),
+(57, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-24 23:05:33'),
+(58, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-24 23:11:29'),
+(59, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-24 23:19:11');
 
 -- --------------------------------------------------------
 
@@ -161,32 +169,7 @@ CREATE TABLE `inquire` (
 --
 
 INSERT INTO `inquire` (`id`, `i_name`, `i_email`, `i_message`, `r_message`, `i_status`) VALUES
-(5, 'Margie Del Cstillo', 'patriciapascual031@gmail.com', 'can i have a custom event with my self place ?', 'namo', 1),
-(9, 'Paula Jean ', 'paulajeanpascual@gmail.com', 'good day, are you offering a personalize event like the place of the event is will be from us ?', 'Yes, Ma\'am Paula but we need to talk about it. If you want to, we can call you via messenger or via viber so we can talk about it more.', 1),
-(12, 'Joan Hazel Agpuldo', 'jhagpuldo.cbpa@gmail.com', 'hi ', 'hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 1),
-(13, 'Arabella Belardo', 'belardoarabella05@gmail.com', 'hi po', 'hello pohello pohello pohello pohello pohello pohello pohello pohello pohello pohello po', 1),
-(14, 'Paolo Rafael Tampico', 'paolorafaeltampico@gmail.com', 'Can you manage to organize an event for my 21st Birthday? ', 'Yes Sir Paolo! We are more than happy to organazie an event for you 21st Birthday!S', 1),
-(15, 'Cathy', 'Ispongklong.031@gmail.com', 'kajfahdjkad', 'ahjkdhjahdad', 1),
-(16, 'Cathy Llena ', 'cathy.llena@ucc-caloocan.edu.ph', 'can i request a special theme', 'yes we can offer that', 1),
-(17, 'topeq', 'ispongklong.031@gmail.com', 'panget si tope?', 'oo panget sya ', 1),
-(18, 'jhezryll roxas', 'jhezryll69@gmail.com', 'pogi mo jhez', 'oo nga pogi mo talaga', 1),
-(19, 'jhezryll roxas', 'ispongklong.031@gmail.com', 'HAJHDSADHAHDSJADJAHDAJHD', 'HAJHDSADHAHDSJADJAHDAJHDHAJHDSADHAHDSJADJAHDAJHDHAJHDSADHAHDSJADJAHDAJHDHAJHDSADHAHDSJADJAHDAJHDHAJHDSADHAHDSJADJAHDAJHDHAJHDSADHAHDSJADJAHDAJHDHAJHDSADHAHDSJADJAHDAJHD', 1),
-(20, 'percy ', 'ispongklong.031@gmail.com', 'ahdsahdad\r\n', 'bakiittt', 1),
-(21, 'sadaadad', 'ispongklong.031@gmail.com', 'asdadsadsadsd', '', 0),
-(22, 'jhezryll roxas', 'ispongklong.031@gmail.com', 'sadadsada', '', 0),
-(23, 'jhezryll roxas', 'ispongklong.031@gmail.com', 'asdad', '', 0),
-(24, 'jhezryll roxas', 'ispongklong.031@gmail.com', 'asdad', '', 0),
-(25, 'jhezryll roxas', 'ispongklong.031@gmail.com', 'jtr', '', 0),
-(26, 'Cyrus  Cruza Cantero', 'ccantero27@yahoo.com', 'asdsad', 'asdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsadasdsad', 1),
-(27, 'John Loyd', 'asd@asdas', 'd', '', 0),
-(28, 'test', 'asda@asdas', 'testtest', '', 0),
-(29, 'asd', 'asd@test', 'asd', '', 0),
-(30, 'johnloydconag', 'patriciapascual031@gmail.com', 'awwwww', '', 0),
-(31, 'Paolo Rafael Salazar Tampico', 'paolorafaeltampico@gmail.com', 'Hello', 'Hi', 1),
-(32, 'barangay20', 'barangay020@gmail.com', 'sample format', 'testing', 1),
-(33, 'Layka', 'Martinezlaicamae17@gmail.com', 'bhjbjhuhgu', 'hello', 1),
-(34, 'ronaaaaaaaaa', 'rsales059@gmail.com', 'hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 'helooooooooooooooo', 1),
-(35, 'fdfsf', 'rsales059@gmail.com', 'dsadadsdadad', 'dsfsfsfsfsfsfsfsfsf', 1);
+(1, 'Ronalaine Villaluna', 'rsales059@gmail.com', 'how to register in barangay 20?', '', 0);
 
 -- --------------------------------------------------------
 
@@ -225,9 +208,10 @@ CREATE TABLE `members` (
 --
 
 INSERT INTO `members` (`member_id`, `year`, `member_count`, `campus_id`, `fullname`, `lastname`, `firstname`, `middlename`, `surfix`, `precinct`, `birth_date`, `address`, `civil_status`, `religion`, `email_address`, `cellphone_no`, `picture`, `signature`, `time_registered`, `status`, `cid`, `idfront`, `idback`) VALUES
-(2024101, 2024, 1, '01', 'Garrison, Fleur Odessa Cabrera', 'Garrison', 'Fleur', 'Odessa Cabrera', 'Veniam quaerat ad a', '9876-G', '1982-08-14', 'Quisquam id eaque q', 'Married', 'Iglesia ni Cristo', 'cofyp@mailinator.com', '09645645467', 'avatar1.png', '', '2024-04-22 03:34:03', 0, 1, '', ''),
+(2024101, 2024, 1, '01', 'Garrison, Fleur Odessa Cabrera', 'Garrison', 'Fleur', 'Odessa Cabrera', 'Veniam quaerat ad a', '9876-G', '1982-08-14', 'Quisquam id eaque q', 'Married', 'Iglesia ni Cristo', 'cofyp@mailinator.com', '09645645467', 'avatar1.png', '', '2024-04-22 03:34:03', 1, 1, 'id_card_2024101.jpg', 'id_back_2024101.jpg'),
 (2024102, 2024, 1, '02', 'Hanson, Trevor Maya Roman', 'Hanson', 'Trevor', 'Maya Roman', 'jr.', '4567-A', '2014-09-02', '603Exercitation volupta', 'Single', 'Roman Catholic', 'rsales059@gmail.com', '09656454353', 'avatar2.png', '', '2024-04-22 03:24:55', 0, 1, '', ''),
-(2024202, 2024, 2, '02', 'Lopez, Anna Santos', 'Lopez', 'Anna', 'Santos', '', '1234-A', '2000-11-11', '21 3rd Street Avenue', 'Single', 'Roman Catholic', 'mrcodg13@gmail.com', '09155689713', 'avatar9.png', '', '2024-04-23 06:37:04', 1, 1, 'id_card_2024202.jpg', 'id_back_2024202.jpg');
+(2024202, 2024, 2, '02', 'Lopez, Anna Santos', 'Lopez', 'Anna', 'Santos', '', '1234-A', '2000-11-11', '21 3rd Street Avenue', 'Single', 'Roman Catholic', 'mrcodg13@gmail.com', '09155689713', 'avatar9.png', '', '2024-04-23 06:37:04', 1, 1, 'id_card_2024202.jpg', 'id_back_2024202.jpg'),
+(2024302, 2024, 3, '02', 'Stephenson, Jacob Tatum Jacobson', 'Stephenson', 'Jacob', 'Tatum Jacobson', 'Perspiciatis autem', '1234-A', '1984-07-29', 'Non tempor eos quibu', 'Widow/er', 'Roman Catholic', 'rsales059@gmail.com', '09636616469', 'avatar3.png', '', '2024-04-24 22:43:01', 1, 1, '', '');
 
 -- --------------------------------------------------------
 
@@ -250,7 +234,8 @@ INSERT INTO `member_account` (`id`, `member_id`, `username`, `password`) VALUES
 (27, 2024102, 'user', '$2y$10$TTh1Bi8X/tqKOGH2hA.Df.vfrZw/40hiZEMNvsH1bsuVYuw9zEEK6'),
 (28, 2024102, 'ronalaine', '$2y$10$SPTYV1CJJAxnhfMOTsERXuVfXois0F/NQWebRTXevxa5uiaGjU0i6'),
 (29, 2024101, 'quvemohupa', '$2y$10$PAMXBQrgFNOndsJpABSWbu/OTfWYlU8po.9cfUaPF0FiQct1I6Efi'),
-(30, 2024202, 'test', '$2y$10$nO5Rno3/wqSLWY9nvX7zFuyUKflQRC6EsY0dHUzpO6Fw8vU1.8hI6');
+(30, 2024202, 'test', '$2y$10$nO5Rno3/wqSLWY9nvX7zFuyUKflQRC6EsY0dHUzpO6Fw8vU1.8hI6'),
+(31, 2024302, 'rona', '$2y$10$svL51ktv.5A6.8l4Nn.FC.paoI0PB6tcQNuOv3VdEIdndSTXYMwPG');
 
 -- --------------------------------------------------------
 
@@ -270,7 +255,8 @@ CREATE TABLE `member_address` (
 --
 
 INSERT INTO `member_address` (`id`, `member_id`, `residency`, `yrs_res`) VALUES
-(21, 2024202, 'Permanent Resident', '17');
+(21, 2024202, 'Permanent Resident', '17'),
+(22, 2024302, 'Tenant', '58');
 
 -- --------------------------------------------------------
 
@@ -293,7 +279,8 @@ INSERT INTO `member_emergency` (`id`, `member_id`, `contact_name`, `contact_no`)
 (30, 2024102, 'Gabriel Stone', '09655564534'),
 (31, 2024102, 'Kamal Payne', '09546545333'),
 (32, 2024101, 'Neve Houston', '09765654543'),
-(33, 2024202, 'Jane Lopez', '09155689713');
+(33, 2024202, 'Jane Lopez', '09155689713'),
+(34, 2024302, 'Alan Logan', '09636616469');
 
 -- --------------------------------------------------------
 
@@ -316,7 +303,8 @@ INSERT INTO `member_proof` (`id`, `member_id`, `valid_id`, `proof_residency`) VA
 (74, 2024102, '../assets/images/proof-pictures/id1.jpg', '../assets/images/proof-pictures/doc3.png'),
 (75, 2024102, '../assets/images/proof-pictures/id2.jpg', '../assets/images/proof-pictures/doc3.png'),
 (76, 2024101, '../assets/images/proof-pictures/id4.png', '../assets/images/proof-pictures/doc1.jpg'),
-(77, 2024202, '../assets/images/proof-pictures/id1.jpg', '../assets/images/proof-pictures/doc1.jpg');
+(77, 2024202, '../assets/images/proof-pictures/id1.jpg', '../assets/images/proof-pictures/doc1.jpg'),
+(78, 2024302, '../assets/images/proof-pictures/id2.jpg', '../assets/images/proof-pictures/doc3.png');
 
 -- --------------------------------------------------------
 
@@ -536,7 +524,7 @@ CREATE TABLE `request_brgycor` (
 --
 
 INSERT INTO `request_brgycor` (`id`, `account_id`, `transaction_id`, `name`, `address`, `year_recidency`, `contact_no`, `purpose`, `request`, `status`, `email`) VALUES
-(1, 1, '1234', 'asdasd', 'asdasd', 0, 1231323123, 'aasdasd', '', 0, '');
+(1, 1, '1234', 'asdasd', 'asdasd', 0, 1231323123, 'aasdasd', '', 2, '');
 
 -- --------------------------------------------------------
 
@@ -829,7 +817,7 @@ ALTER TABLE `announcement`
 -- AUTO_INCREMENT for table `change_logs`
 --
 ALTER TABLE `change_logs`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -847,31 +835,31 @@ ALTER TABLE `history`
 -- AUTO_INCREMENT for table `inquire`
 --
 ALTER TABLE `inquire`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `member_account`
 --
 ALTER TABLE `member_account`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `member_address`
 --
 ALTER TABLE `member_address`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `member_emergency`
 --
 ALTER TABLE `member_emergency`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `member_proof`
 --
 ALTER TABLE `member_proof`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `officials`
