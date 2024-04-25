@@ -953,8 +953,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                         <table class="table table-bordered mt-3" id="progress-table" style="display: none;">
                             <thead>
                                 <tr>
-                                    <th>Account ID</th>
-                                    <th>Name</th>
+                                    <th>Member ID</th>
                                     <th>Request</th>
                                     <th>Status</th>
                                 </tr>
@@ -1095,20 +1094,13 @@ while ($row = mysqli_fetch_assoc($result)) {
                         // Append cells with input fields
                         newRow.append($('<td>').append($('<input>', {
                             type: 'text',
-                            value: response_editAnnouncement.account_id,
-                            id: 'account_id',
+                            value: response_editAnnouncement.member_id,
+                            id: 'member_id',
                             disabled: true, // Add disabled attribute
                             style: 'border: none;' // Apply inline CSS to remove the border
 
                         })));
-                        newRow.append($('<td>').append($('<input>', {
-                            type: 'text',
-                            value: response_editAnnouncement.name,
-                            id: 'name',
-                            disabled: true, // Add disabled attribute
-                            style: 'border: none;' // Apply inline CSS to remove the border
-
-                        })));
+           
                         newRow.append($('<td>').append($('<input>', {
                             type: 'text',
                             value: response_editAnnouncement.request,
