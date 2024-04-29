@@ -324,6 +324,16 @@ body {
                                                 ?>
                                                 </select>
                                             </div>
+                                            <div class="col-md-4">
+                                                <label class="small mb-1" for="username">username</label>
+                                                <input class="form-control" id="username" name="username"
+                                                    type="text" value="<?php echo $row['username']; ?>">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="small mb-1" for="password">Password</label>
+                                                <input class="form-control" id="password" name="password"
+                                                    type="text" value="<?php echo $row['password']; ?>">
+                                            </div>
                                         </div>
 
                                         <hr>
