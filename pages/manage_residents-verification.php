@@ -260,16 +260,17 @@ include '../server/admin_login-verification.php';
                             </div>
 
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-4">
                                     <label for="member_address" class="form-label">Address</label>
                                     <input type="text" class="form-control" id="member_address" name="member_address"
                                         placeholder="Address" required readonly>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-4">
                                     <label for="member_emailAddress" class="form-label">Email Address</label>
                                     <input type="email" class="form-control" id="member_emailAddress"
                                         name="member_emailAddress" placeholder="Email Address" required readonly>
                                 </div>
+
                             </div>
 
                             <div class="row">
@@ -305,20 +306,30 @@ include '../server/admin_login-verification.php';
                                         <option value="2">REJECTED</option>
                                     </select>
                                 </div>
+
                                 <div class="col-4 d-flex align-items-end">
                                     <!-- Button for Show More -->
                                     <button type="button" class="btn btn-success w-100" id="showMoreBtn">Show
                                         More</button>
                                 </div>
-                                <div class="additional-info" style="display: none;">
+                                <div class="additional-info mt-3 mb-3" style="display: none;">
                                     <div class="row">
                                         <div class="col-6">
-                                            <label for="idpicture">ID Picture</label>
-                                            <input type="file" id="Editmember_idpicture_input"
-                                                name="Editmember_idpicture_input" accept="image/*"
-                                                style="display: none;">
-                                            <img src="" style="width: 100%; margin-top: 10px;" id="Editmember_idpicture"
-                                                class=" border border-dark img-fluid" alt="Editmember ID Picture">
+                                            <label for="member_idpicture" class="form-label">Valid ID Picture</label>
+                                            <div class="ratio ratio-4x3">
+                                                <img src="" style="object-fit: cover; width: 100%; height: 100%;"
+                                                    id="member_idpicture" class="border border-dark img-fluid"
+                                                    alt="Valid ID Picture">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <label for="member_proof_picture" class="form-label">Proof Picture</label>
+                                            <div class="ratio ratio-4x3">
+                                                <img src="" style="object-fit: cover; width: 100%; height: 100%;"
+                                                    id="member_proof_picture" class="border border-dark img-fluid"
+                                                    alt="Proof Picture">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -431,7 +442,7 @@ include '../server/admin_login-verification.php';
                                         <option value="2">REJECTED</option>
                                     </select>
                                 </div>
-                                    <!-- Button for Show More -->
+                                <!-- Button for Show More -->
 
                                 <!-- <div class="col-4 d-flex align-items-end">
                                     <button type="button" class="btn btn-success w-100" id="editshowMoreBtn">Show
@@ -449,8 +460,8 @@ include '../server/admin_login-verification.php';
                                         </div>
                                     </div>
                                 </div> -->
-                                
-                                
+
+
                             </div>
 
                         </div>
@@ -543,6 +554,7 @@ include '../server/admin_login-verification.php';
             responsive: true
         });
     });
+
     //View member 
     $(document).on('click', 'button[data-role=viewMember]', function() {
         $.ajax({
@@ -565,6 +577,10 @@ include '../server/admin_login-verification.php';
                 $('#stats').val(response_viewMember.status);
                 $('#member_picture').attr('src', '../assets/images/member_pictures/' +
                     response_viewMember.picture);
+                $('#member_idpicture').attr('src', '../proof-pictures/' +
+                    response_viewMember.valid_id);
+                $('#member_proof_picture').attr('src', '../proof-pictures/' +
+                    response_viewMember.proof_residency);
 
             }
         })
@@ -592,7 +608,8 @@ include '../server/admin_login-verification.php';
                 $('#Editmember_civilStatus').val(response_Editmember.civil_status);
                 $('#Editmember_picture').attr('src', '../assets/images/member_pictures/' +
                     response_Editmember.picture);
-                $('#Editmember_idpicture').attr('src', '../assets/images/proof-pictures/' + response_Editmember.valid_id);
+                $('#Editmember_idpicture').attr('src', '../assets/images/proof-pictures/' +
+                    response_Editmember.valid_id);
 
                 $('#stats').val(response_Editmember.status);
             }

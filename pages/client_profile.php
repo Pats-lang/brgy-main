@@ -129,7 +129,7 @@ body {
             <section>
 
                 <div class="container-xl px-4 mt-4">
-                    <form id="editprofileform" >
+                    <form id="editprofileform">
                         <?php
                                         // Fetch member data based on the logged-in user
                                         $sql = "SELECT *
@@ -143,10 +143,10 @@ body {
                                         if ($result && mysqli_num_rows($result) > 0) {
                                             $row = mysqli_fetch_assoc($result);
                                         }?>
-                                    <!----members-->
+                        <!----members-->
                         <div class="row">
                             <div class="col-xl-4">
-                                      
+
                                 <div class="card mb-4 mb-xl-0">
                                     <div class="card-header">Profile Picture</div>
 
@@ -157,9 +157,10 @@ body {
                                         <h3><?php echo $row['fullname']; ?></h3>
                                         <div class="small text-muted mb-4">MEMBER ID:<?php echo $row['member_id']; ?>
                                         </div>
-                                        <button class="btn btn-primary" id="uploadButton" type="button">UPLOAD
-                                            IMAGE</button>
-                                        <input type="file" id="fileInput" name="changeprofilepic" style="display: none;">
+                                        <button class="btn btn-primary" id="uploadButton" type="button">Change
+                                            Photo</button>
+                                        <input type="file" id="fileInput" name="changeprofilepic"
+                                            style="display: none;">
                                     </div>
                                 </div>
                             </div>
@@ -171,10 +172,10 @@ body {
 
 
 
-                                    <div class="col-md-3">
-                                                <input class="form-control" id="editmember_id" name="editmember_id"
-                                                 value="<?php echo $row['member_id']; ?>" hidden>
-                                            </div>
+                                        <div class="col-md-3">
+                                            <input class="form-control" id="editmember_id" name="editmember_id"
+                                                value="<?php echo $row['member_id']; ?>" hidden>
+                                        </div>
 
 
                                         <div class="row gx-3 mb-3">
@@ -214,8 +215,7 @@ body {
                                             <div class="col-md-2">
                                                 <label class="small mb-1" for="surfix">Surfix</label>
                                                 <input class="form-control" id="surfix" name="surfix" type="text"
-                                                    placeholder=""
-                                                    value="<?php echo $row['surfix']; ?>">
+                                                    placeholder="" value="<?php echo $row['surfix']; ?>">
                                             </div>
 
                                         </div>
@@ -262,8 +262,8 @@ body {
 
                                         <div class="mb-4">
                                             <label class="small mb-1" for="inputAddress">Address</label>
-                                            <input class="form-control" id="inputAddress" name="inputAddress" type="text"
-                                                value="<?php echo $row['address']; ?>">
+                                            <input class="form-control" id="inputAddress" name="inputAddress"
+                                                type="text" value="<?php echo $row['address']; ?>">
                                         </div>
 
                                         <div class="row gx-3 mb-3">
@@ -287,7 +287,7 @@ body {
                                                         Others</option>
                                                 </select>
                                             </div>
-                                                 
+
                                             <div class="col-md-4">
                                                 <label class="small mb-1" for="cellphone_no">Contact Number</label>
                                                 <input class="form-control" id="cellphone_no" name="cellphone_no"
@@ -297,7 +297,7 @@ body {
                                             <div class="col-md-4">
                                                 <label class="small mb-1" for="residency">Residency</label>
                                                 <select class="custom-select form-control" style="height: 40px"
-                                                    id="residency" name="residency" >
+                                                    id="residency" name="residency">
                                                     <option disabled selected>Select Residency</option>
                                                     <option value="Permanent Resident"
                                                         <?php if ($row['residency'] === 'Permanent Resident') echo 'selected'; ?>>
@@ -312,8 +312,7 @@ body {
                                         <div class="row gx-3 mb-3">
                                             <div class="col-md-4">
                                                 <label class="small mb-1" for="yrs_res">Year of Residency</label>
-                                                <select class="custom-select form-control" id="yrs_res"
-                                                    name="yrs_res" >
+                                                <select class="custom-select form-control" id="yrs_res" name="yrs_res">
                                                     <option value="">Select Years Of Residency</option>
                                                     <?php
                                                 for ($i = 1; $i <= 100; $i++) {
@@ -326,13 +325,13 @@ body {
                                             </div>
                                             <div class="col-md-4">
                                                 <label class="small mb-1" for="username">username</label>
-                                                <input class="form-control" id="username" name="username"
-                                                    type="text" value="<?php echo $row['username']; ?>">
+                                                <input class="form-control" id="username" name="username" type="text"
+                                                    value="<?php echo $row['username']; ?>">
                                             </div>
                                             <div class="col-md-4">
                                                 <label class="small mb-1" for="password">Password</label>
-                                                <input class="form-control" id="password" name="password"
-                                                    type="text" value="<?php echo $row['password']; ?>">
+                                                <input class="form-control" id="password" name="password" type="text"
+                                                    value="<?php echo $row['password']; ?>">
                                             </div>
                                         </div>
 
@@ -352,8 +351,8 @@ body {
 
                                             <div class="col-md-6">
                                                 <label class="small mb-1" for="contact_no">Number</label>
-                                                <input class="form-control" id="contact_no" type="contact_no" name="contact_no"
-                                                    value="<?php echo $row['contact_no']; ?>">
+                                                <input class="form-control" id="contact_no" type="contact_no"
+                                                    name="contact_no" value="<?php echo $row['contact_no']; ?>">
                                             </div>
 
 
@@ -382,17 +381,17 @@ body {
 
 </body>
 <script>
-     // JavaScript
-     document.getElementById('uploadButton').addEventListener('click', function() {
-        document.getElementById('fileInput').click();
-    });
+// JavaScript
+document.getElementById('uploadButton').addEventListener('click', function() {
+    document.getElementById('fileInput').click();
+});
 
-    // Optional: If you want to perform some action after file selection
-    document.getElementById('fileInput').addEventListener('change', function(event) {
-        var file = event.target.files[0];
-        // Do something with the selected file
-    });
-    const pictureFileInput = $("#fileInput");
+// Optional: If you want to perform some action after file selection
+document.getElementById('fileInput').addEventListener('change', function(event) {
+    var file = event.target.files[0];
+    // Do something with the selected file
+});
+const pictureFileInput = $("#fileInput");
 
 
 const picturePreview = $("#profilepicture");
@@ -421,6 +420,8 @@ pictureFileInput.on("change", function() {
 
 $('#editprofileform').on('submit', function(e) {
     e.preventDefault();
+    // Perform form validation
+    var isValid = $('#editprofileform').valid();
     if ($('#editprofileform').valid()) {
         Swal.fire({
             title: 'Do you want to save the changes?',
@@ -497,6 +498,153 @@ $('#editprofileform').on('submit', function(e) {
     }
 
 })
+
+
+jQuery.validator.addMethod("alphabeticWithSpaceAndDot", function(value, element) {
+        return this.optional(element) || /^[a-zA-Z\s.,]*$/.test(value);
+    }, "Please enter alphabetic characters only.");
+    // Form validation
+    var validate_form = $('#editprofileform').validate({
+        rules: {
+            precinct: {
+                required: true,
+                maxlength: 6,
+                minlength: 6,
+            },
+            
+
+            lastname: {
+                required: true,
+                alphabeticWithSpaceAndDot: true,
+                minlength: 3,
+            },
+
+            firstname: {
+                required: true,
+                alphabeticWithSpaceAndDot: true,
+                minlength: 3,
+            },
+
+            middlename: {
+                required: true,
+                alphabeticWithSpaceAndDot: true,
+                minlength: 3,
+            },
+            surfix: {
+                
+                alphabeticWithSpaceAndDot: true,
+                
+            },
+
+            inputAddress: {
+                required: true,
+                minlength: 15,
+            },
+
+            birth_date: {
+                required: true,
+            },
+            cellphone_no: {
+                required: true,
+                maxlength: 11,
+                minlength: 11,
+                pattern: /^09\d{9}$/,
+            },
+
+            civil_status: {
+                required: true,
+            },
+            religion: {
+                required: true,
+            },
+
+            campus_id: {
+                required: true,
+            },
+
+            residency: {
+                alphabeticWithSpaceAndDot: true,
+            },
+            yrs_res: {
+                required: true,
+            },
+  
+            contact_name: {
+                alphabeticWithSpaceAndDot: true,
+            },
+
+            contact_no: {
+                required: true,
+                maxlength: 11,
+                minlength: 11,
+                pattern: /^09\d{9}$/,
+            },
+            username: {
+                required: true,
+                pattern: /^[A-Za-z0-9!@#$%^&*()-_+=~`[\]{}|\\:;"'<>,.?/ ]+$/,
+            },
+            password: {
+                required: true,
+
+            },
+        },
+
+        messages: {
+            precinct: {
+                required: 'Please provide a Precinct No.!',
+                pattern: 'Use format: 0000-A'
+            },
+
+            inputAddress: {
+                required: 'Please provide a valid Address!',
+            },
+
+            birth_date: {
+                required: 'Member must be 18 years old and above!', //have additonal condition
+            },
+            cellphone_no: {
+                required: 'Please provide Contact Number!',
+                maxlength: 'Please provide 11 digits! ',
+                minlength: 'Please provide 11 digits! ',
+                pattern: 'Please provide a valid Contact Number! Ex.(09123456789)',
+            },
+            contact_no: {
+                required: 'Please provide Contact Number!',
+                maxlength: 'Please provide 11 digits! ',
+                minlength: 'Please provide 11 digits! ',
+                pattern: 'Please provide a valid Contact Number! Ex.(09123456789)',            
+            },
+            civil_status: {
+                required: 'Please select a Civil Status ',
+            },
+
+            religion: {
+                required: 'Select Religion is required!'
+            },
+            campus_id: {
+                required: 'Select Gender is required!'
+            },
+            username: {
+                required: 'Please provide username!'
+            },
+            password: {
+                required: 'Please provide password!'
+            },
+        },
+        errorElement: 'span',
+        errorPlacement: function(error, element) {
+            error.addClass('invalid-feedback');
+            error.insertAfter(element);
+        },
+        highlight: function(element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+            $(element).addClass('is-valid');
+        }
+
+    });
 </script>
 
 </html>
