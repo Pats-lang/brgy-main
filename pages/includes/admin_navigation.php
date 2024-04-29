@@ -13,8 +13,8 @@ $result = mysqli_query($connection, $sql);
 while ($row = mysqli_fetch_assoc($result)){
 ?>
 
- 
-<link rel="icon" href="../assets/images/logo/<?php echo $row['sLogo']; ?>"/>
+
+<link rel="icon" href="../assets/images/logo/<?php echo $row['sLogo']; ?>" />
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -37,7 +37,8 @@ while ($row = mysqli_fetch_assoc($result)){
             <div class="navbar-search-block">
                 <form class="form-inline">
                     <div class="input-group input-group-sm">
-                        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control form-control-navbar" type="search" placeholder="Search"
+                            aria-label="Search">
                         <div class="input-group-append">
                             <button class="btn btn-navbar" type="submit">
                                 <i class="fas fa-search"></i>
@@ -81,11 +82,11 @@ while ($row = mysqli_fetch_assoc($result)){
                         <span class="right badge badge-warning">!</span>
                     </a>
                 </li>
-                 <li class="nav-item">
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="fa-solid fa-tv nav-icon" style="color: #4285f4; font-size: 15px;"></i>
                         <p>
-                        Manage Client Page
+                            Manage Client Page
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -103,7 +104,7 @@ while ($row = mysqli_fetch_assoc($result)){
                             </a>
                         </li>
 
-                        
+
 
                         <li class="nav-item">
                             <a href="../pages/manage-client_projects.php" class="nav-link">
@@ -120,12 +121,13 @@ while ($row = mysqli_fetch_assoc($result)){
 
                         <li class="nav-item">
                             <a href="../pages/manage-client_inquiries.php" class="nav-link">
-                                <i class="fa-solid fa-circle-question nav-icon" style="color: #4285f4; font-size: 15px;"></i>
+                                <i class="fa-solid fa-circle-question nav-icon"
+                                    style="color: #4285f4; font-size: 15px;"></i>
                                 <p>Inquiries</p>
                             </a>
                         </li>
                     </ul>
-                </li> 
+                </li>
                 <li class="nav-header">Resident Registration</li>
                 <li class="nav-item">
                     <a href="register_resident.php" class="nav-link">
@@ -134,77 +136,75 @@ while ($row = mysqli_fetch_assoc($result)){
                     </a>
                 </li>
 
-                <li class="nav-header">
-                    Residents</li>
+                <li class="nav-header">Residents</li>
                 <li class="nav-item">
                     <a href="manage_residents-verification.php" class="nav-link">
-                      
+
                         <i class="fas nav-icon fa-user-check " style="color: #4285f4; font-size: 15px;"></i>
                         <p>Residents Verification</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="manage_residents-list.php" class="nav-link">
-                    <i class="fas  nav-icon fa-list" style="color: #4285f4; font-size: 15px;"></i>
+                        <i class="fas  nav-icon fa-list" style="color: #4285f4; font-size: 15px;"></i>
                         <p>Residents List</p>
                     </a>
                 </li>
 
                 <li class="nav-header">Request</li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="fa-regular fa-folder-open" style="color: #4285f4; font-size: 15px;"></i>
-                        <p>
-                        Documents
+                    <a href="" class="nav-link">
+                        <i class="fa-regular fa-folder-open" style="color: #4285f4; font-size: 15px;"></i>
+                        <p>Documents
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                    <a href="manage_brgy_rqst_busclearance.php" class="nav-link">
-                    <i class="fas fa-file-alt" style="color: #4285f4; font-size: 15px;"></i>
-                        <p style="font-size: 13px;">Barangay Business Clearance  </p>
-                    </a>
-                </li>
-               
-                <li class="nav-item">
-                    <a href="manage_brgy_rqst_clrs.php" class="nav-link">
-                    <i class="fas fa-file-alt" style="color: #4285f4; font-size: 15px;"></i>
-                        <p>Barangay Clearance</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="manage_brgy_rqst_bp.php" class="nav-link">
-                    <i class="fas fa-file-alt" style="color: #4285f4; font-size: 15px;"></i>
-                        <p>Barangay Building Permit</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="manage_brgy_rqst_cert.php" class="nav-link">
-                    <i class="fas fa-file-alt" style="color: #4285f4; font-size: 15px;"></i>
-                        <p>Barangay Certificate</p>
-                    </a>
-                </li>
-                
-                
+                        <li class="nav-item">
+                            <a href="manage_brgy_rqst_busclearance.php" class="nav-link">
+                                <i class="fas fa-file-alt" style="color: #4285f4; font-size: 15px;"></i>
+                                <p style="font-size: 13px;">Barangay Business Clearance </p>
+                            </a>
+                        </li>
 
-                <li class="nav-item">
-                    <a href="manage_brgy_rqst_coi.php" class="nav-link">
-                    <i class="fas fa-file-alt" style="color: #4285f4; font-size: 15px;"></i>
-                        <p>Barangay Indigency</p>
-                    </a>
-                </li>
-             
-             
+                        <li class="nav-item">
+                            <a href="manage_brgy_rqst_clrs.php" class="nav-link">
+                                <i class="fas fa-file-alt" style="color: #4285f4; font-size: 15px;"></i>
+                                <p>Barangay Clearance</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="manage_brgy_rqst_bp.php" class="nav-link">
+                                <i class="fas fa-file-alt" style="color: #4285f4; font-size: 15px;"></i>
+                                <p>Barangay Building Permit</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="manage_brgy_rqst_cert.php" class="nav-link">
+                                <i class="fas fa-file-alt" style="color: #4285f4; font-size: 15px;"></i>
+                                <p>Barangay Certificate</p>
+                            </a>
+                        </li>
+
+
+
+                        <li class="nav-item">
+                            <a href="manage_brgy_rqst_coi.php" class="nav-link">
+                                <i class="fas fa-file-alt" style="color: #4285f4; font-size: 15px;"></i>
+                                <p>Barangay Indigency</p>
+                            </a>
+                        </li>
+
+
 
                     </ul>
-                </li> 
+                </li>
 
-                
 
-                
 
-               <li class="nav-header">Barangay ID </li>
+
+
+                <li class="nav-header">Barangay ID </li>
                 <li class="nav-item">
                     <a href="Idgenerator.php" class="nav-link">
                         <i class="fa-solid fa-id-card nav-icon" style="color: #4285f4; font-size: 15px;"></i>
@@ -236,32 +236,32 @@ while ($row = mysqli_fetch_assoc($result)){
                     <a href="#" class="nav-link">
                         <i class="fa-solid fas fa-archive nav-icon" style="color: #4285f4; font-size: 15px;"></i>
                         <p>
-                        Archive
-                            <i class="right fas fa-angle-left" ></i>
+                            Archive
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="../pages/rejected_members_archive.php" class="nav-link">
-                                <i class="fa-solid fa-user-minus nav-icon" style="color: #4285f4; font-size: 15px;"></i> 
+                                <i class="fa-solid fa-user-minus nav-icon" style="color: #4285f4; font-size: 15px;"></i>
                                 <p>Rejected Resident</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="../pages/remove_resident_archive.php" class="nav-link">
-                                <i class="fa-solid fa-user-minus nav-icon" style="color: #4285f4; font-size: 15px;"></i> 
+                                <i class="fa-solid fa-user-minus nav-icon" style="color: #4285f4; font-size: 15px;"></i>
                                 <p>Remove Resident </p>
                             </a>
                         </li>
                     </ul>
-                </li> 
+                </li>
                 <li class="nav-item">
                     <a href="change_logs.php" class="nav-link">
                         <i class="fa-solid fa-clipboard nav-icon" style="color: #4285f4; font-size: 15px;"></i>
                         <p>Change Logs</p>
                     </a>
                 </li>
-                
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -269,7 +269,8 @@ while ($row = mysqli_fetch_assoc($result)){
     <!-- /.sidebar -->
 
     <div class="sidebar-custom border-0">
-        <a href="#" class="btn btn-link dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown"><i class="fas fa-cogs"></i></a>
+        <a href="#" class="btn btn-link dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown"><i
+                class="fas fa-cogs"></i></a>
         <a href="#" class="btn btn-primary hide-on-collapse pos-right"><?php echo $db_adminFullName; ?></a>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
