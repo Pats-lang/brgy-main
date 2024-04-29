@@ -238,6 +238,14 @@ if (empty($userLogged)) {
             <a href="form_brgybp.php" class="btn read-more">Proceed</a>
         </div>
 
+        <div class="box" data-request="Services">
+            <img src="../assets/images/docu/6.jpg" alt="">
+            <h3>Services</h3>
+            <p class="custom-text-justify">A Barangay Building Permit is an official authorization issued by the Barangay (the smallest administrative division in the Philippines) 
+                that grants permission for construction or renovation activities within its jurisdiction.  </p>
+            <a href="services_client.php" class="btn read-more">Proceed</a>
+        </div>
+
 
     </div>
 
