@@ -82,7 +82,6 @@ if ($result && mysqli_num_rows($result) > 0) {
                                     <table id="manageClient_inquiriesTable" class="table responsive">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
                                                 <th>MEMBER ID</th>
                                                 <th>Transaction ID</th>
                                                 <th>Name</th>
@@ -101,9 +100,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                                             while ($row = mysqli_fetch_array($result)) {
                                             ?>
                                                 <tr id="<?php echo $row['id']; ?>">
-                                                    <td>
-                                                        <?php echo $row['id']; ?>
-                                                    </td>
+                                                    
 
                                                     <td>
                                                         <?php echo $row['member_id']; ?>

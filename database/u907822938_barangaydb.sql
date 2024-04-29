@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2024 at 01:51 AM
+-- Generation Time: Apr 29, 2024 at 02:33 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -103,7 +103,9 @@ INSERT INTO `change_logs` (`id`, `admin`, `operation`, `description`, `timestamp
 (56, 'rona', 'accepted', ' Resident: <b>STEPHENSON, JACOB TATUM JACOBSON</b> has been Accepted at <b> Resident at List.</b>', '2024-04-24 22:43:59'),
 (57, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-24 23:05:33'),
 (58, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-24 23:11:29'),
-(59, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-24 23:19:11');
+(59, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-24 23:19:11'),
+(60, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-25 05:27:33'),
+(61, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-29 10:41:48');
 
 -- --------------------------------------------------------
 
@@ -472,7 +474,7 @@ CREATE TABLE `request_brgyclrs` (
   `name` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
   `yrs_res` int(4) NOT NULL,
-  `contact_no` int(11) NOT NULL,
+  `contact_no` varchar(11) NOT NULL,
   `purpose` varchar(500) NOT NULL,
   `request` varchar(500) NOT NULL,
   `status` int(2) NOT NULL,
@@ -485,9 +487,11 @@ CREATE TABLE `request_brgyclrs` (
 --
 
 INSERT INTO `request_brgyclrs` (`id`, `member_id`, `transaction_id`, `name`, `address`, `yrs_res`, `contact_no`, `purpose`, `request`, `status`, `email`, `time`) VALUES
-(1, 1, '6789', 'exampleName', 'exampleAddress', 20, 123456, 'examplePurpose', 'exampleRequest\r\n', 2, '', '2024-04-18 15:33:33'),
-(73, 2024902, '2024-475414', 'Quinn Jimenez', 'Possimus rerum exer', 1983, 2147483647, '', 'Barangay Clearance', 2, 'dybimiz@mailinator.com', '2024-04-21 17:03:21'),
-(74, 2024902, '2024-175254', 'Quinn Jimenez', 'Possimus rerum exer', 1983, 2147483647, '134', 'Barangay Clearance', 0, 'dybimiz@mailinator.com', '2024-04-19 02:59:03');
+(1, 1, '6789', 'exampleName', 'exampleAddress', 20, '123456', 'examplePurpose', 'exampleRequest\r\n', 2, '', '2024-04-18 15:33:33'),
+(73, 2024902, '2024-475414', 'Quinn Jimenez', 'Possimus rerum exer', 1983, '2147483647', '', 'Barangay Clearance', 2, 'dybimiz@mailinator.com', '2024-04-21 17:03:21'),
+(74, 2024902, '2024-175254', 'Quinn Jimenez', 'Possimus rerum exer', 1983, '2147483647', '134', 'Barangay Clearance', 0, 'dybimiz@mailinator.com', '2024-04-19 02:59:03'),
+(75, 2024202, 'CLR-2024-617565', 'Lopez, Anna Santos', '21 3rd Street Avenue', 17, '2147483647', 'Katunayan', 'Barangay Clearance', 2, 'mrcodg13@gmail.com', '2024-04-25 05:33:58'),
+(76, 2024202, 'CLR-2024-480850', 'Lopez, Anna Santos', '21 3rd Street Avenue', 17, '09634578916', 'Proof', 'Barangay Clearance', 2, 'mrcodg13@gmail.com', '2024-04-25 05:37:35');
 
 -- --------------------------------------------------------
 
@@ -517,7 +521,9 @@ CREATE TABLE `request_brgycoi` (
 INSERT INTO `request_brgycoi` (`id`, `member_id`, `transaction_id`, `name`, `request`, `contact_no`, `address`, `purpose`, `yrs_res`, `status`, `email`, `time`) VALUES
 (1, 1, '123456', 'Layka', 'asdasda', '23123', 'dsada', 'sdasdasd', 31231, 0, 'sdasd', '2024-04-19 16:30:09'),
 (2, 2024902, 'COI-2024-230007', 'Quinn Jimenez', 'Barangay Indigency', '2147483647', 'Possimus rerum exer', 'Financial', 1983, 2, 'dybimiz@mailinator.com', '2024-04-21 17:05:03'),
-(22, 2024202, 'COI-2024-521376', 'Lopez, Anna Santos', 'Barangay Indigency', '09155689713', '21 3rd Street Avenue', 'gagana na ba ????', 17, 0, 'mrcodg13@gmail.com', '2024-04-23 13:39:28');
+(22, 2024202, 'COI-2024-521376', 'Lopez, Anna Santos', 'Barangay Indigency', '09155689713', '21 3rd Street Avenue', 'gagana na ba ????', 17, 0, 'mrcodg13@gmail.com', '2024-04-23 13:39:28'),
+(23, 2024202, 'COI-2024-579944', 'Lopez, Anna Santos', 'Barangay Indigency', '09634578916', '21 3rd Street Avenue', 'mm', 17, 1, 'mrcodg13@gmail.com', '2024-04-25 05:29:07'),
+(24, 2024202, 'COI-2024-122066', 'Lopez, Anna Santos', 'Barangay Indigency', '09155689713', '21 3rd Street Avenue', 'Financial', 17, 0, 'mrcodg13@gmail.com', '2024-04-29 12:30:49');
 
 -- --------------------------------------------------------
 
@@ -843,7 +849,7 @@ ALTER TABLE `announcement`
 -- AUTO_INCREMENT for table `change_logs`
 --
 ALTER TABLE `change_logs`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -927,13 +933,13 @@ ALTER TABLE `request_brgycert`
 -- AUTO_INCREMENT for table `request_brgyclrs`
 --
 ALTER TABLE `request_brgyclrs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `request_brgycoi`
 --
 ALTER TABLE `request_brgycoi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `request_brgycor`
