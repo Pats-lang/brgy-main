@@ -153,8 +153,9 @@ while ($row = mysqli_fetch_assoc($result)){
 
                 <li class="nav-header">Request</li>
                 <li class="nav-item">
+                   
                     <a href="" class="nav-link">
-                        <i class="fa-regular fa-folder-open" style="color: #4285f4; font-size: 15px;"></i>
+                        <i class="fa-regular fa-folder-open nav-icon" style="color: #4285f4; font-size: 15px;"></i>
                         <p>Documents
                             <i class="right fas fa-angle-left"></i>
                         </p>
