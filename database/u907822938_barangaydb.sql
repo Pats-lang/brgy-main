@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 29, 2024 at 02:33 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- Generation Time: Apr 29, 2024 at 10:20 PM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `admin` (
   `admin_password` varchar(100) NOT NULL,
   `admin_fullname` varchar(20) NOT NULL,
   `admin` varchar(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin`
@@ -57,7 +57,7 @@ CREATE TABLE `announcement` (
   `title` varchar(50) NOT NULL,
   `description` varchar(500) NOT NULL,
   `last_modified` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `announcement`
@@ -71,6 +71,27 @@ INSERT INTO `announcement` (`id`, `img`, `title`, `description`, `last_modified`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `barangay_inventory`
+--
+
+CREATE TABLE `barangay_inventory` (
+  `id` int(11) NOT NULL,
+  `picture` varchar(1000) NOT NULL,
+  `item_name` varchar(1000) NOT NULL,
+  `stocks` int(255) NOT NULL,
+  `time_added` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `barangay_inventory`
+--
+
+INSERT INTO `barangay_inventory` (`id`, `picture`, `item_name`, `stocks`, `time_added`) VALUES
+(1, '10001123_id.jpg', 'id picture', 0, '2024-04-29 20:05:26');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `change_logs`
 --
 
@@ -80,7 +101,7 @@ CREATE TABLE `change_logs` (
   `operation` varchar(20) NOT NULL,
   `description` varchar(200) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `change_logs`
@@ -105,7 +126,8 @@ INSERT INTO `change_logs` (`id`, `admin`, `operation`, `description`, `timestamp
 (58, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-24 23:11:29'),
 (59, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-24 23:19:11'),
 (60, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-25 05:27:33'),
-(61, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-29 10:41:48');
+(61, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-29 10:41:48'),
+(62, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-29 18:08:54');
 
 -- --------------------------------------------------------
 
@@ -118,7 +140,7 @@ CREATE TABLE `feedback` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `message` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `feedback`
@@ -141,7 +163,7 @@ CREATE TABLE `generatedpdf_id` (
   `id` int(50) NOT NULL,
   `generated_file` varchar(10000) NOT NULL,
   `admin` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `generatedpdf_id`
@@ -162,7 +184,7 @@ CREATE TABLE `history` (
   `img` varchar(1000) NOT NULL,
   `mission` varchar(1000) NOT NULL,
   `vission` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `history`
@@ -184,7 +206,7 @@ CREATE TABLE `inquire` (
   `i_message` varchar(1000) NOT NULL,
   `r_message` varchar(1000) NOT NULL,
   `i_status` int(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `inquire`
@@ -223,7 +245,7 @@ CREATE TABLE `members` (
   `cid` int(2) NOT NULL,
   `idfront` varchar(100) NOT NULL,
   `idback` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `members`
@@ -232,7 +254,7 @@ CREATE TABLE `members` (
 INSERT INTO `members` (`member_id`, `year`, `member_count`, `campus_id`, `fullname`, `lastname`, `firstname`, `middlename`, `surfix`, `precinct`, `birth_date`, `address`, `civil_status`, `religion`, `email_address`, `cellphone_no`, `picture`, `signature`, `time_registered`, `status`, `cid`, `idfront`, `idback`) VALUES
 (2024101, 2024, 1, '01', 'Garrison, Fleur Odessa Cabrera', 'Garrison', 'Fleur', 'Odessa Cabrera', 'Veniam quaerat ad a', '9876-G', '1982-08-14', 'Quisquam id eaque q', 'Married', 'Iglesia ni Cristo', 'cofyp@mailinator.com', '09645645467', 'avatar1.png', '', '2024-04-22 03:34:03', 1, 1, 'id_card_2024101.jpg', 'id_back_2024101.jpg'),
 (2024102, 2024, 1, '02', 'Hanson, Trevor Maya Roman', 'Hanson', 'Trevor', 'Maya Roman', 'jr.', '4567-A', '2014-09-02', '603Exercitation volupta', 'Single', 'Roman Catholic', 'rsales059@gmail.com', '09656454353', 'avatar2.png', '', '2024-04-22 03:24:55', 0, 1, '', ''),
-(2024202, 2024, 2, '02', 'Lopez, Anna Santos', 'Lopez', 'Anna', 'Santos', '', '1234-A', '2000-11-11', '21 3rd Street Avenue', 'Single', 'Roman Catholic', 'mrcodg13@gmail.com', '09155689713', 'avatar9.png', '', '2024-04-23 06:37:04', 1, 1, 'id_card_2024202.jpg', 'id_back_2024202.jpg'),
+(2024202, 2024, 2, 'male', 'De guzman, marco lopez', 'De guzman', 'marco', 'lopez', 'jr', '1234-A', '2000-11-11', '21 3rd Street Avenue', 'single', 'Roman Catholic', 'mrcodg13@gmail.com', '09155689713', 'MARCO.jpg', '', '2024-04-23 06:37:04', 1, 1, 'id_card_2024202.jpg', 'id_back_2024202.jpg'),
 (2024302, 2024, 3, '02', 'Stephenson, Jacob Tatum Jacobson', 'Stephenson', 'Jacob', 'Tatum Jacobson', 'Perspiciatis autem', '1234-A', '1984-07-29', 'Non tempor eos quibu', 'Widow/er', 'Roman Catholic', 'rsales059@gmail.com', '09636616469', 'avatar3.png', '', '2024-04-24 22:43:01', 1, 1, '', '');
 
 -- --------------------------------------------------------
@@ -246,7 +268,7 @@ CREATE TABLE `member_account` (
   `member_id` int(20) DEFAULT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `member_account`
@@ -256,7 +278,7 @@ INSERT INTO `member_account` (`id`, `member_id`, `username`, `password`) VALUES
 (27, 2024102, 'user', '$2y$10$TTh1Bi8X/tqKOGH2hA.Df.vfrZw/40hiZEMNvsH1bsuVYuw9zEEK6'),
 (28, 2024102, 'ronalaine', '$2y$10$SPTYV1CJJAxnhfMOTsERXuVfXois0F/NQWebRTXevxa5uiaGjU0i6'),
 (29, 2024101, 'quvemohupa', '$2y$10$PAMXBQrgFNOndsJpABSWbu/OTfWYlU8po.9cfUaPF0FiQct1I6Efi'),
-(30, 2024202, 'test', '$2y$10$nO5Rno3/wqSLWY9nvX7zFuyUKflQRC6EsY0dHUzpO6Fw8vU1.8hI6'),
+(30, 2024202, 'test', '$2y$10$nA3eTsfMtsaFu/f.FVAbred6Ikzf3UHrb1VdQf82ttgV8j8qaCZz.'),
 (31, 2024302, 'rona', '$2y$10$svL51ktv.5A6.8l4Nn.FC.paoI0PB6tcQNuOv3VdEIdndSTXYMwPG');
 
 -- --------------------------------------------------------
@@ -270,7 +292,7 @@ CREATE TABLE `member_address` (
   `member_id` int(20) DEFAULT NULL,
   `residency` varchar(50) NOT NULL,
   `yrs_res` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `member_address`
@@ -291,7 +313,7 @@ CREATE TABLE `member_emergency` (
   `member_id` int(20) DEFAULT NULL,
   `contact_name` varchar(50) NOT NULL,
   `contact_no` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `member_emergency`
@@ -301,7 +323,7 @@ INSERT INTO `member_emergency` (`id`, `member_id`, `contact_name`, `contact_no`)
 (30, 2024102, 'Gabriel Stone', '09655564534'),
 (31, 2024102, 'Kamal Payne', '09546545333'),
 (32, 2024101, 'Neve Houston', '09765654543'),
-(33, 2024202, 'Jane Lopez', '09155689713'),
+(33, 2024202, 'De guzman Lorna ', '09155689713'),
 (34, 2024302, 'Alan Logan', '09636616469');
 
 -- --------------------------------------------------------
@@ -315,7 +337,7 @@ CREATE TABLE `member_proof` (
   `member_id` int(20) DEFAULT NULL,
   `valid_id` varchar(50) NOT NULL,
   `proof_residency` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `member_proof`
@@ -340,7 +362,7 @@ CREATE TABLE `officials` (
   `img_officials` varchar(10000) NOT NULL,
   `position` varchar(200) NOT NULL,
   `direct_timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `officials`
@@ -371,7 +393,7 @@ CREATE TABLE `projects` (
   `title` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `last_modified` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `projects`
@@ -400,7 +422,7 @@ CREATE TABLE `request_assistant` (
   `id` int(11) NOT NULL,
   `status` int(2) NOT NULL,
   `email` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -422,7 +444,7 @@ CREATE TABLE `request_brgybp` (
   `status` int(2) NOT NULL,
   `email` varchar(100) NOT NULL,
   `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `request_brgybp`
@@ -451,7 +473,7 @@ CREATE TABLE `request_brgycert` (
   `status` int(2) NOT NULL,
   `email` varchar(100) NOT NULL,
   `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `request_brgycert`
@@ -480,7 +502,7 @@ CREATE TABLE `request_brgyclrs` (
   `status` int(2) NOT NULL,
   `email` varchar(100) NOT NULL,
   `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `request_brgyclrs`
@@ -512,7 +534,7 @@ CREATE TABLE `request_brgycoi` (
   `status` int(2) NOT NULL,
   `email` varchar(100) NOT NULL,
   `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `request_brgycoi`
@@ -543,7 +565,7 @@ CREATE TABLE `request_brgycor` (
   `request` varchar(50) NOT NULL,
   `status` int(2) NOT NULL,
   `email` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `request_brgycor`
@@ -574,7 +596,7 @@ CREATE TABLE `request_brgyid` (
   `emg_contact_no` varchar(20) NOT NULL,
   `status` int(2) NOT NULL,
   `email` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `request_brgyid`
@@ -607,7 +629,7 @@ CREATE TABLE `request_busclearance` (
   `address` varchar(500) NOT NULL,
   `request` varchar(100) NOT NULL,
   `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `request_busclearance`
@@ -636,7 +658,7 @@ CREATE TABLE `settings` (
   `sContact` varchar(100) NOT NULL,
   `sMain` varchar(10000) NOT NULL,
   `sNorth` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `settings`
@@ -672,7 +694,7 @@ CREATE TABLE `user_account` (
   `account_created` timestamp NOT NULL DEFAULT current_timestamp(),
   `status` int(11) NOT NULL,
   `profile` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user_account`
@@ -695,6 +717,12 @@ ALTER TABLE `admin`
 -- Indexes for table `announcement`
 --
 ALTER TABLE `announcement`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `barangay_inventory`
+--
+ALTER TABLE `barangay_inventory`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -846,10 +874,16 @@ ALTER TABLE `announcement`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `barangay_inventory`
+--
+ALTER TABLE `barangay_inventory`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `change_logs`
 --
 ALTER TABLE `change_logs`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `feedback`
