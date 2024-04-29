@@ -166,7 +166,7 @@ if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
                                     <div class="step" data-target="#personal_information">
                                         <button type="button" class="step-trigger" role="tab"
                                             aria-controls="personal_information" id="personal_information-trigger">
-                                            <span class="bs-stepper-circle" style="margin=10px">1</span>
+                                            <span class="bs-stepper-circle" style="margin: 10px">1</span>
                                             
                                             <span class="bs-stepper-label">Personal Information</span>
                                         </button>

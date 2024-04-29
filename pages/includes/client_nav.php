@@ -121,6 +121,13 @@ while ($row = mysqli_fetch_assoc($result)){
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="../pages/client_request_log.php" class="nav-link">
+                            <i class="fa-solid fa-history nav-icon"
+                                style="color: #4285f4; font-size: 15px;"></i>
+                            <p>Request Log</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="../pages/client_profile.php" class="nav-link">
                             <i class="fa-solid fa-user nav-icon" style="color: #4285f4; font-size: 15px;"></i>
                             <p>Profile</p>

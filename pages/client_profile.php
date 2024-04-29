@@ -33,7 +33,6 @@ if (empty($userLogged)) {
 
 <style>
 body {
-    margin-top: 20px;
     background-color: #ebeced;
     color: #000000;
 }
