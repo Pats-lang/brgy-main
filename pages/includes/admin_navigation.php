@@ -200,8 +200,14 @@ while ($row = mysqli_fetch_assoc($result)){
 
                     </ul>
                 </li>
+                <li class="nav-item">
+                            <a href="manage_brgy-inventory.php" class="nav-link">
+                                <i class="fa-solid fa-boxes-stacked nav-icon" style="color: #4285f4; font-size: 15px;"></i>
+                                <p>Inventory</p>
+                            </a>
+                        </li>
 
-
+               
 
 
 
