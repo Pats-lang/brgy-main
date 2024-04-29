@@ -28,7 +28,7 @@
 
 
     if ($preparedSql = $conn->prepare("INSERT INTO `request_brgyclrs` (`trackingNumber`,`name`, `address`, `yrs_res`, `contact_no`, `purpose`,`request`,`email`,`status`) VALUES (?,?,?,?,?,?,?,?,?)")) {
-        $preparedSql->bind_param("sssiissss",$transaction_id $name, $address, $yrs_res, $contact, $purpose, $request, $email, $status);
+        $preparedSql->bind_param("sssiissss", $transaction_id, $name, $address, $yrs_res, $contact, $purpose, $request, $email, $status);
         if ($preparedSql->execute()) {
             $response['status'] = true;
             $response['message'] = "Successfully";

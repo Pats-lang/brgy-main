@@ -143,9 +143,10 @@ body {
                                         if ($result && mysqli_num_rows($result) > 0) {
                                             $row = mysqli_fetch_assoc($result);
                                         }?>
+                                    <!----members-->
                         <div class="row">
                             <div class="col-xl-4">
-
+                                      
                                 <div class="card mb-4 mb-xl-0">
                                     <div class="card-header">Profile Picture</div>
 
@@ -156,8 +157,8 @@ body {
                                         <h3><?php echo $row['fullname']; ?></h3>
                                         <div class="small text-muted mb-4">MEMBER ID:<?php echo $row['member_id']; ?>
                                         </div>
-                                        <!-- <button class="btn btn-primary" id="uploadButton" type="button">UPLOAD
-                                            IMAGE</button> -->
+                                        <button class="btn btn-primary" id="uploadButton" type="button">UPLOAD
+                                            IMAGE</button>
                                         <input type="file" id="fileInput" name="changeprofilepic" style="display: none;">
                                     </div>
                                 </div>
@@ -286,17 +287,17 @@ body {
                                                         Others</option>
                                                 </select>
                                             </div>
-
+                                                 
                                             <div class="col-md-4">
                                                 <label class="small mb-1" for="cellphone_no">Contact Number</label>
                                                 <input class="form-control" id="cellphone_no" name="cellphone_no"
                                                     type="number" value="<?php echo $row['cellphone_no']; ?>">
                                             </div>
-
+                                            <!----member_address--->
                                             <div class="col-md-4">
                                                 <label class="small mb-1" for="residency">Residency</label>
                                                 <select class="custom-select form-control" style="height: 40px"
-                                                    id="residency" name="residency" readonly>
+                                                    id="residency" name="residency" >
                                                     <option disabled selected>Select Residency</option>
                                                     <option value="Permanent Resident"
                                                         <?php if ($row['residency'] === 'Permanent Resident') echo 'selected'; ?>>
@@ -312,7 +313,7 @@ body {
                                             <div class="col-md-4">
                                                 <label class="small mb-1" for="yrs_res">Year of Residency</label>
                                                 <select class="custom-select form-control" id="yrs_res"
-                                                    name="yrs_res" readonly>
+                                                    name="yrs_res" >
                                                     <option value="">Select Years Of Residency</option>
                                                     <?php
                                                 for ($i = 1; $i <= 100; $i++) {
@@ -326,6 +327,7 @@ body {
                                         </div>
 
                                         <hr>
+                                        <!--member_emergency-->
                                         <div>
                                             <h1 class="small muted">In Case of Emergency</h1>
                                         </div>
@@ -335,19 +337,19 @@ body {
                                             <div class="col-md-6">
                                                 <label class="small mb-1" for="contact_name">Name</label>
                                                 <input class="form-control" id="contact_name" name="contact_name"
-                                                    type="text" value="<?php echo $row['contact_name']; ?> "readonly>
+                                                    type="text" value="<?php echo $row['contact_name']; ?> ">
                                             </div>
 
                                             <div class="col-md-6">
                                                 <label class="small mb-1" for="contact_no">Number</label>
                                                 <input class="form-control" id="contact_no" type="contact_no" name="contact_no"
-                                                    value="<?php echo $row['contact_no']; ?>"readonly>
+                                                    value="<?php echo $row['contact_no']; ?>">
                                             </div>
 
 
                                         </div>
 
-                                        <!-- <button class="btn btn-primary" type="submit">Save</button> -->
+                                        <button class="btn btn-primary btn-block" type="submit">Save</button>
 
                     </form>
                 </div>
@@ -431,7 +433,7 @@ $('#editprofileform').on('submit', function(e) {
                             b.textContent = Swal.getTimerLeft()
                         }, 100)
                         $.ajax({
-                            url: "../server/edit_member.php",
+                            url: "../server/edit_client-profile.php",
                             type: "POST",
                             data: new FormData(this),
                             dataType: 'json',
