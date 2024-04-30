@@ -87,7 +87,7 @@ include '../../server/client_server/conn.php';
                 <!-- Adjust column size to make the card larger -->
                 <div class="card p-4">
                     <div class="card-header text-center">
-                        Verify your Email
+                        Verify your mobile_number
                     </div>
                     <div class="card-body">
                         <div class="alert alert-success alert-dismissable">
@@ -99,7 +99,7 @@ include '../../server/client_server/conn.php';
                         <div class="col">
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="form1Example1">Mobile Number</label>
-                                <input type="number" id="form1Example1" class="form-control" name="email" required />
+                                <input type="number" id="form1Example1" class="form-control" name="mobile_number" required />
                             </div>
                          </div>
                     </div>
@@ -141,8 +141,8 @@ include '../../server/client_server/conn.php';
                   text: "Captcha Not Compelete."
                 });
         } else {
-          // Get the email address from the form
-          var email = $("#form1Example1").val();
+          // Get the mobile_number address from the form
+          var mobile_number = $("#form1Example1").val();
 
           // Display a loading SweetAlert
           var loadingAlert = Swal.fire({
@@ -155,32 +155,32 @@ include '../../server/client_server/conn.php';
 
           $.ajax({
             type: "POST",
-            url: "../../server/client_server/sql_send_verification_email.php",
+            url: "../../server/client_server/sql_send_verification_sms.php",
             data: {
-              email: email,
+              mobile_number: mobile_number,
               recaptchaResponse: captchaResponse 
             },
             success: function (response) {
               if (response === "success") {
-                // Email sent successfully
+                // mobile_number sent successfully
                 Swal.fire({
                   icon: "success",
-                  title: "Email Verification Sent!",
-                  text: "Check your email to view the One Time PIN (OTP).",
+                  title: "mobile_number Verification Sent!",
+                  text: "Check your mobile_number to view the One Time PIN (OTP).",
                   confirmButtonText: "OK",
                 }).then((result) => {
-                  // Check if the email was sent successfully
+                  // Check if the mobile_number was sent successfully
                   if (response === "success" && result.isConfirmed) {
                     // Redirect to the OTP verification page
                     window.location.href = "verify_otp.php";
                   }
                 });
               } else {
-                // Email sending failed
+                // mobile_number sending failed
                 Swal.fire({
                   icon: "warning",
                   title: "Error",
-                  text: "Failed to send the verification email. Please try again later."
+                  text: "Failed to send the verification mobile_number. Please try again later."
                 });
               }
             },
@@ -207,7 +207,6 @@ include '../../server/client_server/conn.php';
     });
   </script>
       
-        </script>
 
 
 

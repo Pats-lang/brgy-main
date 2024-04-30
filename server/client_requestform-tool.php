@@ -8,21 +8,24 @@ $response = array(
   'operation' => '',
   'description' => ''
 );
-
+$item_name = sanitizeData(getDatabase(), $_POST['item']);
 $fullname = sanitizeData(getDatabase(), $_POST['fullname']);
 $address = sanitizeData(getDatabase(), $_POST['address']);
 $borrowed_sched = sanitizeData(getDatabase(), $_POST['borrowed_sched']);
 $return_sched = sanitizeData(getDatabase(), $_POST['return_sched']);
 $contact = sanitizeData(getDatabase(), $_POST['contact']);
 $purpose = sanitizeData(getDatabase(), $_POST['purpose']);
+$member_id = sanitizeData(getDatabase(), $_POST['member_id']);
+$status = 0;
 
 
-  if ($preparedSql = $db->prepare("INSERT INTO `barangay_inventory` (`item_name`, `picture`, `stocks`) VALUES (?,?,?)")) {
-    $preparedSql->bind_param("ssi", $add_ItemName, $add_ImageItem, $add_stocks);
+
+  if ($preparedSql = $db->prepare("INSERT INTO `request_tools` (`member_id`, `Item`, `fullname`, `address`, `borrowed_sched`, `return_sched`, `contact`, `purpose`, `status`) VALUES (?,?,?,?,?,?,?,?,?)")) {
+    $preparedSql->bind_param("isssssiss",$member_id, $item_name, $fullname, $address, $borrowed_sched, $return_sched, $contact, $purpose, $status);
 
   if ($preparedSql->execute()) {
     $response['status'] = true;
-    $response['message'] = 'barangay_inventory had been successfully added.';
+    $response['message'] = 'request_tools had been successfully added.';
   } else {
     $response['status'] = false;
     $response['message'] = 'Failed to add a new annoucement: ' . $preparedSql->error;

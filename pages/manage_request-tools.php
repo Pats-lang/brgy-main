@@ -60,18 +60,18 @@ include '../server/admin_login-verification.php';
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>fullname</th>
-                                                <th>address</th>
-                                                <th>borrowed_sched</th>
-                                                <th >return_sched</th>
-                                                <th >contact</th>
-                                                <th >purpose</th>
-                                                <th >status</th>
-                                                <th >time_added</th>
+                                                <th>Item Name</th>
+                                                <th>Fullname</th>
+                                                <th>Address</th>
+                                                <th>Borrowed_sched</th>
+                                                <th >Return_sched</th>
+                                                <th >Contact</th>
+                                                <th >Purpose</th>
+                                                <th >Status</th>
+                                                <th >Time_added</th>
                                                 <th class="text-center" style="width: 150px;">Actions</th>
                                             </tr>
                                         </thead>
-
                                         <tbody>
 
                                             <?php
@@ -83,6 +83,9 @@ include '../server/admin_login-verification.php';
                                             <tr id="<?php echo $row['id']; ?>">
                                                 <td>
                                                     <?php echo $count++ ?>
+                                                </td>
+                                                <td>
+                                                 <?php echo $row['Item']; ?>
                                                 </td>
                                                 <td>
                                                 <?php echo $row['fullname']; ?>
@@ -113,10 +116,6 @@ include '../server/admin_login-verification.php';
                                                             <i class="fa-solid fa-eye fa-xl" style="color: green;"></i>
                                                         </button>
 
-                                                        <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#editItem_modal" data-id="<?php echo $row['id']; ?>" data-role="editItem_btn">
-                                                            <i class="fa-solid fa-pen-to-square fa-xl" style="color: blue;"></i>
-                                                        </button>
-
                                                         <button type="button" class="btn " data-id="<?php echo $row['id']; ?>" data-role="deleteItem_btn">
                                                             <i class="fa-solid fa-trash fa-xl" style="color: red;"></i>
                                                         </button>
@@ -144,55 +143,6 @@ include '../server/admin_login-verification.php';
 
         </div>
     </div>
-    <!--Add Modal -->
-    <div class="modal fade" id="add_item-Modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Item</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="" id="AddItemModalForm" method="POST">
-                        <div class="row">
-                            <div class="col">
-                                <div class="row py-1">
-                                    <div class="col">
-                                        <label for="add_ImageItem">Picture </label>
-                                        <img alt="Item Picture" id="addPreview_ImageItem" class="w-100">
-                                        <input type="file" class="form-control form-control-border" id="add_ImageItem"
-                                            name="add_ImageItem">
-                                    </div>
-                                </div>
-                                <div class="row py-1">
-                                    <div class="col">
-                                        <label for="add_ItemName">Item Name</label>
-                                        <input type="text" class="form-control form-control-border" id="add_ItemName"
-                                            name="add_ItemName" placeholder="Item">
-                                    </div>
-                                </div>
-                                <div class="row py-1">
-                                    <div class="col">
-                                        <label for="add_stocks">Item Stocks</label>
-                                        <input type="number" class="form-control form-control-border" id="add_stocks"
-                                            name="add_stocks" placeholder="Item Stocks">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-
-
     <?php include 'includes/admin_footer.php'; ?>
     <script>
     $(document).ready(function() {
@@ -209,107 +159,14 @@ include '../server/admin_login-verification.php';
                     extend: 'pdf',
                     text: '<i class="fas fa-file-pdf"></i> PDF'
                 },
-                {
-                    text: '+',
-                    className: 'add-btn',
-                    action: function(e, dt, node, config) {
-                        $('#add_item-Modal').modal('show');
-
-                        const fileInput = $("#add_ImageItem");
-                        const imagePreview = $("#addPreview_ImageItem");
-                        imagePreview.hide();
-                        fileInput.on("change", function() {
-
-                            if (fileInput[0].files.length > 0) {
-                                const selectedFile = fileInput[0].files[0];
-                                const reader = new FileReader();
-                                reader.onload = function(e) {
-                                    imagePreview.attr("src", e.target.result);
-                                    imagePreview.show();
-                                };
-                                reader.readAsDataURL(selectedFile);
-                            } else {
-                                imagePreview.hide();
-                            }
-                        });
-
-                    }
-                },
             ],
             dom: 'Bfrtip',
             responsive: true
         });
     });
+   
+    
 
-
-    // Add item: Submit Fields
-    $('#AddItemModalForm').on('submit', function(e) {
-        e.preventDefault();
-        $.ajax({
-            type: 'POST',
-            url: '../server/add_barangay_item.php',
-            data: new FormData(this),
-            dataType: 'json',
-            processData: false,
-            contentType: false,
-            success: function(response_additem) {
-                $('#add_item-Modal').modal('hide');
-                if (response_additem.status) {
-                    toastr.success(response_additem.message, '', {
-                        positionClass: 'toast-top-right',
-                        timeOut: 1000,
-                        closeButton: false,
-                        onHidden: function() {
-                            location.reload();
-                        }
-                    });
-                    systemChanges(response_additem.admin, response_additem
-                        .operation, response_additem.description);
-
-                } else {
-                    toastr.error(response_additem.message, '', {
-                        positionClass: 'toast-top-right',
-                        closeButton: false
-                    });
-                }
-            },
-            error: function(error) {
-                toastr.error('An Error occurred: ' + error, '', {
-                    positionClass: 'toast-top-end',
-                    closeButton: false
-                });
-            }
-        });
-    })
-    $(document).ready(function() {
-        $('.btn-update-stock').click(function() {
-            var itemId = $(this).data('id');
-            var action = $(this).data('action');
-
-            // Log itemId and action
-            console.log("itemId:", itemId);
-            console.log("action:", action);
-
-            $.ajax({
-                type: 'POST',
-                url: '../server/edit_stock.php',
-                data: {
-                    id: itemId,
-                    action: action
-                },
-                success: function(response) {
-                    // Handle success response
-                    console.log(response);
-                    location.reload();
-                    // Reload or update the table as needed
-                },
-                error: function(xhr, status, error) {
-                    // Handle error
-                    console.error(xhr.responseText);
-                }
-            });
-        });
-    });
     </script>
 </body>
 

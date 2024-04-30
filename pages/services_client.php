@@ -93,7 +93,6 @@ input[readonly] {
                             <img src="../assets/images/item/<?php echo $row['picture']; ?>"
                                 class="img-thumbnail img-fluid img" data-bs-toggle="modal"
                                 data-bs-target="#imageCarousel<?php echo $row['id']; ?>">
-
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
@@ -126,43 +125,79 @@ input[readonly] {
                                 </div>
                                 <div class="modal-body">
                                     <form id="event-form" method="POST">
-                                        <div class="mb-3">
-                                            <input type="hidden" name="item" value="<?php echo $row['item_name']; ?>">
-                                            <label for="fullname" class="form-label">Full Name</label>
-                                            <input type="text" class="form-control" id="fullname" name="fullname"
-                                                required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="address" class="form-label">Address</label>
-                                            <input type="text" class="form-control" id="address" name="address"
-                                                required>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="event-schedule" class="form-label">Borrowed Schedule</label>
-                                            <input type="date" class="form-control event-date" id="borrowed_sched"
-                                                name="borrowed_sched" value="<?php echo date('Y-m-d'); ?>"
-                                                min="<?php echo date('Y-m-d'); ?>" required>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="event-schedule" class="form-label">Return Schedule</label>
-                                            <input type="date" class="form-control event-date" id="return_sched"
-                                                name="return_sched" value="<?php echo date('Y-m-d'); ?>"
-                                                min="<?php echo date('Y-m-d'); ?>" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="contact" class="form-label">Contact #</label>
-                                            <input type="number" class="form-control" id="contact" name="contact"
-                                                required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <div class="form-floating">
-                                                <textarea class="form-control" placeholder="Leave a comment here"
-                                                    id="purpose" name="purpose"></textarea>
-                                                <label for="purpose">Purpose</label>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="mb-3">
+                                                    <label for="member_id" class="form-label">member_id</label>
+                                                    <input type="text" class="form-control" id="member_id"
+                                                        name="member_id">
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="mb-3">
+                                                    <input type="hidden" name="item"
+                                                        value="<?php echo $row['item_name']; ?>">
+                                                    <label for="fullname" class="form-label">Full Name</label>
+                                                    <input type="text" class="form-control" id="fullname"
+                                                        name="fullname">
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="mb-3">
+                                                    <label for="address" class="form-label">Address</label>
+                                                    <input type="text" class="form-control" id="address" name="address">
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="mb-3">
+                                                    <label for="contact" class="form-label">Contact #</label>
+                                                    <input type="number" class="form-control" id="contact"
+                                                        name="contact">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="mb-3">
+                                                    <label for="event-schedule" class="form-label">Borrowed
+                                                        Schedule</label>
+                                                    <input type="date" class="form-control event-date"
+                                                        id="borrowed_sched" name="borrowed_sched"
+                                                        value="<?php echo date('Y-m-d'); ?>"
+                                                        min="<?php echo date('Y-m-d'); ?>">
+                                                </div>
+                                            </div>
+                                            <div class="col">
+
+                                                <div class="mb-3">
+                                                    <label for="event-schedule" class="form-label">Return
+                                                        Schedule</label>
+                                                    <input type="date" class="form-control event-date" id="return_sched"
+                                                        name="return_sched" value="<?php echo date('Y-m-d'); ?>"
+                                                        min="<?php echo date('Y-m-d'); ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="mb-3">
+                                                    <div class="form-floating">
+                                                        <textarea class="form-control"
+                                                            placeholder="Leave a comment here" id="purpose"
+                                                            name="purpose"></textarea>
+                                                        <label for="purpose">Purpose</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <button type="submit" id="submit" class="btn btn-primary " value="submit"
                                             data-id="<?php echo $row['id']; ?>">Submit</button>
 
@@ -211,68 +246,6 @@ input[readonly] {
 
 <script>
 $(document).ready(function() {
-    $('#request_bpform').on('submit', function(e) {
-        e.preventDefault(); // Prevent the default form submission
-
-        // Perform form validation
-        var isValid = $('#request_bpform').valid();
-
-        // If the form is valid, proceed with the submission
-        if (isValid) {
-            Swal.fire({
-                title: 'Do you want to send this request?',
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: 'Send',
-                denyButtonText: 'Don\'t Send',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    var formData = new FormData($('#request_bpform')[0]);
-                    $.ajax({
-                        url: "../server/req_brgybp_apii.php",
-                        type: "POST",
-                        data: formData,
-                        dataType: 'json',
-                        processData: false,
-                        contentType: false,
-                        success: function(response) {
-                            if (response.status) {
-                                toastr.success(response.message, '', {
-                                    timeOut: 1000,
-                                    closeButton: false,
-                                    onHidden: function() {
-                                        setTimeout(function() {
-                                            location.reload();
-                                        }, 500);
-                                    }
-                                });
-                            } else {
-                                toastr.error(response.message, '', {
-                                    closeButton: false,
-                                });
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            console.error(xhr.responseText);
-                            toastr.error(
-                                'An error occurred while sending the request.',
-                                '', {
-                                    closeButton: false,
-                                });
-                        }
-                    });
-                } else if (result.isDenied) {
-                    toastr.info('Sending failed', '', {
-                        closeButton: false
-                    });
-                }
-            });
-        }
-    });
-});
-
-
-$(document).ready(function() {
     // Add custom validation method for alphabetic characters with space
     jQuery.validator.addMethod("alphabeticWithSpaceAndDot", function(value, element) {
         return this.optional(element) || /^[a-zA-Z\s.,]*$/.test(value);
@@ -281,7 +254,7 @@ $(document).ready(function() {
 
 
     // Form validation
-    var validate_form = $('#request_bpform').validate({
+    var validate_form = $('#event-form').validate({
         rules: {
             transaction_id: {
                 required: true,
