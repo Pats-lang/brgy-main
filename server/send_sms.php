@@ -3,7 +3,7 @@
 // Configuration 
 $config = array(
     'sms.http.url' => 'https://www.traccar.org/sms',
-    'sms.http.authorization' => 'dInyZC0DTHWhM6VVa1w7Cm:APA91bFI7WT_WsEGAds3mPxeWaaUXI5RQGkUNE1xGB0so6berpdmvC6EWD0Gf1SrM5uPfZjZ8eTAy6rZTErY8cyrCSKCq41sZ3uh1PHdQ9hHJDKdQF5qV4aYneiu9dxe4Ie1TPS_x2XO',
+    'sms.http.authorization' => 'eRC0dR8dQ12LL9BUxRTjUM:APA91bGk1bZpHHVhnGpzEiD2C3IgDILWkODUgX1bfywygi99gODvc6PHxvq-7BVnELT8m8_reZx4td5pGq4e5ybZNhmrJqhDNkBF6a2dUMJ2ae26CiLkTgEXPJCxOHt-iDdcjSCKxln2',
     'sms.http.template' => '{"to": "{phone}", "message": "{message}"}',
 );
 

@@ -49,128 +49,160 @@ input[readonly] {
 <body class="hold-transition sidebar-mini layout-fixed">
 
     <?php include 'includes/client_nav.php'; ?>
-  
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Service</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item text-decoration-none"><a>Home</a></li>
+                        <li class="breadcrumb-item text-secondary">Service</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
 
 
 
     <section id="learn" class="learn  ">
-    <div class="container py-5">
-        <div class="text-center mb-4" data-aos="zoom-in-up">
-            <h1 class="text-light">List of items</h1>
-            <hr class="mx-auto w-10 bg-light">
-        </div>
+        <div class="container py-5">
+            <div class="text-center mb-4" data-aos="zoom-in-up">
+                <h1 class="text-light">List of items</h1>
+                <hr class="mx-auto w-10 bg-light">
+            </div>
 
-       
-        <div class="container">
+
+            <div class="container">
                 <div class="row">
 
                     <?php
-  // connect to database
-  $conn = mysqli_connect("localhost", "root", "", "u907822938_barangaydb") or die("No Connection");
-               
-  // retrieve venue information from database
-  $sql = "SELECT * FROM barangay_inventory";
-  $result = mysqli_query($conn, $sql);
-               
-  // generate a card for each venue
-  while ($row = mysqli_fetch_assoc($result)) {
-  ?>
+                      // retrieve venue information from database
+                        $query = "SELECT * FROM `barangay_inventory`";
+                        $result = mysqli_query(getDatabase(), $query);                    
+                        // generate a card for each venue
+                        while ($row = mysqli_fetch_assoc($result)) {
+                        ?>
 
 
-                    <div class="col-md-6">
-                        <div class="card  mt-3">
-                        <img src="admin/uploaded_img/<?php echo $row['picture']; ?>"
-                                        class="img-thumbnail img-fluid img" data-bs-toggle="modal"
-                                        data-bs-target="#imageCarousel<?php echo $row['id']; ?>">
+                    <div class="col-md-4">
+                        <div class="card mt-3">
+                            <img src="../assets/images/item/<?php echo $row['picture']; ?>"
+                                class="img-thumbnail img-fluid img" data-bs-toggle="modal"
+                                data-bs-target="#imageCarousel<?php echo $row['id']; ?>">
 
                             <div class="card-body">
-                            <h5 class="card-title fs-1"><?php echo $row['item_name']; ?></h5>
-                            <p class="card-text"><?php echo $row['description']; ?></p>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal1<?php echo $row['id']; ?>" >BOOK NOW</button>
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title fs-1"><?php echo $row['item_name']; ?></h5>
+                                    </div>
+                                </div>
+                                <div class="row mt-3 float-end">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal1<?php echo $row['id']; ?>">BOOK
+                                            NOW</button>
+                                    </div>
+                                </div>
                             </div>
-                           
+
                         </div>
                     </div>
 
-                <div class="modal fade" id="exampleModal1<?php echo $row['id']; ?>" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true"  >
-                    <div class="modal-dialog " > 
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Booking Details for
-                                    <?php echo $row['item_name']; ?></h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form id="event-form" method="POST">
-                                    <div class="mb-3">
-                                        <input type="hidden" name="item" value="<?php echo $row['item_name']; ?>">
-                                        <label for="fullname" class="form-label">Full Name</label>
-                                        <input type="text" class="form-control" id="fullname" name="fullname" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="address" class="form-label">Address</label>
-                                        <input type="text" class="form-control" id="address" name="address" required>
-                                    </div>
-                                  
-                                    <div class="mb-3">
-                                        <label for="event-schedule" class="form-label">Borrowed Schedule</label>
-                                        <input type="date" class="form-control event-date" id="date" name="date" value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>"  required>
-                                                  </div> 
 
-                                                  <div class="mb-3">
-                                        <label for="event-schedule" class="form-label">Return Schedule</label>
-                                        <input type="date" class="form-control event-date" id="date" name="date" value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>"  required>
-                                                  </div> 
-                                    <div class="mb-3">
-                                        <label for="contact" class="form-label">Contact #</label>
-                                        <input type="number" class="form-control" id="contact" name="contact" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="email" class="form-label">Email address</label>
-                                        <input type="email" class="form-control" id="email" name="email" required>
-                                    </div>
-                                    <button type="submit" id="submit" class="btn btn-primary " value="submit" data-id="<?php echo $row['id']; ?>">Submit</button>
-                                
-                                </form>
+
+                    <div class="modal fade" id="exampleModal1<?php echo $row['id']; ?>" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog ">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Booking Details for
+                                        <?php echo $row['item_name']; ?></h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="event-form" method="POST">
+                                        <div class="mb-3">
+                                            <input type="hidden" name="item" value="<?php echo $row['item_name']; ?>">
+                                            <label for="fullname" class="form-label">Full Name</label>
+                                            <input type="text" class="form-control" id="fullname" name="fullname"
+                                                required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="address" class="form-label">Address</label>
+                                            <input type="text" class="form-control" id="address" name="address"
+                                                required>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="event-schedule" class="form-label">Borrowed Schedule</label>
+                                            <input type="date" class="form-control event-date" id="borrowed_sched"
+                                                name="borrowed_sched" value="<?php echo date('Y-m-d'); ?>"
+                                                min="<?php echo date('Y-m-d'); ?>" required>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="event-schedule" class="form-label">Return Schedule</label>
+                                            <input type="date" class="form-control event-date" id="return_sched"
+                                                name="return_sched" value="<?php echo date('Y-m-d'); ?>"
+                                                min="<?php echo date('Y-m-d'); ?>" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="contact" class="form-label">Contact #</label>
+                                            <input type="number" class="form-control" id="contact" name="contact"
+                                                required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="form-floating">
+                                                <textarea class="form-control" placeholder="Leave a comment here"
+                                                    id="purpose" name="purpose"></textarea>
+                                                <label for="purpose">Purpose</label>
+                                            </div>
+                                        </div>
+                                        <button type="submit" id="submit" class="btn btn-primary " value="submit"
+                                            data-id="<?php echo $row['id']; ?>">Submit</button>
+
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="imageCarousel<?php echo $row['id']; ?>" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3> <?php echo $row['event_name']; ?></h2>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="admin/uploaded_img/<?php echo $row['img']; ?>" class=" img-fluid"
+                                        data-aos="fade-up">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <?php } ?>
+
                 </div>
-
-
-                <!-- Modal -->
-                <div class="modal fade" id="imageCarousel<?php echo $row['id']; ?>" tabindex="-1"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                           <h3> <?php echo $row['event_name']; ?></h2>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <img src="admin/uploaded_img/<?php echo $row['img']; ?>" class=" img-fluid"
-                                    data-aos="fade-up">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <?php } ?>
-
             </div>
         </div>
-    </div>
-    </div>
-    </div>
-    </div>
-  </section>
+        </div>
+        </div>
+        </div>
+    </section>
 
 
-        <?php include 'includes/admin_footer.php'; ?>
+    <?php include 'includes/admin_footer.php'; ?>
 
     </div>
     <!-- ./wrapper -->
@@ -210,7 +242,7 @@ $(document).ready(function() {
                                     closeButton: false,
                                     onHidden: function() {
                                         setTimeout(function() {
- location.reload();
+                                            location.reload();
                                         }, 500);
                                     }
                                 });
@@ -287,8 +319,8 @@ $(document).ready(function() {
                 required: true,
                 minlength: 2,
 
-                
-               
+
+
             },
             floor: {
                 required: true,
@@ -333,8 +365,8 @@ $(document).ready(function() {
                 digits: 'Please provide a valid Year Residency!',
             },
             square_meter: {
-            required: 'Please provide the square meter measurement of your building. For example, (100 square meters.)',
-            minlength: 'Please provide the square meter measurement of your building. For example, (100 square meters.)',
+                required: 'Please provide the square meter measurement of your building. For example, (100 square meters.)',
+                minlength: 'Please provide the square meter measurement of your building. For example, (100 square meters.)',
 
             },
 

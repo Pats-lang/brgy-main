@@ -128,6 +128,12 @@ while ($row = mysqli_fetch_assoc($result)){
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="manage_brgy-inventory.php" class="nav-link">
+                        <i class="fa-solid fa-boxes-stacked nav-icon" style="color: #4285f4; font-size: 15px;"></i>
+                        <p>Inventory</p>
+                    </a>
+                </li>
                 <li class="nav-header">Resident Registration</li>
                 <li class="nav-item">
                     <a href="register_resident.php" class="nav-link">
@@ -153,7 +159,7 @@ while ($row = mysqli_fetch_assoc($result)){
 
                 <li class="nav-header">Request</li>
                 <li class="nav-item">
-                   
+
                     <a href="" class="nav-link">
                         <i class="fa-regular fa-folder-open nav-icon" style="color: #4285f4; font-size: 15px;"></i>
                         <p>Documents
@@ -201,13 +207,14 @@ while ($row = mysqli_fetch_assoc($result)){
                     </ul>
                 </li>
                 <li class="nav-item">
-                            <a href="manage_brgy-inventory.php" class="nav-link">
-                                <i class="fa-solid fa-boxes-stacked nav-icon" style="color: #4285f4; font-size: 15px;"></i>
-                                <p>Inventory</p>
-                            </a>
-                        </li>
-
+                    <a href="manage_request-tools.php" class="nav-link">
+                        <i class="fa-solid fa-boxes-stacked nav-icon" style="color: #4285f4; font-size: 15px;"></i>
+                        <p>Requesting Tools</p>
+                    </a>
+                </li>
                
+
+
 
 
 

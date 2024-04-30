@@ -59,7 +59,6 @@ $edit_IdAnnouncements = sanitizeData(getDatabase(), $_POST['edit_IdAnnouncements
 
 if ($preparedSql = $db->prepare("UPDATE `projects` SET `title`= ?, `img`= ?, `description` = ?, `last_modified` = ? WHERE id = ? ")) {
     $preparedSql->bind_param("ssssi", $edit_titleAnnouncements, $edit_ImageAnnouncements, $edit_descriptionAnnouncements, $edit_lastModifiedAnnouncements, $edit_IdAnnouncements);
-
     if ($preparedSql->execute()) {
         $response['status'] = true;
         $response['message'] = 'Successfully updated Projects.';
