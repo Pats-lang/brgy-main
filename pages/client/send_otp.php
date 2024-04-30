@@ -91,15 +91,15 @@ include '../../server/client_server/conn.php';
                     </div>
                     <div class="card-body">
                         <div class="alert alert-success alert-dismissable">
-                            <strong>PLEASE ENTER A VALID EMAIL ADDRESS!</strong>
+                            <strong>PLEASE ENTER A VALID MOBILE NUMBER!</strong>
                         </div>
 
-                        <form id="emailForm" method="post">
+                        <form id="MobileForm" method="post">
                     <div class="row">
                         <div class="col">
                             <div class="form-outline mb-4">
-                                <label class="form-label" for="form1Example1">Email address</label>
-                                <input type="email" id="form1Example1" class="form-control" name="email" required />
+                                <label class="form-label" for="form1Example1">Mobile Number</label>
+                                <input type="number" id="form1Example1" class="form-control" name="email" required />
                             </div>
                          </div>
                     </div>
@@ -113,7 +113,7 @@ include '../../server/client_server/conn.php';
                             <!-- Submit button -->
                         <div class="row">
                           <div class="col">
-                            <button type="submit" class="btn btn-primary btn-block mt-3">Send Email Verification</button>
+                            <button type="submit" class="btn btn-primary btn-block mt-3">Send Otp Verification</button>
                           </div>
                         </div>
                         </form>
@@ -129,7 +129,7 @@ include '../../server/client_server/conn.php';
 
         <script>
             $(document).ready(function () {
-         $("#emailForm").submit(function (e) {
+         $("#MobileForm").submit(function (e) {
         e.preventDefault(); // Prevent the default form submission
 
         // Captcha
@@ -146,7 +146,7 @@ include '../../server/client_server/conn.php';
 
           // Display a loading SweetAlert
           var loadingAlert = Swal.fire({
-            title: "Sending Email...",
+            title: "Sending Sms...",
             text: "Please wait...",
             icon: "info",
             showConfirmButton: false,
@@ -202,7 +202,7 @@ include '../../server/client_server/conn.php';
       // reCAPTCHA callback
       function recaptchaCallback() {
         // Enable the submit button or perform other actions
-        $('#emailForm').find('button[type="submit"]').prop('disabled', false);
+        $('#MobileForm').find('button[type="submit"]').prop('disabled', false);
       }
     });
   </script>

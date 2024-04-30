@@ -118,22 +118,22 @@ include '../server/admin_login-verification.php';
                                         <tbody>
 
                                             <?php
-                      $query = "SELECT * FROM `members` WHERE `status` = '1' ";
-                      $result = mysqli_query(getDatabase(), $query);
-                      while ($row = mysqli_fetch_array($result)) {
+                                                $query = "SELECT * FROM `members` WHERE `status` = '1' ";
+                                                $result = mysqli_query(getDatabase(), $query);
+                                                while ($row = mysqli_fetch_array($result)) {
 
-                        $campusId = $row['campus_id'];
-                        $campusName = '';
-                        if ($campusId === '01') {
-                          $campusName = ' Male';
-                        } elseif ($campusId === '02') {
-                          $campusName = 'Female';
-                        } else {
-                          $campusName = 'Unknown Campus';
-                        }
-                        
+                                                  $campusId = $row['campus_id'];
+                                                  $campusName = '';
+                                                  if ($campusId === '01') {
+                                                    $campusName = ' Male';
+                                                  } elseif ($campusId === '02') {
+                                                    $campusName = 'Female';
+                                                  } else {
+                                                    $campusName = 'Unknown Campus';
+                                                  }
+                                                  
                     
-                      ?>
+                                                ?>
                                             <tr id="<?php echo $row['member_id']; ?>">
                                                 <td>
                                                     <img src="../assets/images/member_pictures/<?php echo $row['picture']; ?>"
@@ -159,21 +159,21 @@ include '../server/admin_login-verification.php';
                                                 <td>
                                                     <?php 
                             
-                            $status = $row['status'];
+                                                 $status = $row['status'];
                                   
-                                        // $link_class = 'btn btn-secondary';
-                                        // $link_href = 'actions/status.php?id='.$id.'&status=1';
+                                                // $link_class = 'btn btn-secondary';
+                                                // $link_href = 'actions/status.php?id='.$id.'&status=1';
                                      
 
-                                        if ($status === '1') {
-                                        $link_class = 'btn btn-success  user-select-none';
-                                        $link_text = 'ACCEPTED';
-                                      }
-                                     else {
-                                      $link_class = 'btn btn-danger  user-select-none';
-                                      $link_text = 'REMOVE';
-                                      }
-                  ?>
+                                                if ($status === '1') {
+                                                $link_class = 'btn btn-success  user-select-none';
+                                                $link_text = 'ACCEPTED';
+                                                 }
+                                                else {
+                                                 $link_class = 'btn btn-danger  user-select-none';
+                                                 $link_text = 'REMOVE';
+                                                  }
+                                                ?>
                                                     <span
                                                         class="badge <?php echo $link_class; ?>"><?php echo $link_text; ?></span>
                                                 </td>
@@ -199,6 +199,7 @@ include '../server/admin_login-verification.php';
                                             <?php } ?>
                                         </tbody>
                                     </table>
+                                    <button type="button" class="send btn btn-primary btn-block">Private Message<buttom>
                                 </div>
                             </div>
 
@@ -298,13 +299,13 @@ include '../server/admin_login-verification.php';
                                     </select>
                                 </div>
                                 <div class="col-4 d-flex align-items-end">
-                                <!-- Button for Show More -->
-                                <button type="button" class="btn btn-success w-100" id="showMoreBtn">Show
-                                    More</button>
+                                    <!-- Button for Show More -->
+                                    <button type="button" class="btn btn-success w-100" id="showMoreBtn">Show
+                                        More</button>
                                 </div>
 
                             </div>
-                           
+
                             <div class="additional-info mt-3 mb-3" style="display: none;">
                                 <div class="row">
                                     <div class="col-6">
@@ -458,6 +459,117 @@ include '../server/admin_login-verification.php';
     </div>
 
     <script>
+//////
+$(document).ready(function() {
+    var selectedMemberIds = []; // Array to store selected member IDs
+    
+    // Row selection event
+    $('#member_ tbody').on('click', 'tr', function() {
+        var memberId = $(this).find('td:eq(1)').text().trim(); // Assuming member ID is in the second column
+        var index = selectedMemberIds.indexOf(memberId);
+        if (index === -1) {
+            // If row is not selected, add to selected list and apply visual indication
+            $(this).addClass('selected');
+            selectedMemberIds.push(memberId);
+        } else {
+            // If row is already selected, remove from selected list and remove visual indication
+            $(this).removeClass('selected');
+            selectedMemberIds.splice(index, 1);
+        }
+    });
+    
+    $(document).on("click", ".send", function() {
+        Swal.fire({
+            title: "Are you sure you want to Send Message?",
+            text: "This action cannot be undone.",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#114B0B",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Send Message!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Use selectedMemberIds array instead of fetching all member IDs from DataTable
+                var memberIds = selectedMemberIds;
+
+                $.ajax({
+                    url: '../server/private_message.php',
+                    method: 'POST',
+                    data: {
+                        member_id: JSON.stringify(memberIds)
+                    },
+                    success: function(response) {
+                        response = JSON.parse(response);
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 1500,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.onmouseenter = Swal.stopTimer;
+                                toast.onmouseleave = Swal.resumeTimer;
+                            }
+                        });
+                        if (response.status === true) {
+                            Toast.fire({
+                                icon: "success",
+                                title: response.message
+                            });
+                            sendSMS(response.resident_name, response.cellphone_no);
+                            systemChanges(response.admin, response.operation, response.description);
+                        } else {
+                            Toast.fire({
+                                icon: "error",
+                                title: response.message
+                            });
+                        }
+                    },
+                    error: function() {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Error",
+                            text: "An error occurred. Please try again later.",
+                            allowOutsideClick: false,
+                            confirmButtonColor: "#114B0B",
+                            confirmButtonText: "OK"
+                        });
+                    },
+                    complete: function() {
+                        // Update the last clicked timestamp as needed
+                    }
+                });
+            }
+        });
+    });
+});
+
+function sendSMS(names, nums) {
+    names.forEach((name, index) => {
+        let message = `Magandang araw ${name}! Ikaw ay pinapatawag sa barangay!`;
+
+        const smsData = {
+            cellphone: nums[index],
+            message: message
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '../server/send_sms.php',
+            data: smsData,
+            dataType: 'json',
+            success: function(response) {
+                console.log('SMS sent successfully to', nums[index], 'for', name, ':', response);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error sending SMS to', nums[index], 'for', name, ':', error);
+            }
+        });
+    });
+}
+
+
+
     document.addEventListener('DOMContentLoaded', function() {
         // Get the "Show More" button
         var showMoreBtn = document.getElementById('showMoreBtn');
