@@ -160,13 +160,23 @@ include '../server/admin_login-verification.php';
                     <div class="modal-body">
                         <div class="row">
                             <div class="col">
-                                <img src="" id="view_tools" class="img-fluid">
+                            <label for="member_id">Member ID</label>
+                                <input type="text" class="form-control form-control-border" id="member_id"
+                                    name="member_id" readonly>
                             </div>
                             <div class="col">
-                                <label for="item_name">Item Name</label>
+                            <label for="transaction_id">Transaction ID</label>
+                                <input type="text" class="form-control form-control-border" id="transaction_id"
+                                    name="transaction_id" readonly>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                            <label for="item_name">Item Name</label>
                                 <input type="text" class="form-control form-control-border" id="item_name"
                                     name="itemname" readonly>
-
+                            </div>
+                            <div class="col">
                                 <label for="fullname">fullname</label>
                                 <input type="text" class="form-control form-control-border" id="fullname"
                                     name="fullname" readonly>
@@ -258,14 +268,21 @@ include '../server/admin_login-verification.php';
                 },
                 dataType: "json",
                 success: function(response) {
-                    $('#view_tools').attr('src', '../assets/images/item' + response.img);
-                    $('#view_titleAnnouncements').val(response.title);
-                    $('#view_descriptionAnnouncements').val(response.description);
-                    $('#view_lastModifiedAnnouncements').val(response.last_modified);
+                    $('#member_id').val(response.member_id);
+                    $('#transaction_id').val(response.transaction_id);
+                    $('#Item').val(response.Item);
+                    $('#fullname').val(response.fullname);
+                    $('#address').val(response.address);
+                    $('#borrowed_sched').val(response.borrowed_sched);
+                    $('#return_sched').val(response.return_sched);
+                    $('#contact').val(response.contact);
+                    $('#purpose').val(response.purpose);
+                    $('#status').val(response.status);
                 }
             })
 
         });
+        
     </script>
 </body>
 
