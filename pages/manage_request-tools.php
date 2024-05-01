@@ -106,8 +106,26 @@ include '../server/admin_login-verification.php';
                                                     <?php echo $row['purpose']; ?>
                                                 </td>
                                                 <td class="text-center">
-                                                    <?php echo $row['status']; ?>
+                                                    <?php 
+        $status = $row['status'];
+        if ($status == 0) {
+            $badge_class = 'badge bg-warning text-dark';
+            $status_text = 'Pending';
+        } elseif ($status == 1) {
+            $badge_class = 'badge bg-success';
+            $status_text = 'Approve';
+        } elseif ($status == 2) {
+            $badge_class = 'badge bg-danger';
+            $status_text = 'Reject';
+        } else {
+            $badge_class = 'badge bg-secondary';
+            $status_text = 'Unknown';
+        }
+    ?>
+                                                    <span
+                                                        class="badge <?php echo $badge_class; ?>"><?php echo $status_text; ?></span>
                                                 </td>
+
                                                 <td>
                                                     <?php echo $row['time_added']; ?>
                                                 </td>
@@ -156,24 +174,24 @@ include '../server/admin_login-verification.php';
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Update Request Status</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="">
+                <form id="editAnnouncementForm">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col">
-                            <label for="member_id">Member ID</label>
+                                <label for="member_id">Member ID</label>
                                 <input type="text" class="form-control form-control-border" id="member_id"
                                     name="member_id" readonly>
                             </div>
                             <div class="col">
-                            <label for="transaction_id">Transaction ID</label>
+                                <label for="transaction_id">Transaction ID</label>
                                 <input type="text" class="form-control form-control-border" id="transaction_id"
                                     name="transaction_id" readonly>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                            <label for="item_name">Item Name</label>
-                                <input type="text" class="form-control form-control-border" id="item_name"
+                                <label for="item_name">Item Name</label>
+                                <input type="text" class="form-control form-control-border" id="itemname"
                                     name="itemname" readonly>
                             </div>
                             <div class="col">
@@ -222,9 +240,10 @@ include '../server/admin_login-verification.php';
                             <div class="col">
                                 <label for="stats" class="form-label">Status</label>
                                 <select class="form-select" id="stats" name="stats">
-
+                                    <!-- <option value="">-- Select Relationship --</option> -->
+                                    <option value="0">PENDING</option>
                                     <option value="1">ACCEPTED</option>
-                                    <option value="3">REMOVE</option>
+                                    <option value="2">REMOVE</option>
                                 </select>
                             </div>
                         </div>
@@ -258,31 +277,159 @@ include '../server/admin_login-verification.php';
         });
     });
 
-            // View Announcement: Populate Fields 
-            $(document).on('click', 'button[data-role=viewItem_btn]', function() {
-            $.ajax({
-                type: "POST",
-                url: "../server/read_request-tools.php",
-                data: {
-                    id: $(this).attr('data-id'),
-                },
-                dataType: "json",
-                success: function(response) {
-                    $('#member_id').val(response.member_id);
-                    $('#transaction_id').val(response.transaction_id);
-                    $('#Item').val(response.Item);
-                    $('#fullname').val(response.fullname);
-                    $('#address').val(response.address);
-                    $('#borrowed_sched').val(response.borrowed_sched);
-                    $('#return_sched').val(response.return_sched);
-                    $('#contact').val(response.contact);
-                    $('#purpose').val(response.purpose);
-                    $('#status').val(response.status);
-                }
-            })
+    // View Announcement: Populate Fields 
+    $(document).on('click', 'button[data-role=viewItem_btn]', function() {
+        $.ajax({
+            type: "POST",
+            url: "../server/read_request-tools.php",
+            data: {
+                id: $(this).attr('data-id'),
+            },
+            dataType: "json",
+            success: function(response) {
+                $('#member_id').val(response.member_id);
+                $('#transaction_id').val(response.transaction_id);
+                $('#itemname').val(response.Item);
+                $('#fullname').val(response.fullname);
+                $('#address').val(response.address);
+                $('#borrowed_sched').val(response.borrowed_sched);
+                $('#return_sched').val(response.return_sched);
+                $('#contact').val(response.contact);
+                $('#purpose').val(response.purpose);
+                $('#status').val(response.status);
+            }
+        })
 
+    });
+
+    // Edit Announcement: Submit Fields
+    $('#editAnnouncementForm').on('submit', function(e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+
+        // Add selected status and transaction_id to form data
+        formData.append('stats', $('#stats').val()); // Add selected status
+        formData.append('transaction_id', $('#transaction_id').val()); // Add transaction_id
+        formData.append('itemname', $('#itemname').val()); // Add transaction_id
+
+
+        Swal.fire({
+            title: 'Do you want to save the changes?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: ' Save',
+            denyButtonText: 'Don\'t save',
+        }).then((result) => {
+
+            $('#editAnnouncement_modal').modal('hide');
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "../server/edit_request-tools.php",
+                    type: "POST",
+                    data: formData,
+                    dataType: 'json',
+                    processData: false,
+                    contentType: false,
+                    success: function(response_editAnnouncement) {
+                        if (response_editAnnouncement.status) {
+                            toastr.success(response_editAnnouncement.message, '', {
+                                timeOut: 1000,
+                                closeButton: false,
+                                onHidden: function() {
+                                    // Check if applicant data is available before sending SMS
+                                    if (response_editAnnouncement
+                                        .applicant_name &&
+                                        response_editAnnouncement
+                                        .applicant_status &&
+                                        response_editAnnouncement.applicant_num
+                                    ) {
+                                        console.log(
+                                            "Calling sendSMS with parameters:",
+                                            response_editAnnouncement
+                                            .applicant_name,
+                                            response_editAnnouncement
+                                            .applicant_status,
+                                            response_editAnnouncement
+                                            .applicant_num
+                                        );
+                                        sendSMS(response_editAnnouncement
+                                            .applicant_name,
+                                            response_editAnnouncement
+                                            .applicant_status,
+                                            response_editAnnouncement
+                                            .applicant_num
+                                        );
+
+                                    } else {
+                                        console.log(
+                                            "Applicant data not available to send SMS."
+                                            );
+                                    }
+                                }
+                            });
+                        } else {
+                            toastr.error(response_editAnnouncement.message, '', {
+                                closeButton: false,
+                            });
+                        }
+                    },
+                    error: function(error) {
+                        toastr.error('An Error occurred: ' + error, '', {
+                            positionClass: 'toast-top-end',
+                            closeButton: false
+                        });
+                    }
+                });
+            } else if (result.isDenied) {
+                toastr.info('Changes are not saved', '', {
+                    closeButton: false
+                });
+            }
         });
-        
+    });
+
+
+    // The sendSMS function
+    function sendSMS(name, status, num) {
+        // Define the SMS message
+        let message;
+        if (status == 1) {
+            message =
+                `Magandang araw, ${name}! Nais naming ipaalam sa inyo na ang inyong request ay aprobado na ating Barangay. Maraming salamat po.`;
+        } else if (status == 2) {
+            message =
+                `Magandang araw, ${name}! Nais naming ipaalam sa inyo na ang inyong request ay hindi aprobado na ating Barangay. Maraming salamat po.`;
+        } else {
+            message = `Default message for unknown status.`;
+        }
+
+        // Configuration for sending SMS
+        const smsData = {
+            cellphone: num,
+            message: message
+        };
+
+        // Log SMS data to verify formatting
+        console.log("SMS Data:", smsData);
+
+        // AJAX call to send SMS
+        $.ajax({
+            type: 'POST',
+            url: '../server/send_sms.php',
+            data: smsData,
+            dataType: 'json',
+            success: function(response) {
+                console.log('SMS sent successfully:', response);
+                // Don't reload the page after sending SMS
+                location.reload();
+            },
+            error: function(xhr, status, error) {
+                console.error('Error sending SMS:', error);
+                console.log('XHR:', xhr);
+                console.log('Status:', status);
+            }
+        });
+    }
     </script>
 </body>
 
