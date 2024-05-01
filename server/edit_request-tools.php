@@ -8,7 +8,7 @@ $edit_lastModifiedAnnouncements = sanitizeData(getDatabase(), $_POST['stats']);
 $edit_item = sanitizeData(getDatabase(), $_POST['itemname']);
 
 if ($preparedSql = $db->prepare("UPDATE `request_tools` SET `status`= ? WHERE transaction_id =? ")) {
-    $preparedSql->bind_param("ii", $edit_lastModifiedAnnouncements, $edit_transactionId);
+    $preparedSql->bind_param("is", $edit_lastModifiedAnnouncements, $edit_transactionId);
 
     
     if ($preparedSql->execute()) {
