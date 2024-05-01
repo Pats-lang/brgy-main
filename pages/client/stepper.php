@@ -7,7 +7,7 @@ include 'header.php';
 include '../../server/client_server/conn.php';
 
 // Check if the user has completed both email and OTP verification steps
-if (!isset($_SESSION['otp_sent']) || $_SESSION['otp_sent'] !== true) {
+if (!isset($_SESSION['otp_verified']) || $_SESSION['otp_verified'] !== true) {
     header("Location: ../../index.php");
     exit();
 }
