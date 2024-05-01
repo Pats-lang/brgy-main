@@ -155,7 +155,7 @@ include '../../server/client_server/conn.php';
 
           $.ajax({
             type: "POST",
-            url: "../../server/client_server/sql_send_verification_sms.php",
+            url: "../../server/client_server/sql_send_verification_mobile_number.php",
             data: {
               mobile_number: mobile_number,
               recaptchaResponse: captchaResponse 
@@ -207,6 +207,7 @@ include '../../server/client_server/conn.php';
     });
   </script>
       
+        </script>
 
 
 

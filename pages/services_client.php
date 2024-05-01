@@ -18,7 +18,7 @@ $currentYear = date('Y');
 $randomNumber = mt_rand(100000, 999999);
 
 // Create the transaction ID
-$transaction_id = 'BP-'. $currentYear . '-' . $randomNumber ;
+$transaction_id = 'SER-'. $currentYear . '-' . $randomNumber ;
 
 
 $sql = "SELECT * FROM settings";
@@ -115,6 +115,8 @@ input[readonly] {
 
                     <div class="modal fade" id="exampleModal1<?php echo $row['id']; ?>" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                        
                         <div class="modal-dialog ">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -125,8 +127,13 @@ input[readonly] {
                                 </div>
                                 <div class="modal-body">
                                     <form id="event-form" method="POST">
+
+                                    
                                         <div class="row">
+                                            
                                             <div class="col">
+
+                                            
                                                 <div class="mb-3">
                                                     <label for="member_id" class="form-label">member_id</label>
                                                     <input type="text" class="form-control" id="member_id"
@@ -214,12 +221,12 @@ input[readonly] {
                         <div class="modal-dialog modal-dialog-centered modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h3> <?php echo $row['event_name']; ?></h2>
+                                    <h3> <?php echo $row['item_name']; ?></h2>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <img src="admin/uploaded_img/<?php echo $row['img']; ?>" class=" img-fluid"
+                                    <img src="admin/uploaded_img/<?php echo $row['picture']; ?>" class=" img-fluid"
                                         data-aos="fade-up">
                                 </div>
                             </div>
