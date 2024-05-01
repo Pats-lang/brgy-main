@@ -136,7 +136,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                         }
                         ?>
                                                 </td>
-                                                <td><?php echo isset($row['time']) ? date("m/d/Y g:i A", strtotime($row['time'])) : date("m/d/Y g:i A", strtotime($row['time_added'])); ?></td>
+                                                <td><?php echo date("m/d/Y g:i A", strtotime($row['time'])); ?></td>
                                             </tr>
                                             <?php }
         } else {

@@ -18,8 +18,8 @@ if ($preparedSql = $db->prepare("UPDATE `request_tools` SET `status`= ? WHERE tr
             // Fetch Barangay Inventory data
 $inventoryUpdateQuery = "";
 
-// Check if status is 1 to decrement stocks
-if ($edit_lastModifiedAnnouncements == 1) {
+// Check if status is 2 to decrement stocks
+if ($edit_lastModifiedAnnouncements == 2) {
     $inventoryUpdateQuery = "UPDATE barangay_inventory SET stocks = stocks - 1 WHERE item_name = ?";
 } else {
     // If status is not 1, do not perform the update query

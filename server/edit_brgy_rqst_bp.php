@@ -9,13 +9,13 @@
   $edit_Id = sanitizeData(getDatabase(), $_POST['id']);
   $edit_lastModifiedAnnouncements = sanitizeData(getDatabase(), $_POST['status']);
 
-  $name = sanitizeData(getDatabase(), $_POST['register_name']);
-  $address = sanitizeData(getDatabase(), $_POST['register_address']);
-  $name = sanitizeData(getDatabase(), $_POST['register_name']);
-  $request = sanitizeData(getDatabase(), $_POST['register_request']);
-  $purpose = sanitizeData(getDatabase(), $_POST['register_purpose']);
+//   $name = sanitizeData(getDatabase(), $_POST['register_name']);
+//   $address = sanitizeData(getDatabase(), $_POST['register_address']);
+//   $name = sanitizeData(getDatabase(), $_POST['register_name']);
+//   $request = sanitizeData(getDatabase(), $_POST['register_request']);
+//   $purpose = sanitizeData(getDatabase(), $_POST['register_purpose']);
 
-  $email = sanitizeData(getDatabase(), $_POST['register_email']);
+//   $email = sanitizeData(getDatabase(), $_POST['register_email']);
 
   if ($preparedSql = $db->prepare("UPDATE `request_brgybp` SET `status`= ? WHERE id =? ")) {
       $preparedSql->bind_param("ii", $edit_lastModifiedAnnouncements, $edit_Id);

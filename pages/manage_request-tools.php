@@ -242,8 +242,8 @@ include '../server/admin_login-verification.php';
                                 <select class="form-select" id="stats" name="stats">
                                     <!-- <option value="">-- Select Relationship --</option> -->
                                     <option value="0">PENDING</option>
-                                    <option value="1">ACCEPTED</option>
-                                    <option value="2">REMOVE</option>
+                                    <option value="2">ACCEPTED</option>
+                                    <option value="1">DECLINED</option>
                                 </select>
                             </div>
                         </div>
@@ -393,10 +393,10 @@ include '../server/admin_login-verification.php';
     function sendSMS(name, status, num) {
         // Define the SMS message
         let message;
-        if (status == 1) {
+        if (status == 2) {
             message =
                 `Magandang araw, ${name}! Nais naming ipaalam sa inyo na ang inyong request ay aprobado na ating Barangay. Maraming salamat po.`;
-        } else if (status == 2) {
+        } else if (status == 1) {
             message =
                 `Magandang araw, ${name}! Nais naming ipaalam sa inyo na ang inyong request ay hindi aprobado na ating Barangay. Maraming salamat po.`;
         } else {

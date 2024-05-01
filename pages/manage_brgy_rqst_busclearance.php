@@ -213,7 +213,7 @@ include '../server/admin_login-verification.php';
                                         <div class="col-md-6">
                                             <label for="register_first_name">Owners Name</label>
                                             <input type="text" class="form-control form-control-border"
-                                                id="register_name" name="name" placeholder="Owners Name" readonly>
+                                                id="register_name" name="register_name" placeholder="Owners Name" readonly>
                                         </div>
 
                                         <div class="col-md-6">
