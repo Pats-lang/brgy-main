@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      $_SESSION['otp'] = $otp;
 
     // Concatenate OTP with the message
-    $messageWithOTP = "Magandang araw! ang iyong OTP ay $otp. Mula sa E-OSCA Registration, siguruhing ikaw lamang ang nakaka alam nito at huwag ipagkatiwala sa iba.";
+    $messageWithOTP = "Magandang araw! ang iyong OTP ay $otp. Mula sa BRGY 20 Registration, siguruhing ikaw lamang ang nakaka alam nito at huwag ipagkatiwala sa iba.";
 
 
     // Prepare the data

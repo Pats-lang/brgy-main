@@ -112,8 +112,6 @@ input[readonly] {
 
                     <div class="modal fade" id="exampleModal1<?php echo $row['id']; ?>" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-
                         <div class="modal-dialog ">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -131,7 +129,6 @@ input[readonly] {
 
                                 <div class="modal-body">
                                     <form id="event-form" method="POST">
-
                                         <div class="row">
                                             <div class="col">
                                                 <div class="mb-3">
@@ -148,8 +145,8 @@ input[readonly] {
                                                 <div class="mb-3">
                                                     <label for="member_id" class="form-label">member_id</label>
                                                     <input type="text" class="form-control" id="member_id"
-                                                        name="member_id"
-                                                        value="<?php echo $member_row['member_id']; ?>" readonly>
+                                                        name="member_id" value="<?php echo $member_row['member_id']; ?>"
+                                                        readonly>
                                                 </div>
                                             </div>
                                             <div class="col">
@@ -158,7 +155,8 @@ input[readonly] {
                                                         value="<?php echo $row['item_name']; ?>">
                                                     <label for="fullname" class="form-label">Full Name</label>
                                                     <input type="text" class="form-control" id="fullname"
-                                                        name="fullname" value="<?php echo $member_row['fullname']; ?>"readonly>
+                                                        name="fullname" value="<?php echo $member_row['fullname']; ?>"
+                                                        readonly>
                                                 </div>
                                             </div>
                                         </div>
@@ -167,7 +165,7 @@ input[readonly] {
                                                 <div class="mb-3">
                                                     <label for="address" class="form-label">Address</label>
                                                     <input type="text" class="form-control" id="address" name="address"
-                                                        value="<?php echo $member_row['address']; ?>"readonly>
+                                                        value="<?php echo $member_row['address']; ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="col">
@@ -175,7 +173,7 @@ input[readonly] {
                                                     <label for="contact" class="form-label">Contact #</label>
                                                     <input type="number" class="form-control" id="contact"
                                                         name="contact"
-                                                        value="<?php echo $member_row['cellphone_no']; ?>"readonly>
+                                                        value="<?php echo $member_row['cellphone_no']; ?>" readonly>
                                                 </div>
                                             </div>
                                         </div>
@@ -266,13 +264,69 @@ input[readonly] {
 </body>
 
 <script>
- $('#event-form').on('submit', function(e) {
-    e.preventDefault();
-    if ($(this).valid()) {
+
+    $(document).ready(function() {
+    // Add custom validation method for alphabetic characters with space
+    jQuery.validator.addMethod("alphabeticWithSpaceAndDot", function(value, element) {
+        return this.optional(element) || /^[a-zA-Z\s.,]*$/.test(value);
+    }, "Please enter alphabetic characters only.");
+    $(document).ready(function() {
+    // Initialize form validation for each modal's form
+    $('.modal').each(function() {
+        var modalForm = $(this).find('form');
+        modalForm.validate({
+            rules: {
+                borrowed_sched: {
+                    required: true,
+                },
+                return_sched: {
+                    required: true,
+                },
+                purpose: {
+                    required: true,
+                    minlength: 5,
+                },
+            },
+            messages: {
+                borrowed_sched: {
+                    required: 'Please enter Transaction ID!',
+                },
+                return_sched: {
+                    required: 'Please enter Member ID!',
+                },
+                purpose: {
+                    required: 'Please enter Request!',
+                    minlength: 'Please enter at least 5 characters',
+                },
+            },
+            errorElement: 'span',
+            errorPlacement: function(error, element) {
+                error.addClass('invalid-feedback');
+                error.insertAfter(element);
+            },
+            highlight: function(element, errorClass, validClass) {
+                $(element).addClass('is-invalid');
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                $(element).removeClass('is-invalid');
+                $(element).addClass('is-valid');
+            },
+            submitHandler: function(form) {
+                var isValid = $(form).valid();
+                if (isValid) {
+                    submitForm($(form));
+                } else {
+                    $(form).find('.is-invalid:first').focus();
+                }
+            }
+        });
+    });
+
+    function submitForm(form) {
         $.ajax({
             type: 'POST',
             url: '../server/client_requestform-tool.php',
-            data: new FormData(this),
+            data: new FormData(form[0]),
             dataType: 'json',
             processData: false,
             contentType: false,
@@ -300,64 +354,11 @@ input[readonly] {
                 });
             }
         });
-    } else {
-        // Handle form validation errors here
-        $(this).find('.is-invalid:first').focus(); // Focus on the first invalid field
     }
 });
-
-
-$(document).ready(function() {
-    // Add custom validation method for alphabetic characters with space
-    jQuery.validator.addMethod("alphabeticWithSpaceAndDot", function(value, element) {
-        return this.optional(element) || /^[a-zA-Z\s.,]*$/.test(value);
-    }, "Please enter alphabetic characters only.");
-
-
-
-    // Form validation
-    var validate_form = $('#event-form').validate({
-        rules: {
-            borrowed_sched: {
-                required: true,
-            },
-            return_sched: {
-                required: true,
-            },
-            purpose: {
-                required: true,
-                minlength: 5,
-            },
-            
-        },
-        messages: {
-            // Add appropriate error messages for each field
-            borrowed_sched: {
-                required: 'Please enter Transaction ID!',
-            },
-            return_sched: {
-                required: 'Please enter Member ID!',
-            },
-            purpose: {
-                required: 'Please enter Request!',
-                minlength: 'Please Enter atleast 1 sentence',
-            },
-           
-        },
-        errorElement: 'span',
-        errorPlacement: function(error, element) {
-            error.addClass('invalid-feedback');
-            error.insertAfter(element);
-        },
-        highlight: function(element, errorClass, validClass) {
-            $(element).addClass('is-invalid');
-        },
-        unhighlight: function(element, errorClass, validClass) {
-            $(element).removeClass('is-invalid');
-            $(element).addClass('is-valid');
-        }
-    });
 });
+
+
 </script>
 
 
