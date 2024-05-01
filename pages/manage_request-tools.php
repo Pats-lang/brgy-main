@@ -111,10 +111,10 @@ include '../server/admin_login-verification.php';
         if ($status == 0) {
             $badge_class = 'badge bg-warning text-dark';
             $status_text = 'Pending';
-        } elseif ($status == 1) {
+        } elseif ($status == 2) {
             $badge_class = 'badge bg-success';
             $status_text = 'Approve';
-        } elseif ($status == 2) {
+        } elseif ($status == 1) {
             $badge_class = 'badge bg-danger';
             $status_text = 'Reject';
         } else {
