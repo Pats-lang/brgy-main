@@ -94,8 +94,7 @@ input[readonly] {
                                 </div>
                                 <div class="row mt-3 float-end">
                                     <div class="col">
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal1<?php echo $row['id']; ?>">BOOK
+                                        <button type="button" class="btn btn-primary"  data-item-id="<?php echo $row['id']; ?>">BOOK
                                             NOW</button>
                                     </div>
                                 </div>
@@ -261,6 +260,42 @@ input[readonly] {
 </body>
 
 <script>
+
+// Click event handler for the "BOOK NOW" button
+$('button.btn-primary').click(function() {
+    var item_id = $(this).data('item-id');
+    
+    // Ajax request to check available stocks
+    $.ajax({
+        type: 'POST',
+        url: '../server/check_stocks.php',
+        data: { item_id: item_id },
+        dataType: 'json',
+        success: function(response) {
+            if (response.error) {
+                // If there's an error (no available stocks), show alert
+                showAlert();
+            } else if (response.stocks > 0) {
+                // If stocks available, perform action (e.g., open modal)
+                $('#exampleModal1' + item_id).modal('show');
+            }
+        },
+        error: function() {
+            // Show error alert if something goes wrong with the Ajax request
+            Swal.fire("Error", "Failed to check available stocks. Please try again later.", "error");
+        }
+    });
+});
+
+function showAlert() {
+    Swal.fire({
+        icon: "warning",
+                title: "This item is not available",
+                text: 'No available stocks for this.'
+    });
+}
+
+
 $(document).ready(function() {
     // Add custom validation method for alphabetic characters with space
     jQuery.validator.addMethod("alphabeticWithSpaceAndDot", function(value, element) {
