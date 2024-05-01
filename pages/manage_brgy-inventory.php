@@ -63,7 +63,7 @@ include '../server/admin_login-verification.php';
                                                 <th>Picture</th>
                                                 <th>Item Name</th>
                                                 <th>Stocks</th>
-                                                <th >Time Added</th>
+                                                <th>Time Added</th>
                                                 <th class="text-center" style="width: 150px;">Actions</th>
                                             </tr>
                                         </thead>
@@ -102,17 +102,23 @@ include '../server/admin_login-verification.php';
                                                     <?php echo $row['time_added']; ?>
                                                 </td>
                                                 <td class="text-center" style="width: 150px;">
-                                                <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#viewItem_modal" data-id="<?php echo $row['id']; ?>" data-role="viewItem_btn">
-                                                            <i class="fa-solid fa-eye fa-xl" style="color: green;"></i>
-                                                        </button>
+                                                    <button type="button" class="btn " data-bs-toggle="modal"
+                                                        data-bs-target="#viewItem_modal"
+                                                        data-id="<?php echo $row['id']; ?>" data-role="viewItem_btn">
+                                                        <i class="fa-solid fa-eye fa-xl" style="color: green;"></i>
+                                                    </button>
 
-                                                        <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#editItem_modal" data-id="<?php echo $row['id']; ?>" data-role="editItem_btn">
-                                                            <i class="fa-solid fa-pen-to-square fa-xl" style="color: blue;"></i>
-                                                        </button>
+                                                    <button type="button" class="btn " data-bs-toggle="modal"
+                                                        data-bs-target="#editItem_modal"
+                                                        data-id="<?php echo $row['id']; ?>" data-role="editItem_btn">
+                                                        <i class="fa-solid fa-pen-to-square fa-xl"
+                                                            style="color: blue;"></i>
+                                                    </button>
 
-                                                        <button type="button" class="btn " data-id="<?php echo $row['id']; ?>" data-role="deleteItem_btn">
-                                                            <i class="fa-solid fa-trash fa-xl" style="color: red;"></i>
-                                                        </button>
+                                                    <button type="button" class="btn "
+                                                        data-id="<?php echo $row['id']; ?>" data-role="deleteItem_btn">
+                                                        <i class="fa-solid fa-trash fa-xl" style="color: red;"></i>
+                                                    </button>
                                                 </td>
                                             </tr>
                                             <?php } ?>
@@ -137,6 +143,8 @@ include '../server/admin_login-verification.php';
 
         </div>
     </div>
+
+
     <!--Add Modal -->
     <div class="modal fade" id="add_item-Modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -183,6 +191,111 @@ include '../server/admin_login-verification.php';
             </div>
         </div>
     </div>
+
+    <!-- View Item Modal -->
+    <div class="modal fade" id="viewItem_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">View Item</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" id="ViewItemModalForm" method="POST">
+                        <div class="row">
+                            <div class="col">
+                                <div class="row py-1">
+                                    <div class="col">
+                                        <label for="view_ImageItem">Picture </label>
+                                        <img alt="Item Picture" id="viewPreview_ImageItem" class="w-100">
+                                    </div>
+                                </div>
+                                <div class="row py-1 mt-5">
+                                    <div class="col">
+                                        <label for="view_ItemName">Item Name</label>
+                                        <input type="text" class="form-control form-control-border" id="view_ItemName"
+                                            name="view_ItemName" placeholder="Item" readonly>
+                                    </div>
+                                </div>
+                                <div class="row py-1">
+                                    <div class="col">
+                                        <label for="view_stocks">Item Stocks</label>
+                                        <input type="number" class="form-control form-control-border" id="view_stocks"
+                                            name="view_stocks" placeholder="Item Stocks" readonly>
+                                    </div>
+                                </div>
+                                <div class="row py-1">
+                                    <div class="col">
+                                        <label for="time_added">Time Added</label>
+                                        <input type="text" class="form-control form-control-border" id="time_added"
+                                            name="time_added" placeholder="time_added" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-bs-dismiss="modal" class="btn btn-primary btn-block">Close</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--edit Modal -->
+    <div class="modal fade" id="editItem_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Item</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editeventform" method="post">
+                        <input type="hidden" class="form-control form-control-border" id="id" name="id">
+                        <div class="row">
+                            <div class="col">
+                                <label for="editPreview_Imageitem">Image Preview:
+                                    <span id="selectedFileName"
+                                        class="text-muted font-weight-normal font-italic"></span>
+                                </label>
+                                <img alt="Member Picture" id="editPreview_Imageitem" class="w-100">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <label for="edit_Imageitem">Change Image?</label>
+                                <input type="file" class="form-control form-control-border" id="edit_Imageitem"
+                                    name="edit_Imageitem">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="edit_ItemName">Item Name</label>
+                                <input type="text" class="form-control form-control-border" id="edit_ItemName"
+                                    name="edit_ItemName" placeholder="Item">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="edit_stocks">Item Stocks</label>
+                                <input type="number" class="form-control form-control-border" id="edit_stocks"
+                                    name="edit_stocks" placeholder="Item Stocks">
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
 
 
@@ -302,6 +415,169 @@ include '../server/admin_login-verification.php';
                 }
             });
         });
+    });
+    // View Announcement: Populate Fields 
+    $(document).on('click', 'button[data-role=viewItem_btn]', function() {
+        $.ajax({
+            type: "POST",
+            url: "../server/read_inventory.php",
+            data: {
+                id: $(this).attr('data-id'),
+            },
+            dataType: "json",
+            success: function(response) {
+                $('#viewPreview_ImageItem').attr('src', '../assets/images/item/' + response
+                    .picture);
+                $('#view_ItemName').val(response.item_name);
+                $('#time_added').val(response.time_added);
+            }
+        })
+
+    });
+
+    // Edit Announcement: Populate Fields
+    $(document).on('click', 'button[data-role=editItem_btn]', function() {
+        $.ajax({
+            type: "POST",
+            url: "../server/read_inventory.php",
+            data: {
+                id: $(this).attr('data-id'),
+            },
+            dataType: "json",
+            success: function(response) {
+                $('#editPreview_Imageitem').attr('src', '../assets/images/item/' + response
+                    .picture);
+                $('#id').val(response.id);
+                $('#edit_ItemName').val(response.item_name);
+                $('#edit_stocks').val(response.stocks);
+
+                const selectedFileName = response.picture;
+                if (selectedFileName) {
+                    $('#selectedFileName').text(selectedFileName);
+                }
+            }
+        });
+
+        const fileInput = $("#edit_Imageitem");
+        const imagePreview = $("#editPreview_Imageitem");
+        fileInput.on("change", function() {
+            if (fileInput[0].files.length > 0) {
+                const selectedFile = fileInput[0].files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.attr("src", e.target.result);
+                    imagePreview.show();
+                };
+                reader.readAsDataURL(selectedFile);
+            } else {
+                imagePreview.hide();
+            }
+            $('#selectedFileName').text(fileInput.val().split("\\").pop()); // Extract the file name
+        });
+
+    });
+    // Edit Announcement: Submit Fields
+    $('#editeventform').on('submit', function(e) {
+        e.preventDefault();
+        Swal.fire({
+            title: 'Do you want to save the changes?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Save',
+            denyButtonText: `Don't save`,
+        }).then((result) => {
+            $('#editItem_modal').modal('hide');
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "../server/edit_inventory.php",
+                    type: "POST",
+                    data: new FormData(this),
+                    dataType: 'json',
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        if (response.status) {
+                            toastr.success(response.message, '', {
+                                timeOut: 1000,
+                                closeButton: false,
+                                onHidden: function() {
+                                    location.reload();
+                                }
+                            });
+                            systemChanges(response.admin, response.operation, response
+                                .description);
+                        } else {
+                            toastr.error(response.message, '', {
+                                closeButton: false,
+                            });
+                        }
+                    },
+                    error: function(error) {
+                        toastr.error('An Error occurred: ' + error, '', {
+                            positionClass: 'toast-top-end',
+                            closeButton: false
+                        });
+                    }
+                });
+            } else if (result.isDenied) {
+                toastr.info('Changes are not saved', '', {
+                    closeButton: false
+                });
+            }
+        });
+    });
+
+    // Delete Announcement: Delete Fields
+    $(document).on('click', 'button[data-role=deleteItem_btn]', function(e) {
+        e.preventDefault();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "POST",
+                    url: "../server/delete_inventory.php",
+                    data: {
+                        id: $(this).attr('data-id'),
+                    },
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.status) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: response.message,
+                                showConfirmButton: false,
+                                timer: 1500,
+                            }).then(() => {
+                                location.reload();
+                            });
+
+                            systemChanges(response.admin,
+                                response.operation,
+                                response.description);
+
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: response.message,
+                                showConfirmButton: false,
+                                timer: 1500,
+                            });
+                        }
+                    },
+                    error: function(error) {
+                        toastr.error('Error occurred: ' + error, '', {
+                            positionClass: 'toast-top-end',
+                            closeButton: false
+                        });
+                    }
+                });
+            }
+        })
     });
     </script>
 </body>
