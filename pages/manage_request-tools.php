@@ -160,7 +160,7 @@ include '../server/admin_login-verification.php';
                     <div class="modal-body">
                         <div class="row">
                             <div class="col">
-                                <img src="../assets/images/item/10001123_id.jpg" class="img-fluid">
+                                <img src="" id="view_tools" class="img-fluid">
                             </div>
                             <div class="col">
                                 <label for="item_name">Item Name</label>
@@ -247,6 +247,25 @@ include '../server/admin_login-verification.php';
             responsive: true
         });
     });
+
+            // View Announcement: Populate Fields 
+            $(document).on('click', 'button[data-role=viewItem_btn]', function() {
+            $.ajax({
+                type: "POST",
+                url: "../server/read_request-tools.php",
+                data: {
+                    id: $(this).attr('data-id'),
+                },
+                dataType: "json",
+                success: function(response) {
+                    $('#view_tools').attr('src', '../assets/images/item' + response.img);
+                    $('#view_titleAnnouncements').val(response.title);
+                    $('#view_descriptionAnnouncements').val(response.description);
+                    $('#view_lastModifiedAnnouncements').val(response.last_modified);
+                }
+            })
+
+        });
     </script>
 </body>
 
