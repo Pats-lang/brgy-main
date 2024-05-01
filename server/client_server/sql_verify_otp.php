@@ -8,36 +8,24 @@ if (isset($_POST['otp'])) {
     if (isset($_SESSION['otp'])) {
         $storedOTP = $_SESSION['otp'];
 
-        // Check if the OTP has not expired
-        if (isset($_SESSION['otp_expiration']) && time() <= $_SESSION['otp_expiration']) {
-            if ($userOTP === $storedOTP) {
-                // OTP is valid
-                // Set the session variable to indicate OTP verification
-              
+        if ($userOTP === $storedOTP) {
+            // OTP is valid
+            // Unset otp and otp_sent session variables
+            unset($_SESSION['otp']);
+            unset($_SESSION['otp_sent']);
 
-                unset($_SESSION['email_verified']);
-                unset($_SESSION['otp']);
-                unset($_SESSION['otp_expiration']);
-            
-                $_SESSION['otp_sent'] = true;
+            // Set the session variable to indicate OTP verification
+            $_SESSION['otp_verified'] = true;
 
-                $response = array(
-                    'status' => 'success',
-                    'message' => 'OTP verification successful!'
-                );
-            } else {
-                // Invalid OTP
-                $response = array(
-                    'status' => 'error',
-                    'message' => 'Invalid OTP'
-                );
-            }
+            $response = array(
+                'status' => 'success',
+                'message' => 'OTP verification successful!'
+            );
         } else {
-            // OTP has expired
-            unset($_SESSION['email_verified']);
+            // Invalid OTP
             $response = array(
                 'status' => 'error',
-                'message' => 'OTP has expired. Please request a new OTP.'
+                'message' => 'Invalid OTP'
             );
         }
     } else {
@@ -48,9 +36,8 @@ if (isset($_POST['otp'])) {
         );
     }
 
+    // Return JSON response
+    header('Content-Type: application/json');
     echo json_encode($response);
-    exit;
 }
-
 ?>
- 

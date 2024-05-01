@@ -112,8 +112,6 @@ input[readonly] {
 
                     <div class="modal fade" id="exampleModal1<?php echo $row['id']; ?>" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-
                         <div class="modal-dialog ">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -123,15 +121,14 @@ input[readonly] {
                                         aria-label="Close"></button>
                                 </div>
                                 <?php
-// Retrieve member information from the members table
-$member_query = "SELECT * FROM `members`";
-$member_result = mysqli_query(getDatabase(), $member_query);
-$member_row = mysqli_fetch_assoc($member_result);
-?>
+                                   // Retrieve member information from the members table
+                                    $member_query = "SELECT * FROM `members`";
+                                    $member_result = mysqli_query(getDatabase(), $member_query);
+                                     $member_row = mysqli_fetch_assoc($member_result);
+                                     ?>
 
                                 <div class="modal-body">
                                     <form id="event-form" method="POST">
-
                                         <div class="row">
                                             <div class="col">
                                                 <div class="mb-3">
@@ -148,8 +145,8 @@ $member_row = mysqli_fetch_assoc($member_result);
                                                 <div class="mb-3">
                                                     <label for="member_id" class="form-label">member_id</label>
                                                     <input type="text" class="form-control" id="member_id"
-                                                        name="member_id"
-                                                        value="<?php echo $member_row['member_id']; ?>">
+                                                        name="member_id" value="<?php echo $member_row['member_id']; ?>"
+                                                        readonly>
                                                 </div>
                                             </div>
                                             <div class="col">
@@ -158,7 +155,8 @@ $member_row = mysqli_fetch_assoc($member_result);
                                                         value="<?php echo $row['item_name']; ?>">
                                                     <label for="fullname" class="form-label">Full Name</label>
                                                     <input type="text" class="form-control" id="fullname"
-                                                        name="fullname" value="<?php echo $member_row['fullname']; ?>">
+                                                        name="fullname" value="<?php echo $member_row['fullname']; ?>"
+                                                        readonly>
                                                 </div>
                                             </div>
                                         </div>
@@ -167,7 +165,7 @@ $member_row = mysqli_fetch_assoc($member_result);
                                                 <div class="mb-3">
                                                     <label for="address" class="form-label">Address</label>
                                                     <input type="text" class="form-control" id="address" name="address"
-                                                        value="<?php echo $member_row['address']; ?>">
+                                                        value="<?php echo $member_row['address']; ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="col">
@@ -175,7 +173,7 @@ $member_row = mysqli_fetch_assoc($member_result);
                                                     <label for="contact" class="form-label">Contact #</label>
                                                     <input type="number" class="form-control" id="contact"
                                                         name="contact"
-                                                        value="<?php echo $member_row['cellphone_no']; ?>">
+                                                        value="<?php echo $member_row['cellphone_no']; ?>" readonly>
                                                 </div>
                                             </div>
                                         </div>
@@ -266,130 +264,101 @@ $member_row = mysqli_fetch_assoc($member_result);
 </body>
 
 <script>
-$(document).ready(function() {
+
+    $(document).ready(function() {
     // Add custom validation method for alphabetic characters with space
     jQuery.validator.addMethod("alphabeticWithSpaceAndDot", function(value, element) {
         return this.optional(element) || /^[a-zA-Z\s.,]*$/.test(value);
     }, "Please enter alphabetic characters only.");
-
-
-
-    // Form validation
-    var validate_form = $('#event-form').validate({
-        rules: {
-            transaction_id: {
-                required: true,
+    $(document).ready(function() {
+    // Initialize form validation for each modal's form
+    $('.modal').each(function() {
+        var modalForm = $(this).find('form');
+        modalForm.validate({
+            rules: {
+                borrowed_sched: {
+                    required: true,
+                },
+                return_sched: {
+                    required: true,
+                },
+                purpose: {
+                    required: true,
+                    minlength: 5,
+                },
             },
-            member_id: {
-                required: true,
+            messages: {
+                borrowed_sched: {
+                    required: 'Please enter Transaction ID!',
+                },
+                return_sched: {
+                    required: 'Please enter Member ID!',
+                },
+                purpose: {
+                    required: 'Please enter Request!',
+                    minlength: 'Please enter at least 5 characters',
+                },
             },
-            request: {
-                required: true,
+            errorElement: 'span',
+            errorPlacement: function(error, element) {
+                error.addClass('invalid-feedback');
+                error.insertAfter(element);
             },
-            name: {
-                required: true,
-                alphabeticWithSpaceAndDot: true,
+            highlight: function(element, errorClass, validClass) {
+                $(element).addClass('is-invalid');
             },
-            contact: {
-                required: true,
-                maxlength: 11,
-                minlength: 11,
-                pattern: /^09\d{9}$/,
+            unhighlight: function(element, errorClass, validClass) {
+                $(element).removeClass('is-invalid');
+                $(element).addClass('is-valid');
             },
-            address: {
-                required: true,
-            },
-            email: {
-                required: true,
-                email: true,
-            },
-            residency: {
-                required: true,
-                // Add additional condition for residency
-                minlength: 1,
-                digits: true,
-            },
-            square_meter: {
-                required: true,
-                minlength: 2,
-
-
-
-            },
-            floor: {
-                required: true,
-            },
-            purpose: {
-                required: true,
-                maxlength: 100,
-                minlength: 2,
-
-
-            },
-        },
-        messages: {
-            // Add appropriate error messages for each field
-            transaction_id: {
-                required: 'Please enter Transaction ID!',
-            },
-            member_id: {
-                required: 'Please enter Member ID!',
-            },
-            request: {
-                required: 'Please enter Request!',
-            },
-            name: {
-                required: 'Please enter your Name!',
-            },
-            address: {
-                required: 'Please provide a valid Address!',
-            },
-            email: {
-                required: 'Please provide a valid Email Address! Ex.(example@gmail.com)',
-            },
-            contact: {
-                required: 'Please provide Contact Number!',
-                maxlength: 'Please provide 11 digits! ',
-                minlength: 'Please provide 11 digits! ',
-                pattern: 'Please provide a valid Contact Number! Ex.(09123456789)',
-            },
-            residency: {
-                required: 'Please provide a valid Year Residency!',
-                minlength: 'Please provide a valid Year Residency!',
-                digits: 'Please provide a valid Year Residency!',
-            },
-            square_meter: {
-                required: 'Please provide the square meter measurement of your building. For example, (100 square meters.)',
-                minlength: 'Please provide the square meter measurement of your building. For example, (100 square meters.)',
-
-            },
-
-            floor: {
-                required: 'Please specify the number of floors in your building. For example, (5th floor)',
-                minlength: 'Please specify the number of floors in your building. For example, (5th floor)',
-            },
-
-            purpose: {
-                required: 'Please provide a valid purpose!',
-                maxlength: 'Please limit your input to 50 characters.',
-                minlength: 'Please provide a valid purpose! ',
-
-            },
-        },
-        errorElement: 'span',
-        errorPlacement: function(error, element) {
-            error.addClass('invalid-feedback');
-            error.insertAfter(element);
-        },
-        highlight: function(element, errorClass, validClass) {
-            $(element).addClass('is-invalid');
-        },
-        unhighlight: function(element, errorClass, validClass) {
-            $(element).removeClass('is-invalid');
-            $(element).addClass('is-valid');
-        }
+            submitHandler: function(form) {
+                var isValid = $(form).valid();
+                if (isValid) {
+                    submitForm($(form));
+                } else {
+                    $(form).find('.is-invalid:first').focus();
+                }
+            }
+        });
     });
+
+    function submitForm(form) {
+        $.ajax({
+            type: 'POST',
+            url: '../server/client_requestform-tool.php',
+            data: new FormData(form[0]),
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response.status) {
+                    toastr.success(response.message, '', {
+                        positionClass: 'toast-top-right',
+                        timeOut: 1000,
+                        closeButton: false,
+                        onHidden: function() {
+                            location.reload();
+                        }
+                    });
+                } else {
+                    toastr.error(response.message, '', {
+                        positionClass: 'toast-top-right',
+                        closeButton: false
+                    });
+                }
+            },
+            error: function(error) {
+                toastr.error('An Error occurred: ' + error, '', {
+                    positionClass: 'toast-top-end',
+                    closeButton: false
+                });
+            }
+        });
+    }
 });
+});
+
+
 </script>
 
 
