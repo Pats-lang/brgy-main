@@ -16,12 +16,13 @@ $return_sched = sanitizeData(getDatabase(), $_POST['return_sched']);
 $contact = sanitizeData(getDatabase(), $_POST['contact']);
 $purpose = sanitizeData(getDatabase(), $_POST['purpose']);
 $member_id = sanitizeData(getDatabase(), $_POST['member_id']);
+$transaction_id = sanitizeData(getDatabase(), $_POST['transaction_id']);
 $status = 0;
 
 
 
-  if ($preparedSql = $db->prepare("INSERT INTO `request_tools` (`member_id`, `Item`, `fullname`, `address`, `borrowed_sched`, `return_sched`, `contact`, `purpose`, `status`) VALUES (?,?,?,?,?,?,?,?,?)")) {
-    $preparedSql->bind_param("isssssiss",$member_id, $item_name, $fullname, $address, $borrowed_sched, $return_sched, $contact, $purpose, $status);
+  if ($preparedSql = $db->prepare("INSERT INTO `request_tools` (`transaction_id`, `member_id`, `Item`, `fullname`, `address`, `borrowed_sched`, `return_sched`, `contact`, `purpose`, `status`) VALUES (?,?,?,?,?,?,?,?,?,?)")) {
+    $preparedSql->bind_param("sisssssiss",$transaction_id, $member_id, $item_name, $fullname, $address, $borrowed_sched, $return_sched, $contact, $purpose, $status);
 
   if ($preparedSql->execute()) {
     $response['status'] = true;

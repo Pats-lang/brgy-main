@@ -116,7 +116,7 @@ input[readonly] {
                     <div class="modal fade" id="exampleModal1<?php echo $row['id']; ?>" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-                        
+
                         <div class="modal-dialog ">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -128,16 +128,23 @@ input[readonly] {
                                 <div class="modal-body">
                                     <form id="event-form" method="POST">
 
-                                    
                                         <div class="row">
-                                            
                                             <div class="col">
+                                                <div class="mb-3">
+                                                    <label for="transaction_id">Transaction Id</label>
+                                                    <input type="text" name="transaction_id" id="transaction_id"
+                                                        class="form-control" value="<?php echo $transaction_id; ?>"
+                                                        readonly>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
 
-                                            
+                                            <div class="col">
                                                 <div class="mb-3">
                                                     <label for="member_id" class="form-label">member_id</label>
                                                     <input type="text" class="form-control" id="member_id"
-                                                        name="member_id">
+                                                        name="member_id" value="<?php echo $row['member_id']; ?>">
                                                 </div>
                                             </div>
                                             <div class="col">
@@ -146,7 +153,7 @@ input[readonly] {
                                                         value="<?php echo $row['item_name']; ?>">
                                                     <label for="fullname" class="form-label">Full Name</label>
                                                     <input type="text" class="form-control" id="fullname"
-                                                        name="fullname">
+                                                        name="fullname" value="<?php echo $row['fullname']; ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -154,14 +161,14 @@ input[readonly] {
                                             <div class="col">
                                                 <div class="mb-3">
                                                     <label for="address" class="form-label">Address</label>
-                                                    <input type="text" class="form-control" id="address" name="address">
+                                                    <input type="text" class="form-control" id="address" name="address" value="<?php echo $row['address']; ?>">
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="mb-3">
                                                     <label for="contact" class="form-label">Contact #</label>
                                                     <input type="number" class="form-control" id="contact"
-                                                        name="contact">
+                                                        name="contact"value="<?php echo $row['cellphone_no']; ?>">
                                                 </div>
                                             </div>
                                         </div>
