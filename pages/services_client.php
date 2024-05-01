@@ -87,7 +87,6 @@ input[readonly] {
                         while ($row = mysqli_fetch_assoc($result)) {
                         ?>
 
-
                     <div class="col-md-4">
                         <div class="card mt-3">
                             <img src="../assets/images/item/<?php echo $row['picture']; ?>"
@@ -111,8 +110,6 @@ input[readonly] {
                         </div>
                     </div>
 
-
-
                     <div class="modal fade" id="exampleModal1<?php echo $row['id']; ?>" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
 
@@ -125,6 +122,13 @@ input[readonly] {
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
+                                <?php
+// Retrieve member information from the members table
+$member_query = "SELECT * FROM `members`";
+$member_result = mysqli_query(getDatabase(), $member_query);
+$member_row = mysqli_fetch_assoc($member_result);
+?>
+
                                 <div class="modal-body">
                                     <form id="event-form" method="POST">
 
@@ -144,7 +148,8 @@ input[readonly] {
                                                 <div class="mb-3">
                                                     <label for="member_id" class="form-label">member_id</label>
                                                     <input type="text" class="form-control" id="member_id"
-                                                        name="member_id" value="<?php echo $row['member_id']; ?>">
+                                                        name="member_id"
+                                                        value="<?php echo $member_row['member_id']; ?>">
                                                 </div>
                                             </div>
                                             <div class="col">
@@ -153,7 +158,7 @@ input[readonly] {
                                                         value="<?php echo $row['item_name']; ?>">
                                                     <label for="fullname" class="form-label">Full Name</label>
                                                     <input type="text" class="form-control" id="fullname"
-                                                        name="fullname" value="<?php echo $row['fullname']; ?>">
+                                                        name="fullname" value="<?php echo $member_row['fullname']; ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -161,14 +166,16 @@ input[readonly] {
                                             <div class="col">
                                                 <div class="mb-3">
                                                     <label for="address" class="form-label">Address</label>
-                                                    <input type="text" class="form-control" id="address" name="address" value="<?php echo $row['address']; ?>">
+                                                    <input type="text" class="form-control" id="address" name="address"
+                                                        value="<?php echo $member_row['address']; ?>">
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="mb-3">
                                                     <label for="contact" class="form-label">Contact #</label>
                                                     <input type="number" class="form-control" id="contact"
-                                                        name="contact"value="<?php echo $row['cellphone_no']; ?>">
+                                                        name="contact"
+                                                        value="<?php echo $member_row['cellphone_no']; ?>">
                                                 </div>
                                             </div>
                                         </div>
