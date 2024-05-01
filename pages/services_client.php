@@ -115,11 +115,14 @@ input[readonly] {
                                         aria-label="Close"></button>
                                 </div>
                                 <?php
-                               // Retrieve member information from the members table
-                                $member_query = "SELECT * FROM `members`";
-                                $member_result = mysqli_query(getDatabase(), $member_query);
-                                 $member_row = mysqli_fetch_assoc($member_result);
-                                 ?>
+                                 
+                                 //  $userLogged = $_SESSION['userLogged'];
+                                 $member_query = "SELECT * 
+                                 FROM `members`
+                                 WHERE member_id = (SELECT member_id FROM `member_account` WHERE username = '$userLogged')";
+                $member_result = mysqli_query(getDatabase(), $member_query);
+                $member_row = mysqli_fetch_assoc($member_result);
+                                      ?>
 
                                 <div class="modal-body">
                                     <form id="event-form" method="POST">

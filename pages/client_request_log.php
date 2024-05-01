@@ -92,23 +92,24 @@ if ($result && mysqli_num_rows($result) > 0) {
 
                                         <tbody>
                                             <?php
-        $query = "SELECT transaction_id, member_id, request, status, time FROM request_brgybp
-                  WHERE member_id = (SELECT member_id FROM member_account WHERE username = '$userLogged')
-                  UNION
-                  SELECT transaction_id, member_id, request, status, time FROM request_brgycert
-                  WHERE member_id = (SELECT member_id FROM member_account WHERE username = '$userLogged')
-                  UNION
-                  SELECT transaction_id, member_id, request, status, time FROM request_brgyclrs
-                  WHERE member_id = (SELECT member_id FROM member_account WHERE username = '$userLogged')
-                  UNION
-                  SELECT transaction_id, member_id, request, status, time FROM request_brgycoi
-                  WHERE member_id = (SELECT member_id FROM member_account WHERE username = '$userLogged')
-                  UNION
-                  SELECT transaction_id, member_id, request, status, time FROM request_busclearance
-                  WHERE member_id = (SELECT member_id FROM member_account WHERE username = '$userLogged')
-                  UNION
-                  SELECT transaction_id, member_id, item, status, time_added FROM request_tools
-                  WHERE member_id = (SELECT member_id FROM member_account WHERE username = '$userLogged')";
+      $query = "SELECT transaction_id, member_id, request, status, time FROM request_brgybp
+      WHERE member_id = (SELECT member_id FROM member_account WHERE username = '$userLogged')
+      UNION
+      SELECT transaction_id, member_id, request, status, time FROM request_brgycert
+      WHERE member_id = (SELECT member_id FROM member_account WHERE username = '$userLogged')
+      UNION
+      SELECT transaction_id, member_id, request, status, time FROM request_brgyclrs
+      WHERE member_id = (SELECT member_id FROM member_account WHERE username = '$userLogged')
+      UNION
+      SELECT transaction_id, member_id, request, status, time FROM request_brgycoi
+      WHERE member_id = (SELECT member_id FROM member_account WHERE username = '$userLogged')
+      UNION
+      SELECT transaction_id, member_id, request, status, time FROM request_busclearance
+      WHERE member_id = (SELECT member_id FROM member_account WHERE username = '$userLogged')
+      UNION
+      SELECT transaction_id, member_id, item, status, time_added FROM request_tools
+      WHERE member_id = (SELECT member_id FROM member_account WHERE username = '$userLogged')";
+
 
         $result = mysqli_query(getDatabase(), $query);
         if ($result) {
@@ -117,7 +118,8 @@ if ($result && mysqli_num_rows($result) > 0) {
                                             <tr>
                                                 <td><?php echo $row['member_id']; ?></td>
                                                 <td><?php echo $row['transaction_id']; ?></td>
-                                                <td><?php echo $row['request']; ?></td>
+
+                                                <td><?php echo isset($row['request']) ? $row['request'] : $row['item']; ?></td>
                                                 <td>
                                                     <?php
                         if (isset($row['status'])) {
@@ -134,7 +136,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                         }
                         ?>
                                                 </td>
-                                                <td><?php echo date("m/d/Y g:i A", strtotime($row['time'])); ?></td>
+                                                <td><?php echo isset($row['time']) ? date("m/d/Y g:i A", strtotime($row['time'])) : date("m/d/Y g:i A", strtotime($row['time_added'])); ?></td>
                                             </tr>
                                             <?php }
         } else {
