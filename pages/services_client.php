@@ -49,43 +49,37 @@ input[readonly] {
 <body class="hold-transition sidebar-mini layout-fixed">
 
     <?php include 'includes/client_nav.php'; ?>
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Service</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item text-decoration-none"><a>Home</a></li>
-                        <li class="breadcrumb-item text-secondary">Service</li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
-
-
-
-    <section id="learn" class="learn  ">
-        <div class="container py-5">
-            <div class="text-center mb-4" data-aos="zoom-in-up">
-                <h1 class="text-light">List of items</h1>
-                <hr class="mx-auto w-10 bg-light">
-            </div>
-
-
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1>Service</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item text-decoration-none"><a>Service</a></li>
+                                <li class="breadcrumb-item text-secondary">Barangay Certificate</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div><!-- /.container-fluid -->
+            </section>
             <div class="container">
+
                 <div class="row">
 
                     <?php
-                      // retrieve venue information from database
-                        $query = "SELECT * FROM `barangay_inventory`";
-                        $result = mysqli_query(getDatabase(), $query);                    
-                        // generate a card for each venue
-                        while ($row = mysqli_fetch_assoc($result)) {
-                        ?>
+                  // retrieve venue information from database
+                    $query = "SELECT * FROM `barangay_inventory`";
+                    $result = mysqli_query(getDatabase(), $query);                    
+                    // generate a card for each venue
+                    while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
 
                     <div class="col-md-4">
                         <div class="card mt-3">
@@ -121,11 +115,11 @@ input[readonly] {
                                         aria-label="Close"></button>
                                 </div>
                                 <?php
-                                   // Retrieve member information from the members table
-                                    $member_query = "SELECT * FROM `members`";
-                                    $member_result = mysqli_query(getDatabase(), $member_query);
-                                     $member_row = mysqli_fetch_assoc($member_result);
-                                     ?>
+                               // Retrieve member information from the members table
+                                $member_query = "SELECT * FROM `members`";
+                                $member_result = mysqli_query(getDatabase(), $member_query);
+                                 $member_row = mysqli_fetch_assoc($member_result);
+                                 ?>
 
                                 <div class="modal-body">
                                     <form id="event-form" method="POST">
@@ -249,14 +243,14 @@ input[readonly] {
 
                 </div>
             </div>
-        </div>
-        </div>
-        </div>
-        </div>
-    </section>
 
+            <section>
 
-    <?php include 'includes/admin_footer.php'; ?>
+            </section>
+        </div>
+        <!-- /.content-wrapper -->
+
+        <?php include 'includes/admin_footer.php'; ?>
 
     </div>
     <!-- ./wrapper -->
@@ -264,101 +258,98 @@ input[readonly] {
 </body>
 
 <script>
-
-    $(document).ready(function() {
+$(document).ready(function() {
     // Add custom validation method for alphabetic characters with space
     jQuery.validator.addMethod("alphabeticWithSpaceAndDot", function(value, element) {
         return this.optional(element) || /^[a-zA-Z\s.,]*$/.test(value);
     }, "Please enter alphabetic characters only.");
     $(document).ready(function() {
-    // Initialize form validation for each modal's form
-    $('.modal').each(function() {
-        var modalForm = $(this).find('form');
-        modalForm.validate({
-            rules: {
-                borrowed_sched: {
-                    required: true,
+        // Initialize form validation for each modal's form
+        $('.modal').each(function() {
+            var modalForm = $(this).find('form');
+            modalForm.validate({
+                rules: {
+                    borrowed_sched: {
+                        required: true,
+                    },
+                    return_sched: {
+                        required: true,
+                    },
+                    purpose: {
+                        required: true,
+                        minlength: 5,
+                    },
                 },
-                return_sched: {
-                    required: true,
+                messages: {
+                    borrowed_sched: {
+                        required: 'Please enter Transaction ID!',
+                    },
+                    return_sched: {
+                        required: 'Please enter Member ID!',
+                    },
+                    purpose: {
+                        required: 'Please enter Request!',
+                        minlength: 'Please enter at least 5 characters',
+                    },
                 },
-                purpose: {
-                    required: true,
-                    minlength: 5,
+                errorElement: 'span',
+                errorPlacement: function(error, element) {
+                    error.addClass('invalid-feedback');
+                    error.insertAfter(element);
                 },
-            },
-            messages: {
-                borrowed_sched: {
-                    required: 'Please enter Transaction ID!',
+                highlight: function(element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
                 },
-                return_sched: {
-                    required: 'Please enter Member ID!',
+                unhighlight: function(element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                    $(element).addClass('is-valid');
                 },
-                purpose: {
-                    required: 'Please enter Request!',
-                    minlength: 'Please enter at least 5 characters',
-                },
-            },
-            errorElement: 'span',
-            errorPlacement: function(error, element) {
-                error.addClass('invalid-feedback');
-                error.insertAfter(element);
-            },
-            highlight: function(element, errorClass, validClass) {
-                $(element).addClass('is-invalid');
-            },
-            unhighlight: function(element, errorClass, validClass) {
-                $(element).removeClass('is-invalid');
-                $(element).addClass('is-valid');
-            },
-            submitHandler: function(form) {
-                var isValid = $(form).valid();
-                if (isValid) {
-                    submitForm($(form));
-                } else {
-                    $(form).find('.is-invalid:first').focus();
+                submitHandler: function(form) {
+                    var isValid = $(form).valid();
+                    if (isValid) {
+                        submitForm($(form));
+                    } else {
+                        $(form).find('.is-invalid:first').focus();
+                    }
                 }
-            }
+            });
         });
-    });
 
-    function submitForm(form) {
-        $.ajax({
-            type: 'POST',
-            url: '../server/client_requestform-tool.php',
-            data: new FormData(form[0]),
-            dataType: 'json',
-            processData: false,
-            contentType: false,
-            success: function(response) {
-                if (response.status) {
-                    toastr.success(response.message, '', {
-                        positionClass: 'toast-top-right',
-                        timeOut: 1000,
-                        closeButton: false,
-                        onHidden: function() {
-                            location.reload();
-                        }
-                    });
-                } else {
-                    toastr.error(response.message, '', {
-                        positionClass: 'toast-top-right',
+        function submitForm(form) {
+            $.ajax({
+                type: 'POST',
+                url: '../server/client_requestform-tool.php',
+                data: new FormData(form[0]),
+                dataType: 'json',
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    if (response.status) {
+                        toastr.success(response.message, '', {
+                            positionClass: 'toast-top-right',
+                            timeOut: 1000,
+                            closeButton: false,
+                            onHidden: function() {
+                                location.reload();
+                            }
+                        });
+                    } else {
+                        toastr.error(response.message, '', {
+                            positionClass: 'toast-top-right',
+                            closeButton: false
+                        });
+                    }
+                },
+                error: function(error) {
+                    toastr.error('An Error occurred: ' + error, '', {
+                        positionClass: 'toast-top-end',
                         closeButton: false
                     });
                 }
-            },
-            error: function(error) {
-                toastr.error('An Error occurred: ' + error, '', {
-                    positionClass: 'toast-top-end',
-                    closeButton: false
-                });
-            }
-        });
-    }
+            });
+        }
+    });
 });
-});
-
-
 </script>
 
 
