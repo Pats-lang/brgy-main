@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 29, 2024 at 10:20 PM
+-- Generation Time: May 01, 2024 at 06:56 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -87,7 +87,10 @@ CREATE TABLE `barangay_inventory` (
 --
 
 INSERT INTO `barangay_inventory` (`id`, `picture`, `item_name`, `stocks`, `time_added`) VALUES
-(1, '10001123_id.jpg', 'id picture', 0, '2024-04-29 20:05:26');
+(1, '10001123_id.jpg', 'id picture', 1, '2024-04-30 15:41:49'),
+(2, 'pogi.jpg', 'pogi', 1, '2024-04-30 15:47:07'),
+(3, 'paolo.jpg', 'paolol', 0, '2024-04-30 16:04:37'),
+(4, 'images.jpg', 'laica', 20, '2024-05-01 03:53:21');
 
 -- --------------------------------------------------------
 
@@ -127,7 +130,16 @@ INSERT INTO `change_logs` (`id`, `admin`, `operation`, `description`, `timestamp
 (59, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-24 23:19:11'),
 (60, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-25 05:27:33'),
 (61, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-29 10:41:48'),
-(62, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-29 18:08:54');
+(62, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-29 18:08:54'),
+(63, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-30 07:39:45'),
+(64, 'rona', 'accepted', ' Resident: <b>DE GUZMAN, MARCO LOPEZ</b> has been Accepted at <b> Resident at List.</b>', '2024-04-30 14:59:41'),
+(65, 'rona', 'add', 'Send Message on Residents', '2024-04-30 15:14:24'),
+(66, 'rona', 'add', 'Send Message on Residents', '2024-04-30 15:25:15'),
+(67, 'rona', 'add', 'Send Message on Residents', '2024-04-30 15:25:45'),
+(68, 'rona', 'add', 'Send Message on Residents', '2024-04-30 15:39:05'),
+(69, 'rona', 'add', 'Send Message on Residents', '2024-04-30 15:39:38'),
+(70, 'rona', 'accepted', ' Resident: <b>STEPHENSON, JACOB TATUM JACOBSON</b> has been Accepted at <b> Resident at List.</b>', '2024-04-30 15:43:31'),
+(71, 'rona', 'add', 'Send Message on Residents', '2024-04-30 15:45:24');
 
 -- --------------------------------------------------------
 
@@ -254,8 +266,8 @@ CREATE TABLE `members` (
 INSERT INTO `members` (`member_id`, `year`, `member_count`, `campus_id`, `fullname`, `lastname`, `firstname`, `middlename`, `surfix`, `precinct`, `birth_date`, `address`, `civil_status`, `religion`, `email_address`, `cellphone_no`, `picture`, `signature`, `time_registered`, `status`, `cid`, `idfront`, `idback`) VALUES
 (2024101, 2024, 1, '01', 'Garrison, Fleur Odessa Cabrera', 'Garrison', 'Fleur', 'Odessa Cabrera', 'Veniam quaerat ad a', '9876-G', '1982-08-14', 'Quisquam id eaque q', 'Married', 'Iglesia ni Cristo', 'cofyp@mailinator.com', '09645645467', 'avatar1.png', '', '2024-04-22 03:34:03', 1, 1, 'id_card_2024101.jpg', 'id_back_2024101.jpg'),
 (2024102, 2024, 1, '02', 'Hanson, Trevor Maya Roman', 'Hanson', 'Trevor', 'Maya Roman', 'jr.', '4567-A', '2014-09-02', '603Exercitation volupta', 'Single', 'Roman Catholic', 'rsales059@gmail.com', '09656454353', 'avatar2.png', '', '2024-04-22 03:24:55', 0, 1, '', ''),
-(2024202, 2024, 2, 'male', 'De guzman, marco lopez', 'De guzman', 'marco', 'lopez', 'jr', '1234-A', '2000-11-11', '21 3rd Street Avenue', 'single', 'Roman Catholic', 'mrcodg13@gmail.com', '09155689713', 'MARCO.jpg', '', '2024-04-23 06:37:04', 1, 1, 'id_card_2024202.jpg', 'id_back_2024202.jpg'),
-(2024302, 2024, 3, '02', 'Stephenson, Jacob Tatum Jacobson', 'Stephenson', 'Jacob', 'Tatum Jacobson', 'Perspiciatis autem', '1234-A', '1984-07-29', 'Non tempor eos quibu', 'Widow/er', 'Roman Catholic', 'rsales059@gmail.com', '09636616469', 'avatar3.png', '', '2024-04-24 22:43:01', 1, 1, '', '');
+(2024202, 2024, 2, 'male', 'Conag, Johnloyd Amigo', 'Conag', 'Johnloyd', 'Amigo', '', '1234-A', '2000-11-11', '21 3rd Street Avenue', 'single', 'Roman Catholic', 'mrcodg13@gmail.com', '09636616469', 'pogi.jpg', '', '2024-04-23 06:37:04', 1, 1, 'id_card_2024202.jpg', 'id_back_2024202.jpg'),
+(2024302, 2024, 3, '02', 'Stephenson, Jacob Tatum Jacobson', 'Stephenson', 'Jacob', 'Tatum Jacobson', 'Perspiciatis autem', '1234-A', '1984-07-29', 'Non tempor eos quibu', 'Widow/er', 'Roman Catholic', 'rsales059@gmail.com', '09634578916', 'avatar3.png', '', '2024-04-24 22:43:01', 1, 1, '', '');
 
 -- --------------------------------------------------------
 
@@ -278,7 +290,7 @@ INSERT INTO `member_account` (`id`, `member_id`, `username`, `password`) VALUES
 (27, 2024102, 'user', '$2y$10$TTh1Bi8X/tqKOGH2hA.Df.vfrZw/40hiZEMNvsH1bsuVYuw9zEEK6'),
 (28, 2024102, 'ronalaine', '$2y$10$SPTYV1CJJAxnhfMOTsERXuVfXois0F/NQWebRTXevxa5uiaGjU0i6'),
 (29, 2024101, 'quvemohupa', '$2y$10$PAMXBQrgFNOndsJpABSWbu/OTfWYlU8po.9cfUaPF0FiQct1I6Efi'),
-(30, 2024202, 'test', '$2y$10$nA3eTsfMtsaFu/f.FVAbred6Ikzf3UHrb1VdQf82ttgV8j8qaCZz.'),
+(30, 2024202, 'test', '$2y$10$vRBijFICHbYjTdy6yKTLzuXAcIleJoIqLZYQhTQZQU6OZrnuM6a4a'),
 (31, 2024302, 'rona', '$2y$10$svL51ktv.5A6.8l4Nn.FC.paoI0PB6tcQNuOv3VdEIdndSTXYMwPG');
 
 -- --------------------------------------------------------
@@ -323,7 +335,7 @@ INSERT INTO `member_emergency` (`id`, `member_id`, `contact_name`, `contact_no`)
 (30, 2024102, 'Gabriel Stone', '09655564534'),
 (31, 2024102, 'Kamal Payne', '09546545333'),
 (32, 2024101, 'Neve Houston', '09765654543'),
-(33, 2024202, 'De guzman Lorna ', '09155689713'),
+(33, 2024202, 'De guzman Lorna   ', '09636616469'),
 (34, 2024302, 'Alan Logan', '09636616469');
 
 -- --------------------------------------------------------
@@ -643,6 +655,35 @@ INSERT INTO `request_busclearance` (`id`, `member_id`, `transaction_id`, `busine
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `request_tools`
+--
+
+CREATE TABLE `request_tools` (
+  `id` int(11) NOT NULL,
+  `member_id` int(20) NOT NULL,
+  `transaction_id` varchar(100) NOT NULL,
+  `Item` varchar(500) NOT NULL,
+  `fullname` varchar(50) NOT NULL,
+  `address` varchar(500) NOT NULL,
+  `borrowed_sched` date NOT NULL,
+  `return_sched` date NOT NULL,
+  `contact` int(11) NOT NULL,
+  `purpose` varchar(500) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `time_added` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `request_tools`
+--
+
+INSERT INTO `request_tools` (`id`, `member_id`, `transaction_id`, `Item`, `fullname`, `address`, `borrowed_sched`, `return_sched`, `contact`, `purpose`, `status`, `time_added`) VALUES
+(2, 0, '', 'pogi', 'ronalaine', '50 malolos ave bagong barrio caloocan city', '2024-05-02', '2024-05-09', 2147483647, 'whahahaha', 0, '2024-04-30 20:01:17'),
+(3, 0, '', 'id picture', 'ASDASD', 'ASDASD', '2024-05-02', '3123-04-30', 2147483647, '123123123', 0, '2024-04-30 20:21:10');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `settings`
 --
 
@@ -852,6 +893,12 @@ ALTER TABLE `request_busclearance`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `request_tools`
+--
+ALTER TABLE `request_tools`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `settings`
 --
 ALTER TABLE `settings`
@@ -877,13 +924,13 @@ ALTER TABLE `announcement`
 -- AUTO_INCREMENT for table `barangay_inventory`
 --
 ALTER TABLE `barangay_inventory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `change_logs`
 --
 ALTER TABLE `change_logs`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -992,6 +1039,12 @@ ALTER TABLE `request_brgyid`
 --
 ALTER TABLE `request_busclearance`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `request_tools`
+--
+ALTER TABLE `request_tools`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `settings`
