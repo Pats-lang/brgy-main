@@ -87,7 +87,7 @@ include '../../server/client_server/conn.php';
             <!-- Adjust column size to make the card larger -->
             <div class="card p-4">
                 <div class="card-header text-center">
-                    Verify your mobile_number
+                    SEND OTP
                 </div>
                 <div class="card-body">
                     <div class="alert alert-success alert-dismissable">
