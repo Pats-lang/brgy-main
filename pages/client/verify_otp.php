@@ -89,7 +89,7 @@ include '../../server/client_server/conn.php';
             <!-- Adjust column size to make the card larger -->
             <div class="card p-4">
                 <div class="card-header text-center">
-                    Enter the OTP sent to your Email Address.
+                    Enter the OTP sent to your Mobile Number.
                 </div>
                 <div class="card-body">
                     <div class="alert alert-success alert-dismissable">
