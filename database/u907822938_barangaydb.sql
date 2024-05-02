@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2024 at 07:57 PM
+-- Generation Time: May 02, 2024 at 09:05 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -65,8 +65,8 @@ CREATE TABLE `announcement` (
 
 INSERT INTO `announcement` (`id`, `img`, `title`, `description`, `last_modified`) VALUES
 (1, 'announce.jpg', 'Barangay 20', 'Welcome!', '2024-04-18 11:11:39'),
-(5, 'officials.jpg', 'Barangay Officials', '', '2024-03-26 07:53:10'),
-(7, 'sk.jpeg', 'Sangguniang Kabataan', '', '2024-05-01 10:01:52');
+(2, 'officials.jpg', 'Barangay Officials', '', '2024-05-02 18:54:25'),
+(3, 'sk.jpeg', 'Sangguniang Kabataan', '', '2024-05-02 18:54:21');
 
 -- --------------------------------------------------------
 
@@ -82,16 +82,6 @@ CREATE TABLE `barangay_inventory` (
   `time_added` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `barangay_inventory`
---
-
-INSERT INTO `barangay_inventory` (`id`, `picture`, `item_name`, `stocks`, `time_added`) VALUES
-(15, '5c0979b67e497b108c94e2e401854ecf.jpg', 'binbini', 20, '2024-05-01 09:47:29'),
-(16, 'bini.jpg', 'binibini2', 20, '2024-05-01 09:47:55'),
-(17, 'walo o wala_ cttro_.jpg', 'binibini3', 20, '2024-05-01 09:48:59'),
-(18, 'Screenshot 2024-04-25 022130.png', 'whyy', 0, '2024-05-02 07:05:55');
-
 -- --------------------------------------------------------
 
 --
@@ -105,62 +95,6 @@ CREATE TABLE `change_logs` (
   `description` varchar(200) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `change_logs`
---
-
-INSERT INTO `change_logs` (`id`, `admin`, `operation`, `description`, `timestamp`) VALUES
-(43, 'rona', 'add', 'Resident Member: <b>2024101</b> have been registered at  <b>Resident Members.</b>', '2024-04-22 03:34:03'),
-(44, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-23 06:39:21'),
-(45, 'rona', 'edit', ' Resident: <b>LOPEZ, ANNA SANTOS</b> has been edited at <b> Resident .</b>', '2024-04-23 06:39:41'),
-(46, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-23 12:39:57'),
-(47, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-23 17:39:57'),
-(48, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-24 01:29:57'),
-(49, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-24 11:13:08'),
-(50, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-24 11:57:07'),
-(51, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-24 12:16:47'),
-(52, 'rona', 'retrived', ' Resident: <b>GARRISON, FLEUR ODESSA CABRERA</b> has been Rejected at <b> Resident List .</b>', '2024-04-24 20:06:06'),
-(53, 'rona', 'retrived', ' Resident: <b>GARRISON, FLEUR ODESSA CABRERA</b> has been Retrived at <b> Resident List .</b>', '2024-04-24 20:06:37'),
-(54, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-24 22:40:47'),
-(55, 'rona', 'add', 'Resident Member: <b>2024302</b> have been registered at  <b>Resident Members.</b>', '2024-04-24 22:43:01'),
-(56, 'rona', 'accepted', ' Resident: <b>STEPHENSON, JACOB TATUM JACOBSON</b> has been Accepted at <b> Resident at List.</b>', '2024-04-24 22:43:59'),
-(57, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-24 23:05:33'),
-(58, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-24 23:11:29'),
-(59, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-24 23:19:11'),
-(60, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-25 05:27:33'),
-(61, 'marco', 'login', 'Admin: <b>MARCO</b> Just logged on to the System', '2024-04-29 10:41:48'),
-(62, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-29 18:08:54'),
-(63, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-04-30 07:39:45'),
-(64, 'rona', 'accepted', ' Resident: <b>DE GUZMAN, MARCO LOPEZ</b> has been Accepted at <b> Resident at List.</b>', '2024-04-30 14:59:41'),
-(65, 'rona', 'add', 'Send Message on Residents', '2024-04-30 15:14:24'),
-(66, 'rona', 'add', 'Send Message on Residents', '2024-04-30 15:25:15'),
-(67, 'rona', 'add', 'Send Message on Residents', '2024-04-30 15:25:45'),
-(68, 'rona', 'add', 'Send Message on Residents', '2024-04-30 15:39:05'),
-(69, 'rona', 'add', 'Send Message on Residents', '2024-04-30 15:39:38'),
-(70, 'rona', 'accepted', ' Resident: <b>STEPHENSON, JACOB TATUM JACOBSON</b> has been Accepted at <b> Resident at List.</b>', '2024-04-30 15:43:31'),
-(71, 'rona', 'add', 'Send Message on Residents', '2024-04-30 15:45:24'),
-(72, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-05-01 05:29:12'),
-(73, 'rona', 'add', 'Resident Member: <b>2024402</b> have been registered at  <b>Resident Members.</b>', '2024-05-01 05:30:49'),
-(74, 'rona', 'accepted', ' Resident: <b>WATSON, APRIL TARA MONROE</b> has been Accepted at <b> Resident at List.</b>', '2024-05-01 05:31:53'),
-(75, 'rona', 'add', 'Resident Member: <b>2024201</b> have been registered at  <b>Resident Members.</b>', '2024-05-01 05:33:43'),
-(76, 'rona', 'accepted', ' Resident: <b>OWENS, KEIKO COLIN ROJAS</b> has been Accepted at <b> Resident at List.</b>', '2024-05-01 05:34:04'),
-(77, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-05-01 09:12:05'),
-(78, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-05-01 09:30:54'),
-(79, 'rona', 'accepted', ' Resident: <b>HANSON, TREVOR MAYA ROMAN</b> has been Accepted at <b> Resident at List.</b>', '2024-05-01 09:31:57'),
-(80, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-05-01 10:00:51'),
-(81, 'rona', 'edit', 'Announcement: <b>SK</b> has been updated at <b>Announcements.</b>', '2024-05-01 10:01:21'),
-(82, 'rona', 'edit', 'Announcement: <b>SANGGUNIANG KABATAAN</b> has been updated at <b>Announcements.</b>', '2024-05-01 10:01:45'),
-(83, 'rona', 'edit', 'Announcement: <b>SANGGUNIANG KABATAAN</b> has been updated at <b>Announcements.</b>', '2024-05-01 10:01:59'),
-(84, 'rona', 'accepted', ' Resident: <b>CHERRY, EMERY SIGNE SLATER</b> has been Accepted at <b> Resident at List.</b>', '2024-05-01 10:19:20'),
-(85, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-05-01 22:46:26'),
-(86, 'rona', 'accepted', ' Resident: <b>MARTINEZ, LAICA MAE TARDIO</b> has been Accepted at <b> Resident at List.</b>', '2024-05-01 22:52:02'),
-(87, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-05-02 05:18:57'),
-(88, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-05-02 06:55:34'),
-(89, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-05-02 06:59:16'),
-(90, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-05-02 06:59:17'),
-(91, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-05-02 06:59:17'),
-(92, 'rona', 'login', 'Admin: <b>RONA</b> Just logged on to the System', '2024-05-02 07:03:21');
 
 -- --------------------------------------------------------
 
@@ -197,15 +131,6 @@ CREATE TABLE `generatedpdf_id` (
   `generated_file` varchar(10000) NOT NULL,
   `admin` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `generatedpdf_id`
---
-
-INSERT INTO `generatedpdf_id` (`id`, `generated_file`, `admin`) VALUES
-(1, '2024202', 'C:\\xampp\\htdocs\\brgy-main\\server/../assets/generat'),
-(2, '2024202', 'Lopez, Anna Santos_2024202.pdf'),
-(3, '2024101', 'Garrison, Fleur Odessa Cabrera_2024101.pdf');
 
 -- --------------------------------------------------------
 
@@ -281,20 +206,6 @@ CREATE TABLE `members` (
   `idback` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `members`
---
-
-INSERT INTO `members` (`member_id`, `year`, `member_count`, `campus_id`, `fullname`, `lastname`, `firstname`, `middlename`, `surfix`, `precinct`, `birth_date`, `address`, `civil_status`, `religion`, `email_address`, `cellphone_no`, `picture`, `signature`, `time_registered`, `status`, `cid`, `idfront`, `idback`) VALUES
-(2024101, 2024, 1, '01', 'Garrison, Fleur Odessa Cabrera', 'Garrison', 'Fleur', 'Odessa Cabrera', 'Veniam quaerat ad a', '9876-G', '1982-08-14', 'Quisquam id eaque q', 'Married', 'Iglesia ni Cristo', 'cofyp@mailinator.com', '09645645467', 'avatar1.png', '', '2024-04-22 03:34:03', 1, 1, 'id_card_2024101.jpg', 'id_back_2024101.jpg'),
-(2024102, 2024, 1, '02', 'Hanson, Trevor Maya Roman', 'Hanson', 'Trevor', 'Maya Roman', 'jr.', '4567-A', '2014-09-02', '603Exercitation volupta', 'Single', 'Roman Catholic', 'rsales059@gmail.com', '09656454353', 'avatar2.png', '', '2024-04-22 03:24:55', 1, 1, '', ''),
-(2024201, 2024, 2, '01', 'Owens, Keiko Colin Rojas', 'Owens', 'Keiko', 'Colin Rojas', 'l', '3455-H', '1999-04-24', 'Ea et consequatur au', 'Married', 'Iglesia ni Cristo', 'kiqykewi@mailinator.com', '09768264732', 'avatar2.png', '', '2024-05-01 05:33:42', 1, 1, '', ''),
-(2024202, 2024, 2, 'male', 'Conag, Johnloyd Amigo', 'Conag', 'Johnloyd', 'Amigo', '', '1234-A', '2000-11-11', '21 3rd Street Avenue', 'single', 'Roman Catholic', 'mrcodg13@gmail.com', '09636616469', 'pogi.jpg', '', '2024-04-23 06:37:04', 1, 1, 'id_card_2024202.jpg', 'id_back_2024202.jpg'),
-(2024302, 2024, 3, '02', 'Stephenson, Jacob Tatum Jacobson', 'Stephenson', 'Jacob', 'Tatum Jacobson', 'Perspiciatis autem', '1234-A', '1984-07-29', 'Non tempor eos quibu', 'Widow/er', 'Roman Catholic', 'rsales059@gmail.com', '09634578916', 'avatar3.png', '', '2024-04-24 22:43:01', 1, 1, '', ''),
-(2024402, 2024, 4, '02', 'Watson, April Tara Monroe', 'Watson', 'April', 'Tara Monroe', 'Esse sunt ea iste a', '2344-J', '1999-05-03', 'Ex eu laboris quisqu', 'Single', 'Christian', 'boqylor@mailinator.com', '09994142958', 'avatar8.png', '', '2024-05-01 05:30:48', 1, 1, '', ''),
-(2024502, 2024, 5, '02', 'Cherry, Emery Signe Slater', 'Cherry', 'Emery', 'Signe Slater', '', '3434-U', '1994-01-19', 'Esse eligendi aliqu', 'Widow/er', 'Roman Catholic', 'rsales059@gmail.com', '09636616469', 'avatar6.png', '', '2024-05-01 10:18:44', 1, 1, '', ''),
-(2024602, 2024, 6, '02', 'Martinez, Laica Mae Tardio', 'Martinez', 'Laica Mae', 'Tardio', '', '1356-A', '2001-10-13', '21 3rd Street Avenue', 'Single', 'Roman Catholic', 'martinezlaicamae17@gmail.com', '09634578916', 'avatar10.png', '', '2024-05-01 22:45:35', 1, 1, '', '');
-
 -- --------------------------------------------------------
 
 --
@@ -307,22 +218,6 @@ CREATE TABLE `member_account` (
   `username` varchar(50) NOT NULL,
   `password` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `member_account`
---
-
-INSERT INTO `member_account` (`id`, `member_id`, `username`, `password`) VALUES
-(27, 2024102, 'user', '$2y$10$TTh1Bi8X/tqKOGH2hA.Df.vfrZw/40hiZEMNvsH1bsuVYuw9zEEK6'),
-(28, 2024102, 'ronalaine', '$2y$10$SPTYV1CJJAxnhfMOTsERXuVfXois0F/NQWebRTXevxa5uiaGjU0i6'),
-(29, 2024101, 'quvemohupa', '$2y$10$PAMXBQrgFNOndsJpABSWbu/OTfWYlU8po.9cfUaPF0FiQct1I6Efi'),
-(30, 2024202, 'test', '$2y$10$vRBijFICHbYjTdy6yKTLzuXAcIleJoIqLZYQhTQZQU6OZrnuM6a4a'),
-(31, 2024302, 'rona', '$2y$10$svL51ktv.5A6.8l4Nn.FC.paoI0PB6tcQNuOv3VdEIdndSTXYMwPG'),
-(32, 2024402, 'rona', '$2y$10$MvZ6ZVRYjhhESq2NYGzkJOMyr2tyXpgqPdoQDUMc1SuaDrHNOfis6'),
-(33, 2024201, 'layka', '$2y$10$2UbP4xA6MLbtzRkalX4maO43Z4YWJIt2GDbKMwU7advI/6y5sjNqy'),
-(34, 2024502, 'layka', '$2y$10$FFs/iZXhGOALVAfNJM.Fme6n4Arj2mZ2bcv4j/pJFhvu6XhrF3ujq'),
-(35, 2024602, 'laica', '$2y$10$TuZKdqBJs9WqsYqGWuCiFuqkvjmpo2UfwRU/B/6aW.srpTySrpDcm'),
-(36, 2024602, 'laica', '$2y$10$iKYhGhDRg4m6PWPV4osjcO5MFZ9rQ9Q4t3EfFRiyx73OVj2tH26/G');
 
 -- --------------------------------------------------------
 
@@ -337,19 +232,6 @@ CREATE TABLE `member_address` (
   `yrs_res` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `member_address`
---
-
-INSERT INTO `member_address` (`id`, `member_id`, `residency`, `yrs_res`) VALUES
-(21, 2024202, 'Permanent Resident', '17'),
-(22, 2024302, 'Tenant', '58'),
-(23, 2024402, 'Permanent Resident', '21'),
-(24, 2024201, 'Permanent Resident', '85'),
-(25, 2024502, 'Permanent Resident', '18'),
-(26, 2024602, 'Permanent Resident', '10'),
-(27, 2024602, 'Permanent Resident', '10');
-
 -- --------------------------------------------------------
 
 --
@@ -363,22 +245,6 @@ CREATE TABLE `member_emergency` (
   `contact_no` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `member_emergency`
---
-
-INSERT INTO `member_emergency` (`id`, `member_id`, `contact_name`, `contact_no`) VALUES
-(30, 2024102, 'Gabriel Stone', '09655564534'),
-(31, 2024102, 'Kamal Payne', '09546545333'),
-(32, 2024101, 'Neve Houston', '09765654543'),
-(33, 2024202, 'De guzman Lorna   ', '09636616469'),
-(34, 2024302, 'Alan Logan', '09636616469'),
-(35, 2024402, 'Sylvia Roberson', '09994142958'),
-(36, 2024201, 'Chaim Fitzgerald', '09473643854'),
-(37, 2024502, 'Cathleen Huber', '09435435435'),
-(38, 2024602, 'Arabella Belardo', '09396929387'),
-(39, 2024602, 'Arabella Belardo', '09396929387');
-
 -- --------------------------------------------------------
 
 --
@@ -391,22 +257,6 @@ CREATE TABLE `member_proof` (
   `valid_id` varchar(50) NOT NULL,
   `proof_residency` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `member_proof`
---
-
-INSERT INTO `member_proof` (`id`, `member_id`, `valid_id`, `proof_residency`) VALUES
-(74, 2024102, '../assets/images/proof-pictures/id1.jpg', '../assets/images/proof-pictures/doc3.png'),
-(75, 2024102, '../assets/images/proof-pictures/id2.jpg', '../assets/images/proof-pictures/doc3.png'),
-(76, 2024101, '../assets/images/proof-pictures/id4.png', '../assets/images/proof-pictures/doc1.jpg'),
-(77, 2024202, '../assets/images/proof-pictures/id1.jpg', '../assets/images/proof-pictures/doc1.jpg'),
-(78, 2024302, '../assets/images/proof-pictures/id2.jpg', '../assets/images/proof-pictures/doc3.png'),
-(79, 2024402, '../assets/images/proof-pictures/id4.png', '../assets/images/proof-pictures/doc4.jpg'),
-(80, 2024201, '../assets/images/proof-pictures/id2.jpg', '../assets/images/proof-pictures/doc3.png'),
-(81, 2024502, '../assets/images/proof-pictures/id2.jpg', '../assets/images/proof-pictures/doc3.png'),
-(82, 2024602, '../assets/images/proof-pictures/id1.jpg', '../assets/images/proof-pictures/doc4.jpg'),
-(83, 2024602, '../assets/images/proof-pictures/id1.jpg', '../assets/images/proof-pictures/doc4.jpg');
 
 -- --------------------------------------------------------
 
@@ -468,23 +318,6 @@ INSERT INTO `projects` (`id`, `img`, `title`, `description`, `last_modified`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `request_assistant`
---
-
-CREATE TABLE `request_assistant` (
-  `name` varchar(50) NOT NULL,
-  `address` varchar(50) NOT NULL,
-  `contact` int(11) NOT NULL,
-  `purpose` varchar(500) NOT NULL,
-  `request` varchar(60) NOT NULL,
-  `id` int(11) NOT NULL,
-  `status` int(2) NOT NULL,
-  `email` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `request_brgybp`
 --
 
@@ -503,14 +336,6 @@ CREATE TABLE `request_brgybp` (
   `email` varchar(100) NOT NULL,
   `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `request_brgybp`
---
-
-INSERT INTO `request_brgybp` (`id`, `member_id`, `transaction_id`, `name`, `address`, `square_meter`, `floor`, `contact_no`, `purpose`, `request`, `status`, `email`, `time`) VALUES
-(1, 2024902, 'BP-2024-357697', 'Quinn Jimenez', 'Possimus rerum exer', '100 square meters', '5th floor', '2147483647', 'House', 'Building Permit', 0, 'dybimiz@mailinator.com', '2024-04-19 08:10:29'),
-(2, 2024202, 'BP-2024-449108', 'Lopez, Anna Santos', '21 3rd Street Avenue', '1111', '', '09155689713', '', 'Barangay Building Permit', 0, 'mrcodg13@gmail.com', '2024-04-24 14:34:57');
 
 -- --------------------------------------------------------
 
@@ -533,14 +358,6 @@ CREATE TABLE `request_brgycert` (
   `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `request_brgycert`
---
-
-INSERT INTO `request_brgycert` (`id`, `member_id`, `transaction_id`, `name`, `address`, `yrs_res`, `contact_no`, `purpose`, `request`, `status`, `email`, `time`) VALUES
-(1, 2024902, 'CERT-2024-433296', 'Quinn Jimenez', 'Possimus rerum exer', 1983, '2147483647', 'Hello', 'Barangay Certificate', 0, 'dybimiz@mailinator.com', '2024-04-19 05:34:15'),
-(2, 2024202, 'CERT-2024-278837', 'Lopez, Anna Santos', '21 3rd Street Avenue', 17, '09155689713', 'Example Barangay Certificate', 'Barangay Certificate', 0, 'mrcodg13@gmail.com', '2024-04-24 12:52:14');
-
 -- --------------------------------------------------------
 
 --
@@ -561,17 +378,6 @@ CREATE TABLE `request_brgyclrs` (
   `email` varchar(100) NOT NULL,
   `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `request_brgyclrs`
---
-
-INSERT INTO `request_brgyclrs` (`id`, `member_id`, `transaction_id`, `name`, `address`, `yrs_res`, `contact_no`, `purpose`, `request`, `status`, `email`, `time`) VALUES
-(1, 1, '6789', 'exampleName', 'exampleAddress', 20, '123456', 'examplePurpose', 'exampleRequest\r\n', 2, '', '2024-04-18 15:33:33'),
-(73, 2024902, '2024-475414', 'Quinn Jimenez', 'Possimus rerum exer', 1983, '2147483647', '', 'Barangay Clearance', 2, 'dybimiz@mailinator.com', '2024-04-21 17:03:21'),
-(74, 2024902, '2024-175254', 'Quinn Jimenez', 'Possimus rerum exer', 1983, '2147483647', '134', 'Barangay Clearance', 0, 'dybimiz@mailinator.com', '2024-04-19 02:59:03'),
-(75, 2024202, 'CLR-2024-617565', 'Lopez, Anna Santos', '21 3rd Street Avenue', 17, '2147483647', 'Katunayan', 'Barangay Clearance', 2, 'mrcodg13@gmail.com', '2024-04-25 05:33:58'),
-(76, 2024202, 'CLR-2024-480850', 'Lopez, Anna Santos', '21 3rd Street Avenue', 17, '09634578916', 'Proof', 'Barangay Clearance', 2, 'mrcodg13@gmail.com', '2024-04-25 05:37:35');
 
 -- --------------------------------------------------------
 
@@ -594,17 +400,6 @@ CREATE TABLE `request_brgycoi` (
   `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `request_brgycoi`
---
-
-INSERT INTO `request_brgycoi` (`id`, `member_id`, `transaction_id`, `name`, `request`, `contact_no`, `address`, `purpose`, `yrs_res`, `status`, `email`, `time`) VALUES
-(1, 1, '123456', 'Layka', 'asdasda', '23123', 'dsada', 'sdasdasd', 31231, 0, 'sdasd', '2024-04-19 16:30:09'),
-(2, 2024902, 'COI-2024-230007', 'Quinn Jimenez', 'Barangay Indigency', '2147483647', 'Possimus rerum exer', 'Financial', 1983, 2, 'dybimiz@mailinator.com', '2024-04-21 17:05:03'),
-(22, 2024202, 'COI-2024-521376', 'Lopez, Anna Santos', 'Barangay Indigency', '09155689713', '21 3rd Street Avenue', 'gagana na ba ????', 17, 0, 'mrcodg13@gmail.com', '2024-04-23 13:39:28'),
-(23, 2024202, 'COI-2024-579944', 'Lopez, Anna Santos', 'Barangay Indigency', '09634578916', '21 3rd Street Avenue', 'mm', 17, 1, 'mrcodg13@gmail.com', '2024-04-25 05:29:07'),
-(24, 2024202, 'COI-2024-122066', 'Lopez, Anna Santos', 'Barangay Indigency', '09155689713', '21 3rd Street Avenue', 'Financial', 17, 0, 'mrcodg13@gmail.com', '2024-04-29 12:30:49');
-
 -- --------------------------------------------------------
 
 --
@@ -624,13 +419,6 @@ CREATE TABLE `request_brgycor` (
   `status` int(2) NOT NULL,
   `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `request_brgycor`
---
-
-INSERT INTO `request_brgycor` (`id`, `account_id`, `transaction_id`, `name`, `address`, `year_recidency`, `contact_no`, `purpose`, `request`, `status`, `email`) VALUES
-(1, 1, '1234', 'asdasd', 'asdasd', 0, 1231323123, 'aasdasd', '', 2, '');
 
 -- --------------------------------------------------------
 
@@ -656,16 +444,6 @@ CREATE TABLE `request_brgyid` (
   `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `request_brgyid`
---
-
-INSERT INTO `request_brgyid` (`id`, `account_id`, `transaction_id`, `name`, `address`, `birth_date`, `civil_status`, `contact_no`, `precinct_no`, `gss_sss`, `tin`, `emg_name`, `emg_contact_no`, `status`, `email`) VALUES
-(1, 0, 0, 'Cyrus Cantero', 'Libis', '2023-12-15', 'Single', '09517563059', 123, 123456, 123456789, 'Mami Gel', '214', 0, ''),
-(2, 0, 0, 'JOHNLOYD KUNAG', 'KALOOCKAN', '2023-12-30', 'MARRIED', 'NUMBER GINAWA KONG V', 0, 0, 0, 'STRING', 'VARCAHR NA NUMBER', 0, ''),
-(3, 0, 0, 'asda', 'asda', '2023-12-07', 'dadasd', '0', 0, 0, 0, 'weqweq', '0', 0, 'Martinezlaicamae17@gmail.com'),
-(4, 0, 0, 'Layka', 'NPC AREA A, DELENA COMPD., ROAD 7 EXT., GSIS HILLS', '2023-12-15', 'single', '9636616469', 1112, 11111, 1111, 'maor', '11111', 0, 'Martinezlaicamae17@gmail.com');
-
 -- --------------------------------------------------------
 
 --
@@ -689,15 +467,6 @@ CREATE TABLE `request_busclearance` (
   `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `request_busclearance`
---
-
-INSERT INTO `request_busclearance` (`id`, `member_id`, `transaction_id`, `business_name`, `owner_name`, `kof_business`, `yrs_res`, `contact_no`, `purpose`, `status`, `email`, `address`, `request`, `time`) VALUES
-(1, 1, '234', 'Hello', 'Hi', 'Food', 2, '0', 'Hello', 0, '', '', '', '2024-04-19 10:43:35'),
-(3, 2024902, 'BSCLR-2024-474781', 'Quinn Eatery', 'Quinn Jimenez', 'Food', 1983, '2147483647', 'Food', 2, 'dybimiz@mailinator.com', 'Possimus rerum exer', 'Business Clearance', '2024-04-21 17:03:54'),
-(4, 2024202, 'BSCLR-2024-858914', 'Lopez Eatery', 'Lopez, Anna Santos', 'Food', 17, '09155689713', 'Food Business', 0, 'mrcodg13@gmail.com', '21 3rd Street Avenue', 'Business Clearance', '2024-04-24 14:01:14');
-
 -- --------------------------------------------------------
 
 --
@@ -718,28 +487,6 @@ CREATE TABLE `request_tools` (
   `status` tinyint(1) NOT NULL,
   `time_added` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `request_tools`
---
-
-INSERT INTO `request_tools` (`id`, `member_id`, `transaction_id`, `Item`, `fullname`, `address`, `borrowed_sched`, `return_sched`, `contact`, `purpose`, `status`, `time_added`) VALUES
-(2, 0, '', 'pogi', 'ronalaine', '50 malolos ave bagong barrio caloocan city', '2024-05-02', '2024-05-09', 2147483647, 'whahahaha', 0, '2024-04-30 20:01:17'),
-(3, 0, '', 'id picture', 'ASDASD', 'ASDASD', '2024-05-02', '3123-04-30', 2147483647, '123123123', 0, '2024-04-30 20:21:10'),
-(4, 2024102, 'SER-2024-964799', 'whyy', 'Hanson, Trevor Maya Roman', '603Exercitation volupta', '2024-05-02', '2024-05-02', 2147483647, 'fdsfsf', 0, '2024-05-02 07:02:52'),
-(5, 2024102, 'SER-2024-294137', 'whyy', 'Hanson, Trevor Maya Roman', '603Exercitation volupta', '2024-05-02', '2024-05-02', 2147483647, 'dgsdgdgdgd', 0, '2024-05-02 07:03:05'),
-(6, 2024102, 'SER-2024-523678', 'whyy', 'Hanson, Trevor Maya Roman', '603Exercitation volupta', '2024-05-02', '2024-05-02', 2147483647, 'hahaha', 0, '2024-05-02 07:03:55'),
-(7, 2024102, 'SER-2024-745249', 'whyy', 'Hanson, Trevor Maya Roman', '603Exercitation volupta', '2024-05-02', '2024-05-02', 2147483647, 'dsfsf', 0, '2024-05-02 07:04:11'),
-(8, 2024102, 'SER-2024-349627', 'whyy', 'Hanson, Trevor Maya Roman', '603Exercitation volupta', '2024-05-02', '2024-05-02', 2147483647, 'diko alam', 0, '2024-05-02 07:05:01'),
-(9, 2024102, 'SER-2024-608389', 'whyy', 'Hanson, Trevor Maya Roman', '603Exercitation volupta', '2024-05-02', '2024-05-02', 2147483647, 'ito\\r\\nadasd', 2, '2024-05-02 07:05:55'),
-(10, 2024102, 'SER-2024-306814', 'binibini2', 'Hanson, Trevor Maya Roman', '603Exercitation volupta', '2024-05-02', '2024-05-02', 2147483647, 'hahahaha', 0, '2024-05-02 07:12:31'),
-(11, 2024102, 'SER-2024-311606', 'binbini', 'Hanson, Trevor Maya Roman', '603Exercitation volupta', '2024-05-02', '2024-05-02', 2147483647, 'afafafaf', 0, '2024-05-02 07:17:41'),
-(12, 2024102, 'SER-2024-136717', 'binbini', 'Hanson, Trevor Maya Roman', '603Exercitation volupta', '2024-05-02', '2024-05-02', 2147483647, 'adadad', 0, '2024-05-02 07:18:57'),
-(13, 2024102, 'SER-2024-365101', 'binbini', 'Hanson, Trevor Maya Roman', '603Exercitation volupta', '2024-05-02', '2024-05-02', 2147483647, 'asfdsadfasfd', 0, '2024-05-02 07:23:05'),
-(14, 2024102, 'SER-2024-456420', 'binbini', 'Hanson, Trevor Maya Roman', '603Exercitation volupta', '2024-05-02', '2024-05-02', 2147483647, 'adadada', 0, '2024-05-02 07:26:15'),
-(15, 2024102, 'SER-2024-247921', 'binbini', 'Hanson, Trevor Maya Roman', '603Exercitation volupta', '2024-05-02', '2024-05-02', 2147483647, 'hahahahha', 0, '2024-05-02 07:26:36'),
-(16, 2024102, 'SER-2024-247921', 'binbini', 'Hanson, Trevor Maya Roman', '603Exercitation volupta', '2024-05-02', '2024-05-02', 2147483647, 'hahahahha', 0, '2024-05-02 07:26:47'),
-(17, 2024102, 'SER-2024-105020', 'binbini', 'Hanson, Trevor Maya Roman', '603Exercitation volupta', '2024-05-02', '2024-05-02', 2147483647, 'adadad', 0, '2024-05-02 07:28:05');
 
 -- --------------------------------------------------------
 
@@ -904,12 +651,6 @@ ALTER TABLE `projects`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `request_assistant`
---
-ALTER TABLE `request_assistant`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `request_brgybp`
 --
 ALTER TABLE `request_brgybp`
@@ -984,13 +725,13 @@ ALTER TABLE `announcement`
 -- AUTO_INCREMENT for table `barangay_inventory`
 --
 ALTER TABLE `barangay_inventory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `change_logs`
 --
 ALTER TABLE `change_logs`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -1002,7 +743,7 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `generatedpdf_id`
 --
 ALTER TABLE `generatedpdf_id`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `history`
@@ -1020,25 +761,25 @@ ALTER TABLE `inquire`
 -- AUTO_INCREMENT for table `member_account`
 --
 ALTER TABLE `member_account`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `member_address`
 --
 ALTER TABLE `member_address`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `member_emergency`
 --
 ALTER TABLE `member_emergency`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `member_proof`
 --
 ALTER TABLE `member_proof`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `officials`
@@ -1053,46 +794,40 @@ ALTER TABLE `projects`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT for table `request_assistant`
---
-ALTER TABLE `request_assistant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `request_brgybp`
 --
 ALTER TABLE `request_brgybp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `request_brgycert`
 --
 ALTER TABLE `request_brgycert`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `request_brgyclrs`
 --
 ALTER TABLE `request_brgyclrs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `request_brgycoi`
 --
 ALTER TABLE `request_brgycoi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `request_brgycor`
 --
 ALTER TABLE `request_brgycor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `request_brgyid`
 --
 ALTER TABLE `request_brgyid`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `request_busclearance`
@@ -1104,7 +839,7 @@ ALTER TABLE `request_busclearance`
 -- AUTO_INCREMENT for table `request_tools`
 --
 ALTER TABLE `request_tools`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `settings`
