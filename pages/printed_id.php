@@ -182,10 +182,7 @@ include '../server/admin_login-verification.php';
 
     $(document).ready(function() {
         $('#member_').DataTable({
-            buttons: [{
-                    extend: 'copy',
-                    text: '<i class="fas fa-copy"></i> Copy'
-                },
+            buttons: [
                 {
                     extend: 'excel',
                     text: '<i class="fas fa-file-excel"></i> Excel'

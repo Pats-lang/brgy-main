@@ -205,9 +205,9 @@ $(document).ready(function() {
             Swal.fire({
                 title: 'Do you want to send this request?',
                 showDenyButton: true,
-                showCancelButton: true,
+                
                 confirmButtonText: 'Send',
-                denyButtonText: 'Don\'t Send',
+                denyButtonText: 'Cancel',
             }).then((result) => {
                 if (result.isConfirmed) {
                     var formData = new FormData($('#request_barangay-coiform')[0]);

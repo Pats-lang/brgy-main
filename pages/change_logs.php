@@ -139,10 +139,7 @@ include '../server/admin_login-verification.php';
                 order: [
                     [4, 'desc']
                 ],
-                buttons: [{
-                        extend: 'copy',
-                        text: '<i class="fas fa-copy"></i> Copy'
-                    },
+                buttons: [
                     {
                         extend: 'excel',
                         text: '<i class="fas fa-file-excel"></i> Excel'

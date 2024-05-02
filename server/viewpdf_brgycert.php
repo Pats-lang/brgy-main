@@ -126,10 +126,10 @@ if ($result->num_rows > 0) {
             echo "Error: File could not be saved at: " . $filePath;
         }
 
-        $pdf->SetXY(54, 480); // Adjust X and Y coordinates as needed
+        $pdf->SetXY(70, 500); // Adjust X and Y coordinates as needed
         $pdf->Cell(0, 0, 'Secretary', 0, 0, 'L'); // Output the role
 
-        $pdf->SetXY(54  , 570); // Adjust X and Y coordinates as needed
+        $pdf->SetXY(54  , 590); // Adjust X and Y coordinates as needed
         $pdf->Cell(0, 0, 'Barangay Chairman', 0, 0, 'L'); // Output the role
 
         $pdf->SetXY(30, 0);

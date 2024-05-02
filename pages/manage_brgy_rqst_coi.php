@@ -300,10 +300,7 @@ include '../server/admin_login-verification.php';
     <script>
     $(document).ready(function() {
         $('#manageClient_inquiriesTable').DataTable({
-            buttons: [{
-                    extend: 'copy',
-                    text: '<i class="fas fa-copy"></i> Copy'
-                },
+            buttons: [
                 {
                     extend: 'excel',
                     text: '<i class="fas fa-file-excel"></i> Excel'
@@ -330,9 +327,9 @@ include '../server/admin_login-verification.php';
         Swal.fire({
             title: 'Do you want to save the changes?',
             showDenyButton: true,
-            showCancelButton: true,
+            
             confirmButtonText: 'Save',
-            denyButtonText: 'Don\'t save',
+            denyButtonText: 'Cancel',
         }).then((result) => {
             $('#editAnnouncement_modal').modal('hide');
             if (result.isConfirmed) {

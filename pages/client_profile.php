@@ -426,9 +426,9 @@ $('#editprofileform').on('submit', function(e) {
         Swal.fire({
             title: 'Do you want to save the changes?',
             showDenyButton: true,
-            showCancelButton: true,
+            
             confirmButtonText: 'Save',
-            denyButtonText: `Don't save`,
+            denyButtonText: `Cancel`,
         }).then((result) => {
             if (result.isConfirmed) {
                 let timerInterval

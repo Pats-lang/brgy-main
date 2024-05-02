@@ -44,6 +44,22 @@ input[readonly] {
     background-color: #f2f2f2;
     /* Gray background color */
 }
+
+.card {
+    height: 400px; /* Set the desired height for the card */
+}
+
+.image-container {
+    height: calc(100% - 60px); /* Adjust as needed, considering padding and button height */
+    overflow: hidden;
+    position: relative;
+}
+
+.card-img-top {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
 </style>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -81,28 +97,30 @@ input[readonly] {
                     while ($row = mysqli_fetch_assoc($result)) {
                     ?>
 
-                    <div class="col-md-4">
-                        <div class="card mt-3">
-                            <img src="../assets/images/item/<?php echo $row['picture']; ?>"
-                                class="img-thumbnail img-fluid img" data-bs-toggle="modal"
-                                data-bs-target="#imageCarousel<?php echo $row['id']; ?>">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title fs-1"><?php echo $row['item_name']; ?></h5>
-                                    </div>
-                                </div>
-                                <div class="row mt-3 float-end">
-                                    <div class="col">
-                                        <button type="button" class="btn btn-primary"
-                                            data-item-id="<?php echo $row['id']; ?>">BOOK
-                                            NOW</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+<div class="col-md-4">
+    <div class="card mt-3">
+        <div class="image-container">
+            <img src="../assets/images/item/<?php echo $row['picture']; ?>" class="card-img-top img-fluid img"
+                data-bs-toggle="modal" data-bs-target="#imageCarousel<?php echo $row['id']; ?>">
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <h5 class="card-title " style="font-size: 30px;" ><?php echo $row['item_name']; ?></h5>  
+                </div>
+            </div>
+        </div>
+        <!-- Move the button inside the card-body -->
+        <div class="card-footer">
+            <div class="row mt-3">
+                <div class="col text-end">
+                    <button type="button" class="btn btn-primary" data-item-id="<?php echo $row['id']; ?>">BOOK
+                        NOW</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
                     <div class="modal fade" id="exampleModal1<?php echo $row['id']; ?>" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
