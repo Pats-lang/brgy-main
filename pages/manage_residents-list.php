@@ -153,7 +153,7 @@ include '../server/admin_login-verification.php';
                                                 </td>
 
                                                 <td>
-                                                    <?php echo $campusName; ?>
+                                                    <?php echo $row['campus_id']; ?>
                                                 </td>
 
                                                 <td>

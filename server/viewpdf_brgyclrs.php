@@ -32,7 +32,7 @@ if ($officialsResult->num_rows > 0) {
 }
 
 // Database query to fetch data
-$sql = "SELECT `id`, `member_id`, `transaction_id`, `name`, `request`, `contact_no`, `address`, `purpose`, `yrs_res`, `status`, `email`, `time` FROM `request_brgycoi`";
+$sql = "SELECT `id`, `member_id`, `transaction_id`, `name`, `request`, `contact_no`, `address`, `purpose`, `yrs_res`, `status`, `email`, `time` FROM `request_brgyclrs`";
 $result = $db->query($sql);
 
 if ($result->num_rows > 0) {
