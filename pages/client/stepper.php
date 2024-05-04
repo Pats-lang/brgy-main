@@ -282,9 +282,9 @@ if (!isset($_SESSION['otp_verified']) || $_SESSION['otp_verified'] !== true) {
                                                     <select class="form-control form-control-border mt-1"
                                                         style="height:40px" id="campus" name="campus" required>
                                                         <option selected disabled>Select a Gender</option>
-                                                        <option value="male" data-campus-id="01">Male
+                                                        <option value="01" data-campus-id="01">Male
                                                         </option>
-                                                        <option value="female" data-campus-id="02">Female
+                                                        <option value="02" data-campus-id="02">Female
                                                         </option>
                                                     </select>
                                                 </div>
