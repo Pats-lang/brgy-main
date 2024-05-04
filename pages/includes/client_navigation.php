@@ -224,9 +224,7 @@
                         <a class="nav-link" data-toggle="modal" data-target="#loginModal" href="#">Login</a>
                     </li>
 
-                <li class="nav-item">
-                    <a class="nav-link " href="../../pages/admin_logIn.php">Admin</a>
-                </li>
+                
             </ul>
         </div>
 
