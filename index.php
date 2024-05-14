@@ -825,6 +825,12 @@ while ($row = mysqli_fetch_assoc($result)) {
                                 jurisdiction. </p>
                             <a class="btn read-more get-now">Get Now</a>
                         </div>
+                        <div class="box hidden " data-request="Services">
+                            <img src="assets/images/docu/6.jpg" alt="">
+                            <h3>Services</h3>
+                            <p class="custom-text-justify">A Barangay Services for request for furniture or vehicle. </p>
+                            <a class="btn read-more get-now">Get Now</a>
+                        </div>
                     </div>
                     <div class="show-more-container">
                         <p class="show-more">Show More</p>
